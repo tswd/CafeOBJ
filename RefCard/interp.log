@@ -1,0 +1,69 @@
+This is XeTeX, Version 3.1415926-2.2-0.9995.2 (TeX Live 2009) (format=xetex 2010.5.28)  17 JUN 2010 16:30
+entering extended mode
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**interp.tex
+(./interp.tex
+\columnsperpage=\count28
+\intercolumnskip=\dimen16
+\columna=\box16
+\columnb=\box17
+\keyindent=\dimen17
+
+Overfull \hbox (24.24734pt too wide) in alignment at lines 237--302
+[] [] [] 
+
+\hbox(0.0+0.0)x252.94499
+.\glue(\tabskip) 0.0
+.\unsetbox(0.0+0.0)x80.75116
+.\glue(\tabskip) 8.0 plus 1.0fil
+.\unsetbox(0.0+0.0)x44.86967
+.\glue(\tabskip) 0.0
+.etc.
+
+[1]
+Overfull \hbox (2.21309pt too wide) in alignment at lines 346--355
+[] [] 
+
+\hbox(0.0+0.0)x252.94499
+.\glue(\tabskip) 0.0
+.\unsetbox(0.0+0.0)x89.50491
+.\glue(\tabskip) 10.0 plus 1.0fil
+.\unsetbox(0.0+0.0)x145.65317
+.\glue(\tabskip) 10.0 plus 1.0fil
+
+
+Overfull \hbox (18.64302pt too wide) in alignment at lines 386--392
+[] [] 
+
+\hbox(0.0+0.0)x252.94499
+.\glue(\tabskip) 0.0
+.\unsetbox(0.0+0.0)x108.89986
+.\glue(\tabskip) 10.0 plus 1.0fil
+.\unsetbox(0.0+0.0)x142.68816
+.\glue(\tabskip) 10.0 plus 1.0fil
+
+[2]
+Overfull \hbox (1.94713pt too wide) in alignment at lines 602--608
+[] [] 
+
+\hbox(0.0+0.0)x252.94499
+.\glue(\tabskip) 0.0
+.\unsetbox(0.0+0.0)x62.57304
+.\glue(\tabskip) 10.0 plus 1.0fil
+.\unsetbox(0.0+0.0)x172.31908
+.\glue(\tabskip) 10.0 plus 1.0fil
+
+[3]
+Overfull \hbox (23.4056pt too wide) in alignment at lines 620--627
+[] [] 
+
+\hbox(0.0+0.0)x252.94499
+.\glue(\tabskip) 0.0
+.\unsetbox(0.0+0.0)x121.65004
+.\glue(\tabskip) 10.0 plus 1.0fil
+.\unsetbox(0.0+0.0)x134.70055
+.\glue(\tabskip) 10.0 plus 1.0fil
+
+[4] )
+Output written on interp.pdf (4 pages).

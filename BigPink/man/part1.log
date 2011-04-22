@@ -1,0 +1,23 @@
+This is pTeX, Version 3.141592-p3.1.10 (euc) (Web2C 7.5.4) (format=platex 2007.4.24)  22 MAY 2007 15:02
+**part1.tex
+(./part1.tex
+pLaTeX2e <2006/06/27>+0 (based on LaTeX2e <2003/12/01> patch level 0)
+! Undefined control sequence.
+l.3 {\LARGE
+           \textbf{PigNose^^83V^^83X^^83e^^83^^80^^82Ì^^8aT^^97v}}
+? 
+! Emergency stop.
+l.3 {\LARGE
+           \textbf{PigNose^^83V^^83X^^83e^^83^^80^^82Ì^^8aT^^97v}}
+End of file on the terminal!
+
+ 
+Here is how much of TeX's memory you used:
+ 4 strings out of 95544
+ 34 string characters out of 1191266
+ 47104 words of memory out of 1000000
+ 3248 multiletter control sequences out of 10000+50000
+ 7511 words of font info for 31 fonts, out of 500000 for 2000
+ 14 hyphenation exceptions out of 8191
+ 4i,0n,1p,50b,7s stack positions out of 1500i,500n,5000p,200000b,5000s
+No pages of output.

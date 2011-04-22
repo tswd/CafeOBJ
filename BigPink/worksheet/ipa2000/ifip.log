@@ -1,0 +1,309 @@
+This is pTeX, Version p2.1.8, based on TeX, Version 3.14159 (EUC) (Web2C 7.2) (format=platex 1999.7.20)  21 FEB 2002 23:51
+**ifip
+(ifip.tex
+pLaTeX2e <1999/04/05>+0 (based on LaTeX2e <1999/06/01> patch level 1)
+(/usr/local/share/texmf/tex/latex/base/slides.cls
+Document Class: slides 1997/08/15 v2.3z Standard LaTeX document class
+(/usr/local/share/texmf/tex/latex/base/slides.def
+File: slides.def 1997/08/15 v2.3z SLiTeX definitions
+ hacks, slides,
+\c@page=\count81
+ picture,
+mods,
+\@smashboxa=\box41
+\@smashboxb=\box42
+\@smashboxc=\box43
+ output, init) (/usr/local/share/texmf/tex/latex/base/sfonts.def
+File: sfonts.def 1998/06/12 v2.2e Standard LaTeX slide font definitions
+
+(/usr/local/share/texmf/tex/latex/base/ot1lcmss.fd
+File: ot1lcmss.fd 1998/06/12 v2.2e Standard LaTeX slide font definitions
+))
+\c@minutes=\count82
+\c@seconds=\count83
+
+(I search kanjifont definition file: . . )
+\c@mv@invisible=\count84
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/lcmss/m/n on input line 360.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/lcmm/m/it on input line 363.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/lcmsy/m/n on input line 365.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/lcmex/m/n on input line 367.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `invisible'
+(Font)                  OT1/cmr/m/n --> OT1/lcmss/m/In on input line 370.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `invisible'
+(Font)                  OML/cmm/m/it --> OML/lcmm/m/Iit on input line 372.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `invisible'
+(Font)                  OMS/cmsy/m/n --> OMS/lcmsy/m/In on input line 374.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `invisibl
+e'
+(Font)                  OMX/cmex/m/n --> OMX/lcmex/m/In on input line 376.
+)
+(/usr/local/share/texmf/tex/plain/dvips/epsf.tex
+This is `epsf.tex' v2.7 <25 October 1996>
+\epsffilein=\read1
+\epsfframemargin=\dimen118
+\epsfframethickness=\dimen119
+\epsfrsize=\dimen120
+\epsftmp=\dimen121
+\epsftsize=\dimen122
+\epsfxsize=\dimen123
+\epsfysize=\dimen124
+\pspoints=\dimen125
+) (ifip.aux)
+\openout1 = `ifip.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OT1/lcmss/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <28.66> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 14.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <28.66> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 14.
+ [1
+
+]
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <23.89> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 25.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <23.89> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 25.
+LaTeX Font Info:    Try loading font information for OML+lcmm on input line 28.
+
+ (/usr/local/share/texmf/tex/latex/base/omllcmm.fd
+File: omllcmm.fd 1998/06/12 v2.2e Standard LaTeX slide font definitions
+)
+LaTeX Font Info:    Try loading font information for OMS+lcmsy on input line 28
+.
+
+(/usr/local/share/texmf/tex/latex/base/omslcmsy.fd
+File: omslcmsy.fd 1998/06/12 v2.2e Standard LaTeX slide font definitions
+)
+LaTeX Font Info:    Try loading font information for OMX+lcmex on input line 28
+.
+
+(/usr/local/share/texmf/tex/latex/base/omxlcmex.fd
+File: omxlcmex.fd 1998/06/12 v2.2e Standard LaTeX slide font definitions
+)
+LaTeX Font Info:    External font `cmex10 at17.28pt' loaded for size
+(Font)              <23.89> on input line 28.
+LaTeX Font Info:    External font `cmex10 at17.28pt' loaded for size
+(Font)              <19.907> on input line 28.
+LaTeX Font Info:    External font `cmex10 at17.28pt' loaded for size
+(Font)              <16.59> on input line 28.
+ [2]
+Overfull \hbox (19.73181pt too wide) in paragraph at lines 58--59
+[]\OT1/lcmss/m/n/23.89 predicate cal-cu-lus and res-o-lu-tion en-gine (PigNose)
+ 
+ []
+
+[3] (I search kanjifont definition file: . . ) (I search font definition file:
+. . . . . . . )
+LaTeX Font Info:    Try loading font information for OT1+lcmtt on input line 68
+.
+ (/usr/local/share/texmf/tex/latex/base/ot1lcmtt.fd
+File: ot1lcmtt.fd 1998/06/12 v2.2e Standard LaTeX slide font definitions
+) [4]
+Overfull \hbox (22.66232pt too wide) in paragraph at lines 98--98
+[]\OT1/lcmtt/m/n/23.89 *[ Account ]*                          -- hidden sort[] 
+
+ []
+
+
+Overfull \hbox (22.66232pt too wide) in paragraph at lines 98--98
+[]\OT1/lcmtt/m/n/23.89 op new-account : -> Account            -- new account[] 
+
+ []
+
+
+Overfull \hbox (22.66232pt too wide) in paragraph at lines 98--98
+[]\OT1/lcmtt/m/n/23.89 ax 0 <= N -> balance(deposit(N,A)) = balance(A) + N .[] 
+
+ []
+
+
+Overfull \hbox (9.97058pt too wide) in paragraph at lines 98--98
+[]\OT1/lcmtt/m/n/23.89 ax ~(0 <= N) -> balance(deposit(N,A)) = balance(A) .[] 
+ []
+
+
+Overfull \hbox (22.66232pt too wide) in paragraph at lines 98--98
+[]            \OT1/lcmtt/m/n/23.89 balance(withdraw(N,A)) = balance(A) - N .[] 
+
+ []
+
+[5] [6] [7]
+
+LaTeX Font Warning: Font shape `OT1/cmtt/m/n' in size <23.89> not available
+(Font)              size <24.88> substituted on input line 135.
+
+
+LaTeX Font Warning: Font shape `OT1/cmtt/m/n' in size <19.907> not available
+(Font)              size <20.74> substituted on input line 135.
+
+
+LaTeX Font Warning: Font shape `OT1/cmtt/m/n' in size <16.59> not available
+(Font)              size <17.28> substituted on input line 135.
+
+[8]
+Overfull \vbox (2.18436pt too high) has occurred while \output is active []
+
+
+[9] [10] [11] [12]
+LaTeX Font Info:    External font `cmex10 at17.28pt' loaded for size
+(Font)              <13.82> on input line 252.
+
+
+LaTeX Font Warning: Font shape `OT1/cmtt/m/n' in size <13.82> not available
+(Font)              size <14.4> substituted on input line 252.
+
+[13] [14] [15] [16]
+Overfull \hbox (9.97058pt too wide) in paragraph at lines 338--338
+[]  \OT1/lcmtt/m/n/23.89 ax ~(s(M) = M) .         ax [SOS]: M = 0 | 0 < M .[] 
+ []
+
+[17]
+Overfull \hbox (9.97058pt too wide) in paragraph at lines 366--366
+[]\OT1/lcmtt/m/n/23.89 eq stat1(init1) = non-CS .   eq ticket1(init1) = 0 .[] 
+ []
+
+
+Overfull \hbox (9.97058pt too wide) in paragraph at lines 366--366
+[]                             \OT1/lcmtt/m/n/23.89 stat1(run1(C,M)) = CS .[] 
+ []
+
+
+Overfull \hbox (9.97058pt too wide) in paragraph at lines 366--366
+[]                           \OT1/lcmtt/m/n/23.89 stat1(run1(C,M)) = wait .[] 
+ []
+
+
+Overfull \hbox (48.0458pt too wide) in paragraph at lines 366--366
+[]\OT1/lcmtt/m/n/23.89 ax stat1(C) = wait -> ticket1(run1(C,M)) = ticket1(C) .[
+] 
+ []
+
+[18]
+Overfull \hbox (9.97058pt too wide) in paragraph at lines 394--394
+[]\OT1/lcmtt/m/n/23.89 eq stat2(init2) = non-CS .   eq ticket2(init2) = 0 .[] 
+ []
+
+
+Overfull \hbox (48.0458pt too wide) in paragraph at lines 394--394
+[]                  \OT1/lcmtt/m/n/23.89 stat2(C) = non-CS | stat2(C) = wait .[
+] 
+ []
+
+
+Overfull \hbox (48.0458pt too wide) in paragraph at lines 394--394
+[]                                \OT1/lcmtt/m/n/23.89 stat2(run2(C,M)) = CS .[
+] 
+ []
+
+
+Overfull \hbox (9.97058pt too wide) in paragraph at lines 394--394
+[]\OT1/lcmtt/m/n/23.89 ax stat2(C) = wait & ~(M = 0) & ~(ticket2(C) < M) ->[] 
+ []
+
+
+Overfull \hbox (35.35406pt too wide) in paragraph at lines 394--394
+[]                             \OT1/lcmtt/m/n/23.89 stat2(run2(C,M)) = wait .[]
+ 
+ []
+
+
+Overfull \hbox (60.73755pt too wide) in paragraph at lines 394--394
+[]\OT1/lcmtt/m/n/23.89 ax stat2(C) = wait -> ticket2 (run2(C,M)) = ticket2(C) .
+[] 
+ []
+
+[19]
+Overfull \hbox (22.66232pt too wide) in paragraph at lines 417--417
+[]\OT1/lcmtt/m/n/23.89 var C1 : Customer1  vars C2 : Customer2  var S : Shop[] 
+
+ []
+
+
+Overfull \hbox (35.35406pt too wide) in paragraph at lines 417--417
+[]\OT1/lcmtt/m/n/23.89 ax Run1(shop(C1,C2)) = shop(run1(C1,ticket2(C2)),C2) .[]
+ 
+ []
+
+
+Overfull \hbox (35.35406pt too wide) in paragraph at lines 417--417
+[]\OT1/lcmtt/m/n/23.89 ax Run2(shop(C1,C2)) = shop(C1,run2(C2,ticket1(C1))) .[]
+ 
+ []
+
+[20]
+LaTeX Font Info:    Try loading font information for OMS+lcmtt on input line 42
+4.
+LaTeX Font Info:    No file OMSlcmtt.fd. on input line 424.
+
+
+LaTeX Font Warning: Font shape `OMS/lcmtt/m/n' undefined
+(Font)              using `OMS/cmsy/m/n' instead
+(Font)              for symbol `textbraceleft' on input line 424.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <23.89> not available
+(Font)              size <24.88> substituted on input line 424.
+
+
+LaTeX Font Warning: Font shape `OMS/lcmtt/m/n' in size <23.89> not available
+(Font)              size <24.88> substituted on input line 424.
+
+
+Overfull \hbox (6.07356pt too wide) in paragraph at lines 432--434
+[]\OT1/lcmss/m/n/23.89 coherence must be proved sep-a-rately (easy for \OT1/lcm
+tt/m/n/23.89 shop\OT1/lcmss/m/n/23.89 ) 
+ []
+
+[21] [22] [23] [24]
+Overfull \hbox (14.81056pt too wide) in paragraph at lines 490--491
+[]| [] 
+ []
+
+
+Overfull \vbox (140.92792pt too high) has occurred while \output is active []
+
+
+[25]
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <19.907> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 501.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <19.907> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 501.
+ [26] [27] (ifip.aux)
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.99pt have occured.
+
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 413 strings out of 10659
+ 5648 string characters out of 69276
+ 52131 words of memory out of 263001
+ 3557 multiletter control sequences out of 10000+0
+ 17621 words of font info for 70 fonts, out of 200000 for 1000
+ 14 hyphenation exceptions out of 1000
+ 23i,5n,19p,148b,327s stack positions out of 300i,100n,500p,30000b,4000s
+
+Output written on ifip.dvi (27 pages, 17508 bytes).

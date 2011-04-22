@@ -1,0 +1,113 @@
+%$Id: pnguide.tex,v 1.2 2003-11-04 03:11:26 sawada Exp $
+\documentclass[a4paper]{jarticle}
+\usepackage[dvips]{graphicx}
+\usepackage{proof}
+\usepackage{fancyvrb}
+\usepackage{minitoc}
+\addtolength{\textwidth}{0.5cm}
+\addtolength{\textheight}{0.5cm}
+\addtolength{\lineskip}{1.1ex}
+
+%%%%%%%%%% Verbatim
+\DefineVerbatimEnvironment%
+{simplev}{Verbatim}
+{frame=single,fontsize=\small}
+\DefineVerbatimEnvironment%
+{examplev}{Verbatim}
+{frame=single,label=\textbf{例},fontsize=\small}
+
+%%%%%%%%%%
+%\includeonly{appendix}
+%%%%%%%%%%
+\begin{document}
+% 表紙 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{\textbf{PigNose 使用手引}\\ver 0.99 \\ --\textit{Draft}--}
+\author{澤田 寿実\\
+  SRA先端技術研究所\\
+  sawada@sra.co.jp}
+\date{}
+\maketitle
+  \begin{center}
+    \includegraphics[scale=0.5]{pignose.eps}
+  \end{center}
+\thispagestyle{empty}
+\newpage
+% 構成 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagenumbering{roman}
+\part*{はじめに}
+本書は, CafeOBJ 言語で書かれた仕様のための自動定理証明システム
+PigNose の利用手引である. 
+システムは SRA版 CafeOBJ インタプリタ\footnote{今の所, CafeOBJ 言語のイ
+  ンタプリタはこれしか存在しない. システムの入手法は第
+  \ref{sec:distribution}節を参照されたい.} 
+を拡張したものになっている. 
+従って, これを用いるには CafeOBJ インタプリタの使用法
+についても知っておく必要がある. 本書では, PigNose 特有のコマンドについて
+のみ説明するので, 必要に応じて CafeOBJ インタプリタのマニュアル
+\footnote{CafeOBJ インタプリタのマニュアルは
+  \texttt{ftp://ftp.sra.co.jp/pub/lang/CafeOBJ/Manual} からダウンロード
+  出来る}. 
+を参照されたい.
+また, ここでは CafeOBJ 言語についての説明も行わない. 本書では, CafeOBJ
+言語については既知のものと仮定している. CafeOBJ 言語についての解説は, 文
+献\cite{CafeRep}を参照して頂きたい. 
+% PigNose は resolution 原理を用いた反駁法によって定理証明を行うシステムで
+% あるが, これについての解説も行わない. 
+% 必要に応じて, 参考文献 \cite{chang-lee} 等を参照して頂きたい.  
+
+% \section*{本書の構成}
+
+本文は4部構成で, PigNose システムの使用法が説明されている.
+第I部でシステムのインストール法を述べ, 第II部で反駁エンジン,
+第III部で詳細化検証, 第IV部で安全性モデル検査について説明する.
+
+\section*{バグレポート/提案}
+
+システムの不具合に関する報告や, 改善提案等に関する
+連絡は, 電子メイルで \texttt{sawada@sra.co.jp} まで頂きたい.
+
+\newpage
+% 目次 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\doparttoc
+\tableofcontents
+\newpage
+%\listoffigures
+%\newpage
+\pagenumbering{arabic}
+
+% 本文 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{part1}
+\include{part2}
+\include{part3}
+\include{part4}
+\include{part5}
+\include{appendix}
+
+\newpage
+
+% BIB %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+\begin{thebibliography}{99}\itemsep=0pt
+
+\bibitem{chang-lee} Chang, C. and Lee. R.C.,
+  \textsl{Symbolic Logic and Mechanical Theorem Proving},
+  Academic Press, 1973
+
+\bibitem{ha} Joseph Goguen and Grant Malcolm, ``A Hidden Agenda'', in
+  \emph{Theoretical Computer Science}, Vol.245 No.1, 2000, pp.55--101
+
+\bibitem{otter} William McCune, ``\textsc{Otter3.0} Reference Manual
+  and Guide'', Technical Report ANL-94/6, Argonne National Laboratory,
+  1994, available at \texttt{http://www-unix.mcs.anl.gov/AR/otter/}
+
+\bibitem{cafeobj} A.T.Nakagawa, T. Sawada, and K. Futatsugi,
+  ``\textsl{CafeOBJ Manual}'', avaiable at 
+  \texttt{ftp://ftp.sra.co.jp/lang/CafeOBJ/Manual/}
+
+\bibitem{CafeRep} R\u{a}zvan Diaconescu and Kokichi Futatsugi, {\sf
+    CafeOBJ} \emph{Report}. World Scientific, 1998
+
+\end{thebibliography}
+\end{center}
+\end{document}
+

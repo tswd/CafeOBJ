@@ -1,0 +1,2411 @@
+in eop_sub
+processing input : ./eop_sub.mod
+-- defining module* PID
+[Warning]: redefining module PID 
+[import-module]: 
+ PID <==(protecting)== CHAOS:PARSER
+[transfer-operator]: (SyntaxErr) from CHAOS:PARSER to PID
+* creating new opinfo for operator (:op (("SyntaxErr") . 0) : d3f2c2) : (SyntaxErr)/0.CHAOS:PARSER
+-- importing method #<meth ((SyntaxErr) . 0) : d3cc32> : SyntaxErr :
+                                                                     -> 
+                                                                    SortId
+* done transfer-operator
+[transfer-operator]: (TypeErr) from CHAOS:PARSER to PID
+* creating new opinfo for operator (:op (("TypeErr") . 0) : d3f292) : (TypeErr)/0.CHAOS:PARSER
+-- importing method #<meth ((TypeErr) . 0) : d3cc7a> : TypeErr : -> SortId
+* done transfer-operator
+[transfer-operator]: (UnknownOp) from CHAOS:PARSER to PID
+* creating new opinfo for operator (:op (("UnknownOp") . 0) : d3f262) : (UnknownOp)/0.CHAOS:PARSER
+-- importing method #<meth ((UnknownOp) . 0) : d3ccc2> : UnknownOp :
+                                                                     -> 
+                                                                    SortId
+* done transfer-operator
+[transfer-operator]: (SortId) from CHAOS:PARSER to PID
+* creating new opinfo for operator (:op (("SortId") . 0) : d3f232) : (SortId)/0.CHAOS:PARSER
+-- importing method #<meth ((SortId) . 0) : d3cd0a> : SortId : -> SortId
+* done transfer-operator
+[transfer-operator]: (void-bottom) from CHAOS:PARSER to PID
+* creating new opinfo for operator (:op (("void-bottom") . 0) : c83e9a) : (void-bottom)/0.CHAOS:PARSER
+-- importing method #<meth ((void-bottom) . 0) : c83e0a> : void-bottom :
+ -> _ Bottom _
+* done transfer-operator
+[transfer-operator]: (builtin constant) from CHAOS:PARSER to PID
+* creating new opinfo for operator (:op (("builtin" "constant") . 0) : c83efa) : (builtin constant)/0.CHAOS:PARSER
+-- importing method #<meth ((builtin constant) . 0) : c83f2a> : builtinconstant :
+ -> _ Universal _
+* done transfer-operator
+[transfer-operator]: (opId:[ _ ], rest:[ _ ]) from CHAOS:PARSER to PID
+
+* creating new opinfo for operator (:op (("opId:[" "_" "]," "rest:[" "_" "]") . 2) : c83d62) : (opId:[ _ ], rest:[ _ ])/2.CHAOS:PARSER
+-- importing method #<meth ((opId:[ _ ], rest:[ _ ]) . 2) : c83d1a> : opId:[_],rest:[_] : _ Universal _
+ _ Universal _ -> UnknownOp
+* done transfer-operator
+[transfer-operator]: (error:[ _ ]) from CHAOS:PARSER to PID
+* creating new opinfo for operator (:op (("error:[" "_" "]") . 1) : c83dda) : (error:[ _ ])/1.CHAOS:PARSER
+-- importing method #<meth ((error:[ _ ]) . 1) : c83d92> : error:[_] : _ Universal _
+ -> TypeErr
+* done transfer-operator
+[transfer-operator]: (parsed:[ _ ], rest:[ _ ]) from CHAOS:PARSER to PID
+
+* creating new opinfo for operator (:op (("parsed:[" "_" "]," "rest:[" "_" "]") . 2) : c83eca) : (parsed:[ _ ], rest:[ _ ])/2.CHAOS:PARSER
+-- importing method #<meth ((parsed:[ _ ], rest:[ _ ]) . 2) : c83e52> : parsed:[_],rest:[_] : _ Universal _
+ _ Universal _ -> SyntaxErr
+* done transfer-operator
+[import-module]: 
+ PID <==(protecting)== BOOL
+[transfer-operator]: (_ iff _) from BOOL to PID
+* creating new opinfo for operator (:op (("_" "iff" "_") . 2) : ef1f6a) : (_ iff _)/2.BOOL
+-- importing method #<meth ((_ iff _) . 2) : ef11b2> : _iff_ : Bool Bool
+                                                               -> Bool
+-- importing axiom eq (A iff B) = (A xor (B xor true))
+   for method : _iff_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ implies _) from BOOL to PID
+* creating new opinfo for operator (:op (("_" "implies" "_") . 2) : ef1f3a) : (_ implies _)/2.BOOL
+-- importing method #<meth ((_ implies _) . 2) : ef12d2> : _implies_ : Bool
+ Bool -> Bool
+-- importing axiom eq (A implies B)
+ = ((A and B) xor (A xor true))
+   for method : _implies_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (not _) from BOOL to PID
+* creating new opinfo for operator (:op (("not" "_") . 1) : ef1f0a) : (not _)/1.BOOL
+-- importing method #<meth ((not _) . 1) : ef131a> : not_ : Bool -> Bool
+-- importing axiom eq (not A) = (A xor true)
+   for method : not_ : Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ xor _) from BOOL to PID
+* creating new opinfo for operator (:op (("_" "xor" "_") . 2) : ef1eda) : (_ xor _)/2.BOOL
+-- importing method #<meth ((_ xor _) . 2) : ef128a> : _xor_ : Bool Bool
+                                                               -> Bool
+-- importing axiom eq (false xor A)
+ = A
+   for method : _xor_ : Bool Bool -> Bool
+-- importing axiom eq (A xor A) = false
+   for method : _xor_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ or-else _) from BOOL to PID
+* creating new opinfo for operator (:op (("_" "or-else" "_") . 2) : ef1eaa) : (_ or-else _)/2.BOOL
+-- importing method #<meth ((_ or-else _) . 2) : ef11fa> : _or-else_ : Bool
+ Bool -> Bool
+-- importing axiom eq (A or-else true)
+ = true
+   for method : _or-else_ : Bool Bool -> Bool
+-- importing axiom eq (true or-else A)
+ = true
+   for method : _or-else_ : Bool Bool -> Bool
+-- importing axiom eq (A or-else false)
+ = A
+   for method : _or-else_ : Bool Bool -> Bool
+-- importing axiom eq (false or-else A)
+ = A
+   for method : _or-else_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ or _) from BOOL to PID
+* creating new opinfo for operator (:op (("_" "or" "_") . 2) : ef1e7a) : (_ or _)/2.BOOL
+-- importing method #<meth ((_ or _) . 2) : ef1362> : _or_ : Bool Bool
+                                                             -> Bool
+-- importing axiom eq (A or B) = ((A and B) xor (A xor B))
+   for method : _or_ : Bool Bool -> Bool
+-- importing axiom eq (true or A) = true
+   for method : _or_ : Bool Bool -> Bool
+-- importing axiom eq (false or A) = A
+   for method : _or_ : Bool Bool -> Bool
+-- importing axiom eq (A or A) = A
+   for method : _or_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ and-also _) from BOOL to PID
+* creating new opinfo for operator (:op (("_" "and-also" "_") . 2) : ef1e4a) : (_ and-also _)/2.BOOL
+-- importing method #<meth ((_ and-also _) . 2) : ef1242> : _and-also_ : Bool
+ Bool -> Bool
+-- importing axiom eq (A and-also A)
+ = A
+   for method : _and-also_ : Bool Bool -> Bool
+-- importing axiom eq (true and-also A)
+ = A
+   for method : _and-also_ : Bool Bool -> Bool
+-- importing axiom eq (A and-also true)
+ = A
+   for method : _and-also_ : Bool Bool -> Bool
+-- importing axiom eq (false and-also A)
+ = false
+   for method : _and-also_ : Bool Bool -> Bool
+-- importing axiom eq (A and-also false)
+ = false
+   for method : _and-also_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ and _) from BOOL to PID
+* creating new opinfo for operator (:op (("_" "and" "_") . 2) : ef1e1a) : (_ and _)/2.BOOL
+-- importing method #<meth ((_ and _) . 2) : ef13aa> : _and_ : Bool Bool
+                                                               -> Bool
+-- importing axiom eq (A and (B xor C))
+ = ((A and B) xor (A and C))
+   for method : _and_ : Bool Bool -> Bool
+-- importing axiom eq (A and A) = A
+   for method : _and_ : Bool Bool -> Bool
+-- importing axiom eq (true and A) = A
+   for method : _and_ : Bool Bool -> Bool
+-- importing axiom eq (false and A)
+ = false
+   for method : _and_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (Bool) from BOOL to PID
+* creating new opinfo for operator (:op (("Bool") . 0) : d3f1a2) : (Bool)/0.TRUTH-VALUE
+-- importing method #<meth ((Bool) . 0) : d3cba2> : Bool : -> SortId
+* done transfer-operator
+[transfer-operator]: (true) from BOOL to PID
+* creating new opinfo for operator (:op (("true") . 0) : d3f1d2) : (true)/0.TRUTH-VALUE
+-- importing method #<meth ((true) . 0) : c83c9a> : true : -> Bool
+* done transfer-operator
+[transfer-operator]: (false) from BOOL to PID
+* creating new opinfo for operator (:op (("false") . 0) : d3f202) : (false)/0.TRUTH-VALUE
+-- importing method #<meth ((false) . 0) : c83c52> : false : -> Bool
+* done transfer-operator
+[transfer-operator]: (parsed:[ _ ], rest:[ _ ]) from BOOL to PID
+-- importing method #<meth ((parsed:[ _ ], rest:[ _ ]) . 2) : c83e52> : parsed:[_],rest:[_] : _ Universal _
+ _ Universal _ -> SyntaxErr
+* done transfer-operator
+[transfer-operator]: (error:[ _ ]) from BOOL to PID
+-- importing method #<meth ((error:[ _ ]) . 1) : c83d92> : error:[_] : _ Universal _
+ -> TypeErr
+* done transfer-operator
+[transfer-operator]: (opId:[ _ ], rest:[ _ ]) from BOOL to PID
+-- importing method #<meth ((opId:[ _ ], rest:[ _ ]) . 2) : c83d1a> : opId:[_],rest:[_] : _ Universal _
+ _ Universal _ -> UnknownOp
+* done transfer-operator
+[transfer-operator]: (builtin constant) from BOOL to PID
+-- importing method #<meth ((builtin constant) . 0) : c83f2a> : builtinconstant :
+ -> _ Universal _
+* done transfer-operator
+[transfer-operator]: (void-bottom) from BOOL to PID
+-- importing method #<meth ((void-bottom) . 0) : c83e0a> : void-bottom :
+ -> _ Bottom _
+* done transfer-operator
+[transfer-operator]: (SortId) from BOOL to PID
+-- importing method #<meth ((SortId) . 0) : d3cd0a> : SortId : -> SortId
+* done transfer-operator
+[transfer-operator]: (UnknownOp) from BOOL to PID
+-- importing method #<meth ((UnknownOp) . 0) : d3ccc2> : UnknownOp :
+                                                                     -> 
+                                                                    SortId
+* done transfer-operator
+[transfer-operator]: (TypeErr) from BOOL to PID
+-- importing method #<meth ((TypeErr) . 0) : d3cc7a> : TypeErr : -> SortId
+* done transfer-operator
+[transfer-operator]: (SyntaxErr) from BOOL to PID
+-- importing method #<meth ((SyntaxErr) . 0) : d3cc32> : SyntaxErr :
+                                                                     -> 
+                                                                    SortId
+* done transfer-operator
+[transfer-operator]: (_ :is _) from BOOL to PID
+* creating new opinfo for operator (:op (("_" ":is" "_") . 2) : eef67a) : (_ :is _)/2.TRUTH
+-- importing method #<meth ((_ :is _) . 2) : eeeb02> : _:is_ : _ Cosmos _
+                                                               SortId
+                                                               -> Bool
+-- importing axiom eq (CXU :is Id:SortId)
+ = #!! (coerce-to-bool (test-term-sort-membership cxu id))
+   for method : _:is_ : _ Cosmos _ SortId -> Bool
+* done transfer-operator
+[transfer-operator]: (if _ then _ else _ fi) from BOOL to PID
+* creating new opinfo for operator (:op (("if" "_" "then" "_" "else" "_" "fi") . 3) : eef64a) : (if _ then _ else _ fi)/3.TRUTH
+-- importing method #<meth ((if _ then _ else _ fi) . 3) : eeeaba> : if_then_else_fi : _ Universal _
+ _ Cosmos _ _ Cosmos _ -> _ Cosmos _
+-- importing axiom eq (if false then CXU else CYU fi)
+ = CYU
+   for method : if_then_else_fi : _ Universal _ _ Cosmos _ _ Cosmos _
+                                  -> _ Cosmos _
+-- importing axiom eq (if true then CXU else CYU fi)
+ = CXU
+   for method : if_then_else_fi : _ Universal _ _ Cosmos _ _ Cosmos _
+                                  -> _ Cosmos _
+* done transfer-operator
+[transfer-operator]: (_ == _) from BOOL to PID
+* creating new opinfo for operator (:op (("_" "==" "_") . 2) : eef61a) : (_ == _)/2.TRUTH
+-- importing method #<meth ((_ == _) . 2) : eeea72> : _==_ : _ Cosmos _
+                                                             _ Cosmos _
+                                                             -> Bool
+-- importing axiom eq (CXU == CYU) = #!! (coerce-to-bool (term-equational-equal cxu cyu))
+   for method : _==_ : _ Cosmos _ _ Cosmos _ -> Bool
+* done transfer-operator
+[transfer-operator]: (_ =*= _) from BOOL to PID
+* creating new opinfo for operator (:op (("_" "=*=" "_") . 2) : eef5ea) : (_ =*= _)/2.TRUTH
+-- importing method #<meth ((_ =*= _) . 2) : eeea2a> : _=*=_ : _ HUniversal _
+                                                               _ HUniversal _
+                                                               -> Bool
+* done transfer-operator
+[transfer-operator]: (_ =b= _) from BOOL to PID
+* creating new opinfo for operator (:op (("_" "=b=" "_") . 2) : eef5ba) : (_ =b= _)/2.TRUTH
+-- importing method #<meth ((_ =b= _) . 2) : eee99a> : _=b=_ : _ Cosmos _
+                                                               _ Cosmos _
+                                                               -> Bool
+-- importing axiom eq (CXU =b= CYU)
+ = #!! (coerce-to-bool (term-equational-equal cxu cyu))
+   for method : _=b=_ : _ Cosmos _ _ Cosmos _ -> Bool
+* done transfer-operator
+[transfer-operator]: (_ =/= _) from BOOL to PID
+* creating new opinfo for operator (:op (("_" "=/=" "_") . 2) : eef58a) : (_ =/= _)/2.TRUTH
+-- importing method #<meth ((_ =/= _) . 2) : eee9e2> : _=/=_ : _ Cosmos _
+                                                               _ Cosmos _
+                                                               -> Bool
+-- importing axiom eq (CXU =/= CYU)
+ = #!! (coerce-to-bool (not (term-equational-equal cxu cyu)))
+   for method : _=/=_ : _ Cosmos _ _ Cosmos _ -> Bool
+* done transfer-operator...._.
+[Warning]: axiom : eq (I = none) = false
+    contains error operators..* done.
+-- defining module! LIST
+[Warning]: redefining module LIST 
+[import-module]: 
+ LIST <==(protecting)== TRIV : X_*
+[import-module]: 
+ X.LIST <==(protecting)== CHAOS:PARSER
+[transfer-operator]: (SyntaxErr) from CHAOS:PARSER to X.LIST
+* creating new opinfo for operator (:op (("SyntaxErr") . 0) : d3f2c2) : (SyntaxErr)/0.CHAOS:PARSER
+-- importing method #<meth ((SyntaxErr) . 0) : d3cc32> : SyntaxErr :
+                                                                     -> 
+                                                                    SortId
+* done transfer-operator
+[transfer-operator]: (TypeErr) from CHAOS:PARSER to X.LIST
+* creating new opinfo for operator (:op (("TypeErr") . 0) : d3f292) : (TypeErr)/0.CHAOS:PARSER
+-- importing method #<meth ((TypeErr) . 0) : d3cc7a> : TypeErr : -> SortId
+* done transfer-operator
+[transfer-operator]: (UnknownOp) from CHAOS:PARSER to X.LIST
+* creating new opinfo for operator (:op (("UnknownOp") . 0) : d3f262) : (UnknownOp)/0.CHAOS:PARSER
+-- importing method #<meth ((UnknownOp) . 0) : d3ccc2> : UnknownOp :
+                                                                     -> 
+                                                                    SortId
+* done transfer-operator
+[transfer-operator]: (SortId) from CHAOS:PARSER to X.LIST
+* creating new opinfo for operator (:op (("SortId") . 0) : d3f232) : (SortId)/0.CHAOS:PARSER
+-- importing method #<meth ((SortId) . 0) : d3cd0a> : SortId : -> SortId
+* done transfer-operator
+[transfer-operator]: (void-bottom) from CHAOS:PARSER to X.LIST
+* creating new opinfo for operator (:op (("void-bottom") . 0) : c83e9a) : (void-bottom)/0.CHAOS:PARSER
+-- importing method #<meth ((void-bottom) . 0) : c83e0a> : void-bottom :
+ -> _ Bottom _
+* done transfer-operator
+[transfer-operator]: (builtin constant) from CHAOS:PARSER to X.LIST
+* creating new opinfo for operator (:op (("builtin" "constant") . 0) : c83efa) : (builtin constant)/0.CHAOS:PARSER
+-- importing method #<meth ((builtin constant) . 0) : c83f2a> : builtinconstant :
+ -> _ Universal _
+* done transfer-operator
+[transfer-operator]: (opId:[ _ ], rest:[ _ ]) from CHAOS:PARSER to X.LIST
+
+* creating new opinfo for operator (:op (("opId:[" "_" "]," "rest:[" "_" "]") . 2) : c83d62) : (opId:[ _ ], rest:[ _ ])/2.CHAOS:PARSER
+-- importing method #<meth ((opId:[ _ ], rest:[ _ ]) . 2) : c83d1a> : opId:[_],rest:[_] : _ Universal _
+ _ Universal _ -> UnknownOp
+* done transfer-operator
+[transfer-operator]: (error:[ _ ]) from CHAOS:PARSER to X.LIST
+* creating new opinfo for operator (:op (("error:[" "_" "]") . 1) : c83dda) : (error:[ _ ])/1.CHAOS:PARSER
+-- importing method #<meth ((error:[ _ ]) . 1) : c83d92> : error:[_] : _ Universal _
+ -> TypeErr
+* done transfer-operator
+[transfer-operator]: (parsed:[ _ ], rest:[ _ ]) from CHAOS:PARSER to X.LIST
+
+* creating new opinfo for operator (:op (("parsed:[" "_" "]," "rest:[" "_" "]") . 2) : c83eca) : (parsed:[ _ ], rest:[ _ ])/2.CHAOS:PARSER
+-- importing method #<meth ((parsed:[ _ ], rest:[ _ ]) . 2) : c83e52> : parsed:[_],rest:[_] : _ Universal _
+ _ Universal _ -> SyntaxErr
+* done transfer-operator
+[copy] putting ((:sort "Elt" (visible)) . (:sort "Elt" (visible))) to *import-sort-map*
+* trying to make new method (Elt):
+  arity = nil
+  coarity = (:bsort SortId(v) : c841ba)
+* created method #<meth ((Elt) . 0) : e96c5da>: Elt : -> SortId_*
+[import-module]: 
+ LIST(X) <==(protecting)== X.LIST
+[transfer-operator]: (Elt) from X.LIST to LIST(X)
+* creating new opinfo for operator (:op (("Elt") . 0) : e96c55a) : (Elt)/0.X :: TRIV
+-- importing method #<meth ((Elt) . 0) : e96c5da> : Elt : -> SortId
+* done transfer-operator
+[transfer-operator]: (parsed:[ _ ], rest:[ _ ]) from X.LIST to LIST(X)
+
+* creating new opinfo for operator (:op (("parsed:[" "_" "]," "rest:[" "_" "]") . 2) : c83eca) : (parsed:[ _ ], rest:[ _ ])/2.CHAOS:PARSER
+-- importing method #<meth ((parsed:[ _ ], rest:[ _ ]) . 2) : c83e52> : parsed:[_],rest:[_] : _ Universal _
+ _ Universal _ -> SyntaxErr
+* done transfer-operator
+[transfer-operator]: (error:[ _ ]) from X.LIST to LIST(X)
+* creating new opinfo for operator (:op (("error:[" "_" "]") . 1) : c83dda) : (error:[ _ ])/1.CHAOS:PARSER
+-- importing method #<meth ((error:[ _ ]) . 1) : c83d92> : error:[_] : _ Universal _
+ -> TypeErr
+* done transfer-operator
+[transfer-operator]: (opId:[ _ ], rest:[ _ ]) from X.LIST to LIST(X)
+* creating new opinfo for operator (:op (("opId:[" "_" "]," "rest:[" "_" "]") . 2) : c83d62) : (opId:[ _ ], rest:[ _ ])/2.CHAOS:PARSER
+-- importing method #<meth ((opId:[ _ ], rest:[ _ ]) . 2) : c83d1a> : opId:[_],rest:[_] : _ Universal _
+ _ Universal _ -> UnknownOp
+* done transfer-operator
+[transfer-operator]: (builtin constant) from X.LIST to LIST(X)
+* creating new opinfo for operator (:op (("builtin" "constant") . 0) : c83efa) : (builtin constant)/0.CHAOS:PARSER
+-- importing method #<meth ((builtin constant) . 0) : c83f2a> : builtinconstant :
+ -> _ Universal _
+* done transfer-operator
+[transfer-operator]: (void-bottom) from X.LIST to LIST(X)
+* creating new opinfo for operator (:op (("void-bottom") . 0) : c83e9a) : (void-bottom)/0.CHAOS:PARSER
+-- importing method #<meth ((void-bottom) . 0) : c83e0a> : void-bottom :
+ -> _ Bottom _
+* done transfer-operator
+[transfer-operator]: (SortId) from X.LIST to LIST(X)
+* creating new opinfo for operator (:op (("SortId") . 0) : d3f232) : (SortId)/0.CHAOS:PARSER
+-- importing method #<meth ((SortId) . 0) : d3cd0a> : SortId : -> SortId
+* done transfer-operator
+[transfer-operator]: (UnknownOp) from X.LIST to LIST(X)
+* creating new opinfo for operator (:op (("UnknownOp") . 0) : d3f262) : (UnknownOp)/0.CHAOS:PARSER
+-- importing method #<meth ((UnknownOp) . 0) : d3ccc2> : UnknownOp :
+                                                                     -> 
+                                                                    SortId
+* done transfer-operator
+[transfer-operator]: (TypeErr) from X.LIST to LIST(X)
+* creating new opinfo for operator (:op (("TypeErr") . 0) : d3f292) : (TypeErr)/0.CHAOS:PARSER
+-- importing method #<meth ((TypeErr) . 0) : d3cc7a> : TypeErr : -> SortId
+* done transfer-operator
+[transfer-operator]: (SyntaxErr) from X.LIST to LIST(X)
+* creating new opinfo for operator (:op (("SyntaxErr") . 0) : d3f2c2) : (SyntaxErr)/0.CHAOS:PARSER
+-- importing method #<meth ((SyntaxErr) . 0) : d3cc32> : SyntaxErr :
+                                                                     -> 
+                                                                    SortId
+* done transfer-operator.
+[import-module]: 
+ LIST(X) <==(protecting)== BOOL
+[transfer-operator]: (_ iff _) from BOOL to LIST(X)
+* creating new opinfo for operator (:op (("_" "iff" "_") . 2) : ef1f6a) : (_ iff _)/2.BOOL
+-- importing method #<meth ((_ iff _) . 2) : ef11b2> : _iff_ : Bool Bool
+                                                               -> Bool
+-- importing axiom eq (A iff B) = (A xor (B xor true))
+   for method : _iff_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ implies _) from BOOL to LIST(X)
+* creating new opinfo for operator (:op (("_" "implies" "_") . 2) : ef1f3a) : (_ implies _)/2.BOOL
+-- importing method #<meth ((_ implies _) . 2) : ef12d2> : _implies_ : Bool
+ Bool -> Bool
+-- importing axiom eq (A implies B)
+ = ((A and B) xor (A xor true))
+   for method : _implies_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (not _) from BOOL to LIST(X)
+* creating new opinfo for operator (:op (("not" "_") . 1) : ef1f0a) : (not _)/1.BOOL
+-- importing method #<meth ((not _) . 1) : ef131a> : not_ : Bool -> Bool
+-- importing axiom eq (not A) = (A xor true)
+   for method : not_ : Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ xor _) from BOOL to LIST(X)
+* creating new opinfo for operator (:op (("_" "xor" "_") . 2) : ef1eda) : (_ xor _)/2.BOOL
+-- importing method #<meth ((_ xor _) . 2) : ef128a> : _xor_ : Bool Bool
+                                                               -> Bool
+-- importing axiom eq (false xor A)
+ = A
+   for method : _xor_ : Bool Bool -> Bool
+-- importing axiom eq (A xor A) = false
+   for method : _xor_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ or-else _) from BOOL to LIST(X)
+* creating new opinfo for operator (:op (("_" "or-else" "_") . 2) : ef1eaa) : (_ or-else _)/2.BOOL
+-- importing method #<meth ((_ or-else _) . 2) : ef11fa> : _or-else_ : Bool
+ Bool -> Bool
+-- importing axiom eq (A or-else true)
+ = true
+   for method : _or-else_ : Bool Bool -> Bool
+-- importing axiom eq (true or-else A)
+ = true
+   for method : _or-else_ : Bool Bool -> Bool
+-- importing axiom eq (A or-else false)
+ = A
+   for method : _or-else_ : Bool Bool -> Bool
+-- importing axiom eq (false or-else A)
+ = A
+   for method : _or-else_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ or _) from BOOL to LIST(X)
+* creating new opinfo for operator (:op (("_" "or" "_") . 2) : ef1e7a) : (_ or _)/2.BOOL
+-- importing method #<meth ((_ or _) . 2) : ef1362> : _or_ : Bool Bool
+                                                             -> Bool
+-- importing axiom eq (A or B) = ((A and B) xor (A xor B))
+   for method : _or_ : Bool Bool -> Bool
+-- importing axiom eq (true or A) = true
+   for method : _or_ : Bool Bool -> Bool
+-- importing axiom eq (false or A) = A
+   for method : _or_ : Bool Bool -> Bool
+-- importing axiom eq (A or A) = A
+   for method : _or_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ and-also _) from BOOL to LIST(X)
+* creating new opinfo for operator (:op (("_" "and-also" "_") . 2) : ef1e4a) : (_ and-also _)/2.BOOL
+-- importing method #<meth ((_ and-also _) . 2) : ef1242> : _and-also_ : Bool
+ Bool -> Bool
+-- importing axiom eq (A and-also A)
+ = A
+   for method : _and-also_ : Bool Bool -> Bool
+-- importing axiom eq (true and-also A)
+ = A
+   for method : _and-also_ : Bool Bool -> Bool
+-- importing axiom eq (A and-also true)
+ = A
+   for method : _and-also_ : Bool Bool -> Bool
+-- importing axiom eq (false and-also A)
+ = false
+   for method : _and-also_ : Bool Bool -> Bool
+-- importing axiom eq (A and-also false)
+ = false
+   for method : _and-also_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ and _) from BOOL to LIST(X)
+* creating new opinfo for operator (:op (("_" "and" "_") . 2) : ef1e1a) : (_ and _)/2.BOOL
+-- importing method #<meth ((_ and _) . 2) : ef13aa> : _and_ : Bool Bool
+                                                               -> Bool
+-- importing axiom eq (A and (B xor C))
+ = ((A and B) xor (A and C))
+   for method : _and_ : Bool Bool -> Bool
+-- importing axiom eq (A and A) = A
+   for method : _and_ : Bool Bool -> Bool
+-- importing axiom eq (true and A) = A
+   for method : _and_ : Bool Bool -> Bool
+-- importing axiom eq (false and A)
+ = false
+   for method : _and_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (Bool) from BOOL to LIST(X)
+* creating new opinfo for operator (:op (("Bool") . 0) : d3f1a2) : (Bool)/0.TRUTH-VALUE
+-- importing method #<meth ((Bool) . 0) : d3cba2> : Bool : -> SortId
+* done transfer-operator
+[transfer-operator]: (true) from BOOL to LIST(X)
+* creating new opinfo for operator (:op (("true") . 0) : d3f1d2) : (true)/0.TRUTH-VALUE
+-- importing method #<meth ((true) . 0) : c83c9a> : true : -> Bool
+* done transfer-operator
+[transfer-operator]: (false) from BOOL to LIST(X)
+* creating new opinfo for operator (:op (("false") . 0) : d3f202) : (false)/0.TRUTH-VALUE
+-- importing method #<meth ((false) . 0) : c83c52> : false : -> Bool
+* done transfer-operator
+[transfer-operator]: (parsed:[ _ ], rest:[ _ ]) from BOOL to LIST(X)
+-- importing method #<meth ((parsed:[ _ ], rest:[ _ ]) . 2) : c83e52> : parsed:[_],rest:[_] : _ Universal _
+ _ Universal _ -> SyntaxErr
+* done transfer-operator
+[transfer-operator]: (error:[ _ ]) from BOOL to LIST(X)
+-- importing method #<meth ((error:[ _ ]) . 1) : c83d92> : error:[_] : _ Universal _
+ -> TypeErr
+* done transfer-operator
+[transfer-operator]: (opId:[ _ ], rest:[ _ ]) from BOOL to LIST(X)
+-- importing method #<meth ((opId:[ _ ], rest:[ _ ]) . 2) : c83d1a> : opId:[_],rest:[_] : _ Universal _
+ _ Universal _ -> UnknownOp
+* done transfer-operator
+[transfer-operator]: (builtin constant) from BOOL to LIST(X)
+-- importing method #<meth ((builtin constant) . 0) : c83f2a> : builtinconstant :
+ -> _ Universal _
+* done transfer-operator
+[transfer-operator]: (void-bottom) from BOOL to LIST(X)
+-- importing method #<meth ((void-bottom) . 0) : c83e0a> : void-bottom :
+ -> _ Bottom _
+* done transfer-operator
+[transfer-operator]: (SortId) from BOOL to LIST(X)
+-- importing method #<meth ((SortId) . 0) : d3cd0a> : SortId : -> SortId
+* done transfer-operator
+[transfer-operator]: (UnknownOp) from BOOL to LIST(X)
+-- importing method #<meth ((UnknownOp) . 0) : d3ccc2> : UnknownOp :
+                                                                     -> 
+                                                                    SortId
+* done transfer-operator
+[transfer-operator]: (TypeErr) from BOOL to LIST(X)
+-- importing method #<meth ((TypeErr) . 0) : d3cc7a> : TypeErr : -> SortId
+* done transfer-operator
+[transfer-operator]: (SyntaxErr) from BOOL to LIST(X)
+-- importing method #<meth ((SyntaxErr) . 0) : d3cc32> : SyntaxErr :
+                                                                     -> 
+                                                                    SortId
+* done transfer-operator
+[transfer-operator]: (_ :is _) from BOOL to LIST(X)
+* creating new opinfo for operator (:op (("_" ":is" "_") . 2) : eef67a) : (_ :is _)/2.TRUTH
+-- importing method #<meth ((_ :is _) . 2) : eeeb02> : _:is_ : _ Cosmos _
+                                                               SortId
+                                                               -> Bool
+-- importing axiom eq (CXU :is Id:SortId)
+ = #!! (coerce-to-bool (test-term-sort-membership cxu id))
+   for method : _:is_ : _ Cosmos _ SortId -> Bool
+* done transfer-operator
+[transfer-operator]: (if _ then _ else _ fi) from BOOL to LIST(X)
+* creating new opinfo for operator (:op (("if" "_" "then" "_" "else" "_" "fi") . 3) : eef64a) : (if _ then _ else _ fi)/3.TRUTH
+-- importing method #<meth ((if _ then _ else _ fi) . 3) : eeeaba> : if_then_else_fi : _ Universal _
+ _ Cosmos _ _ Cosmos _ -> _ Cosmos _
+-- importing axiom eq (if false then CXU else CYU fi)
+ = CYU
+   for method : if_then_else_fi : _ Universal _ _ Cosmos _ _ Cosmos _
+                                  -> _ Cosmos _
+-- importing axiom eq (if true then CXU else CYU fi)
+ = CXU
+   for method : if_then_else_fi : _ Universal _ _ Cosmos _ _ Cosmos _
+                                  -> _ Cosmos _
+* done transfer-operator
+[transfer-operator]: (_ == _) from BOOL to LIST(X)
+* creating new opinfo for operator (:op (("_" "==" "_") . 2) : eef61a) : (_ == _)/2.TRUTH
+-- importing method #<meth ((_ == _) . 2) : eeea72> : _==_ : _ Cosmos _
+                                                             _ Cosmos _
+                                                             -> Bool
+-- importing axiom eq (CXU == CYU) = #!! (coerce-to-bool (term-equational-equal cxu cyu))
+   for method : _==_ : _ Cosmos _ _ Cosmos _ -> Bool
+* done transfer-operator
+[transfer-operator]: (_ =*= _) from BOOL to LIST(X)
+* creating new opinfo for operator (:op (("_" "=*=" "_") . 2) : eef5ea) : (_ =*= _)/2.TRUTH
+-- importing method #<meth ((_ =*= _) . 2) : eeea2a> : _=*=_ : _ HUniversal _
+                                                               _ HUniversal _
+                                                               -> Bool
+* done transfer-operator
+[transfer-operator]: (_ =b= _) from BOOL to LIST(X)
+* creating new opinfo for operator (:op (("_" "=b=" "_") . 2) : eef5ba) : (_ =b= _)/2.TRUTH
+-- importing method #<meth ((_ =b= _) . 2) : eee99a> : _=b=_ : _ Cosmos _
+                                                               _ Cosmos _
+                                                               -> Bool
+-- importing axiom eq (CXU =b= CYU)
+ = #!! (coerce-to-bool (term-equational-equal cxu cyu))
+   for method : _=b=_ : _ Cosmos _ _ Cosmos _ -> Bool
+* done transfer-operator
+[transfer-operator]: (_ =/= _) from BOOL to LIST(X)
+* creating new opinfo for operator (:op (("_" "=/=" "_") . 2) : eef58a) : (_ =/= _)/2.TRUTH
+-- importing method #<meth ((_ =/= _) . 2) : eee9e2> : _=/=_ : _ Cosmos _
+                                                               _ Cosmos _
+                                                               -> Bool
+-- importing axiom eq (CXU =/= CYU)
+ = #!! (coerce-to-bool (not (term-equational-equal cxu cyu)))
+   for method : _=/=_ : _ Cosmos _ _ Cosmos _ -> Bool
+* done transfer-operator.._* done.
+-- defining module! PIDlist
+[Warning]: redefining module PIDlist 
+[import-module]: 
+ PIDlist <==(protecting)== LIST(X <= PID{ ... }) * { ... }
+[apply-modmorph] : begin ----------------------------
+- map = 
+   name: (%map X.LIST view anon-view from none to PID {
+       sort Elt -> Pid
+      })
+   sort mappings: 
+     (:sort "Elt" (visible))|Elt.X.LIST-->(:sort "Pid" (visible))|Pid.PID
+      
+     (:err-sort "?Elt" (visible))|?Elt.X.LIST-->(:err-sort "?Pid" (visible))|?Pid.PID
+      
+   operator mappings : 
+     Elt :  -> SortId(X.LIST)
+     --> Pid :  -> SortId:replacement(PID)
+   module mappings: 
+     LIST-->LIST(X <= X.LIST) 
+     X.LIST-->X.LIST 
+ - module = LIST(X)
+ - new module = LIST(X <= X.LIST)
+[modmorph-import-submodule]:  LIST(X <= X.LIST) <== X.LIST
+ - img:key= X.LIST
+ - img:val= view anon-view from none to PID {
+  sort Elt -> Pid
+ }
+ -image X.LIST --> PID
+[import-module]: 
+ LIST(X <= X.LIST) <==(protecting)== PID
+[transfer-operator]: (none) from PID to LIST(X <= X.LIST)
+* creating new opinfo for operator (:op (("none") . 0) : e968a22) : (none)/0.PID
+-- importing method #<meth ((none) . 0) : e968aa2> : none : -> ?Pid
+* done transfer-operator
+[transfer-operator]: (Pid) from PID to LIST(X <= X.LIST)
+* creating new opinfo for operator (:op (("Pid") . 0) : e9688b2) : (Pid)/0.PID
+-- importing method #<meth ((Pid) . 0) : e968932> : Pid : -> SortId
+* done transfer-operator
+[transfer-operator]: (_ = _) from PID to LIST(X <= X.LIST)
+* creating new opinfo for operator (:op (("_" "=" "_") . 2) : e96867a) : (_ = _)/2.PID
+-- importing method #<meth ((_ = _) . 2) : e96870a> : _=_ : Pid Pid
+                                                            -> Bool
+-- importing axiom eq (I = I) = true
+   for method : _=_ : Pid Pid -> Bool
+* done transfer-operator
+[transfer-operator]: (_ =/= _) from PID to LIST(X <= X.LIST)
+* creating new opinfo for operator (:op (("_" "=/=" "_") . 2) : eef58a) : (_ =/= _)/2.TRUTH
+-- importing method #<meth ((_ =/= _) . 2) : eee9e2> : _=/=_ : _ Cosmos _
+                                                               _ Cosmos _
+                                                               -> Bool
+-- importing axiom eq (CXU =/= CYU)
+ = #!! (coerce-to-bool (not (term-equational-equal cxu cyu)))
+   for method : _=/=_ : _ Cosmos _ _ Cosmos _ -> Bool
+* done transfer-operator
+[transfer-operator]: (_ =b= _) from PID to LIST(X <= X.LIST)
+* creating new opinfo for operator (:op (("_" "=b=" "_") . 2) : eef5ba) : (_ =b= _)/2.TRUTH
+-- importing method #<meth ((_ =b= _) . 2) : eee99a> : _=b=_ : _ Cosmos _
+                                                               _ Cosmos _
+                                                               -> Bool
+-- importing axiom eq (CXU =b= CYU)
+ = #!! (coerce-to-bool (term-equational-equal cxu cyu))
+   for method : _=b=_ : _ Cosmos _ _ Cosmos _ -> Bool
+* done transfer-operator
+[transfer-operator]: (_ =*= _) from PID to LIST(X <= X.LIST)
+* creating new opinfo for operator (:op (("_" "=*=" "_") . 2) : eef5ea) : (_ =*= _)/2.TRUTH
+-- importing method #<meth ((_ =*= _) . 2) : eeea2a> : _=*=_ : _ HUniversal _
+                                                               _ HUniversal _
+                                                               -> Bool
+* done transfer-operator
+[transfer-operator]: (_ == _) from PID to LIST(X <= X.LIST)
+* creating new opinfo for operator (:op (("_" "==" "_") . 2) : eef61a) : (_ == _)/2.TRUTH
+-- importing method #<meth ((_ == _) . 2) : eeea72> : _==_ : _ Cosmos _
+                                                             _ Cosmos _
+                                                             -> Bool
+-- importing axiom eq (CXU == CYU) = #!! (coerce-to-bool (term-equational-equal cxu cyu))
+   for method : _==_ : _ Cosmos _ _ Cosmos _ -> Bool
+* done transfer-operator
+[transfer-operator]: (if _ then _ else _ fi) from PID to LIST(X <= X.LIST
+        )
+* creating new opinfo for operator (:op (("if" "_" "then" "_" "else" "_" "fi") . 3) : eef64a) : (if _ then _ else _ fi)/3.TRUTH
+-- importing method #<meth ((if _ then _ else _ fi) . 3) : eeeaba> : if_then_else_fi : _ Universal _
+ _ Cosmos _ _ Cosmos _ -> _ Cosmos _
+-- importing axiom eq (if false then CXU else CYU fi)
+ = CYU
+   for method : if_then_else_fi : _ Universal _ _ Cosmos _ _ Cosmos _
+                                  -> _ Cosmos _
+-- importing axiom eq (if true then CXU else CYU fi)
+ = CXU
+   for method : if_then_else_fi : _ Universal _ _ Cosmos _ _ Cosmos _
+                                  -> _ Cosmos _
+* done transfer-operator
+[transfer-operator]: (_ :is _) from PID to LIST(X <= X.LIST)
+* creating new opinfo for operator (:op (("_" ":is" "_") . 2) : eef67a) : (_ :is _)/2.TRUTH
+-- importing method #<meth ((_ :is _) . 2) : eeeb02> : _:is_ : _ Cosmos _
+                                                               SortId
+                                                               -> Bool
+-- importing axiom eq (CXU :is Id:SortId)
+ = #!! (coerce-to-bool (test-term-sort-membership cxu id))
+   for method : _:is_ : _ Cosmos _ SortId -> Bool
+* done transfer-operator
+[transfer-operator]: (false) from PID to LIST(X <= X.LIST)
+* creating new opinfo for operator (:op (("false") . 0) : d3f202) : (false)/0.TRUTH-VALUE
+-- importing method #<meth ((false) . 0) : c83c52> : false : -> Bool
+* done transfer-operator
+[transfer-operator]: (true) from PID to LIST(X <= X.LIST)
+* creating new opinfo for operator (:op (("true") . 0) : d3f1d2) : (true)/0.TRUTH-VALUE
+-- importing method #<meth ((true) . 0) : c83c9a> : true : -> Bool
+* done transfer-operator
+[transfer-operator]: (Bool) from PID to LIST(X <= X.LIST)
+* creating new opinfo for operator (:op (("Bool") . 0) : d3f1a2) : (Bool)/0.TRUTH-VALUE
+-- importing method #<meth ((Bool) . 0) : d3cba2> : Bool : -> SortId
+* done transfer-operator
+[transfer-operator]: (_ and _) from PID to LIST(X <= X.LIST)
+* creating new opinfo for operator (:op (("_" "and" "_") . 2) : ef1e1a) : (_ and _)/2.BOOL
+-- importing method #<meth ((_ and _) . 2) : ef13aa> : _and_ : Bool Bool
+                                                               -> Bool
+-- importing axiom eq (A:Bool and (B:Bool xor C:Bool))
+ = ((A and B) xor (A and C))
+   for method : _and_ : Bool Bool -> Bool
+-- importing axiom eq (A:Bool and A)
+ = A
+   for method : _and_ : Bool Bool -> Bool
+-- importing axiom eq (true and A:Bool)
+ = A
+   for method : _and_ : Bool Bool -> Bool
+-- importing axiom eq (false and A:Bool)
+ = false
+   for method : _and_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ and-also _) from PID to LIST(X <= X.LIST)
+* creating new opinfo for operator (:op (("_" "and-also" "_") . 2) : ef1e4a) : (_ and-also _)/2.BOOL
+-- importing method #<meth ((_ and-also _) . 2) : ef1242> : _and-also_ : Bool
+ Bool -> Bool
+-- importing axiom eq (A:Bool and-also A)
+ = A
+   for method : _and-also_ : Bool Bool -> Bool
+-- importing axiom eq (true and-also A:Bool)
+ = A
+   for method : _and-also_ : Bool Bool -> Bool
+-- importing axiom eq (A:Bool and-also true)
+ = A
+   for method : _and-also_ : Bool Bool -> Bool
+-- importing axiom eq (false and-also A:Bool)
+ = false
+   for method : _and-also_ : Bool Bool -> Bool
+-- importing axiom eq (A:Bool and-also false)
+ = false
+   for method : _and-also_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ or _) from PID to LIST(X <= X.LIST)
+* creating new opinfo for operator (:op (("_" "or" "_") . 2) : ef1e7a) : (_ or _)/2.BOOL
+-- importing method #<meth ((_ or _) . 2) : ef1362> : _or_ : Bool Bool
+                                                             -> Bool
+-- importing axiom eq (A:Bool or B:Bool)
+ = ((A and B) xor (A xor B))
+   for method : _or_ : Bool Bool -> Bool
+-- importing axiom eq (true or A:Bool)
+ = true
+   for method : _or_ : Bool Bool -> Bool
+-- importing axiom eq (false or A:Bool)
+ = A
+   for method : _or_ : Bool Bool -> Bool
+-- importing axiom eq (A:Bool or A)
+ = A
+   for method : _or_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ or-else _) from PID to LIST(X <= X.LIST)
+* creating new opinfo for operator (:op (("_" "or-else" "_") . 2) : ef1eaa) : (_ or-else _)/2.BOOL
+-- importing method #<meth ((_ or-else _) . 2) : ef11fa> : _or-else_ : Bool
+ Bool -> Bool
+-- importing axiom eq (A:Bool or-else true)
+ = true
+   for method : _or-else_ : Bool Bool -> Bool
+-- importing axiom eq (true or-else A:Bool)
+ = true
+   for method : _or-else_ : Bool Bool -> Bool
+-- importing axiom eq (A:Bool or-else false)
+ = A
+   for method : _or-else_ : Bool Bool -> Bool
+-- importing axiom eq (false or-else A:Bool)
+ = A
+   for method : _or-else_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ xor _) from PID to LIST(X <= X.LIST)
+* creating new opinfo for operator (:op (("_" "xor" "_") . 2) : ef1eda) : (_ xor _)/2.BOOL
+-- importing method #<meth ((_ xor _) . 2) : ef128a> : _xor_ : Bool Bool
+                                                               -> Bool
+-- importing axiom eq (false xor A:Bool)
+ = A
+   for method : _xor_ : Bool Bool -> Bool
+-- importing axiom eq (A:Bool xor A)
+ = false
+   for method : _xor_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (not _) from PID to LIST(X <= X.LIST)
+* creating new opinfo for operator (:op (("not" "_") . 1) : ef1f0a) : (not _)/1.BOOL
+-- importing method #<meth ((not _) . 1) : ef131a> : not_ : Bool -> Bool
+-- importing axiom eq (not A:Bool) = (A xor true)
+   for method : not_ : Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ implies _) from PID to LIST(X <= X.LIST)
+* creating new opinfo for operator (:op (("_" "implies" "_") . 2) : ef1f3a) : (_ implies _)/2.BOOL
+-- importing method #<meth ((_ implies _) . 2) : ef12d2> : _implies_ : Bool
+ Bool -> Bool
+-- importing axiom eq (A:Bool implies B:Bool)
+ = ((A and B) xor (A xor true))
+   for method : _implies_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ iff _) from PID to LIST(X <= X.LIST)
+* creating new opinfo for operator (:op (("_" "iff" "_") . 2) : ef1f6a) : (_ iff _)/2.BOOL
+-- importing method #<meth ((_ iff _) . 2) : ef11b2> : _iff_ : Bool Bool
+                                                               -> Bool
+-- importing axiom eq (A:Bool iff B:Bool)
+ = (A xor (B xor true))
+   for method : _iff_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (parsed:[ _ ], rest:[ _ ]) from PID to LIST(X <= X.LIST
+        )
+* creating new opinfo for operator (:op (("parsed:[" "_" "]," "rest:[" "_" "]") . 2) : c83eca) : (parsed:[ _ ], rest:[ _ ])/2.CHAOS:PARSER
+-- importing method #<meth ((parsed:[ _ ], rest:[ _ ]) . 2) : c83e52> : parsed:[_],rest:[_] : _ Universal _
+ _ Universal _ -> SyntaxErr
+* done transfer-operator
+[transfer-operator]: (error:[ _ ]) from PID to LIST(X <= X.LIST)
+* creating new opinfo for operator (:op (("error:[" "_" "]") . 1) : c83dda) : (error:[ _ ])/1.CHAOS:PARSER
+-- importing method #<meth ((error:[ _ ]) . 1) : c83d92> : error:[_] : _ Universal _
+ -> TypeErr
+* done transfer-operator
+[transfer-operator]: (opId:[ _ ], rest:[ _ ]) from PID to LIST(X <= X.LIST
+        )
+* creating new opinfo for operator (:op (("opId:[" "_" "]," "rest:[" "_" "]") . 2) : c83d62) : (opId:[ _ ], rest:[ _ ])/2.CHAOS:PARSER
+-- importing method #<meth ((opId:[ _ ], rest:[ _ ]) . 2) : c83d1a> : opId:[_],rest:[_] : _ Universal _
+ _ Universal _ -> UnknownOp
+* done transfer-operator
+[transfer-operator]: (builtin constant) from PID to LIST(X <= X.LIST)
+* creating new opinfo for operator (:op (("builtin" "constant") . 0) : c83efa) : (builtin constant)/0.CHAOS:PARSER
+-- importing method #<meth ((builtin constant) . 0) : c83f2a> : builtinconstant :
+ -> _ Universal _
+* done transfer-operator
+[transfer-operator]: (void-bottom) from PID to LIST(X <= X.LIST)
+* creating new opinfo for operator (:op (("void-bottom") . 0) : c83e9a) : (void-bottom)/0.CHAOS:PARSER
+-- importing method #<meth ((void-bottom) . 0) : c83e0a> : void-bottom :
+ -> _ Bottom _
+* done transfer-operator
+[transfer-operator]: (SortId) from PID to LIST(X <= X.LIST)
+* creating new opinfo for operator (:op (("SortId") . 0) : d3f232) : (SortId)/0.CHAOS:PARSER
+-- importing method #<meth ((SortId) . 0) : d3cd0a> : SortId : -> SortId
+* done transfer-operator
+[transfer-operator]: (UnknownOp) from PID to LIST(X <= X.LIST)
+* creating new opinfo for operator (:op (("UnknownOp") . 0) : d3f262) : (UnknownOp)/0.CHAOS:PARSER
+-- importing method #<meth ((UnknownOp) . 0) : d3ccc2> : UnknownOp :
+                                                                     -> 
+                                                                    SortId
+* done transfer-operator
+[transfer-operator]: (TypeErr) from PID to LIST(X <= X.LIST)
+* creating new opinfo for operator (:op (("TypeErr") . 0) : d3f292) : (TypeErr)/0.CHAOS:PARSER
+-- importing method #<meth ((TypeErr) . 0) : d3cc7a> : TypeErr : -> SortId
+* done transfer-operator
+[transfer-operator]: (SyntaxErr) from PID to LIST(X <= X.LIST)
+* creating new opinfo for operator (:op (("SyntaxErr") . 0) : d3f2c2) : (SyntaxErr)/0.CHAOS:PARSER
+-- importing method #<meth ((SyntaxErr) . 0) : d3cc32> : SyntaxErr :
+                                                                     -> 
+                                                                    SortId
+* done transfer-operator
+[import-module]: 
+ LIST(X <= X.LIST) <==(protecting)== BOOL
+[transfer-operator]: (_ iff _) from BOOL to LIST(X <= X.LIST)
+-- importing method #<meth ((_ iff _) . 2) : ef11b2> : _iff_ : Bool Bool
+                                                               -> Bool
+-- importing axiom eq (A iff B) = (A xor (B xor true))
+   for method : _iff_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ implies _) from BOOL to LIST(X <= X.LIST)
+-- importing method #<meth ((_ implies _) . 2) : ef12d2> : _implies_ : Bool
+ Bool -> Bool
+-- importing axiom eq (A implies B)
+ = ((A and B) xor (A xor true))
+   for method : _implies_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (not _) from BOOL to LIST(X <= X.LIST)
+-- importing method #<meth ((not _) . 1) : ef131a> : not_ : Bool -> Bool
+-- importing axiom eq (not A) = (A xor true)
+   for method : not_ : Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ xor _) from BOOL to LIST(X <= X.LIST)
+-- importing method #<meth ((_ xor _) . 2) : ef128a> : _xor_ : Bool Bool
+                                                               -> Bool
+-- importing axiom eq (false xor A)
+ = A
+   for method : _xor_ : Bool Bool -> Bool
+-- importing axiom eq (A xor A) = false
+   for method : _xor_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ or-else _) from BOOL to LIST(X <= X.LIST)
+-- importing method #<meth ((_ or-else _) . 2) : ef11fa> : _or-else_ : Bool
+ Bool -> Bool
+-- importing axiom eq (A or-else true)
+ = true
+   for method : _or-else_ : Bool Bool -> Bool
+-- importing axiom eq (true or-else A)
+ = true
+   for method : _or-else_ : Bool Bool -> Bool
+-- importing axiom eq (A or-else false)
+ = A
+   for method : _or-else_ : Bool Bool -> Bool
+-- importing axiom eq (false or-else A)
+ = A
+   for method : _or-else_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ or _) from BOOL to LIST(X <= X.LIST)
+-- importing method #<meth ((_ or _) . 2) : ef1362> : _or_ : Bool Bool
+                                                             -> Bool
+-- importing axiom eq (A or B) = ((A and B) xor (A xor B))
+   for method : _or_ : Bool Bool -> Bool
+-- importing axiom eq (true or A) = true
+   for method : _or_ : Bool Bool -> Bool
+-- importing axiom eq (false or A) = A
+   for method : _or_ : Bool Bool -> Bool
+-- importing axiom eq (A or A) = A
+   for method : _or_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ and-also _) from BOOL to LIST(X <= X.LIST)
+-- importing method #<meth ((_ and-also _) . 2) : ef1242> : _and-also_ : Bool
+ Bool -> Bool
+-- importing axiom eq (A and-also A)
+ = A
+   for method : _and-also_ : Bool Bool -> Bool
+-- importing axiom eq (true and-also A)
+ = A
+   for method : _and-also_ : Bool Bool -> Bool
+-- importing axiom eq (A and-also true)
+ = A
+   for method : _and-also_ : Bool Bool -> Bool
+-- importing axiom eq (false and-also A)
+ = false
+   for method : _and-also_ : Bool Bool -> Bool
+-- importing axiom eq (A and-also false)
+ = false
+   for method : _and-also_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ and _) from BOOL to LIST(X <= X.LIST)
+-- importing method #<meth ((_ and _) . 2) : ef13aa> : _and_ : Bool Bool
+                                                               -> Bool
+-- importing axiom eq (A and (B xor C))
+ = ((A and B) xor (A and C))
+   for method : _and_ : Bool Bool -> Bool
+-- importing axiom eq (A and A) = A
+   for method : _and_ : Bool Bool -> Bool
+-- importing axiom eq (true and A) = A
+   for method : _and_ : Bool Bool -> Bool
+-- importing axiom eq (false and A)
+ = false
+   for method : _and_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (Bool) from BOOL to LIST(X <= X.LIST)
+-- importing method #<meth ((Bool) . 0) : d3cba2> : Bool : -> SortId
+* done transfer-operator
+[transfer-operator]: (true) from BOOL to LIST(X <= X.LIST)
+-- importing method #<meth ((true) . 0) : c83c9a> : true : -> Bool
+* done transfer-operator
+[transfer-operator]: (false) from BOOL to LIST(X <= X.LIST)
+-- importing method #<meth ((false) . 0) : c83c52> : false : -> Bool
+* done transfer-operator
+[transfer-operator]: (parsed:[ _ ], rest:[ _ ]) from BOOL to LIST(X <= X.LIST
+        )
+-- importing method #<meth ((parsed:[ _ ], rest:[ _ ]) . 2) : c83e52> : parsed:[_],rest:[_] : _ Universal _
+ _ Universal _ -> SyntaxErr
+* done transfer-operator
+[transfer-operator]: (error:[ _ ]) from BOOL to LIST(X <= X.LIST)
+-- importing method #<meth ((error:[ _ ]) . 1) : c83d92> : error:[_] : _ Universal _
+ -> TypeErr
+* done transfer-operator
+[transfer-operator]: (opId:[ _ ], rest:[ _ ]) from BOOL to LIST(X <= X.LIST
+        )
+-- importing method #<meth ((opId:[ _ ], rest:[ _ ]) . 2) : c83d1a> : opId:[_],rest:[_] : _ Universal _
+ _ Universal _ -> UnknownOp
+* done transfer-operator
+[transfer-operator]: (builtin constant) from BOOL to LIST(X <= X.LIST)
+-- importing method #<meth ((builtin constant) . 0) : c83f2a> : builtinconstant :
+ -> _ Universal _
+* done transfer-operator
+[transfer-operator]: (void-bottom) from BOOL to LIST(X <= X.LIST)
+-- importing method #<meth ((void-bottom) . 0) : c83e0a> : void-bottom :
+ -> _ Bottom _
+* done transfer-operator
+[transfer-operator]: (SortId) from BOOL to LIST(X <= X.LIST)
+-- importing method #<meth ((SortId) . 0) : d3cd0a> : SortId : -> SortId
+* done transfer-operator
+[transfer-operator]: (UnknownOp) from BOOL to LIST(X <= X.LIST)
+-- importing method #<meth ((UnknownOp) . 0) : d3ccc2> : UnknownOp :
+                                                                     -> 
+                                                                    SortId
+* done transfer-operator
+[transfer-operator]: (TypeErr) from BOOL to LIST(X <= X.LIST)
+-- importing method #<meth ((TypeErr) . 0) : d3cc7a> : TypeErr : -> SortId
+* done transfer-operator
+[transfer-operator]: (SyntaxErr) from BOOL to LIST(X <= X.LIST)
+-- importing method #<meth ((SyntaxErr) . 0) : d3cc32> : SyntaxErr :
+                                                                     -> 
+                                                                    SortId
+* done transfer-operator
+[transfer-operator]: (_ :is _) from BOOL to LIST(X <= X.LIST)
+-- importing method #<meth ((_ :is _) . 2) : eeeb02> : _:is_ : _ Cosmos _
+                                                               SortId
+                                                               -> Bool
+-- importing axiom eq (CXU :is Id:SortId)
+ = #!! (coerce-to-bool (test-term-sort-membership cxu id))
+   for method : _:is_ : _ Cosmos _ SortId -> Bool
+* done transfer-operator
+[transfer-operator]: (if _ then _ else _ fi) from BOOL to LIST(X <= X.LIST
+        )
+-- importing method #<meth ((if _ then _ else _ fi) . 3) : eeeaba> : if_then_else_fi : _ Universal _
+ _ Cosmos _ _ Cosmos _ -> _ Cosmos _
+-- importing axiom eq (if false then CXU else CYU fi)
+ = CYU
+   for method : if_then_else_fi : _ Universal _ _ Cosmos _ _ Cosmos _
+                                  -> _ Cosmos _
+-- importing axiom eq (if true then CXU else CYU fi)
+ = CXU
+   for method : if_then_else_fi : _ Universal _ _ Cosmos _ _ Cosmos _
+                                  -> _ Cosmos _
+* done transfer-operator
+[transfer-operator]: (_ == _) from BOOL to LIST(X <= X.LIST)
+-- importing method #<meth ((_ == _) . 2) : eeea72> : _==_ : _ Cosmos _
+                                                             _ Cosmos _
+                                                             -> Bool
+-- importing axiom eq (CXU == CYU) = #!! (coerce-to-bool (term-equational-equal cxu cyu))
+   for method : _==_ : _ Cosmos _ _ Cosmos _ -> Bool
+* done transfer-operator
+[transfer-operator]: (_ =*= _) from BOOL to LIST(X <= X.LIST)
+-- importing method #<meth ((_ =*= _) . 2) : eeea2a> : _=*=_ : _ HUniversal _
+                                                               _ HUniversal _
+                                                               -> Bool
+* done transfer-operator
+[transfer-operator]: (_ =b= _) from BOOL to LIST(X <= X.LIST)
+-- importing method #<meth ((_ =b= _) . 2) : eee99a> : _=b=_ : _ Cosmos _
+                                                               _ Cosmos _
+                                                               -> Bool
+-- importing axiom eq (CXU =b= CYU)
+ = #!! (coerce-to-bool (term-equational-equal cxu cyu))
+   for method : _=b=_ : _ Cosmos _ _ Cosmos _ -> Bool
+* done transfer-operator
+[transfer-operator]: (_ =/= _) from BOOL to LIST(X <= X.LIST)
+-- importing method #<meth ((_ =/= _) . 2) : eee9e2> : _=/=_ : _ Cosmos _
+                                                               _ Cosmos _
+                                                               -> Bool
+-- importing axiom eq (CXU =/= CYU)
+ = #!! (coerce-to-bool (not (term-equational-equal cxu cyu)))
+   for method : _=/=_ : _ Cosmos _ _ Cosmos _ -> Bool
+* done transfer-operator
+[modmorph-import-submodule]:  LIST(X <= X.LIST) <== BOOL
+ - img:key= nil
+ - img:val= nil
+ -image BOOL --> BOOL
+[import-module]: 
+ LIST(X <= X.LIST) <==(protecting)== BOOL
+module is already imported, skipping..,,
+[modmorph-recreate-sort]:
+-- modmap = 
+LIST(X)-->LIST(X <= X.LIST) 
+X.LIST-->X.LIST 
+-- mod = LIST(X <= X.LIST)
+-- thmod = LIST(X <= X.LIST)
+-- sort-name = List
+-- smod      = LIST(X)
+* generated the new one!!!,,
+[modmorph-recreate-method] :
+-method image is already in module parsed:[_],rest:[_] : _ Universal _
+                                                         _ Universal _
+                                                         -> SyntaxErr
+[modmorph-recreate-method] :
+-method image is already in module error:[_] : _ Universal _ -> TypeErr
+[modmorph-recreate-method] :
+-method image is already in module opId:[_],rest:[_] : _ Universal _ _ Universal _
+                                                       -> UnknownOp
+[modmorph-recreate-method] :
+-method image is already in module builtinconstant : -> _ Universal _
+[modmorph-recreate-method] :
+-method image is already in module void-bottom : -> _ Bottom _
+[modmorph-recreate-method] :
+-method image is already in module SortId : -> SortId
+[modmorph-recreate-method] :
+-method image is already in module UnknownOp : -> SortId
+[modmorph-recreate-method] :
+-method image is already in module TypeErr : -> SortId
+[modmorph-recreate-method] :
+-method image is already in module SyntaxErr : -> SortId
+[modmorph-recreate-method] :
+-method image is already in module _iff_ : Bool Bool -> Bool
+[modmorph-recreate-method] :
+-method image is already in module _implies_ : Bool Bool -> Bool
+[modmorph-recreate-method] :
+-method image is already in module not_ : Bool -> Bool
+[modmorph-recreate-method] :
+-method image is already in module _xor_ : Bool Bool -> Bool
+[modmorph-recreate-method] :
+-method image is already in module _or-else_ : Bool Bool -> Bool
+[modmorph-recreate-method] :
+-method image is already in module _or_ : Bool Bool -> Bool
+[modmorph-recreate-method] :
+-method image is already in module _and-also_ : Bool Bool -> Bool
+[modmorph-recreate-method] :
+-method image is already in module _and_ : Bool Bool -> Bool
+[modmorph-recreate-method] :
+-method image is already in module Bool : -> SortId
+[modmorph-recreate-method] :
+-method image is already in module true : -> Bool
+[modmorph-recreate-method] :
+-method image is already in module false : -> Bool
+[modmorph-recreate-method] :
+-method image is already in module _:is_ : _ Cosmos _ SortId -> Bool
+[modmorph-recreate-method] :
+-method image is already in module if_then_else_fi : _ Universal _ _ Cosmos _
+                                                     _ Cosmos _ -> _ Cosmos _
+[modmorph-recreate-method] :
+-method image is already in module _==_ : _ Cosmos _ _ Cosmos _ -> Bool
+[modmorph-recreate-method] :
+-method image is already in module _=*=_ : _ HUniversal _ _ HUniversal _
+                                           -> Bool
+[modmorph-recreate-method] :
+-method image is already in module _=b=_ : _ Cosmos _ _ Cosmos _ -> Bool
+[modmorph-recreate-method] :
+-method image is already in module _=/=_ : _ Cosmos _ _ Cosmos _ -> Bool,,
+* apply-modmorph: DONE. generated new module LIST(X <= X.LIST),
+[apply-modmorph] : begin ----------------------------
+- map = 
+   name: LIST(X <= PID{ ... }) * { ... }
+   sort mappings: 
+     (:sort "List" (visible))|List.LIST(X <= PID{ ... })-->(:sort "PidList" (visible))|PidList.LIST
+     (X <= PID{ ... }) *{  ...  } 
+   operator mappings : 
+     List :  -> SortId(LIST(X <= PID{ ... }))
+     --> PidList :  -> SortId:simple-map(LIST(X <= PID{ ... }) *{  ...  })
+   module mappings: 
+     LIST(X <= PID{ ... })-->LIST(X <= PID{ ... }) *{  ...  } 
+ - module = LIST(X <= PID{ ... })
+ - new module = LIST(X <= PID{ ... }) *{  ...  }
+[reduce-rename-dummy] : LIST(X <= PID{ ... }) ==> LIST(X <= PID{ ... })
+ *{  ...  }
+ - map = 
+ name: LIST(X <= PID{ ... }) * { ... }
+ sort mappings: 
+   (:sort "List" (visible))|List.LIST(X <= PID{ ... })-->(:sort "PidList" (visible))|PidList.LIST
+   (X <= PID{ ... }) *{  ...  } 
+ operator mappings : 
+   List :  -> SortId(LIST(X <= PID{ ... }))
+   --> PidList :  -> SortId:simple-map(LIST(X <= PID{ ... }) *{  ...  })
+ module mappings: 
+   LIST(X <= PID{ ... })-->LIST(X <= PID{ ... }) *{  ...  } 
+ - source = List.LIST(X <= PID{ ... })
+ - target = PidList.LIST(X <= PID{ ... }) *{  ...  }
+ - module of sort List is mapped to LIST(X <= PID{ ... }) *{  ...  },
+[modmorph-import-submodule]:  LIST(X <= PID{ ... }) *{  ...  } <== BOOL
+ - img:key= nil
+ - img:val= nil
+ -image BOOL --> BOOL
+[import-module]: 
+ LIST(X <= PID{ ... }) *{  ...  } <==(protecting)== BOOL
+[transfer-operator]: (_ iff _) from BOOL to LIST(X <= PID{ ... }) *{  ...  }
+
+* creating new opinfo for operator (:op (("_" "iff" "_") . 2) : ef1f6a) : (_ iff _)/2.BOOL
+-- importing method #<meth ((_ iff _) . 2) : ef11b2> : _iff_ : Bool Bool
+                                                               -> Bool
+-- importing axiom eq (A iff B) = (A xor (B xor true))
+   for method : _iff_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ implies _) from BOOL to LIST(X <= PID{ ... }) *{  ...  }
+
+* creating new opinfo for operator (:op (("_" "implies" "_") . 2) : ef1f3a) : (_ implies _)/2.BOOL
+-- importing method #<meth ((_ implies _) . 2) : ef12d2> : _implies_ : Bool
+ Bool -> Bool
+-- importing axiom eq (A implies B)
+ = ((A and B) xor (A xor true))
+   for method : _implies_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (not _) from BOOL to LIST(X <= PID{ ... }) *{  ...  }
+
+* creating new opinfo for operator (:op (("not" "_") . 1) : ef1f0a) : (not _)/1.BOOL
+-- importing method #<meth ((not _) . 1) : ef131a> : not_ : Bool -> Bool
+-- importing axiom eq (not A) = (A xor true)
+   for method : not_ : Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ xor _) from BOOL to LIST(X <= PID{ ... }) *{  ...  }
+
+* creating new opinfo for operator (:op (("_" "xor" "_") . 2) : ef1eda) : (_ xor _)/2.BOOL
+-- importing method #<meth ((_ xor _) . 2) : ef128a> : _xor_ : Bool Bool
+                                                               -> Bool
+-- importing axiom eq (false xor A)
+ = A
+   for method : _xor_ : Bool Bool -> Bool
+-- importing axiom eq (A xor A) = false
+   for method : _xor_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ or-else _) from BOOL to LIST(X <= PID{ ... }) *{  ...  }
+
+* creating new opinfo for operator (:op (("_" "or-else" "_") . 2) : ef1eaa) : (_ or-else _)/2.BOOL
+-- importing method #<meth ((_ or-else _) . 2) : ef11fa> : _or-else_ : Bool
+ Bool -> Bool
+-- importing axiom eq (A or-else true)
+ = true
+   for method : _or-else_ : Bool Bool -> Bool
+-- importing axiom eq (true or-else A)
+ = true
+   for method : _or-else_ : Bool Bool -> Bool
+-- importing axiom eq (A or-else false)
+ = A
+   for method : _or-else_ : Bool Bool -> Bool
+-- importing axiom eq (false or-else A)
+ = A
+   for method : _or-else_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ or _) from BOOL to LIST(X <= PID{ ... }) *{  ...  }
+
+* creating new opinfo for operator (:op (("_" "or" "_") . 2) : ef1e7a) : (_ or _)/2.BOOL
+-- importing method #<meth ((_ or _) . 2) : ef1362> : _or_ : Bool Bool
+                                                             -> Bool
+-- importing axiom eq (A or B) = ((A and B) xor (A xor B))
+   for method : _or_ : Bool Bool -> Bool
+-- importing axiom eq (true or A) = true
+   for method : _or_ : Bool Bool -> Bool
+-- importing axiom eq (false or A) = A
+   for method : _or_ : Bool Bool -> Bool
+-- importing axiom eq (A or A) = A
+   for method : _or_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ and-also _) from BOOL to LIST(X <= PID{ ... })
+ *{  ...  }
+* creating new opinfo for operator (:op (("_" "and-also" "_") . 2) : ef1e4a) : (_ and-also _)/2.BOOL
+-- importing method #<meth ((_ and-also _) . 2) : ef1242> : _and-also_ : Bool
+ Bool -> Bool
+-- importing axiom eq (A and-also A)
+ = A
+   for method : _and-also_ : Bool Bool -> Bool
+-- importing axiom eq (true and-also A)
+ = A
+   for method : _and-also_ : Bool Bool -> Bool
+-- importing axiom eq (A and-also true)
+ = A
+   for method : _and-also_ : Bool Bool -> Bool
+-- importing axiom eq (false and-also A)
+ = false
+   for method : _and-also_ : Bool Bool -> Bool
+-- importing axiom eq (A and-also false)
+ = false
+   for method : _and-also_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ and _) from BOOL to LIST(X <= PID{ ... }) *{  ...  }
+
+* creating new opinfo for operator (:op (("_" "and" "_") . 2) : ef1e1a) : (_ and _)/2.BOOL
+-- importing method #<meth ((_ and _) . 2) : ef13aa> : _and_ : Bool Bool
+                                                               -> Bool
+-- importing axiom eq (A and (B xor C))
+ = ((A and B) xor (A and C))
+   for method : _and_ : Bool Bool -> Bool
+-- importing axiom eq (A and A) = A
+   for method : _and_ : Bool Bool -> Bool
+-- importing axiom eq (true and A) = A
+   for method : _and_ : Bool Bool -> Bool
+-- importing axiom eq (false and A)
+ = false
+   for method : _and_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (Bool) from BOOL to LIST(X <= PID{ ... }) *{  ...  }
+
+* creating new opinfo for operator (:op (("Bool") . 0) : d3f1a2) : (Bool)/0.TRUTH-VALUE
+-- importing method #<meth ((Bool) . 0) : d3cba2> : Bool : -> SortId
+* done transfer-operator
+[transfer-operator]: (true) from BOOL to LIST(X <= PID{ ... }) *{  ...  }
+
+* creating new opinfo for operator (:op (("true") . 0) : d3f1d2) : (true)/0.TRUTH-VALUE
+-- importing method #<meth ((true) . 0) : c83c9a> : true : -> Bool
+* done transfer-operator
+[transfer-operator]: (false) from BOOL to LIST(X <= PID{ ... }) *{  ...  }
+
+* creating new opinfo for operator (:op (("false") . 0) : d3f202) : (false)/0.TRUTH-VALUE
+-- importing method #<meth ((false) . 0) : c83c52> : false : -> Bool
+* done transfer-operator
+[transfer-operator]: (parsed:[ _ ], rest:[ _ ]) from BOOL to LIST(X <= PID
+ { ... }) *{  ...  }
+* creating new opinfo for operator (:op (("parsed:[" "_" "]," "rest:[" "_" "]") . 2) : c83eca) : (parsed:[ _ ], rest:[ _ ])/2.CHAOS:PARSER
+-- importing method #<meth ((parsed:[ _ ], rest:[ _ ]) . 2) : c83e52> : parsed:[_],rest:[_] : _ Universal _
+ _ Universal _ -> SyntaxErr
+* done transfer-operator
+[transfer-operator]: (error:[ _ ]) from BOOL to LIST(X <= PID{ ... }) *{  ...  }
+
+* creating new opinfo for operator (:op (("error:[" "_" "]") . 1) : c83dda) : (error:[ _ ])/1.CHAOS:PARSER
+-- importing method #<meth ((error:[ _ ]) . 1) : c83d92> : error:[_] : _ Universal _
+ -> TypeErr
+* done transfer-operator
+[transfer-operator]: (opId:[ _ ], rest:[ _ ]) from BOOL to LIST(X <= PID
+ { ... }) *{  ...  }
+* creating new opinfo for operator (:op (("opId:[" "_" "]," "rest:[" "_" "]") . 2) : c83d62) : (opId:[ _ ], rest:[ _ ])/2.CHAOS:PARSER
+-- importing method #<meth ((opId:[ _ ], rest:[ _ ]) . 2) : c83d1a> : opId:[_],rest:[_] : _ Universal _
+ _ Universal _ -> UnknownOp
+* done transfer-operator
+[transfer-operator]: (builtin constant) from BOOL to LIST(X <= PID{ ... })
+ *{  ...  }
+* creating new opinfo for operator (:op (("builtin" "constant") . 0) : c83efa) : (builtin constant)/0.CHAOS:PARSER
+-- importing method #<meth ((builtin constant) . 0) : c83f2a> : builtinconstant :
+ -> _ Universal _
+* done transfer-operator
+[transfer-operator]: (void-bottom) from BOOL to LIST(X <= PID{ ... }) *{  ...  }
+
+* creating new opinfo for operator (:op (("void-bottom") . 0) : c83e9a) : (void-bottom)/0.CHAOS:PARSER
+-- importing method #<meth ((void-bottom) . 0) : c83e0a> : void-bottom :
+ -> _ Bottom _
+* done transfer-operator
+[transfer-operator]: (SortId) from BOOL to LIST(X <= PID{ ... }) *{  ...  }
+
+* creating new opinfo for operator (:op (("SortId") . 0) : d3f232) : (SortId)/0.CHAOS:PARSER
+-- importing method #<meth ((SortId) . 0) : d3cd0a> : SortId : -> SortId
+* done transfer-operator
+[transfer-operator]: (UnknownOp) from BOOL to LIST(X <= PID{ ... }) *{  ...  }
+
+* creating new opinfo for operator (:op (("UnknownOp") . 0) : d3f262) : (UnknownOp)/0.CHAOS:PARSER
+-- importing method #<meth ((UnknownOp) . 0) : d3ccc2> : UnknownOp :
+                                                                     -> 
+                                                                    SortId
+* done transfer-operator
+[transfer-operator]: (TypeErr) from BOOL to LIST(X <= PID{ ... }) *{  ...  }
+
+* creating new opinfo for operator (:op (("TypeErr") . 0) : d3f292) : (TypeErr)/0.CHAOS:PARSER
+-- importing method #<meth ((TypeErr) . 0) : d3cc7a> : TypeErr : -> SortId
+* done transfer-operator
+[transfer-operator]: (SyntaxErr) from BOOL to LIST(X <= PID{ ... }) *{  ...  }
+
+* creating new opinfo for operator (:op (("SyntaxErr") . 0) : d3f2c2) : (SyntaxErr)/0.CHAOS:PARSER
+-- importing method #<meth ((SyntaxErr) . 0) : d3cc32> : SyntaxErr :
+                                                                     -> 
+                                                                    SortId
+* done transfer-operator
+[transfer-operator]: (_ :is _) from BOOL to LIST(X <= PID{ ... }) *{  ...  }
+
+* creating new opinfo for operator (:op (("_" ":is" "_") . 2) : eef67a) : (_ :is _)/2.TRUTH
+-- importing method #<meth ((_ :is _) . 2) : eeeb02> : _:is_ : _ Cosmos _
+                                                               SortId
+                                                               -> Bool
+-- importing axiom eq (CXU :is Id:SortId)
+ = #!! (coerce-to-bool (test-term-sort-membership cxu id))
+   for method : _:is_ : _ Cosmos _ SortId -> Bool
+* done transfer-operator
+[transfer-operator]: (if _ then _ else _ fi) from BOOL to LIST(X <= PID
+ { ... }) *{  ...  }
+* creating new opinfo for operator (:op (("if" "_" "then" "_" "else" "_" "fi") . 3) : eef64a) : (if _ then _ else _ fi)/3.TRUTH
+-- importing method #<meth ((if _ then _ else _ fi) . 3) : eeeaba> : if_then_else_fi : _ Universal _
+ _ Cosmos _ _ Cosmos _ -> _ Cosmos _
+-- importing axiom eq (if false then CXU else CYU fi)
+ = CYU
+   for method : if_then_else_fi : _ Universal _ _ Cosmos _ _ Cosmos _
+                                  -> _ Cosmos _
+-- importing axiom eq (if true then CXU else CYU fi)
+ = CXU
+   for method : if_then_else_fi : _ Universal _ _ Cosmos _ _ Cosmos _
+                                  -> _ Cosmos _
+* done transfer-operator
+[transfer-operator]: (_ == _) from BOOL to LIST(X <= PID{ ... }) *{  ...  }
+
+* creating new opinfo for operator (:op (("_" "==" "_") . 2) : eef61a) : (_ == _)/2.TRUTH
+-- importing method #<meth ((_ == _) . 2) : eeea72> : _==_ : _ Cosmos _
+                                                             _ Cosmos _
+                                                             -> Bool
+-- importing axiom eq (CXU == CYU) = #!! (coerce-to-bool (term-equational-equal cxu cyu))
+   for method : _==_ : _ Cosmos _ _ Cosmos _ -> Bool
+* done transfer-operator
+[transfer-operator]: (_ =*= _) from BOOL to LIST(X <= PID{ ... }) *{  ...  }
+
+* creating new opinfo for operator (:op (("_" "=*=" "_") . 2) : eef5ea) : (_ =*= _)/2.TRUTH
+-- importing method #<meth ((_ =*= _) . 2) : eeea2a> : _=*=_ : _ HUniversal _
+                                                               _ HUniversal _
+                                                               -> Bool
+* done transfer-operator
+[transfer-operator]: (_ =b= _) from BOOL to LIST(X <= PID{ ... }) *{  ...  }
+
+* creating new opinfo for operator (:op (("_" "=b=" "_") . 2) : eef5ba) : (_ =b= _)/2.TRUTH
+-- importing method #<meth ((_ =b= _) . 2) : eee99a> : _=b=_ : _ Cosmos _
+                                                               _ Cosmos _
+                                                               -> Bool
+-- importing axiom eq (CXU =b= CYU)
+ = #!! (coerce-to-bool (term-equational-equal cxu cyu))
+   for method : _=b=_ : _ Cosmos _ _ Cosmos _ -> Bool
+* done transfer-operator
+[transfer-operator]: (_ =/= _) from BOOL to LIST(X <= PID{ ... }) *{  ...  }
+
+* creating new opinfo for operator (:op (("_" "=/=" "_") . 2) : eef58a) : (_ =/= _)/2.TRUTH
+-- importing method #<meth ((_ =/= _) . 2) : eee9e2> : _=/=_ : _ Cosmos _
+                                                               _ Cosmos _
+                                                               -> Bool
+-- importing axiom eq (CXU =/= CYU)
+ = #!! (coerce-to-bool (not (term-equational-equal cxu cyu)))
+   for method : _=/=_ : _ Cosmos _ _ Cosmos _ -> Bool
+* done transfer-operator
+[modmorph-import-submodule]:  LIST(X <= PID{ ... }) *{  ...  } <== PID
+ - img:key= nil
+ - img:val= nil
+ -image PID --> PID
+[import-module]: 
+ LIST(X <= PID{ ... }) *{  ...  } <==(protecting)== PID
+[transfer-operator]: (none) from PID to LIST(X <= PID{ ... }) *{  ...  }
+
+* creating new opinfo for operator (:op (("none") . 0) : e968a22) : (none)/0.PID
+-- importing method #<meth ((none) . 0) : e968aa2> : none : -> ?Pid
+* done transfer-operator
+[transfer-operator]: (Pid) from PID to LIST(X <= PID{ ... }) *{  ...  }
+
+* creating new opinfo for operator (:op (("Pid") . 0) : e9688b2) : (Pid)/0.PID
+-- importing method #<meth ((Pid) . 0) : e968932> : Pid : -> SortId
+* done transfer-operator
+[transfer-operator]: (_ = _) from PID to LIST(X <= PID{ ... }) *{  ...  }
+
+* creating new opinfo for operator (:op (("_" "=" "_") . 2) : e96867a) : (_ = _)/2.PID
+-- importing method #<meth ((_ = _) . 2) : e96870a> : _=_ : Pid Pid
+                                                            -> Bool
+-- importing axiom eq (I = I) = true
+   for method : _=_ : Pid Pid -> Bool
+* done transfer-operator
+[transfer-operator]: (_ =/= _) from PID to LIST(X <= PID{ ... }) *{  ...  }
+-- importing method #<meth ((_ =/= _) . 2) : eee9e2> : _=/=_ : _ Cosmos _
+                                                               _ Cosmos _
+                                                               -> Bool
+-- importing axiom eq (CXU =/= CYU)
+ = #!! (coerce-to-bool (not (term-equational-equal cxu cyu)))
+   for method : _=/=_ : _ Cosmos _ _ Cosmos _ -> Bool
+* done transfer-operator
+[transfer-operator]: (_ =b= _) from PID to LIST(X <= PID{ ... }) *{  ...  }
+-- importing method #<meth ((_ =b= _) . 2) : eee99a> : _=b=_ : _ Cosmos _
+                                                               _ Cosmos _
+                                                               -> Bool
+-- importing axiom eq (CXU =b= CYU)
+ = #!! (coerce-to-bool (term-equational-equal cxu cyu))
+   for method : _=b=_ : _ Cosmos _ _ Cosmos _ -> Bool
+* done transfer-operator
+[transfer-operator]: (_ =*= _) from PID to LIST(X <= PID{ ... }) *{  ...  }
+-- importing method #<meth ((_ =*= _) . 2) : eeea2a> : _=*=_ : _ HUniversal _
+                                                               _ HUniversal _
+                                                               -> Bool
+* done transfer-operator
+[transfer-operator]: (_ == _) from PID to LIST(X <= PID{ ... }) *{  ...  }
+-- importing method #<meth ((_ == _) . 2) : eeea72> : _==_ : _ Cosmos _
+                                                             _ Cosmos _
+                                                             -> Bool
+-- importing axiom eq (CXU == CYU) = #!! (coerce-to-bool (term-equational-equal cxu cyu))
+   for method : _==_ : _ Cosmos _ _ Cosmos _ -> Bool
+* done transfer-operator
+[transfer-operator]: (if _ then _ else _ fi) from PID to LIST(X <= PID
+ { ... }) *{  ...  }
+-- importing method #<meth ((if _ then _ else _ fi) . 3) : eeeaba> : if_then_else_fi : _ Universal _
+ _ Cosmos _ _ Cosmos _ -> _ Cosmos _
+-- importing axiom eq (if false then CXU else CYU fi)
+ = CYU
+   for method : if_then_else_fi : _ Universal _ _ Cosmos _ _ Cosmos _
+                                  -> _ Cosmos _
+-- importing axiom eq (if true then CXU else CYU fi)
+ = CXU
+   for method : if_then_else_fi : _ Universal _ _ Cosmos _ _ Cosmos _
+                                  -> _ Cosmos _
+* done transfer-operator
+[transfer-operator]: (_ :is _) from PID to LIST(X <= PID{ ... }) *{  ...  }
+-- importing method #<meth ((_ :is _) . 2) : eeeb02> : _:is_ : _ Cosmos _
+                                                               SortId
+                                                               -> Bool
+-- importing axiom eq (CXU :is Id:SortId)
+ = #!! (coerce-to-bool (test-term-sort-membership cxu id))
+   for method : _:is_ : _ Cosmos _ SortId -> Bool
+* done transfer-operator
+[transfer-operator]: (false) from PID to LIST(X <= PID{ ... }) *{  ...  }
+-- importing method #<meth ((false) . 0) : c83c52> : false : -> Bool
+* done transfer-operator
+[transfer-operator]: (true) from PID to LIST(X <= PID{ ... }) *{  ...  }
+-- importing method #<meth ((true) . 0) : c83c9a> : true : -> Bool
+* done transfer-operator
+[transfer-operator]: (Bool) from PID to LIST(X <= PID{ ... }) *{  ...  }
+-- importing method #<meth ((Bool) . 0) : d3cba2> : Bool : -> SortId
+* done transfer-operator
+[transfer-operator]: (_ and _) from PID to LIST(X <= PID{ ... }) *{  ...  }
+-- importing method #<meth ((_ and _) . 2) : ef13aa> : _and_ : Bool Bool
+                                                               -> Bool
+-- importing axiom eq (A:Bool and (B:Bool xor C:Bool))
+ = ((A and B) xor (A and C))
+   for method : _and_ : Bool Bool -> Bool
+-- importing axiom eq (A:Bool and A)
+ = A
+   for method : _and_ : Bool Bool -> Bool
+-- importing axiom eq (true and A:Bool)
+ = A
+   for method : _and_ : Bool Bool -> Bool
+-- importing axiom eq (false and A:Bool)
+ = false
+   for method : _and_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ and-also _) from PID to LIST(X <= PID{ ... }) *{  ...  }
+-- importing method #<meth ((_ and-also _) . 2) : ef1242> : _and-also_ : Bool
+ Bool -> Bool
+-- importing axiom eq (A:Bool and-also A)
+ = A
+   for method : _and-also_ : Bool Bool -> Bool
+-- importing axiom eq (true and-also A:Bool)
+ = A
+   for method : _and-also_ : Bool Bool -> Bool
+-- importing axiom eq (A:Bool and-also true)
+ = A
+   for method : _and-also_ : Bool Bool -> Bool
+-- importing axiom eq (false and-also A:Bool)
+ = false
+   for method : _and-also_ : Bool Bool -> Bool
+-- importing axiom eq (A:Bool and-also false)
+ = false
+   for method : _and-also_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ or _) from PID to LIST(X <= PID{ ... }) *{  ...  }
+-- importing method #<meth ((_ or _) . 2) : ef1362> : _or_ : Bool Bool
+                                                             -> Bool
+-- importing axiom eq (A:Bool or B:Bool)
+ = ((A and B) xor (A xor B))
+   for method : _or_ : Bool Bool -> Bool
+-- importing axiom eq (true or A:Bool)
+ = true
+   for method : _or_ : Bool Bool -> Bool
+-- importing axiom eq (false or A:Bool)
+ = A
+   for method : _or_ : Bool Bool -> Bool
+-- importing axiom eq (A:Bool or A)
+ = A
+   for method : _or_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ or-else _) from PID to LIST(X <= PID{ ... }) *{  ...  }
+-- importing method #<meth ((_ or-else _) . 2) : ef11fa> : _or-else_ : Bool
+ Bool -> Bool
+-- importing axiom eq (A:Bool or-else true)
+ = true
+   for method : _or-else_ : Bool Bool -> Bool
+-- importing axiom eq (true or-else A:Bool)
+ = true
+   for method : _or-else_ : Bool Bool -> Bool
+-- importing axiom eq (A:Bool or-else false)
+ = A
+   for method : _or-else_ : Bool Bool -> Bool
+-- importing axiom eq (false or-else A:Bool)
+ = A
+   for method : _or-else_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ xor _) from PID to LIST(X <= PID{ ... }) *{  ...  }
+-- importing method #<meth ((_ xor _) . 2) : ef128a> : _xor_ : Bool Bool
+                                                               -> Bool
+-- importing axiom eq (false xor A:Bool)
+ = A
+   for method : _xor_ : Bool Bool -> Bool
+-- importing axiom eq (A:Bool xor A)
+ = false
+   for method : _xor_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (not _) from PID to LIST(X <= PID{ ... }) *{  ...  }
+-- importing method #<meth ((not _) . 1) : ef131a> : not_ : Bool -> Bool
+-- importing axiom eq (not A:Bool) = (A xor true)
+   for method : not_ : Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ implies _) from PID to LIST(X <= PID{ ... }) *{  ...  }
+-- importing method #<meth ((_ implies _) . 2) : ef12d2> : _implies_ : Bool
+ Bool -> Bool
+-- importing axiom eq (A:Bool implies B:Bool)
+ = ((A and B) xor (A xor true))
+   for method : _implies_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ iff _) from PID to LIST(X <= PID{ ... }) *{  ...  }
+-- importing method #<meth ((_ iff _) . 2) : ef11b2> : _iff_ : Bool Bool
+                                                               -> Bool
+-- importing axiom eq (A:Bool iff B:Bool)
+ = (A xor (B xor true))
+   for method : _iff_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (parsed:[ _ ], rest:[ _ ]) from PID to LIST(X <= PID
+ { ... }) *{  ...  }
+-- importing method #<meth ((parsed:[ _ ], rest:[ _ ]) . 2) : c83e52> : parsed:[_],rest:[_] : _ Universal _
+ _ Universal _ -> SyntaxErr
+* done transfer-operator
+[transfer-operator]: (error:[ _ ]) from PID to LIST(X <= PID{ ... }) *{  ...  }
+-- importing method #<meth ((error:[ _ ]) . 1) : c83d92> : error:[_] : _ Universal _
+ -> TypeErr
+* done transfer-operator
+[transfer-operator]: (opId:[ _ ], rest:[ _ ]) from PID to LIST(X <= PID
+ { ... }) *{  ...  }
+-- importing method #<meth ((opId:[ _ ], rest:[ _ ]) . 2) : c83d1a> : opId:[_],rest:[_] : _ Universal _
+ _ Universal _ -> UnknownOp
+* done transfer-operator
+[transfer-operator]: (builtin constant) from PID to LIST(X <= PID{ ... })
+ *{  ...  }
+-- importing method #<meth ((builtin constant) . 0) : c83f2a> : builtinconstant :
+ -> _ Universal _
+* done transfer-operator
+[transfer-operator]: (void-bottom) from PID to LIST(X <= PID{ ... }) *{  ...  }
+-- importing method #<meth ((void-bottom) . 0) : c83e0a> : void-bottom :
+ -> _ Bottom _
+* done transfer-operator
+[transfer-operator]: (SortId) from PID to LIST(X <= PID{ ... }) *{  ...  }
+-- importing method #<meth ((SortId) . 0) : d3cd0a> : SortId : -> SortId
+* done transfer-operator
+[transfer-operator]: (UnknownOp) from PID to LIST(X <= PID{ ... }) *{  ...  }
+-- importing method #<meth ((UnknownOp) . 0) : d3ccc2> : UnknownOp :
+                                                                     -> 
+                                                                    SortId
+* done transfer-operator
+[transfer-operator]: (TypeErr) from PID to LIST(X <= PID{ ... }) *{  ...  }
+-- importing method #<meth ((TypeErr) . 0) : d3cc7a> : TypeErr : -> SortId
+* done transfer-operator
+[transfer-operator]: (SyntaxErr) from PID to LIST(X <= PID{ ... }) *{  ...  }
+-- importing method #<meth ((SyntaxErr) . 0) : d3cc32> : SyntaxErr :
+                                                                     -> 
+                                                                    SortId
+* done transfer-operator,,,,
+[modmorph-recreate-method] :
+-method image is already in module Pid : -> SortId
+[modmorph-recreate-method] :
+-method image is already in module _=_ : Pid Pid -> Bool
+[modmorph-recreate-method] :
+-method image is already in module _=/=_ : _ Cosmos _ _ Cosmos _ -> Bool
+[modmorph-recreate-method] :
+-method image is already in module _=b=_ : _ Cosmos _ _ Cosmos _ -> Bool
+[modmorph-recreate-method] :
+-method image is already in module _=*=_ : _ HUniversal _ _ HUniversal _
+                                           -> Bool
+[modmorph-recreate-method] :
+-method image is already in module _==_ : _ Cosmos _ _ Cosmos _ -> Bool
+[modmorph-recreate-method] :
+-method image is already in module if_then_else_fi : _ Universal _ _ Cosmos _
+                                                     _ Cosmos _ -> _ Cosmos _
+[modmorph-recreate-method] :
+-method image is already in module _:is_ : _ Cosmos _ SortId -> Bool
+[modmorph-recreate-method] :
+-method image is already in module false : -> Bool
+[modmorph-recreate-method] :
+-method image is already in module true : -> Bool
+[modmorph-recreate-method] :
+-method image is already in module Bool : -> SortId
+[modmorph-recreate-method] :
+-method image is already in module _and_ : Bool Bool -> Bool
+[modmorph-recreate-method] :
+-method image is already in module _and-also_ : Bool Bool -> Bool
+[modmorph-recreate-method] :
+-method image is already in module _or_ : Bool Bool -> Bool
+[modmorph-recreate-method] :
+-method image is already in module _or-else_ : Bool Bool -> Bool
+[modmorph-recreate-method] :
+-method image is already in module _xor_ : Bool Bool -> Bool
+[modmorph-recreate-method] :
+-method image is already in module not_ : Bool -> Bool
+[modmorph-recreate-method] :
+-method image is already in module _implies_ : Bool Bool -> Bool
+[modmorph-recreate-method] :
+-method image is already in module _iff_ : Bool Bool -> Bool
+[modmorph-recreate-method] :
+-method image is already in module parsed:[_],rest:[_] : _ Universal _
+                                                         _ Universal _
+                                                         -> SyntaxErr
+[modmorph-recreate-method] :
+-method image is already in module error:[_] : _ Universal _ -> TypeErr
+[modmorph-recreate-method] :
+-method image is already in module opId:[_],rest:[_] : _ Universal _ _ Universal _
+                                                       -> UnknownOp
+[modmorph-recreate-method] :
+-method image is already in module builtinconstant : -> _ Universal _
+[modmorph-recreate-method] :
+-method image is already in module void-bottom : -> _ Bottom _
+[modmorph-recreate-method] :
+-method image is already in module SortId : -> SortId
+[modmorph-recreate-method] :
+-method image is already in module UnknownOp : -> SortId
+[modmorph-recreate-method] :
+-method image is already in module TypeErr : -> SortId
+[modmorph-recreate-method] :
+-method image is already in module SyntaxErr : -> SortId,,
+* apply-modmorph: DONE. generated new module LIST(X <= PID{ ... }) *{ 
+    List -> PidList(List : -> SortId) -> (PidList : -> SortId) } ),*
+[transfer-operator]: (_ _) from LIST(X <= PID{ ... }) * { ... } to PIDlist
+
+* creating new opinfo for operator (:op (("_" "_") . 2) : e975dc2) : (_ _)/2.LIST
+(X <= PID{sort Elt -> Pid }) * {sort List -> PidList}
+-- importing method #<meth ((_ _) . 2) : e975e3a> : __ : Pid PidList
+                                                         -> PidList
+* done transfer-operator
+[transfer-operator]: (_ = _) from LIST(X <= PID{ ... }) * { ... } to PIDlist
+
+* creating new opinfo for operator (:op (("_" "=" "_") . 2) : e96867a) : (_ = _)/2.PID
+-- importing method #<meth ((_ = _) . 2) : e96870a> : _=_ : Pid Pid
+                                                            -> Bool
+-- importing axiom eq (I:Pid = I) = true
+   for method : _=_ : Pid Pid -> Bool
+* done transfer-operator
+[transfer-operator]: (Pid) from LIST(X <= PID{ ... }) * { ... } to PIDlist
+
+* creating new opinfo for operator (:op (("Pid") . 0) : e9688b2) : (Pid)/0.PID
+-- importing method #<meth ((Pid) . 0) : e968932> : Pid : -> SortId
+* done transfer-operator
+[transfer-operator]: (none) from LIST(X <= PID{ ... }) * { ... } to PIDlist
+
+* creating new opinfo for operator (:op (("none") . 0) : e968a22) : (none)/0.PID
+-- importing method #<meth ((none) . 0) : e968aa2> : none : -> ?Pid
+-- importing method #<meth ((none) . 0) : e975f22> : none : -> ?PidList
+* done transfer-operator
+[transfer-operator]: (_ =/= _) from LIST(X <= PID{ ... }) * { ... } to PIDlist
+
+* creating new opinfo for operator (:op (("_" "=/=" "_") . 2) : eef58a) : (_ =/= _)/2.TRUTH
+-- importing method #<meth ((_ =/= _) . 2) : eee9e2> : _=/=_ : _ Cosmos _
+                                                               _ Cosmos _
+                                                               -> Bool
+-- importing axiom eq (CXU =/= CYU)
+ = #!! (coerce-to-bool (not (term-equational-equal cxu cyu)))
+   for method : _=/=_ : _ Cosmos _ _ Cosmos _ -> Bool
+* done transfer-operator
+[transfer-operator]: (_ =b= _) from LIST(X <= PID{ ... }) * { ... } to PIDlist
+
+* creating new opinfo for operator (:op (("_" "=b=" "_") . 2) : eef5ba) : (_ =b= _)/2.TRUTH
+-- importing method #<meth ((_ =b= _) . 2) : eee99a> : _=b=_ : _ Cosmos _
+                                                               _ Cosmos _
+                                                               -> Bool
+-- importing axiom eq (CXU =b= CYU)
+ = #!! (coerce-to-bool (term-equational-equal cxu cyu))
+   for method : _=b=_ : _ Cosmos _ _ Cosmos _ -> Bool
+* done transfer-operator
+[transfer-operator]: (_ =*= _) from LIST(X <= PID{ ... }) * { ... } to PIDlist
+
+* creating new opinfo for operator (:op (("_" "=*=" "_") . 2) : eef5ea) : (_ =*= _)/2.TRUTH
+-- importing method #<meth ((_ =*= _) . 2) : eeea2a> : _=*=_ : _ HUniversal _
+                                                               _ HUniversal _
+                                                               -> Bool
+* done transfer-operator
+[transfer-operator]: (_ == _) from LIST(X <= PID{ ... }) * { ... } to PIDlist
+
+* creating new opinfo for operator (:op (("_" "==" "_") . 2) : eef61a) : (_ == _)/2.TRUTH
+-- importing method #<meth ((_ == _) . 2) : eeea72> : _==_ : _ Cosmos _
+                                                             _ Cosmos _
+                                                             -> Bool
+-- importing axiom eq (CXU == CYU) = #!! (coerce-to-bool (term-equational-equal cxu cyu))
+   for method : _==_ : _ Cosmos _ _ Cosmos _ -> Bool
+* done transfer-operator
+[transfer-operator]: (if _ then _ else _ fi) from LIST(X <= PID{ ... }) * {
+ ... } to PIDlist
+* creating new opinfo for operator (:op (("if" "_" "then" "_" "else" "_" "fi") . 3) : eef64a) : (if _ then _ else _ fi)/3.TRUTH
+-- importing method #<meth ((if _ then _ else _ fi) . 3) : eeeaba> : if_then_else_fi : _ Universal _
+ _ Cosmos _ _ Cosmos _ -> _ Cosmos _
+-- importing axiom eq (if false then CXU else CYU fi)
+ = CYU
+   for method : if_then_else_fi : _ Universal _ _ Cosmos _ _ Cosmos _
+                                  -> _ Cosmos _
+-- importing axiom eq (if true then CXU else CYU fi)
+ = CXU
+   for method : if_then_else_fi : _ Universal _ _ Cosmos _ _ Cosmos _
+                                  -> _ Cosmos _
+* done transfer-operator
+[transfer-operator]: (_ :is _) from LIST(X <= PID{ ... }) * { ... } to PIDlist
+
+* creating new opinfo for operator (:op (("_" ":is" "_") . 2) : eef67a) : (_ :is _)/2.TRUTH
+-- importing method #<meth ((_ :is _) . 2) : eeeb02> : _:is_ : _ Cosmos _
+                                                               SortId
+                                                               -> Bool
+-- importing axiom eq (CXU :is Id:SortId)
+ = #!! (coerce-to-bool (test-term-sort-membership cxu id))
+   for method : _:is_ : _ Cosmos _ SortId -> Bool
+* done transfer-operator
+[transfer-operator]: (SyntaxErr) from LIST(X <= PID{ ... }) * { ... } to PIDlist
+
+* creating new opinfo for operator (:op (("SyntaxErr") . 0) : d3f2c2) : (SyntaxErr)/0.CHAOS:PARSER
+-- importing method #<meth ((SyntaxErr) . 0) : d3cc32> : SyntaxErr :
+                                                                     -> 
+                                                                    SortId
+* done transfer-operator
+[transfer-operator]: (TypeErr) from LIST(X <= PID{ ... }) * { ... } to PIDlist
+
+* creating new opinfo for operator (:op (("TypeErr") . 0) : d3f292) : (TypeErr)/0.CHAOS:PARSER
+-- importing method #<meth ((TypeErr) . 0) : d3cc7a> : TypeErr : -> SortId
+* done transfer-operator
+[transfer-operator]: (UnknownOp) from LIST(X <= PID{ ... }) * { ... } to PIDlist
+
+* creating new opinfo for operator (:op (("UnknownOp") . 0) : d3f262) : (UnknownOp)/0.CHAOS:PARSER
+-- importing method #<meth ((UnknownOp) . 0) : d3ccc2> : UnknownOp :
+                                                                     -> 
+                                                                    SortId
+* done transfer-operator
+[transfer-operator]: (SortId) from LIST(X <= PID{ ... }) * { ... } to PIDlist
+
+* creating new opinfo for operator (:op (("SortId") . 0) : d3f232) : (SortId)/0.CHAOS:PARSER
+-- importing method #<meth ((SortId) . 0) : d3cd0a> : SortId : -> SortId
+* done transfer-operator
+[transfer-operator]: (void-bottom) from LIST(X <= PID{ ... }) * { ... }
+ to PIDlist
+* creating new opinfo for operator (:op (("void-bottom") . 0) : c83e9a) : (void-bottom)/0.CHAOS:PARSER
+-- importing method #<meth ((void-bottom) . 0) : c83e0a> : void-bottom :
+ -> _ Bottom _
+* done transfer-operator
+[transfer-operator]: (builtin constant) from LIST(X <= PID{ ... }) * {
+ ... } to PIDlist
+* creating new opinfo for operator (:op (("builtin" "constant") . 0) : c83efa) : (builtin constant)/0.CHAOS:PARSER
+-- importing method #<meth ((builtin constant) . 0) : c83f2a> : builtinconstant :
+ -> _ Universal _
+* done transfer-operator
+[transfer-operator]: (opId:[ _ ], rest:[ _ ]) from LIST(X <= PID{ ... }) * {
+ ... } to PIDlist
+* creating new opinfo for operator (:op (("opId:[" "_" "]," "rest:[" "_" "]") . 2) : c83d62) : (opId:[ _ ], rest:[ _ ])/2.CHAOS:PARSER
+-- importing method #<meth ((opId:[ _ ], rest:[ _ ]) . 2) : c83d1a> : opId:[_],rest:[_] : _ Universal _
+ _ Universal _ -> UnknownOp
+* done transfer-operator
+[transfer-operator]: (error:[ _ ]) from LIST(X <= PID{ ... }) * { ... }
+ to PIDlist
+* creating new opinfo for operator (:op (("error:[" "_" "]") . 1) : c83dda) : (error:[ _ ])/1.CHAOS:PARSER
+-- importing method #<meth ((error:[ _ ]) . 1) : c83d92> : error:[_] : _ Universal _
+ -> TypeErr
+* done transfer-operator
+[transfer-operator]: (parsed:[ _ ], rest:[ _ ]) from LIST(X <= PID{ ... }) * {
+ ... } to PIDlist
+* creating new opinfo for operator (:op (("parsed:[" "_" "]," "rest:[" "_" "]") . 2) : c83eca) : (parsed:[ _ ], rest:[ _ ])/2.CHAOS:PARSER
+-- importing method #<meth ((parsed:[ _ ], rest:[ _ ]) . 2) : c83e52> : parsed:[_],rest:[_] : _ Universal _
+ _ Universal _ -> SyntaxErr
+* done transfer-operator
+[transfer-operator]: (false) from LIST(X <= PID{ ... }) * { ... } to PIDlist
+
+* creating new opinfo for operator (:op (("false") . 0) : d3f202) : (false)/0.TRUTH-VALUE
+-- importing method #<meth ((false) . 0) : c83c52> : false : -> Bool
+* done transfer-operator
+[transfer-operator]: (true) from LIST(X <= PID{ ... }) * { ... } to PIDlist
+
+* creating new opinfo for operator (:op (("true") . 0) : d3f1d2) : (true)/0.TRUTH-VALUE
+-- importing method #<meth ((true) . 0) : c83c9a> : true : -> Bool
+* done transfer-operator
+[transfer-operator]: (Bool) from LIST(X <= PID{ ... }) * { ... } to PIDlist
+
+* creating new opinfo for operator (:op (("Bool") . 0) : d3f1a2) : (Bool)/0.TRUTH-VALUE
+-- importing method #<meth ((Bool) . 0) : d3cba2> : Bool : -> SortId
+* done transfer-operator
+[transfer-operator]: (_ and _) from LIST(X <= PID{ ... }) * { ... } to PIDlist
+
+* creating new opinfo for operator (:op (("_" "and" "_") . 2) : ef1e1a) : (_ and _)/2.BOOL
+-- importing method #<meth ((_ and _) . 2) : ef13aa> : _and_ : Bool Bool
+                                                               -> Bool
+-- importing axiom eq (A:Bool and (B:Bool xor C:Bool))
+ = ((A and B) xor (A and C))
+   for method : _and_ : Bool Bool -> Bool
+-- importing axiom eq (A:Bool and A)
+ = A
+   for method : _and_ : Bool Bool -> Bool
+-- importing axiom eq (true and A:Bool)
+ = A
+   for method : _and_ : Bool Bool -> Bool
+-- importing axiom eq (false and A:Bool)
+ = false
+   for method : _and_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ and-also _) from LIST(X <= PID{ ... }) * { ... }
+ to PIDlist
+* creating new opinfo for operator (:op (("_" "and-also" "_") . 2) : ef1e4a) : (_ and-also _)/2.BOOL
+-- importing method #<meth ((_ and-also _) . 2) : ef1242> : _and-also_ : Bool
+ Bool -> Bool
+-- importing axiom eq (A:Bool and-also A)
+ = A
+   for method : _and-also_ : Bool Bool -> Bool
+-- importing axiom eq (true and-also A:Bool)
+ = A
+   for method : _and-also_ : Bool Bool -> Bool
+-- importing axiom eq (A:Bool and-also true)
+ = A
+   for method : _and-also_ : Bool Bool -> Bool
+-- importing axiom eq (false and-also A:Bool)
+ = false
+   for method : _and-also_ : Bool Bool -> Bool
+-- importing axiom eq (A:Bool and-also false)
+ = false
+   for method : _and-also_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ or _) from LIST(X <= PID{ ... }) * { ... } to PIDlist
+
+* creating new opinfo for operator (:op (("_" "or" "_") . 2) : ef1e7a) : (_ or _)/2.BOOL
+-- importing method #<meth ((_ or _) . 2) : ef1362> : _or_ : Bool Bool
+                                                             -> Bool
+-- importing axiom eq (A:Bool or B:Bool)
+ = ((A and B) xor (A xor B))
+   for method : _or_ : Bool Bool -> Bool
+-- importing axiom eq (true or A:Bool)
+ = true
+   for method : _or_ : Bool Bool -> Bool
+-- importing axiom eq (false or A:Bool)
+ = A
+   for method : _or_ : Bool Bool -> Bool
+-- importing axiom eq (A:Bool or A)
+ = A
+   for method : _or_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ or-else _) from LIST(X <= PID{ ... }) * { ... }
+ to PIDlist
+* creating new opinfo for operator (:op (("_" "or-else" "_") . 2) : ef1eaa) : (_ or-else _)/2.BOOL
+-- importing method #<meth ((_ or-else _) . 2) : ef11fa> : _or-else_ : Bool
+ Bool -> Bool
+-- importing axiom eq (A:Bool or-else true)
+ = true
+   for method : _or-else_ : Bool Bool -> Bool
+-- importing axiom eq (true or-else A:Bool)
+ = true
+   for method : _or-else_ : Bool Bool -> Bool
+-- importing axiom eq (A:Bool or-else false)
+ = A
+   for method : _or-else_ : Bool Bool -> Bool
+-- importing axiom eq (false or-else A:Bool)
+ = A
+   for method : _or-else_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ xor _) from LIST(X <= PID{ ... }) * { ... } to PIDlist
+
+* creating new opinfo for operator (:op (("_" "xor" "_") . 2) : ef1eda) : (_ xor _)/2.BOOL
+-- importing method #<meth ((_ xor _) . 2) : ef128a> : _xor_ : Bool Bool
+                                                               -> Bool
+-- importing axiom eq (false xor A:Bool)
+ = A
+   for method : _xor_ : Bool Bool -> Bool
+-- importing axiom eq (A:Bool xor A)
+ = false
+   for method : _xor_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (not _) from LIST(X <= PID{ ... }) * { ... } to PIDlist
+
+* creating new opinfo for operator (:op (("not" "_") . 1) : ef1f0a) : (not _)/1.BOOL
+-- importing method #<meth ((not _) . 1) : ef131a> : not_ : Bool -> Bool
+-- importing axiom eq (not A:Bool) = (A xor true)
+   for method : not_ : Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ implies _) from LIST(X <= PID{ ... }) * { ... }
+ to PIDlist
+* creating new opinfo for operator (:op (("_" "implies" "_") . 2) : ef1f3a) : (_ implies _)/2.BOOL
+-- importing method #<meth ((_ implies _) . 2) : ef12d2> : _implies_ : Bool
+ Bool -> Bool
+-- importing axiom eq (A:Bool implies B:Bool)
+ = ((A and B) xor (A xor true))
+   for method : _implies_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ iff _) from LIST(X <= PID{ ... }) * { ... } to PIDlist
+
+* creating new opinfo for operator (:op (("_" "iff" "_") . 2) : ef1f6a) : (_ iff _)/2.BOOL
+-- importing method #<meth ((_ iff _) . 2) : ef11b2> : _iff_ : Bool Bool
+                                                               -> Bool
+-- importing axiom eq (A:Bool iff B:Bool)
+ = (A xor (B xor true))
+   for method : _iff_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (PidList) from LIST(X <= PID{ ... }) * { ... } to PIDlist
+
+* creating new opinfo for operator (:op (("PidList") . 0) : e973722) : (PidList)/0.LIST
+(X <= PID{sort Elt -> Pid }) * {sort List -> PidList}
+-- importing method #<meth ((PidList) . 0) : e9737aa> : PidList : -> SortId
+* done transfer-operator
+[import-module]: 
+ PIDlist <==(protecting)== BOOL
+[transfer-operator]: (_ iff _) from BOOL to PIDlist
+-- importing method #<meth ((_ iff _) . 2) : ef11b2> : _iff_ : Bool Bool
+                                                               -> Bool
+-- importing axiom eq (A iff B) = (A xor (B xor true))
+   for method : _iff_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ implies _) from BOOL to PIDlist
+-- importing method #<meth ((_ implies _) . 2) : ef12d2> : _implies_ : Bool
+ Bool -> Bool
+-- importing axiom eq (A implies B)
+ = ((A and B) xor (A xor true))
+   for method : _implies_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (not _) from BOOL to PIDlist
+-- importing method #<meth ((not _) . 1) : ef131a> : not_ : Bool -> Bool
+-- importing axiom eq (not A) = (A xor true)
+   for method : not_ : Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ xor _) from BOOL to PIDlist
+-- importing method #<meth ((_ xor _) . 2) : ef128a> : _xor_ : Bool Bool
+                                                               -> Bool
+-- importing axiom eq (false xor A)
+ = A
+   for method : _xor_ : Bool Bool -> Bool
+-- importing axiom eq (A xor A) = false
+   for method : _xor_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ or-else _) from BOOL to PIDlist
+-- importing method #<meth ((_ or-else _) . 2) : ef11fa> : _or-else_ : Bool
+ Bool -> Bool
+-- importing axiom eq (A or-else true)
+ = true
+   for method : _or-else_ : Bool Bool -> Bool
+-- importing axiom eq (true or-else A)
+ = true
+   for method : _or-else_ : Bool Bool -> Bool
+-- importing axiom eq (A or-else false)
+ = A
+   for method : _or-else_ : Bool Bool -> Bool
+-- importing axiom eq (false or-else A)
+ = A
+   for method : _or-else_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ or _) from BOOL to PIDlist
+-- importing method #<meth ((_ or _) . 2) : ef1362> : _or_ : Bool Bool
+                                                             -> Bool
+-- importing axiom eq (A or B) = ((A and B) xor (A xor B))
+   for method : _or_ : Bool Bool -> Bool
+-- importing axiom eq (true or A) = true
+   for method : _or_ : Bool Bool -> Bool
+-- importing axiom eq (false or A) = A
+   for method : _or_ : Bool Bool -> Bool
+-- importing axiom eq (A or A) = A
+   for method : _or_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ and-also _) from BOOL to PIDlist
+-- importing method #<meth ((_ and-also _) . 2) : ef1242> : _and-also_ : Bool
+ Bool -> Bool
+-- importing axiom eq (A and-also A)
+ = A
+   for method : _and-also_ : Bool Bool -> Bool
+-- importing axiom eq (true and-also A)
+ = A
+   for method : _and-also_ : Bool Bool -> Bool
+-- importing axiom eq (A and-also true)
+ = A
+   for method : _and-also_ : Bool Bool -> Bool
+-- importing axiom eq (false and-also A)
+ = false
+   for method : _and-also_ : Bool Bool -> Bool
+-- importing axiom eq (A and-also false)
+ = false
+   for method : _and-also_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (_ and _) from BOOL to PIDlist
+-- importing method #<meth ((_ and _) . 2) : ef13aa> : _and_ : Bool Bool
+                                                               -> Bool
+-- importing axiom eq (A and (B xor C))
+ = ((A and B) xor (A and C))
+   for method : _and_ : Bool Bool -> Bool
+-- importing axiom eq (A and A) = A
+   for method : _and_ : Bool Bool -> Bool
+-- importing axiom eq (true and A) = A
+   for method : _and_ : Bool Bool -> Bool
+-- importing axiom eq (false and A)
+ = false
+   for method : _and_ : Bool Bool -> Bool
+* done transfer-operator
+[transfer-operator]: (Bool) from BOOL to PIDlist
+-- importing method #<meth ((Bool) . 0) : d3cba2> : Bool : -> SortId
+* done transfer-operator
+[transfer-operator]: (true) from BOOL to PIDlist
+-- importing method #<meth ((true) . 0) : c83c9a> : true : -> Bool
+* done transfer-operator
+[transfer-operator]: (false) from BOOL to PIDlist
+-- importing method #<meth ((false) . 0) : c83c52> : false : -> Bool
+* done transfer-operator
+[transfer-operator]: (parsed:[ _ ], rest:[ _ ]) from BOOL to PIDlist
+-- importing method #<meth ((parsed:[ _ ], rest:[ _ ]) . 2) : c83e52> : parsed:[_],rest:[_] : _ Universal _
+ _ Universal _ -> SyntaxErr
+* done transfer-operator
+[transfer-operator]: (error:[ _ ]) from BOOL to PIDlist
+-- importing method #<meth ((error:[ _ ]) . 1) : c83d92> : error:[_] : _ Universal _
+ -> TypeErr
+* done transfer-operator
+[transfer-operator]: (opId:[ _ ], rest:[ _ ]) from BOOL to PIDlist
+-- importing method #<meth ((opId:[ _ ], rest:[ _ ]) . 2) : c83d1a> : opId:[_],rest:[_] : _ Universal _
+ _ Universal _ -> UnknownOp
+* done transfer-operator
+[transfer-operator]: (builtin constant) from BOOL to PIDlist
+-- importing method #<meth ((builtin constant) . 0) : c83f2a> : builtinconstant :
+ -> _ Universal _
+* done transfer-operator
+[transfer-operator]: (void-bottom) from BOOL to PIDlist
+-- importing method #<meth ((void-bottom) . 0) : c83e0a> : void-bottom :
+ -> _ Bottom _
+* done transfer-operator
+[transfer-operator]: (SortId) from BOOL to PIDlist
+-- importing method #<meth ((SortId) . 0) : d3cd0a> : SortId : -> SortId
+* done transfer-operator
+[transfer-operator]: (UnknownOp) from BOOL to PIDlist
+-- importing method #<meth ((UnknownOp) . 0) : d3ccc2> : UnknownOp :
+                                                                     -> 
+                                                                    SortId
+* done transfer-operator
+[transfer-operator]: (TypeErr) from BOOL to PIDlist
+-- importing method #<meth ((TypeErr) . 0) : d3cc7a> : TypeErr : -> SortId
+* done transfer-operator
+[transfer-operator]: (SyntaxErr) from BOOL to PIDlist
+-- importing method #<meth ((SyntaxErr) . 0) : d3cc32> : SyntaxErr :
+                                                                     -> 
+                                                                    SortId
+* done transfer-operator
+[transfer-operator]: (_ :is _) from BOOL to PIDlist
+-- importing method #<meth ((_ :is _) . 2) : eeeb02> : _:is_ : _ Cosmos _
+                                                               SortId
+                                                               -> Bool
+-- importing axiom eq (CXU :is Id:SortId)
+ = #!! (coerce-to-bool (test-term-sort-membership cxu id))
+   for method : _:is_ : _ Cosmos _ SortId -> Bool
+* done transfer-operator
+[transfer-operator]: (if _ then _ else _ fi) from BOOL to PIDlist
+-- importing method #<meth ((if _ then _ else _ fi) . 3) : eeeaba> : if_then_else_fi : _ Universal _
+ _ Cosmos _ _ Cosmos _ -> _ Cosmos _
+-- importing axiom eq (if false then CXU else CYU fi)
+ = CYU
+   for method : if_then_else_fi : _ Universal _ _ Cosmos _ _ Cosmos _
+                                  -> _ Cosmos _
+-- importing axiom eq (if true then CXU else CYU fi)
+ = CXU
+   for method : if_then_else_fi : _ Universal _ _ Cosmos _ _ Cosmos _
+                                  -> _ Cosmos _
+* done transfer-operator
+[transfer-operator]: (_ == _) from BOOL to PIDlist
+-- importing method #<meth ((_ == _) . 2) : eeea72> : _==_ : _ Cosmos _
+                                                             _ Cosmos _
+                                                             -> Bool
+-- importing axiom eq (CXU == CYU) = #!! (coerce-to-bool (term-equational-equal cxu cyu))
+   for method : _==_ : _ Cosmos _ _ Cosmos _ -> Bool
+* done transfer-operator
+[transfer-operator]: (_ =*= _) from BOOL to PIDlist
+-- importing method #<meth ((_ =*= _) . 2) : eeea2a> : _=*=_ : _ HUniversal _
+                                                               _ HUniversal _
+                                                               -> Bool
+* done transfer-operator
+[transfer-operator]: (_ =b= _) from BOOL to PIDlist
+-- importing method #<meth ((_ =b= _) . 2) : eee99a> : _=b=_ : _ Cosmos _
+                                                               _ Cosmos _
+                                                               -> Bool
+-- importing axiom eq (CXU =b= CYU)
+ = #!! (coerce-to-bool (term-equational-equal cxu cyu))
+   for method : _=b=_ : _ Cosmos _ _ Cosmos _ -> Bool
+* done transfer-operator
+[transfer-operator]: (_ =/= _) from BOOL to PIDlist
+-- importing method #<meth ((_ =/= _) . 2) : eee9e2> : _=/=_ : _ Cosmos _
+                                                               _ Cosmos _
+                                                               -> Bool
+-- importing axiom eq (CXU =/= CYU)
+ = #!! (coerce-to-bool (not (term-equational-equal cxu cyu)))
+   for method : _=/=_ : _ Cosmos _ _ Cosmos _ -> Bool
+* done transfer-operator._* done.
+CafeOBJ> select PIDList
+[Error]: undefined module? (PIDList)
+CafeOBJ> select PIDlist
+PIDlist> sh .
+module! PIDlist
+{
+  imports {
+    protecting (BOOL)
+    protecting (LIST(X <= PID{ ... }) * { ... })
+  }
+}
+PIDlist> sh axioms
+PIDlist> sh all axioms
+- Imported axioms
+  eq (false and A:Bool) = false
+  eq (true and A:Bool) = A
+  eq (A:Bool and A) = A
+  eq (A:Bool xor A) = false
+  eq (false xor A:Bool) = A
+  eq (A:Bool and (B:Bool xor C:Bool))
+   = ((A and B) xor (A and C))
+  eq (A:Bool or A) = A
+  eq (false or A:Bool) = A
+  eq (true or A:Bool) = true
+  eq (A:Bool or B:Bool) = ((A and B) xor (A xor B))
+  eq (not A:Bool) = (A xor true)
+  eq (A:Bool implies B:Bool) = ((A and B) xor (A xor true))
+  eq (A:Bool iff B:Bool) = (A xor (B xor true))
+  eq (A:Bool and-also false) = false
+  eq (false and-also A:Bool) = false
+  eq (A:Bool and-also true) = A
+  eq (true and-also A:Bool) = A
+  eq (A:Bool and-also A) = A
+  eq (false or-else A:Bool) = A
+  eq (A:Bool or-else false) = A
+  eq (true or-else A:Bool) = true
+  eq (A:Bool or-else true) = true
+  eq (CXU :is Id:SortId) = #!! (coerce-to-bool (test-term-sort-membership cxu id))
+  eq (if true then CXU else CYU fi)
+   = CXU
+  eq (if false then CXU else CYU fi)
+   = CYU
+  eq (CXU == CYU) = #!! (coerce-to-bool (term-equational-equal cxu cyu))
+  eq (CXU =b= CYU) = #!! (coerce-to-bool (term-equational-equal cxu cyu))
+  eq (CXU =/= CYU) = #!! (coerce-to-bool (not (term-equational-equal cxu cyu)))
+  eq (I:Pid = I) = true
+  eq 
+Error: Received signal number 11 (Segmentation fault)
+  [condition type: synchronous-operating-system-signal]
+
+Restart actions (select using :continue):
+ 0: Abort entirely from this (lisp) process.
+
+[changing package from "COMMON-LISP-USER" to "CHAOS"]
+[1] CHAOS(1): :bt
+Evaluation stack:
+
+term-print1 <-
+  term-print <- print-axiom-brief <- print-module-axs <-
+  show-describe <- eval-ast <- process-cafeobj-input <- cafeobj <-
+  cafeobj-top-level <- tpl:start-interactive-top-level
+
+
+(to see any ghost frames, the disassembler must be loaded)
+[1] CHAOS(2): :loc
+Compiled lexical environment:
+0(extra-arg): nil: ((258 #<meth ((_ = _) . 2) : e968b7a> (:err-sort "?Bool" (visible)) ((#) (#))))
+1(extra-arg): nil: #<terminal-simple-stream [initial terminal io] fd 0/1 @ #x203b1122>
+2(extra-arg): nil: t
+3(extra-arg): nil: (nil)
+4(local): excl::|local-0|: #<terminal-simple-stream [initial terminal io] fd 0/1 @ #x203b1122>
+5(local): excl::|local-1|: t
+6(local): excl::|local-2|: (nil)
+7(local): excl::|local-3|: (258 #<meth ((_ = _) . 2) : e968b7a> (:err-sort "?Bool" (visible)) (((12545 i # i)) ((258 # # nil))))
+8(local): excl::|local-4|: ((258 #<meth ((_ = _) . 2) : e968b7a> (:err-sort "?Bool" (visible)) ((#) (#))))
+9(local): excl::|local-5|: #<terminal-simple-stream [initial terminal io] fd 0/1 @ #x203b1122>
+10(local): excl::|local-6|: #<non-lisp object @ #x20862697>
+11(local): excl::|local-7|: -268451230
+12(local): excl::|local-8|: #<Function CHARPOS>
+13(local): excl::|local-9|: excl::printer-error
+14(local): excl::|local-10|: (:op (("_" "=" "_") . 2) : e96867a)
+15(local): excl::|local-11|: #31\CONTROL-META-SUPER-HYPER-?
+16(local): excl::|local-12|: nil
+17(local): excl::|local-13|: 1
+18(local): excl::|local-14|: 5
+19(local): excl::|local-15|: 0
+20(local): excl::|local-16|: 0
+21(local): excl::|local-17|: 0
+22(local): excl::|local-18|: 0
+23(local): excl::|local-19|: #<non-lisp object @ #xfffffffa>
+24(local): excl::|local-20|: -268451230
+[1] CHAOS(3): :q
+PIDlist> desc op none .
+[parse-operator-reference]:*modexp-parse-input*=(none .)
+-- no such operator("none" ".") nil nil
+PIDlist> desc op none
+[parse-operator-reference]:*modexp-parse-input*=(none)
+======================================================================
+name                : none/0
+module              : PID
+number of arguments : 0
+default attributes  :
+ rewrite strategy   : not specified
+ syntax             :
+   precedence       : not specified
+   computed prec.   : 0
+   form             : "none" 
+ theory             : 
+----------------------------------------------------------------------
+rank                : -> ?PidList
+  module            : LIST(X <= PID{sort Elt -> Pid }) * {sort List -> PidList}
+  theory            : 
+  rewrite strategy  : nil
+  precedence        : 0
+  axioms            :
+----------------------------------------------------------------------
+rank                : -> ?Pid
+  module            : PID
+  theory            : 
+  rewrite strategy  : nil
+  precedence        : 0
+  axioms            :
+PIDlist> desc op _=_
+[parse-operator-reference]:*modexp-parse-input*=(_ = _)
+======================================================================
+name                : _=_
+module              : PID
+number of arguments : 2
+default attributes  :
+ rewrite strategy   : not specified
+ syntax             :
+   precedence       : not specified
+   computed prec.   : 41
+   form             : (arg:41) "=" (arg:41) 
+ theory             : 
+----------------------------------------------------------------------
+rank                : ?PidList ?PidList -> ?Bool
+  module            : PIDlist
+  theory            : 
+  rewrite strategy  : (1 2 0)
+  precedence        : 41
+  lower operations   :
+    Pid Pid -> Bool
+  axioms            :
+----------------------------------------------------------------------
+rank                : Pid Pid -> Bool
+  module            : PID
+  theory            : comm
+  rewrite strategy  : (1 2 0)
+  precedence        : 41
+  axioms            :
+  - equation 
+    lhs             : (I:Pid = I)
+    rhs             : true
+    top operator    : Pid Pid -> Bool
+PIDlist> desc .
+======================================================================
+                            module PIDlist
+                             kind: object
+                          type: user defined
+                  created: 2011 Mar 8 Tue 7:05:40 GMT
+----------------------------------------------------------------------
+
+                           << submodules >>
+  protecting (BOOL)
+  protecting (LIST(X <= PID{ ... }) * { ... })
+
+                   << sorts and subsort relations >>
+  * visible sorts :
+    PidList, Pid < PidList
+    Pid, Pid < PidList
+
+                      << operators and axioms >>
+
+.................................(_ _).................................
+  * rank: Pid PidList -> PidList
+  - attributes:  { constr prec: 41 }
+................................(_ = _)................................
+  * rank: Pid Pid -> Bool
+  - attributes:  { comm }
+    - axioms:
+      eq (I:Pid = I) = true
+.................................(Pid).................................
+  * rank: -> SortId
+  - attributes:  { constr }
+................................(none)................................
+  * rank: -> ?Pid
+  * rank: -> ?PidList
+...............................(_ =/= _)...............................
+  * rank: _ Cosmos _ _ Cosmos _ -> Bool
+  - attributes:  { prec: 51 }
+    - axioms:
+      eq (CXU =/= CYU) = #!! (coerce-to-bool (not (term-equational-equal cxu cyu)))
+...............................(_ =b= _)...............................
+  * rank: _ Cosmos _ _ Cosmos _ -> Bool
+  - attributes:  { prec: 51 }
+    - axioms:
+      eq (CXU =b= CYU) = #!! (coerce-to-bool (term-equational-equal cxu cyu))
+...............................(_ =*= _)...............................
+  * rank: _ HUniversal _ _ HUniversal _ -> Bool
+  - attributes:  { prec: 51 }
+...............................(_ == _)...............................
+  * rank: _ Cosmos _ _ Cosmos _ -> Bool
+  - attributes:  { prec: 51 }
+    - axioms:
+      eq (CXU == CYU) = #!! (coerce-to-bool (term-equational-equal cxu cyu))
+........................(if _ then _ else _ fi)........................
+  * rank: _ Universal _ _ Cosmos _ _ Cosmos _ -> _ Cosmos _
+  - attributes:  { strat: (1 0) prec: 0 }
+    - axioms:
+      eq (if true then CXU else CYU fi)
+       = CXU
+      eq (if false then CXU else CYU fi)
+       = CYU
+...............................(_ :is _)...............................
+  * rank: _ Cosmos _ SortId -> Bool
+  - attributes:  { prec: 125 }
+    - axioms:
+      eq (CXU :is Id:SortId) = #!! (coerce-to-bool (test-term-sort-membership cxu id))
+...............................(_ and _)...............................
+  * rank: Bool Bool -> Bool
+  - attributes:  { assoc comm prec: 55 r-assoc }
+    - axioms:
+      eq (false and A:Bool) = false
+      eq (true and A:Bool) = A
+      eq (A:Bool and A) = A
+      eq (A:Bool and (B:Bool xor C:Bool))
+       = ((A and B) xor (A and C))
+............................(_ and-also _)............................
+  * rank: Bool Bool -> Bool
+  - attributes:  { strat: (1 0 2) prec: 55 r-assoc }
+    - axioms:
+      eq (A:Bool and-also false) = false
+      eq (false and-also A:Bool) = false
+      eq (A:Bool and-also true) = A
+      eq (true and-also A:Bool) = A
+      eq (A:Bool and-also A) = A
+...............................(_ or _)...............................
+  * rank: Bool Bool -> Bool
+  - attributes:  { assoc comm prec: 59 r-assoc }
+    - axioms:
+      eq (A:Bool or A) = A
+      eq (false or A:Bool) = A
+      eq (true or A:Bool) = true
+      eq (A:Bool or B:Bool) = ((A and B) xor (A xor B))
+.............................(_ or-else _).............................
+  * rank: Bool Bool -> Bool
+  - attributes:  { strat: (1 0 2) prec: 59 r-assoc }
+    - axioms:
+      eq (false or-else A:Bool) = A
+      eq (A:Bool or-else false) = A
+      eq (true or-else A:Bool) = true
+      eq (A:Bool or-else true) = true
+...............................(_ xor _)...............................
+  * rank: Bool Bool -> Bool
+  - attributes:  { assoc comm prec: 57 r-assoc }
+    - axioms:
+      eq (A:Bool xor A) = false
+      eq (false xor A:Bool) = A
+................................(not _)................................
+  * rank: Bool -> Bool
+  - attributes:  { strat: (0 1) prec: 53 }
+    - axioms:
+      eq (not A:Bool) = (A xor true)
+.............................(_ implies _).............................
+  * rank: Bool Bool -> Bool
+  - attributes:  { strat: (0 1 2) prec: 61 r-assoc }
+    - axioms:
+      eq (A:Bool implies B:Bool) = ((A and B) xor (A xor true))
+...............................(_ iff _)...............................
+  * rank: Bool Bool -> Bool
+  - attributes:  { strat: (0 1 2) prec: 63 r-assoc }
+    - axioms:
+      eq (A:Bool iff B:Bool) = (A xor (B xor true))
+...............................(PidList)...............................
+  * rank: -> SortId
+  - attributes:  { constr prec: 0 }
+PIDlist> sh all rules
+ -- rewrite rules in module : PIDlist
+  1 : eq (false and A:Bool) = false
+  2 : eq (true and A:Bool) = A
+  3 : eq (A:Bool and A) = A
+  4 : eq (A:Bool xor A) = false
+  5 : eq (false xor A:Bool) = A
+  6 : eq (A:Bool and (B:Bool xor C:Bool))
+ = ((A and B) xor (A and C))
+  7 : eq (A:Bool or A) = A
+  8 : eq (false or A:Bool) = A
+  9 : eq (true or A:Bool) = true
+ 10 : eq (A:Bool or B:Bool) = ((A and B) xor (A xor B))
+ 11 : eq (not A:Bool) = (A xor true)
+ 12 : eq (A:Bool implies B:Bool) = ((A and B) xor (A xor true))
+ 13 : eq (A:Bool iff B:Bool) = (A xor (B xor true))
+ 14 : eq (A:Bool and-also false) = false
+ 15 : eq (false and-also A:Bool) = false
+ 16 : eq (A:Bool and-also true) = A
+ 17 : eq (true and-also A:Bool) = A
+ 18 : eq (A:Bool and-also A) = A
+ 19 : eq (false or-else A:Bool) = A
+ 20 : eq (A:Bool or-else false) = A
+ 21 : eq (true or-else A:Bool) = true
+ 22 : eq (A:Bool or-else true) = true
+ 23 : eq (CXU :is Id:SortId) = #!! (coerce-to-bool (test-term-sort-membership cxu id))
+ 24 : eq (if true then CXU else CYU fi)
+ = CXU
+ 25 : eq (if false then CXU else CYU fi)
+ = CYU
+ 26 : eq (CXU == CYU) = #!! (coerce-to-bool (term-equational-equal cxu cyu))
+ 27 : eq (CXU =b= CYU) = #!! (coerce-to-bool (term-equational-equal cxu cyu))
+ 28 : eq (CXU =/= CYU) = #!! (coerce-to-bool (not (term-equational-equal cxu cyu)))
+ 29 : eq (I:Pid = I) = true
+ 30 : eq 
+Error: Received signal number 11 (Segmentation fault)
+  [condition type: synchronous-operating-system-signal]
+
+Restart actions (select using :continue):
+ 0: Abort entirely from this (lisp) process.
+
+[changing package from "COMMON-LISP-USER" to "CHAOS"]
+[1] CHAOS(1): 

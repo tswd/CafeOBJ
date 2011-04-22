@@ -1,0 +1,9 @@
+  { * } ; PH
+| { ?(sitdown [ y ]) } ; { ?(getup [ y ]) } ; ST
+| { ?(pickup [ x ]) } ; { ?(putdown [ x ]) } ; FK
+| { ?(pickup [ x ]) } ; { ?(putdown [ x ]) } ; FK
+| { ?(pickup [ x ]) } ; { ?(putdown [ x ]) } ; FK
+| { * } ; PH
+| { * } ; PH
+| { ?(sitdown [ y ]) } ; { ?(getup [ y ]) } ; ST
+| { ?(sitdown [ y ]) } ; { ?(getup [ y ]) } ; ST

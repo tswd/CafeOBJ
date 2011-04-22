@@ -1,0 +1,35 @@
+This is pTeX, Version p2.1.8, based on TeX, Version 3.14159 (EUC) (Web2C 7.2) (format=platex 1999.7.20)  8 FEB 2002 21:35
+**pnslide
+(pnslide.tex
+pLaTeX2e <1999/04/05>+0 (based on LaTeX2e <1999/06/01> patch level 1)
+
+! LaTeX Error: File `seminar.cls' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: cls)
+
+Enter file name: q
+
+! LaTeX Error: File `q.cls' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: cls)
+
+Enter file name: 
+! Emergency stop.
+<read *> 
+         
+l.2 \usepackage
+               [dvips]{color}
+End of file on the terminal!
+
+ 
+Here is how much of TeX's memory you used:
+ 9 strings out of 10659
+ 87 string characters out of 69276
+ 46377 words of memory out of 263001
+ 3194 multiletter control sequences out of 10000+0
+ 7519 words of font info for 31 fonts, out of 200000 for 1000
+ 14 hyphenation exceptions out of 1000
+ 11i,0n,7p,52b,7s stack positions out of 300i,100n,500p,30000b,4000s
+No pages of output.

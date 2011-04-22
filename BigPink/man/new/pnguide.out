@@ -1,0 +1,121 @@
+\BOOKMARK [0][-]{section*.3}{目次}{}% 1
+\BOOKMARK [0][-]{chapter.1}{PigNoseシステムの概要}{}% 2
+\BOOKMARK [0][-]{chapter.2}{インストール/起動方法}{}% 3
+\BOOKMARK [1][-]{section.2.1}{システム要件}{chapter.2}% 4
+\BOOKMARK [2][-]{subsection.2.1.1}{プラットフォーム}{section.2.1}% 5
+\BOOKMARK [1][-]{section.2.2}{インストール方法}{chapter.2}% 6
+\BOOKMARK [2][-]{subsection.2.2.1}{配布形式}{section.2.2}% 7
+\BOOKMARK [2][-]{subsection.2.2.2}{ソースからのインストール方法}{section.2.2}% 8
+\BOOKMARK [3][-]{section*.4}{Unix/Linux 上でのインストール方法}{subsection.2.2.2}% 9
+\BOOKMARK [3][-]{section*.7}{Windows 上でのインストール方法}{subsection.2.2.2}% 10
+\BOOKMARK [2][-]{subsection.2.2.3}{バイナリ配付のインストール方法}{section.2.2}% 11
+\BOOKMARK [3][-]{section*.8}{i386\040Linux}{subsection.2.2.3}% 12
+\BOOKMARK [3][-]{section*.9}{Windows}{subsection.2.2.3}% 13
+\BOOKMARK [2][-]{subsection.2.2.4}{何がインストールされるか}{section.2.2}% 14
+\BOOKMARK [1][-]{section.2.3}{起動方法}{chapter.2}% 15
+\BOOKMARK [2][-]{subsection.2.3.1}{fopl.mod のロード}{section.2.3}% 16
+\BOOKMARK [0][-]{chapter.3}{反駁エンジン}{}% 17
+\BOOKMARK [1][-]{section.3.1}{反駁エンジンの機能}{chapter.3}% 18
+\BOOKMARK [1][-]{section.3.2}{CafeOBJモジュールの解釈}{chapter.3}% 19
+\BOOKMARK [2][-]{subsection.3.2.1}{FOPL文}{section.3.2}% 20
+\BOOKMARK [2][-]{subsection.3.2.2}{等式の解釈}{section.3.2}% 21
+\BOOKMARK [2][-]{subsection.3.2.3}{組み込み述語の解釈\(変換\)}{section.3.2}% 22
+\BOOKMARK [2][-]{subsection.3.2.4}{制約事項}{section.3.2}% 23
+\BOOKMARK [2][-]{subsection.3.2.5}{その他の CafeOBJ 組み込みモジュールの扱い}{section.3.2}% 24
+\BOOKMARK [1][-]{section.3.3}{組み込みモジュール – FOPL-CLAUSE}{chapter.3}% 25
+\BOOKMARK [2][-]{subsection.3.3.1}{FOPL-CLAUSE の自動輸入}{section.3.3}% 26
+\BOOKMARK [1][-]{section.3.4}{FOPL の構文}{chapter.3}% 27
+\BOOKMARK [2][-]{subsection.3.4.1}{論理結合子の構文}{section.3.4}% 28
+\BOOKMARK [2][-]{subsection.3.4.2}{述語・命題の宣言}{section.3.4}% 29
+\BOOKMARK [2][-]{subsection.3.4.3}{FOPL文の記述例}{section.3.4}% 30
+\BOOKMARK [1][-]{section.3.5}{FOPL 文による公理の宣言}{chapter.3}% 31
+\BOOKMARK [1][-]{section.3.6}{反駁エンジンの新規コマンド群}{chapter.3}% 32
+\BOOKMARK [1][-]{section.3.7}{PigNose の一般的なスクリプト構造}{chapter.3}% 33
+\BOOKMARK [1][-]{section.3.8}{節の印字形式}{chapter.3}% 34
+\BOOKMARK [2][-]{subsection.3.8.1}{節表示の一般形式}{section.3.8}% 35
+\BOOKMARK [2][-]{subsection.3.8.2}{Skolem 関数の表示形式}{section.3.8}% 36
+\BOOKMARK [2][-]{subsection.3.8.3}{変数}{section.3.8}% 37
+\BOOKMARK [2][-]{subsection.3.8.4}{節の印字例}{section.3.8}% 38
+\BOOKMARK [1][-]{section.3.9}{推論プロセスの概要}{chapter.3}% 39
+\BOOKMARK [2][-]{subsection.3.9.1}{証明戦略 – SOS}{section.3.9}% 40
+\BOOKMARK [2][-]{subsection.3.9.2}{推論プロセスの主ループ}{section.3.9}% 41
+\BOOKMARK [1][-]{section.3.10}{フラグとパラメータの設定}{chapter.3}% 42
+\BOOKMARK [2][-]{subsection.3.10.1}{フラグ/パラメータ値の保存/初期化}{section.3.10}% 43
+\BOOKMARK [1][-]{section.3.11}{フラグ}{chapter.3}% 44
+\BOOKMARK [2][-]{subsection.3.11.1}{given clause 選択に関するフラグ}{section.3.11}% 45
+\BOOKMARK [2][-]{subsection.3.11.2}{その他の主ループ動作に関するフラグ}{section.3.11}% 46
+\BOOKMARK [2][-]{subsection.3.11.3}{推論ルールに関するフラグ}{section.3.11}% 47
+\BOOKMARK [2][-]{subsection.3.11.4}{Paramodulation に関するフラグ}{section.3.11}% 48
+\BOOKMARK [2][-]{subsection.3.11.5}{導出節の処理に関するフラグ}{section.3.11}% 49
+\BOOKMARK [2][-]{subsection.3.11.6}{Demodulation と等式の向きつけに関するフラグ}{section.3.11}% 50
+\BOOKMARK [2][-]{subsection.3.11.7}{入力節の処理に関するフラグ}{section.3.11}% 51
+\BOOKMARK [2][-]{subsection.3.11.8}{印字に関するフラグ}{section.3.11}% 52
+\BOOKMARK [2][-]{subsection.3.11.9}{その他のフラグ}{section.3.11}% 53
+\BOOKMARK [1][-]{section.3.12}{パラメータ}{chapter.3}% 54
+\BOOKMARK [2][-]{subsection.3.12.1}{探索制約設定パラメータ}{section.3.12}% 55
+\BOOKMARK [2][-]{subsection.3.12.2}{導出節に対する制約設定パラメータ}{section.3.12}% 56
+\BOOKMARK [2][-]{subsection.3.12.3}{その他のパラメータ}{section.3.12}% 57
+\BOOKMARK [1][-]{section.3.13}{自動モード}{chapter.3}% 58
+\BOOKMARK [1][-]{section.3.14}{統計情報}{chapter.3}% 59
+\BOOKMARK [1][-]{section.3.15}{証明木とその印字}{chapter.3}% 60
+\BOOKMARK [2][-]{subsection.3.15.1}{導出履歴欄の見方}{section.3.15}% 61
+\BOOKMARK [1][-]{section.3.16}{項の順序付けと Demodulation}{chapter.3}% 62
+\BOOKMARK [2][-]{subsection.3.16.1}{単純辞書式順 – Ad Hoc}{section.3.16}% 63
+\BOOKMARK [3][-]{section*.14}{項の順序 \(Ad Hoc\)}{subsection.3.16.1}% 64
+\BOOKMARK [3][-]{section*.15}{等式の方向付け \(Ad Hoc\)}{subsection.3.16.1}% 65
+\BOOKMARK [3][-]{section*.16}{Dynamic Demodulator の判定 \(Ad Hoc\)}{subsection.3.16.1}% 66
+\BOOKMARK [3][-]{section*.17}{Lex-依存の Demodulation \(Ad Hoc\)}{subsection.3.16.1}% 67
+\BOOKMARK [2][-]{subsection.3.16.2}{LRPO}{section.3.16}% 68
+\BOOKMARK [3][-]{section*.18}{項の順序付け \(lrpo\)}{subsection.3.16.2}% 69
+\BOOKMARK [3][-]{section*.19}{オペレータ記号の順序付け – lex コマンド}{subsection.3.16.2}% 70
+\BOOKMARK [3][-]{section*.21}{等式の方向つけ \(lrpo\)}{subsection.3.16.2}% 71
+\BOOKMARK [3][-]{section*.22}{Dynamic Demodulator の判定 \(lrpo\)}{subsection.3.16.2}% 72
+\BOOKMARK [3][-]{section*.23}{lrpo-依存の Demodulation \(lrpo\)}{subsection.3.16.2}% 73
+\BOOKMARK [0][-]{chapter.4}{詳細化検証}{}% 74
+\BOOKMARK [1][-]{section.4.1}{仕様詳細化検証システムの機能}{chapter.4}% 75
+\BOOKMARK [1][-]{section.4.2}{詳細化検証システムの新規コマンド}{chapter.4}% 76
+\BOOKMARK [1][-]{section.4.3}{シグニチャマッチング}{chapter.4}% 77
+\BOOKMARK [2][-]{subsection.4.3.1}{シグニチャマッチングの考え方}{section.4.3}% 78
+\BOOKMARK [2][-]{subsection.4.3.2}{シグニチャマッチングの例}{section.4.3}% 79
+\BOOKMARK [1][-]{section.4.4}{詳細化検証の例}{chapter.4}% 80
+\BOOKMARK [2][-]{subsection.4.4.1}{QUEUE と STACK}{section.4.4}% 81
+\BOOKMARK [2][-]{subsection.4.4.2}{モノイドと自然数上の演算の例}{section.4.4}% 82
+\BOOKMARK [0][-]{chapter.5}{モデル検査システム}{}% 83
+\BOOKMARK [1][-]{section.5.1}{モデル検査システムの機能}{chapter.5}% 84
+\BOOKMARK [2][-]{subsection.5.1.1}{モデル検査の実行方式}{section.5.1}% 85
+\BOOKMARK [2][-]{subsection.5.1.2}{双対機能法の実行方式}{section.5.1}% 86
+\BOOKMARK [1][-]{section.5.2}{モデル検査での新規コマンド}{chapter.5}% 87
+\BOOKMARK [1][-]{section.5.3}{モデル検査の使用例}{chapter.5}% 88
+\BOOKMARK [0][-]{appendix.A}{導出原理}{}% 89
+\BOOKMARK [1][-]{section.A.1}{節形式と節集合}{appendix.A}% 90
+\BOOKMARK [1][-]{section.A.2}{導出}{appendix.A}% 91
+\BOOKMARK [0][-]{appendix.B}{反駁エンジンの動作の詳細}{}% 92
+\BOOKMARK [1][-]{section.B.1}{推論ループの構造}{appendix.B}% 93
+\BOOKMARK [1][-]{section.B.2}{システムの初期化}{appendix.B}% 94
+\BOOKMARK [1][-]{section.B.3}{導出節生成エンジン群の起動}{appendix.B}% 95
+\BOOKMARK [2][-]{subsection.B.3.1}{max-weight パラメータの調整}{section.B.3}% 96
+\BOOKMARK [2][-]{subsection.B.3.2}{節に対する前処理}{section.B.3}% 97
+\BOOKMARK [2][-]{subsection.B.3.3}{節に対する処理の検査内容}{section.B.3}% 98
+\BOOKMARK [2][-]{subsection.B.3.4}{Unit\040Deletion}{section.B.3}% 99
+\BOOKMARK [2][-]{subsection.B.3.5}{Tautology 検査}{section.B.3}% 100
+\BOOKMARK [2][-]{subsection.B.3.6}{Subsumption テスト}{section.B.3}% 101
+\BOOKMARK [2][-]{subsection.B.3.7}{Forward Subsumption テスト}{section.B.3}% 102
+\BOOKMARK [1][-]{section.B.4}{節に対する後処理}{appendix.B}% 103
+\BOOKMARK [2][-]{subsection.B.4.1}{Back Subsumption テスト}{section.B.4}% 104
+\BOOKMARK [2][-]{subsection.B.4.2}{Back\040Unit\040Deletion}{section.B.4}% 105
+\BOOKMARK [1][-]{section.B.5}{推論終了の判定}{appendix.B}% 106
+\BOOKMARK [2][-]{subsection.B.5.1}{Unit Conflict 検査}{section.B.5}% 107
+\BOOKMARK [2][-]{subsection.B.5.2}{Factoring 処理}{section.B.5}% 108
+\BOOKMARK [3][-]{section*.26}{Factor Simplification 処理}{subsection.B.5.2}% 109
+\BOOKMARK [0][-]{appendix.C}{推論ルール概説}{}% 110
+\BOOKMARK [1][-]{section.C.1}{Binary\040Resolution}{appendix.C}% 111
+\BOOKMARK [1][-]{section.C.2}{Hyper\040Resolution}{appendix.C}% 112
+\BOOKMARK [2][-]{subsection.C.2.1}{Semantic Resolution の考え方}{section.C.2}% 113
+\BOOKMARK [2][-]{subsection.C.2.2}{PI-resolution の定義}{section.C.2}% 114
+\BOOKMARK [2][-]{subsection.C.2.3}{Negative\040Hyper\040Resolution}{section.C.2}% 115
+\BOOKMARK [2][-]{subsection.C.2.4}{Positive\040Hyper\040Resolution}{section.C.2}% 116
+\BOOKMARK [1][-]{section.C.3}{Paramodulation}{appendix.C}% 117
+\BOOKMARK [1][-]{section.C.4}{Demodulation}{appendix.C}% 118
+\BOOKMARK [2][-]{subsection.C.4.1}{実行時のdemodulator判定}{section.C.4}% 119
+\BOOKMARK [2][-]{subsection.C.4.2}{Back Demdulation の実行}{section.C.4}% 120
+\BOOKMARK [0][-]{section*.28}{参考文献}{}% 121

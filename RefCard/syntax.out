@@ -1,0 +1,13 @@
+\BOOKMARK [1][-]{section.1}{Syntax}{}
+\BOOKMARK [2][-]{subsection.1.1}{CafeOBJ Spec}{section.1}
+\BOOKMARK [2][-]{subsection.1.2}{Module Declaration}{section.1}
+\BOOKMARK [2][-]{subsection.1.3}{Module Expression}{section.1}
+\BOOKMARK [2][-]{subsection.1.4}{View Declaration}{section.1}
+\BOOKMARK [2][-]{subsection.1.5}{Evaluation}{section.1}
+\BOOKMARK [2][-]{subsection.1.6}{Sugars and Abbriviations}{section.1}
+\BOOKMARK [1][-]{section.2}{Lexical Considerations}{}
+\BOOKMARK [2][-]{subsection.2.1}{Reserved Word}{section.2}
+\BOOKMARK [2][-]{subsection.2.2}{Self-terminating Characters}{section.2}
+\BOOKMARK [2][-]{subsection.2.3}{Identifier}{section.2}
+\BOOKMARK [2][-]{subsection.2.4}{Operator Symbol}{section.2}
+\BOOKMARK [2][-]{subsection.2.5}{Comments and Separators}{section.2}
