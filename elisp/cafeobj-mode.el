@@ -713,10 +713,10 @@ The following keys are bound:
     (set (make-local-variable 'cafeobj-process-buffer) nil)
     (make-local-variable 'cafeobj-default-command-switches)
     ;;
-    ;;(cond (cafeobj-xemacs-p
-    ;;	   (make-local-variable 'font-lock-defaults))
-    ;;	  (t (set (make-local-variable 'font-lock-keywords)
-    ;;		  cafeobj-font-lock-keywords)))
+    (cond (cafeobj-xemacs-p
+    	   (make-local-variable 'font-lock-defaults))
+    	  (t (set (make-local-variable 'font-lock-keywords)
+    		  cafeobj-font-lock-keywords)))
     ;;
     (set (make-local-variable 'indent-line-function) 'cafeobj-indent-line)
     (set (make-local-variable 'comment-start) "-- ") ; obsolate? ... should be fixed.

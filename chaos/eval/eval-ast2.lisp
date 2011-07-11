@@ -608,7 +608,7 @@
     (setq *last-module* mod)
     (clear-term-memo-table *term-memo-table*)
     (let ((*chaos-quiet* t)
-	  (*copy-variables* t))
+          (*copy-variables* t))
       (setf (%module-decl-kind *module-open-form*) (module-kind mod))
       (setq *last-module* (eval-ast *module-open-form*))
       (import-module *last-module* :using mod)

@@ -1,2 +1,8 @@
 *.fasl
 dist/cafeobj-1.4
+*.out
+*.elc
+*.lib
+*.o
+*.exe
+*~
