@@ -1,5 +1,5 @@
 *.fasl
-dist/cafeobj-1.4
+dist
 *.out
 *.elc
 *.lib
