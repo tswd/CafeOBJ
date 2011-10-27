@@ -2,9 +2,9 @@
 ;;; $Id: cafeobj-top.lisp,v 1.3 2007-01-18 11:03:38 sawada Exp $
 (in-package :chaos)
 #|==============================================================================
-				 System: CHAOS
-				Module: cafeobj
-				 File: top.lisp
+System: CHAOS
+Module: cafeobj
+File: top.lisp
 ==============================================================================|#
 #-:chaos-debug
 (declaim (optimize (speed 3) (safety 0) #-GCL (debug 0)))
@@ -34,15 +34,15 @@
       (print-centering g_line_1)
       (fresh-line)
       (print-centering (format nil " built: ~a" 
-			       (if -cafeobj-load-time-
-				   -cafeobj-load-time-
-				 "not yet installed.")))
+                               (if -cafeobj-load-time-
+                                   -cafeobj-load-time-
+                                 "not yet installed.")))
       (fresh-line)
       (print-centering
        (format nil "prelude file: ~a"
-	       (if *cafeobj-standard-prelude-path*
-		   (file-namestring *cafeobj-standard-prelude-path*)
-		 'NONE)))
+               (if *cafeobj-standard-prelude-path*
+                   (file-namestring *cafeobj-standard-prelude-path*)
+                 'NONE)))
       (fresh-line)
       (print-centering "***")
       (fresh-line)
@@ -69,7 +69,7 @@
       (print-centering "---")
       (fresh-line)
       (print-centering (concatenate
-			   'string "built on " .lisp-implementation.))
+                           'string "built on " .lisp-implementation.))
       (fresh-line)
       (print-centering .lisp-version.))
     ))
@@ -94,42 +94,42 @@
   (catch *top-level-tag*
     (with-chaos-top-error ()
       (with-chaos-error ()
-	(dolist (f (reverse *cafeobj-initial-load-files*))
-	  (cafeobj-input f)))))
+        (dolist (f (reverse *cafeobj-initial-load-files*))
+          (cafeobj-input f)))))
   ;;
   (if (not *cafeobj-batch*)
       (progn
-	;;
-	(let ((quit-flag nil)
-	      (*print-case* :downcase)
-	      #+CMU (common-lisp:*compile-verbose* nil)
-	      #+CMU (common-lisp:*compile-print* nil)
-	      #+CMU (ext:*gc-verbose* nil)
-	      #+:ALLEGRO (*global-gc-behavior* :auto)
-	      #+:ALLEGRO (*print-pretty* nil)
-	      )
-	  #+:ALLEGRO
-	  (declare (special *global-gc-behaviour* *print-pretty*))
-	  (unless no-init
-	    (catch *top-level-tag*
-	      (with-chaos-top-error ()
-		(with-chaos-error ()
-		  (cafeobj-init-files)))))
-	  (loop (catch *top-level-tag*
-		  (process-cafeobj-input)
-		  (setq quit-flag t))
-		(when quit-flag (return)))
-	  )
-	(format t "[Leaving CafeOBJ]~%")))
+        ;;
+        (let ((quit-flag nil)
+              (*print-case* :downcase)
+              #+CMU (common-lisp:*compile-verbose* nil)
+              #+CMU (common-lisp:*compile-print* nil)
+              #+CMU (ext:*gc-verbose* nil)
+              #+:ALLEGRO (*global-gc-behavior* :auto)
+              #+:ALLEGRO (*print-pretty* nil)
+              )
+          #+:ALLEGRO
+          (declare (special *global-gc-behaviour* *print-pretty*))
+          (unless no-init
+            (catch *top-level-tag*
+              (with-chaos-top-error ()
+                (with-chaos-error ()
+                  (cafeobj-init-files)))))
+          (loop (catch *top-level-tag*
+                  (process-cafeobj-input)
+                  (setq quit-flag t))
+            (when quit-flag (return)))
+          )
+        (format t "[Leaving CafeOBJ]~%")))
   (finish-output) 
   )
 
 #+microsoft
 (defun cafeobj (&optional no-init)
   (let ((*terminal-io* *terminal-io*)
-	(*standard-input* *terminal-io*)
-	(*standard-output* *terminal-io*)
-	#+:ALLEGRO (*print-pretty* nil))
+        (*standard-input* *terminal-io*)
+        (*standard-output* *terminal-io*)
+        #+:ALLEGRO (*print-pretty* nil))
     (declare (special *print-pretty*))
     ;;
     (cafeobj-init)
@@ -144,29 +144,29 @@
     ;;
     (catch *top-level-tag*
       (with-chaos-top-error ()
-	(with-chaos-error ()
-	  (dolist (f (reverse *cafeobj-initial-load-files*))
-	    (cafeobj-input f)))))
+        (with-chaos-error ()
+          (dolist (f (reverse *cafeobj-initial-load-files*))
+            (cafeobj-input f)))))
     ;;
     (if (not *cafeobj-batch*)
-	(progn
-	  ;;
-	  (let ((quit-flag nil)
-		(*print-case* :downcase)
-		(*global-gc-behavior* :auto)
-		)
-	    (declare (special *global-gc-behaviour*))
-	    (unless no-init
-	      (catch *top-level-tag*
-		(with-chaos-top-error ()
-		  (with-chaos-error ()
-		    (cafeobj-init-files)))))
-	    (loop (catch *top-level-tag*
-		    (process-cafeobj-input)
-		    (setq quit-flag t))
-	      (when quit-flag (return)))
-	    )
-	  (format t "[Leaving CafeOBJ]~%")))
+        (progn
+          ;;
+          (let ((quit-flag nil)
+                (*print-case* :downcase)
+                (*global-gc-behavior* :auto)
+                )
+            (declare (special *global-gc-behaviour*))
+            (unless no-init
+              (catch *top-level-tag*
+                (with-chaos-top-error ()
+                  (with-chaos-error ()
+                    (cafeobj-init-files)))))
+            (loop (catch *top-level-tag*
+                    (process-cafeobj-input)
+                    (setq quit-flag t))
+              (when quit-flag (return)))
+            )
+          (format t "[Leaving CafeOBJ]~%")))
     (finish-output) 
     ))
 
@@ -194,29 +194,34 @@
   (when *cafeobj-load-init-file*
     (when *chaos-vergine*
       (let ((val (get-environment-variable "CAFEOBJINIT")))
-	(if (and val (probe-file val))
-	    (cafeobj-input val)
-	    (if (probe-file (make-pathname :name ".cafeobj"))
-		(cafeobj-input (make-pathname :name ".cafeobj"))
-		(let ((home (or 
-			     (namestring (user-homedir-pathname))
-			     (get-environment-variable "HOME")
-			     )))
-		  (when home
-		    (let ((dot-cafeobj (merge-pathnames
-					home
-					(make-pathname :name ".cafeobj"))))
-		      (when (probe-file dot-cafeobj)
-			(cafeobj-input dot-cafeobj))))))))
+        (if (and val (probe-file val))
+            (cafeobj-input val)
+          (if (probe-file (make-pathname :name ".cafeobj"))
+              (cafeobj-input (make-pathname :name ".cafeobj"))
+            (let ((home (or 
+                         (namestring (user-homedir-pathname))
+                         (get-environment-variable "HOME")
+                         )))
+              (when home
+                (let ((dot-cafeobj (merge-pathnames
+                                    home
+                                    (make-pathname :name ".cafeobj"))))
+                  (when (probe-file dot-cafeobj)
+                    (cafeobj-input dot-cafeobj))))))))
       (let ((lib-path (get-environment-variable "CAFEOBJLIB"))
-	    (load-path nil))
-	(when lib-path
-	  (dolist (x (parse-with-delimiter lib-path #\:))
-	    (push x load-path))
-	  (setq *chaos-libpath* (append (nreverse load-path)
-					*chaos-libpath*))
-	  ))
-      (setq *chaos-vergine* nil))))
+            (load-path nil))
+        (when lib-path
+          (dolist (x (parse-with-delimiter lib-path #\:))
+            (push x load-path))
+          (setq *chaos-libpath* (append (nreverse load-path)
+                                        *chaos-libpath*))
+          ))
+      (setq *chaos-vergine* nil)))
+  ;; message DB
+  (setup-message-db)
+  ;; help DB
+  (setup-help-db)
+  )
 
 ;;; **********************
 ;;; THE TOP LEVEL FUNCTION
@@ -238,15 +243,15 @@
   ;;
   (let ((res (catch *top-level-tag* (cafeobj) 'ok-exit)))
     (if (eq res 'ok-exit)
-	(bye-bye-bye)
-	(progn
-	  (princ "** ERROR")
-	  (terpri)))))
+        (bye-bye-bye)
+      (progn
+        (princ "** ERROR")
+        (terpri)))))
 
 #+EXCL
 (eval-when (eval load)
   (top-level:alias "q" (&rest args)
-		   (apply #'top-level:do-command "pop" args))  
+    (apply #'top-level:do-command "pop" args))  
   )
 
 ;; EOF

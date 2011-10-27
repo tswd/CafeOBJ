@@ -1,3 +1,4 @@
+;;; PigNose -------------------- 
 ./BigPink/codes/butils.lisp:399:	    (with-output-chaos-warning ()
 ./BigPink/codes/clause.lisp:169:	  (with-output-chaos-warning ()
 ./BigPink/codes/clause.lisp:557:			   (with-output-chaos-warning ()
@@ -24,6 +25,7 @@
 ./BigPink/codes/modconv.lisp:87:	(with-output-chaos-warning ()
 ./BigPink/codes/weight.lisp:191:		     (with-output-chaos-warning ()
 ./BigPink/codes/weight.lisp:197:	(with-output-chaos-warning ()
+;;; TopLevel -------------------
 ./cafeobj/command-proc.lisp:119:      (with-output-chaos-warning ()
 ./cafeobj/command-proc.lisp:617:	  (t (with-output-chaos-warning ()
 ./cafeobj/command-proc.lisp:689:	  (with-output-chaos-warning ()
@@ -36,11 +38,13 @@
 ./cafeobj/trans-decl.lisp:368:	    (with-output-chaos-warning ()
 ./cafeobj/trans-decl.lisp:400:      (with-output-chaos-warning ()
 ./cafeobj/trans-decl.lisp:404:      (with-output-chaos-warning ()
+;;; Rewriting ------------------
 ./chaos/cafein/cbred.lisp:326:		  (with-output-chaos-warning ()
 ./chaos/cafein/rdebug.lisp:372:		     (with-output-chaos-warning ()
 ./chaos/cafein/rengine.lisp:368:	  (with-output-chaos-warning ()
 ./chaos/cafein/rengine.lisp:539:		(with-output-chaos-warning ()
 ./chaos/cafein/rengine.lisp:1366:		     (with-output-chaos-warning ()
+;;; Construct ------------------
 ./chaos/construct/axiom.lisp:987:	      (with-output-chaos-warning ()
 ./chaos/construct/beh.lisp:107:		  (with-output-chaos-warning ()
 ./chaos/construct/beh.lisp:111:		  (with-output-chaos-warning ()
@@ -85,6 +89,8 @@
 ./chaos/construct/variable.lisp:79:		 (with-output-chaos-warning ()
 ./chaos/construct/variable.lisp:110:	  (with-output-chaos-warning ()
 ./chaos/construct/variable.lisp:173:	  (with-output-chaos-warning ()
+
+;;; Module Expression --------------
 ./chaos/decafe/meval.lisp:444:		     (with-output-chaos-warning ()
 ./chaos/decafe/mimport-new.lisp:388:		       (with-output-chaos-warning ()
 ./chaos/decafe/mimport-new.lisp:1046:	    (with-output-chaos-warning ()
@@ -105,7 +111,9 @@
 ./chaos/decafe/view.lisp:1022:      (with-output-chaos-warning ()
 ./chaos/decafe/view.lisp:1167:		     (with-output-chaos-warning ()
 ./chaos/decafe/view.lisp:1348:	      (with-output-chaos-warning ()
+;;; Matching -------------------
 ./chaos/e-match/match-e.lisp:82:    (with-output-chaos-warning ()
+;;; Evaluation -----------------
 ./chaos/eval/eval-ast.lisp:57:	  (with-output-chaos-warning ()
 ./chaos/eval/eval-ast.lisp:300:		  (with-output-chaos-warning ()
 ./chaos/eval/eval-ast.lisp:313:		  (with-output-chaos-warning ()
@@ -125,6 +133,7 @@
 ./chaos/eval/eval-ast2.lisp:1074:	   (with-output-chaos-warning ()
 ./chaos/eval/eval-ast2.lisp:1087:	   (with-output-chaos-warning ()
 ./chaos/eval/eval-mod.lisp:54:	      (with-output-chaos-warning ()
+;;; Primitives -------------------
 ./chaos/primitives/bflags.lisp:133:	    (with-output-chaos-warning ()
 ./chaos/primitives/bsort.lisp:1524:		 (with-output-chaos-warning ()
 ./chaos/primitives/context.lisp:129:	    (with-output-chaos-warning ()
@@ -136,29 +145,36 @@
 ./chaos/primitives/find.lisp:460:	      (with-output-chaos-warning ()
 ./chaos/primitives/gen-eval.lisp:77:			    (with-output-chaos-warning ()
 ./chaos/primitives/term-utils.lisp:243:	      (with-output-chaos-warning ()
+;;; Parser -----------------------
 ./chaos/term-parser/parse-engine.lisp:286:				 (with-output-chaos-warning ()
 ./chaos/term-parser/parse-engine.lisp:305:				     (with-output-chaos-warning ()
 ./chaos/term-parser/parse-engine.lisp:1475:	      (with-output-chaos-warning ()
 ./chaos/term-parser/parse-top.lisp:121:      (with-output-chaos-warning ()
 ./chaos/term-parser/parse-top.lisp:308:      (with-output-chaos-warning ()
+;;; Toplevel ---------------------
 ./chaos/tools/describe.lisp:414:    (with-output-chaos-warning ()
 ./chaos/tools/import-tree.lisp:20:    (with-output-chaos-warning ()
 ./chaos/tools/module-tree.lisp:29:    (with-output-chaos-warning ()
+;;; Checker ----------------------
 ./chaos/tools/op-check.lisp:230:      (with-output-chaos-warning ()
 ./chaos/tools/op-check.lisp:243:	(with-output-chaos-warning ()
 ./chaos/tools/op-check.lisp:250:	(with-output-chaos-warning ()
 ./chaos/tools/op-check.lisp:255:	(with-output-chaos-warning ()
 ./chaos/tools/op-check.lisp:604:      (with-output-chaos-warning ()
+;;; Switch
 ./chaos/tools/set.lisp:210:	(with-output-chaos-warning ()
 ./chaos/tools/set.lisp:252:		(with-output-chaos-warning ()
 ./chaos/tools/set.lisp:384:  (with-output-chaos-warning ()
 ./chaos/tools/set.lisp:392:  (with-output-chaos-warning ()
+;;; Toplevel ---------------
 ./chaos/tools/show.lisp:158:    (with-output-chaos-warning ()
+;;; Library ----------------
 ./comlib/fsys.lisp:277:			(with-output-chaos-warning ()
 ./comlib/fsys.lisp:297:    (with-output-chaos-warning ()
 ./comlib/fsys.lisp:327:    (cond (ng (with-output-chaos-warning ()
 ./comlib/fsys.lisp:389:	      (with-output-chaos-warning ()
 ./comlib/message.lisp:36:(defmacro with-output-chaos-warning ((&optional (stream '*error-output*)) &body body)
+;;; Apply/Exec -------------
 ./thstuff/basics.lisp:23:    (with-output-chaos-warning ()
 ./thstuff/basics.lisp:115:	(with-output-chaos-warning ()
 ./thstuff/basics.lisp:136:	(with-output-chaos-warning ()
@@ -169,13 +185,10 @@
 ./thstuff/basics.lisp:210:	   (with-output-chaos-warning ()
 ./thstuff/basics.lisp:265:	  (with-output-chaos-warning ()
 ./thstuff/basics.lisp:547:		      (with-output-chaos-warning ()
-./thstuff/cexec-.lisp:219:      (with-output-chaos-warning ()
-./thstuff/cexec-.lisp:269:	  (with-output-chaos-warning ()
 ./thstuff/cexec.lisp:224:      (with-output-chaos-warning ()
 ./thstuff/cexec.lisp:274:	  (with-output-chaos-warning ()
 ./thstuff/eval-apply.lisp:59:		  (with-output-chaos-warning ()
 ./thstuff/eval-apply.lisp:79:    (with-output-chaos-warning ()
 ./thstuff/eval-apply.lisp:184:		  (with-output-chaos-warning ()
 ./thstuff/eval-match.lisp:48:	  (with-output-chaos-warning ()
-./tk-tools/main.lisp:264:	  (chaos::with-output-chaos-warning ()
-./tk-tools/main.lisp:518:		(chaos::with-output-chaos-warning ()
+

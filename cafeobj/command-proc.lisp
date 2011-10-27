@@ -449,8 +449,10 @@
 ;;; ****
 
 (defun cafeobj-eval-help-proc (inp)
-  (declare (ignore inp))
-  (cafeobj-top-level-help))
+  (cafeobj-top-level-help inp))
+
+(defun cafeobj-eval-what-proc (inp)
+  (cafeobj-what-is inp))
 
 ;;; ***
 ;;; PWD

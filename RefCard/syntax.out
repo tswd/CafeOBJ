@@ -1,13 +1,13 @@
-\BOOKMARK [1][-]{section.1}{Syntax}{}
-\BOOKMARK [2][-]{subsection.1.1}{CafeOBJ Spec}{section.1}
-\BOOKMARK [2][-]{subsection.1.2}{Module Declaration}{section.1}
-\BOOKMARK [2][-]{subsection.1.3}{Module Expression}{section.1}
-\BOOKMARK [2][-]{subsection.1.4}{View Declaration}{section.1}
-\BOOKMARK [2][-]{subsection.1.5}{Evaluation}{section.1}
-\BOOKMARK [2][-]{subsection.1.6}{Sugars and Abbriviations}{section.1}
-\BOOKMARK [1][-]{section.2}{Lexical Considerations}{}
-\BOOKMARK [2][-]{subsection.2.1}{Reserved Word}{section.2}
-\BOOKMARK [2][-]{subsection.2.2}{Self-terminating Characters}{section.2}
-\BOOKMARK [2][-]{subsection.2.3}{Identifier}{section.2}
-\BOOKMARK [2][-]{subsection.2.4}{Operator Symbol}{section.2}
-\BOOKMARK [2][-]{subsection.2.5}{Comments and Separators}{section.2}
+\BOOKMARK [1][-]{section.1}{Syntax}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{CafeOBJ\040Spec}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Module\040Declaration}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{Module\040Expression}{section.1}% 4
+\BOOKMARK [2][-]{subsection.1.4}{View\040Declaration}{section.1}% 5
+\BOOKMARK [2][-]{subsection.1.5}{Evaluation}{section.1}% 6
+\BOOKMARK [2][-]{subsection.1.6}{Sugars\040and\040Abbriviations}{section.1}% 7
+\BOOKMARK [1][-]{section.2}{Lexical\040Considerations}{}% 8
+\BOOKMARK [2][-]{subsection.2.1}{Reserved\040Word}{section.2}% 9
+\BOOKMARK [2][-]{subsection.2.2}{Self-terminating\040Characters}{section.2}% 10
+\BOOKMARK [2][-]{subsection.2.3}{Identifier}{section.2}% 11
+\BOOKMARK [2][-]{subsection.2.4}{Operator\040Symbol}{section.2}% 12
+\BOOKMARK [2][-]{subsection.2.5}{Comments\040and\040Separators}{section.2}% 13

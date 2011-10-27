@@ -7,28 +7,28 @@
 \contentsline {section}{\numberline {2.2}インストール方法}{3}{section.2.2}
 \contentsline {subsection}{\numberline {2.2.1}配布形式}{3}{subsection.2.2.1}
 \contentsline {subsection}{\numberline {2.2.2}ソースからのインストール方法}{3}{subsection.2.2.2}
-\contentsline {subsubsection}{Unix/Linux 上でのインストール方法}{4}{section*.4}
-\contentsline {paragraph}{(A) Allegro Common Lispの場合}{4}{section*.5}
-\contentsline {paragraph}{(B) その他のCommon Lisp処理系の場合}{5}{section*.6}
+\contentsline {subsubsection}{Unix/Linux 上でのインストール方法}{3}{section*.4}
+\contentsline {paragraph}{(A) Allegro Common Lispの場合}{3}{section*.5}
+\contentsline {paragraph}{(B) その他のCommon Lisp処理系の場合}{4}{section*.6}
 \contentsline {subsubsection}{Windows 上でのインストール方法}{5}{section*.7}
-\contentsline {subsection}{\numberline {2.2.3}バイナリ配付のインストール方法}{6}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.3}バイナリ配付のインストール方法}{5}{subsection.2.2.3}
 \contentsline {subsubsection}{i386 Linux}{6}{section*.8}
 \contentsline {subsubsection}{Windows}{6}{section*.9}
 \contentsline {subsection}{\numberline {2.2.4}何がインストールされるか}{6}{subsection.2.2.4}
 \contentsline {section}{\numberline {2.3}起動方法}{6}{section.2.3}
 \contentsline {paragraph}{Unix/Linux 上の場合}{6}{section*.10}
-\contentsline {paragraph}{Windows 上の場合}{7}{section*.11}
-\contentsline {subsection}{\numberline {2.3.1}fopl.mod のロード}{7}{subsection.2.3.1}
+\contentsline {paragraph}{Windows 上の場合}{6}{section*.11}
+\contentsline {subsection}{\numberline {2.3.1}fopl.mod のロード}{6}{subsection.2.3.1}
 \contentsline {chapter}{\chapternumberline {3}反駁エンジン}{8}{chapter.3}
 \contentsline {section}{\numberline {3.1}反駁エンジンの機能}{8}{section.3.1}
 \contentsline {section}{\numberline {3.2}CafeOBJモジュールの解釈}{9}{section.3.2}
 \contentsline {subsection}{\numberline {3.2.1}FOPL文}{9}{subsection.3.2.1}
 \contentsline {subsection}{\numberline {3.2.2}等式の解釈}{9}{subsection.3.2.2}
 \contentsline {subsection}{\numberline {3.2.3}組み込み述語の解釈(変換)}{10}{subsection.3.2.3}
-\contentsline {subsection}{\numberline {3.2.4}制約事項}{11}{subsection.3.2.4}
+\contentsline {subsection}{\numberline {3.2.4}制約事項}{10}{subsection.3.2.4}
 \contentsline {subsection}{\numberline {3.2.5}その他の CafeOBJ 組み込みモジュールの扱い}{11}{subsection.3.2.5}
 \contentsline {section}{\numberline {3.3}組み込みモジュール -- FOPL-CLAUSE}{11}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}FOPL-CLAUSE の自動輸入}{12}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.1}FOPL-CLAUSE の自動輸入}{11}{subsection.3.3.1}
 \contentsline {section}{\numberline {3.4}FOPL の構文}{12}{section.3.4}
 \contentsline {subsection}{\numberline {3.4.1}論理結合子の構文}{12}{subsection.3.4.1}
 \contentsline {subsection}{\numberline {3.4.2}述語・命題の宣言}{13}{subsection.3.4.2}
@@ -38,94 +38,94 @@
 \contentsline {section}{\numberline {3.6}反駁エンジンの新規コマンド群}{16}{section.3.6}
 \contentsline {section}{\numberline {3.7}PigNose の一般的なスクリプト構造}{18}{section.3.7}
 \contentsline {section}{\numberline {3.8}節の印字形式}{21}{section.3.8}
-\contentsline {subsection}{\numberline {3.8.1}節表示の一般形式}{22}{subsection.3.8.1}
+\contentsline {subsection}{\numberline {3.8.1}節表示の一般形式}{21}{subsection.3.8.1}
 \contentsline {subsection}{\numberline {3.8.2}Skolem 関数の表示形式}{22}{subsection.3.8.2}
 \contentsline {subsection}{\numberline {3.8.3}変数}{22}{subsection.3.8.3}
-\contentsline {subsection}{\numberline {3.8.4}節の印字例}{23}{subsection.3.8.4}
+\contentsline {subsection}{\numberline {3.8.4}節の印字例}{22}{subsection.3.8.4}
 \contentsline {section}{\numberline {3.9}推論プロセスの概要}{23}{section.3.9}
 \contentsline {subsection}{\numberline {3.9.1}証明戦略 -- SOS}{23}{subsection.3.9.1}
 \contentsline {paragraph}{SOS 方式による導出の例}{24}{section*.13}
-\contentsline {subsection}{\numberline {3.9.2}推論プロセスの主ループ}{25}{subsection.3.9.2}
-\contentsline {section}{\numberline {3.10}フラグとパラメータの設定}{27}{section.3.10}
+\contentsline {subsection}{\numberline {3.9.2}推論プロセスの主ループ}{24}{subsection.3.9.2}
+\contentsline {section}{\numberline {3.10}フラグとパラメータの設定}{26}{section.3.10}
 \contentsline {subsection}{\numberline {3.10.1}フラグ/パラメータ値の保存/初期化}{27}{subsection.3.10.1}
-\contentsline {section}{\numberline {3.11}フラグ}{28}{section.3.11}
-\contentsline {subsection}{\numberline {3.11.1}given clause 選択に関するフラグ}{28}{subsection.3.11.1}
+\contentsline {section}{\numberline {3.11}フラグ}{27}{section.3.11}
+\contentsline {subsection}{\numberline {3.11.1}given clause 選択に関するフラグ}{27}{subsection.3.11.1}
 \contentsline {subsection}{\numberline {3.11.2}その他の主ループ動作に関するフラグ}{28}{subsection.3.11.2}
 \contentsline {subsection}{\numberline {3.11.3}推論ルールに関するフラグ}{28}{subsection.3.11.3}
 \contentsline {subsection}{\numberline {3.11.4}Paramodulation に関するフラグ}{29}{subsection.3.11.4}
-\contentsline {subsection}{\numberline {3.11.5}導出節の処理に関するフラグ}{30}{subsection.3.11.5}
-\contentsline {subsection}{\numberline {3.11.6}Demodulation と等式の向きつけに関するフラグ}{31}{subsection.3.11.6}
+\contentsline {subsection}{\numberline {3.11.5}導出節の処理に関するフラグ}{29}{subsection.3.11.5}
+\contentsline {subsection}{\numberline {3.11.6}Demodulation と等式の向きつけに関するフラグ}{30}{subsection.3.11.6}
 \contentsline {subsection}{\numberline {3.11.7}入力節の処理に関するフラグ}{32}{subsection.3.11.7}
-\contentsline {subsection}{\numberline {3.11.8}印字に関するフラグ}{33}{subsection.3.11.8}
-\contentsline {subsection}{\numberline {3.11.9}その他のフラグ}{33}{subsection.3.11.9}
+\contentsline {subsection}{\numberline {3.11.8}印字に関するフラグ}{32}{subsection.3.11.8}
+\contentsline {subsection}{\numberline {3.11.9}その他のフラグ}{32}{subsection.3.11.9}
 \contentsline {section}{\numberline {3.12}パラメータ}{33}{section.3.12}
-\contentsline {subsection}{\numberline {3.12.1}探索制約設定パラメータ}{34}{subsection.3.12.1}
+\contentsline {subsection}{\numberline {3.12.1}探索制約設定パラメータ}{33}{subsection.3.12.1}
 \contentsline {subsection}{\numberline {3.12.2}導出節に対する制約設定パラメータ}{34}{subsection.3.12.2}
 \contentsline {subsection}{\numberline {3.12.3}その他のパラメータ}{34}{subsection.3.12.3}
-\contentsline {section}{\numberline {3.13}自動モード}{35}{section.3.13}
-\contentsline {section}{\numberline {3.14}統計情報}{36}{section.3.14}
-\contentsline {section}{\numberline {3.15}証明木とその印字}{38}{section.3.15}
-\contentsline {subsection}{\numberline {3.15.1}導出履歴欄の見方}{38}{subsection.3.15.1}
-\contentsline {section}{\numberline {3.16}項の順序付けと Demodulation}{40}{section.3.16}
-\contentsline {subsection}{\numberline {3.16.1}単純辞書式順 -- Ad Hoc}{40}{subsection.3.16.1}
-\contentsline {subsubsection}{項の順序 (Ad Hoc)}{40}{section*.14}
-\contentsline {subsubsection}{等式の方向付け (Ad Hoc)}{40}{section*.15}
-\contentsline {subsubsection}{Dynamic Demodulator の判定 (Ad Hoc)}{41}{section*.16}
-\contentsline {subsubsection}{Lex-依存の Demodulation (Ad Hoc)}{41}{section*.17}
-\contentsline {subsection}{\numberline {3.16.2}LRPO}{42}{subsection.3.16.2}
-\contentsline {subsubsection}{項の順序付け (\textsc {lrpo})}{42}{section*.18}
-\contentsline {subsubsection}{オペレータ記号の順序付け -- lex コマンド}{42}{section*.19}
-\contentsline {paragraph}{lex コマンドに関する注意}{43}{section*.20}
-\contentsline {subsubsection}{等式の方向つけ (\textsc {lrpo})}{43}{section*.21}
-\contentsline {subsubsection}{Dynamic Demodulator の判定 (\textsc {lrpo})}{44}{section*.22}
-\contentsline {subsubsection}{\textsc {lrpo}-依存の Demodulation (\textsc {lrpo})}{44}{section*.23}
-\contentsline {chapter}{\chapternumberline {4}詳細化検証}{45}{chapter.4}
-\contentsline {section}{\numberline {4.1}仕様詳細化検証システムの機能}{45}{section.4.1}
-\contentsline {section}{\numberline {4.2}詳細化検証システムの新規コマンド}{46}{section.4.2}
-\contentsline {section}{\numberline {4.3}シグニチャマッチング}{46}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}シグニチャマッチングの考え方}{46}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}シグニチャマッチングの例}{47}{subsection.4.3.2}
-\contentsline {section}{\numberline {4.4}詳細化検証の例}{49}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}QUEUE と STACK}{49}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}モノイドと自然数上の演算の例}{50}{subsection.4.4.2}
-\contentsline {chapter}{\chapternumberline {5}モデル検査システム}{54}{chapter.5}
-\contentsline {section}{\numberline {5.1}モデル検査システムの機能}{54}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}モデル検査の実行方式}{54}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}双対機能法の実行方式}{55}{subsection.5.1.2}
-\contentsline {section}{\numberline {5.2}モデル検査での新規コマンド}{55}{section.5.2}
-\contentsline {paragraph}{初期文脈に関する検査}{56}{section*.24}
-\contentsline {paragraph}{メソッド適用文脈での検査}{56}{section*.25}
-\contentsline {section}{\numberline {5.3}モデル検査の使用例}{58}{section.5.3}
-\contentsline {appendix}{\chapternumberline {A}導出原理}{63}{appendix.A}
-\contentsline {section}{\numberline {A.1}節形式と節集合}{63}{section.A.1}
-\contentsline {section}{\numberline {A.2}導出}{63}{section.A.2}
-\contentsline {appendix}{\chapternumberline {B}反駁エンジンの動作の詳細}{64}{appendix.B}
-\contentsline {section}{\numberline {B.1}推論ループの構造}{64}{section.B.1}
-\contentsline {section}{\numberline {B.2}システムの初期化}{65}{section.B.2}
-\contentsline {section}{\numberline {B.3}導出節生成エンジン群の起動}{65}{section.B.3}
-\contentsline {subsection}{\numberline {B.3.1}max-weight パラメータの調整}{66}{subsection.B.3.1}
-\contentsline {subsection}{\numberline {B.3.2}節に対する前処理}{66}{subsection.B.3.2}
-\contentsline {subsection}{\numberline {B.3.3}節に対する処理の検査内容}{67}{subsection.B.3.3}
-\contentsline {subsection}{\numberline {B.3.4}Unit Deletion}{67}{subsection.B.3.4}
-\contentsline {subsection}{\numberline {B.3.5}Tautology 検査}{68}{subsection.B.3.5}
-\contentsline {subsection}{\numberline {B.3.6}Subsumption テスト}{68}{subsection.B.3.6}
-\contentsline {subsection}{\numberline {B.3.7}Forward Subsumption テスト}{68}{subsection.B.3.7}
-\contentsline {section}{\numberline {B.4}節に対する後処理}{68}{section.B.4}
-\contentsline {subsection}{\numberline {B.4.1}Back Subsumption テスト}{69}{subsection.B.4.1}
-\contentsline {subsection}{\numberline {B.4.2}Back Unit Deletion}{69}{subsection.B.4.2}
-\contentsline {section}{\numberline {B.5}推論終了の判定}{69}{section.B.5}
-\contentsline {subsection}{\numberline {B.5.1}Unit Conflict 検査}{70}{subsection.B.5.1}
-\contentsline {subsection}{\numberline {B.5.2}Factoring 処理}{70}{subsection.B.5.2}
-\contentsline {subsubsection}{Factor Simplification 処理}{70}{section*.26}
-\contentsline {appendix}{\chapternumberline {C}推論ルール概説}{71}{appendix.C}
-\contentsline {section}{\numberline {C.1}Binary Resolution}{71}{section.C.1}
-\contentsline {section}{\numberline {C.2}Hyper Resolution}{71}{section.C.2}
-\contentsline {subsection}{\numberline {C.2.1}Semantic Resolution の考え方}{72}{subsection.C.2.1}
-\contentsline {subsection}{\numberline {C.2.2}PI-resolution の定義}{73}{subsection.C.2.2}
-\contentsline {subsection}{\numberline {C.2.3}Negative Hyper Resolution}{74}{subsection.C.2.3}
-\contentsline {subsection}{\numberline {C.2.4}Positive Hyper Resolution}{75}{subsection.C.2.4}
-\contentsline {section}{\numberline {C.3}Paramodulation}{75}{section.C.3}
-\contentsline {section}{\numberline {C.4}Demodulation}{75}{section.C.4}
-\contentsline {subsection}{\numberline {C.4.1}実行時のdemodulator判定}{76}{subsection.C.4.1}
-\contentsline {subsection}{\numberline {C.4.2}Back Demdulation の実行}{76}{subsection.C.4.2}
-\contentsline {chapter}{参考文献}{78}{section*.28}
+\contentsline {section}{\numberline {3.13}自動モード}{34}{section.3.13}
+\contentsline {section}{\numberline {3.14}統計情報}{35}{section.3.14}
+\contentsline {section}{\numberline {3.15}証明木とその印字}{37}{section.3.15}
+\contentsline {subsection}{\numberline {3.15.1}導出履歴欄の見方}{37}{subsection.3.15.1}
+\contentsline {section}{\numberline {3.16}項の順序付けと Demodulation}{39}{section.3.16}
+\contentsline {subsection}{\numberline {3.16.1}単純辞書式順 -- Ad Hoc}{39}{subsection.3.16.1}
+\contentsline {subsubsection}{項の順序 (Ad Hoc)}{39}{section*.14}
+\contentsline {subsubsection}{等式の方向付け (Ad Hoc)}{39}{section*.15}
+\contentsline {subsubsection}{Dynamic Demodulator の判定 (Ad Hoc)}{40}{section*.16}
+\contentsline {subsubsection}{Lex-依存の Demodulation (Ad Hoc)}{40}{section*.17}
+\contentsline {subsection}{\numberline {3.16.2}LRPO}{40}{subsection.3.16.2}
+\contentsline {subsubsection}{項の順序付け (\textsc {lrpo})}{40}{section*.18}
+\contentsline {subsubsection}{オペレータ記号の順序付け -- lex コマンド}{41}{section*.19}
+\contentsline {paragraph}{lex コマンドに関する注意}{42}{section*.20}
+\contentsline {subsubsection}{等式の方向つけ (\textsc {lrpo})}{42}{section*.21}
+\contentsline {subsubsection}{Dynamic Demodulator の判定 (\textsc {lrpo})}{42}{section*.22}
+\contentsline {subsubsection}{\textsc {lrpo}-依存の Demodulation (\textsc {lrpo})}{42}{section*.23}
+\contentsline {chapter}{\chapternumberline {4}詳細化検証}{43}{chapter.4}
+\contentsline {section}{\numberline {4.1}仕様詳細化検証システムの機能}{43}{section.4.1}
+\contentsline {section}{\numberline {4.2}詳細化検証システムの新規コマンド}{44}{section.4.2}
+\contentsline {section}{\numberline {4.3}シグニチャマッチング}{44}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}シグニチャマッチングの考え方}{44}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}シグニチャマッチングの例}{45}{subsection.4.3.2}
+\contentsline {section}{\numberline {4.4}詳細化検証の例}{47}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}QUEUE と STACK}{47}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}モノイドと自然数上の演算の例}{48}{subsection.4.4.2}
+\contentsline {chapter}{\chapternumberline {5}モデル検査システム}{51}{chapter.5}
+\contentsline {section}{\numberline {5.1}モデル検査システムの機能}{51}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}モデル検査の実行方式}{51}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}双対機能法の実行方式}{52}{subsection.5.1.2}
+\contentsline {section}{\numberline {5.2}モデル検査での新規コマンド}{52}{section.5.2}
+\contentsline {paragraph}{初期文脈に関する検査}{53}{section*.24}
+\contentsline {paragraph}{メソッド適用文脈での検査}{53}{section*.25}
+\contentsline {section}{\numberline {5.3}モデル検査の使用例}{55}{section.5.3}
+\contentsline {appendix}{\chapternumberline {A}導出原理}{60}{appendix.A}
+\contentsline {section}{\numberline {A.1}節形式と節集合}{60}{section.A.1}
+\contentsline {section}{\numberline {A.2}導出}{60}{section.A.2}
+\contentsline {appendix}{\chapternumberline {B}反駁エンジンの動作の詳細}{61}{appendix.B}
+\contentsline {section}{\numberline {B.1}推論ループの構造}{61}{section.B.1}
+\contentsline {section}{\numberline {B.2}システムの初期化}{61}{section.B.2}
+\contentsline {section}{\numberline {B.3}導出節生成エンジン群の起動}{62}{section.B.3}
+\contentsline {subsection}{\numberline {B.3.1}max-weight パラメータの調整}{63}{subsection.B.3.1}
+\contentsline {subsection}{\numberline {B.3.2}節に対する前処理}{63}{subsection.B.3.2}
+\contentsline {subsection}{\numberline {B.3.3}節に対する処理の検査内容}{63}{subsection.B.3.3}
+\contentsline {subsection}{\numberline {B.3.4}Unit Deletion}{64}{subsection.B.3.4}
+\contentsline {subsection}{\numberline {B.3.5}Tautology 検査}{64}{subsection.B.3.5}
+\contentsline {subsection}{\numberline {B.3.6}Subsumption テスト}{64}{subsection.B.3.6}
+\contentsline {subsection}{\numberline {B.3.7}Forward Subsumption テスト}{65}{subsection.B.3.7}
+\contentsline {section}{\numberline {B.4}節に対する後処理}{65}{section.B.4}
+\contentsline {subsection}{\numberline {B.4.1}Back Subsumption テスト}{66}{subsection.B.4.1}
+\contentsline {subsection}{\numberline {B.4.2}Back Unit Deletion}{66}{subsection.B.4.2}
+\contentsline {section}{\numberline {B.5}推論終了の判定}{66}{section.B.5}
+\contentsline {subsection}{\numberline {B.5.1}Unit Conflict 検査}{67}{subsection.B.5.1}
+\contentsline {subsection}{\numberline {B.5.2}Factoring 処理}{67}{subsection.B.5.2}
+\contentsline {subsubsection}{Factor Simplification 処理}{67}{section*.26}
+\contentsline {appendix}{\chapternumberline {C}推論ルール概説}{68}{appendix.C}
+\contentsline {section}{\numberline {C.1}Binary Resolution}{68}{section.C.1}
+\contentsline {section}{\numberline {C.2}Hyper Resolution}{68}{section.C.2}
+\contentsline {subsection}{\numberline {C.2.1}Semantic Resolution の考え方}{69}{subsection.C.2.1}
+\contentsline {subsection}{\numberline {C.2.2}PI-resolution の定義}{70}{subsection.C.2.2}
+\contentsline {subsection}{\numberline {C.2.3}Negative Hyper Resolution}{71}{subsection.C.2.3}
+\contentsline {subsection}{\numberline {C.2.4}Positive Hyper Resolution}{71}{subsection.C.2.4}
+\contentsline {section}{\numberline {C.3}Paramodulation}{72}{section.C.3}
+\contentsline {section}{\numberline {C.4}Demodulation}{72}{section.C.4}
+\contentsline {subsection}{\numberline {C.4.1}実行時のdemodulator判定}{72}{subsection.C.4.1}
+\contentsline {subsection}{\numberline {C.4.2}Back Demdulation の実行}{73}{subsection.C.4.2}
+\contentsline {chapter}{参考文献}{75}{section*.28}

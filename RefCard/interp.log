@@ -1,10 +1,7 @@
-This is XeTeX, Version 3.1415926-2.2-0.9995.2 (TeX Live 2009) (format=xetex 2010.5.28)  17 JUN 2010 16:30
-entering extended mode
- file:line:error style messages enabled.
- %&-line parsing enabled.
+This is TeX, Version 3.1415926 (TeX Live 2011) (format=tex 2011.8.8)  14 SEP 2011 15:55
 **interp.tex
 (./interp.tex
-\columnsperpage=\count28
+\columnsperpage=\count26
 \intercolumnskip=\dimen16
 \columna=\box16
 \columnb=\box17
@@ -66,4 +63,4 @@ Overfull \hbox (23.4056pt too wide) in alignment at lines 620--627
 .\glue(\tabskip) 10.0 plus 1.0fil
 
 [4] )
-Output written on interp.pdf (4 pages).
+Output written on interp.dvi (4 pages, 22292 bytes).

@@ -1,3 +1,4 @@
+;;-*- Mode: grep -*-
 ./BigPink/codes/butils.lisp:94:		 (with-output-panic-message ()
 ./BigPink/codes/butils.lisp:394:      (with-output-msg ()
 ./BigPink/codes/butils.lisp:399:	    (with-output-chaos-warning ()

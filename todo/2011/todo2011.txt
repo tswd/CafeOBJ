@@ -1,8 +1,9 @@
+---------------------------------------------------------
 * ../new-bugs/aho.txt         modexp, error sort?
 * ../new-bugs/alex2.mod       importing record
 * 
 =========================================================
-IDEA: SortID の使い道。。。
+IDEA: SortID の使い道
 =========================================================
 
 2011/3/8
@@ -80,3 +81,48 @@ IDEA: SortID の使い道。。。
 　ソート名をパラメータ名で修飾しているにも関わらず、曖昧性の
 　メッセージが出ることがある。
 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-- cafeobj system renovation plan in 2011.7-2016.3
+1 すでにある機能の不具合除去，洗練
+
+1.1 improvements of user interactions (user interface)
+
+1.2 resolution of conflicts of sort/op/mod names
+1.2.1 
+
+1.3 reduction command
+1.3.1 memo function
+1.3.2 ac reduction
+
+1.4 search command
+
+1.5 module expression
+
+1.6 coherence of =*=のチェッカの洗練
+
+---------
+
+2 新しい機能の付加
+
+2.1 証明スコアの正当性チェッカ
+
+2.2 supports for complete case analysis
+2.2' supports for induction scheme construction
+
+2.3 meta-function for developing proof scores
+
+2.4 他のproof assistance and/or model checkerとの連携
+2.4.1 maudeとの連携機能
+2.4.2 SAT (satisfiability checker), SMT (SAT module theory)
+
+
+
+---------
+
+3 1と2に関係するマニュアル/文書の整備
+
+3.1 on-line manualの整備(more extensive)
+
+3.2 on-line library of examplesの体系化と整備
+
+3.3 users manualの整備

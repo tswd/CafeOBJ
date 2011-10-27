@@ -6,3 +6,6 @@ dist
 *.o
 *.exe
 *~
+lib/messages/.#messagesDb.cl
+
+lib/messages/#messagesDb.cl#
