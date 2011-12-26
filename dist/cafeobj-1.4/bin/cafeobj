@@ -1,5 +1,6 @@
 #!/bin/sh
 # $Id: cafeobj,v 1.1.1.1 2003-06-19 08:30:02 sawada Exp $
 # 
+export LANG=ja_JP
 exec ${CAFEROOT:-"/usr/local/cafeobj-1.4"}/lisp/CafeOBJ -- $*
 
