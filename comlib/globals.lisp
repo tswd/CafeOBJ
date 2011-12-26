@@ -163,6 +163,9 @@
 (defvar *mel-always* nil)
 ;;; (defvar *mel-reduce* nil)
 
+;;; :=
+(defvar *m-pattern-subst* nil)
+
 ;; memoization
 (defvar *memo-rewrite* t)		; use memo mechanism
 (defvar *clean-memo-in-normalize* nil)
@@ -401,6 +404,7 @@
 (defvar *bool-imply* 'void)
 (defvar *bool-xor* 'void)
 (defvar *bool-equal* 'void)
+(defvar *bool-match* 'void)
 (defvar *beh-equal* 'void)
 (defvar *bool-nonequal* 'void)
 (defvar *beh-eq-pred* 'void)

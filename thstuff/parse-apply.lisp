@@ -2,9 +2,9 @@
 ;;; $Id: parse-apply.lisp,v 1.2 2007-09-22 10:25:50 sawada Exp $
 (in-package :chaos)
 #|==============================================================================
-				 System: CHAOS
-				Module: thstuff
-			     File: parse-apply.lisp
+                                 System: CHAOS
+                                Module: thstuff
+                             File: parse-apply.lisp
 ==============================================================================|#
 #-:chaos-debug
 (declaim (optimize (speed 3) (safety 0) #-GCL (debug 0)))
@@ -24,7 +24,7 @@
 ;;; Chaos form
 
 (defterm start (%script)
-  :visible (target)			; target term
+  :visible (target)                     ; target term
   :eval eval-start-command
   )
 
@@ -263,8 +263,8 @@
 ;;; CHOOSE
 ;;; ******
 (defterm choose (%script)
-  :visible (selectors)			; one of :top, :subterm or list of
-					; selectors. 
+  :visible (selectors)                  ; one of :top, :subterm or list of
+                                        ; selectors. 
   :eval eval-choose-command)
 
 ;;; get-selectors : selector-token-seq -> { symbol | list(token)}
@@ -277,19 +277,19 @@
 ;;;
 (defun get-selectors (selector-toks)
   (case-equal (car selector-toks)
-	      (("top" "term") :top)
-	      ("subterm" :subterm)
-	      (("(" "{" "[")
-	       ;; *NOTE* discard the first token
-	       ;; because of stupid behaviour of our token reader. 
-	       (cdr selector-toks))
-	      (t (with-output-chaos-error ('invalid-selector)
-		   (format t "unknown type of selectors ~a" selector-toks)
-		   ))))
+              (("top" "term") :top)
+              ("subterm" :subterm)
+              (("(" "{" "[")
+               ;; *NOTE* discard the first token
+               ;; because of stupid behaviour of our token reader. 
+               (cdr selector-toks))
+              (t (with-output-chaos-error ('invalid-selector)
+                   (format t "unknown type of selectors ~a" selector-toks)
+                   ))))
 
 (defun parse-choose-command (tok)
   (%choose* (get-selectors (cadr tok))))
-    
+
 ;;; *****
 ;;; MATCH
 ;;; *****
@@ -299,47 +299,47 @@
 ;;; <Term2>        ::= { rule | +rule | -rule | <Term> }
 ;;;-----------------------------------------------------------------------------
 (defterm match (%script)
-  :visible (type			; or :match, :unify, :xmatch
-	    target			; or :it pre-term
-	    pattern			; or :rule, +rule, -rule, pre-term
-	    )
+  :visible (type                        ; or :match, :unify, :xmatch
+            target                      ; or :it pre-term
+            pattern                     ; or :rule, +rule, -rule, pre-term
+            )
   :eval eval-match-command
   )
 
 (defun parse-match-command (toks)
   (let (type
-	target
-	pattern)
+        target
+        pattern)
     ;; 
     (setq type
       (if (equal "match" (car toks))
-	  :match
-	(if (equal "xmatch" (car toks))
-	    :xmatch
-	  :unify)))
-    (setq toks (cdr toks))		; arguments
+          :match
+        (if (equal "xmatch" (car toks))
+            :xmatch
+          :unify)))
+    (setq toks (cdr toks))              ; arguments
     ;; get target
     (loop (when (or (null toks)
-		    (or (equal "to" (car toks))
-			(equal "with" (car toks))))
-	    (return))
-	  (push (car toks) target)
-	  (setq toks (cdr toks)))
+                    (or (equal "to" (car toks))
+                        (equal "with" (car toks))))
+            (return))
+      (push (car toks) target)
+      (setq toks (cdr toks)))
     (setq target (car (nreverse target)))
     ;; get pattern
     (setq pattern (cadr toks))
     ;; make ast
     (%match* type
-	     (case-equal target
-               ((("top") ("term")) :top)
-	       ((("subterm")) :subterm)
-	       ((("it")) :it)
-	       (t target))
-	     (case-equal pattern
-	       ((("rule") ("rules")) :rule)
-	       ((("+rule") ("+rules")) :+rule)
-	       ((("-rule") ("-rules")) :-rule)
-	       (t pattern)))))
+             (case-equal target
+                         ((("top") ("term")) :top)
+                         ((("subterm")) :subterm)
+                         ((("it")) :it)
+                         (t target))
+             (case-equal pattern
+                         ((("rule") ("rules")) :rule)
+                         ((("+rule") ("+rules")) :+rule)
+                         ((("-rule") ("-rules")) :-rule)
+                         (t pattern)))))
 
 ;;; ****
 ;;; FIND 
@@ -352,18 +352,16 @@
 ;;;
 (defun parse-find-command (toks)
   (%match* :match
-	   :it
-	   (case-equal (cadr toks)
-	       (("rule" "rules") :rule)
-	       (("+rule" "+rules") :+rule)
-	       (("-rule" "+rules") :-rule)
-	       (t (with-output-chaos-error ('invalid-rule-spec)
-		    (princ "only `rule', `+rule', or `-rule' is meaningful for
+           :it
+           (case-equal (cadr toks)
+                       (("rule" "rules") :rule)
+                       (("+rule" "+rules") :+rule)
+                       (("-rule" "+rules") :-rule)
+                       (t (with-output-chaos-error ('invalid-rule-spec)
+                            (princ "only `rule', `+rule', or `-rule' is meaningful for
 find,")
-		    (print-next)
-		    (format t "but ~a is given." (cadr toks))
-		    ))
-	       )))
+                            (print-next)
+                            (format t "but ~a is given." (cadr toks)))))))
 ;;; *****
 ;;; APPLY
 ;;; *****
@@ -390,12 +388,12 @@ find,")
 ;;;-----------------------------------------------------------------------------
 
 (defterm apply (%script)
-  :visible (action			; action to be performed, one-of
-					;  :apply, :reduce, :print, :help.
-	    rule-spec			; rule specifier to be applied.
-	    substitution		; list of variable bindings.
-	    where-spec			; one of :at, :within.
-	    selectors)			; list of selectors.
+  :visible (action                      ; action to be performed, one-of
+                                        ;  :apply, :reduce, :print, :help.
+            rule-spec                   ; rule specifier to be applied.
+            substitution                ; list of variable bindings.
+            where-spec                  ; one of :at, :within.
+            selectors)                  ; list of selectors.
   :eval eval-apply-command)
 
 ;;; get-apply-action : <Action> -> action keyword
@@ -406,11 +404,11 @@ find,")
 (defun get-apply-action (tok)
   ;; tok ::= { red | reduction | reduce | print | <RuleSpec> }
   (case-equal tok
-    (("red" "reduction" "reduce") :reduce)
-    (("bred" "breduce" "behavioural-reduction") :breduce)
-    (("execute" "exec") :exec)
-    ("print" :print)
-    (t :apply)))
+              (("red" "reduction" "reduce") :reduce)
+              (("bred" "breduce" "behavioural-reduction") :breduce)
+              (("execute" "exec") :exec)
+              ("print" :print)
+              (t :apply)))
 
 ;;; NOTE: rules labels cannot contain .
 ;;; parse-rule-spec : <RuleSpec> -> (Module Rule Direction)
@@ -423,29 +421,29 @@ find,")
   (declare (type string tok))
   (if (every #'digit-char-p tok)
       (let ((val (parse-integer tok)))
-	(unless (> val 0)
-	  (with-output-chaos-error ('invalid-rule-number)
-	    (princ "rule index must be greater than 0.")
-	    ))
-	val)
-      (let* ((fwd (eql #\+ (char tok 0)))
-	     (rev (eql #\- (char tok 0)))
-	     (i (if (or rev fwd) 1 0))
-	     (dot-pos (position-if #'(lambda (x) (char= #\. x)) tok)))
-	(if dot-pos
-	    (list (subseq tok i dot-pos) (subseq tok (1+ dot-pos)) rev)
-	    (list "" (subseq tok i) rev)))))
+        (unless (> val 0)
+          (with-output-chaos-error ('invalid-rule-number)
+            (princ "rule index must be greater than 0.")
+            ))
+        val)
+    (let* ((fwd (eql #\+ (char tok 0)))
+           (rev (eql #\- (char tok 0)))
+           (i (if (or rev fwd) 1 0))
+           (dot-pos (position-if #'(lambda (x) (char= #\. x)) tok)))
+      (if dot-pos
+          (list (subseq tok i dot-pos) (subseq tok (1+ dot-pos)) rev)
+        (list "" (subseq tok i) rev)))))
 ||#
 
 (defun parse-rule-spec (tok)
   (declare (type string tok))
   (let* ((fwd (eql #\+ (char tok 0)))
-	 (rev (eql #\- (char tok 0)))
-	 (i (if (or rev fwd) 1 0))
-	 (dot-pos (position-if #'(lambda (x) (char= #\. x)) tok)))
+         (rev (eql #\- (char tok 0)))
+         (i (if (or rev fwd) 1 0))
+         (dot-pos (position-if #'(lambda (x) (char= #\. x)) tok)))
     (if dot-pos
-	(list (subseq tok i dot-pos) (subseq tok (1+ dot-pos)) rev)
-	(list "" (subseq tok i) rev))))
+        (list (subseq tok i dot-pos) (subseq tok (1+ dot-pos)) rev)
+      (list "" (subseq tok i) rev))))
 
 ;;; get-apply-where : <WhereSpec> -> where keyword
 ;;; <WhereSpec> ::= { at | within }
@@ -453,12 +451,11 @@ find,")
 (defun get-apply-where (where)
   (if (equal where "at")
       :at
-      (if (equal where "within")
-	  :within
-	  (with-output-chaos-error ('invalid-apply-place)
-	    (format t "<WhereSpec> must be either \"at\" or \"within\", but ~a is specified"
-		    where)
-	    ))))
+    (if (equal where "within")
+        :within
+      (with-output-chaos-error ('invalid-apply-place)
+        (format t "<WhereSpec> must be either \"at\" or \"within\", but ~a is specified"
+                where)))))
 
 ;;; parse-apply-command
 ;;; parse whole form
@@ -466,18 +463,18 @@ find,")
 (defun parse-apply-command (e)
   (when (equal '(("?")) (cdr e))
     (return-from parse-apply-command (%apply* :help nil nil nil nil)))
-  (let* ((ee (cadr e))			; eliminate "apply" and the last "."
-	 (act (nth 0 ee)))
+  (let* ((ee (cadr e))                  ; eliminate "apply" and the last "."
+         (act (nth 0 ee)))
     (let* ((action (get-apply-action act))
-	   (rule-spec (if (eq action :apply)
-			  (parse-rule-spec act))))
+           (rule-spec (if (eq action :apply)
+                          (parse-rule-spec act))))
       (let* ((no-subst (stringp (nth 1 ee)))
-					; "at" "within" -- no substitution.
-	     (substtoks (if no-subst
-			    nil
-			    (nth 1 ee))) ; we don't syntactic check here.
-	     (where-spec (get-apply-where (nth (if no-subst 1 2) ee)))
-	     (selectors (get-selectors (car (subseq ee (if no-subst 2 3))))))
-	(%apply* action rule-spec substtoks where-spec selectors)))))
+                                        ; "at" "within" -- no substitution.
+             (substtoks (if no-subst
+                            nil
+                          (nth 1 ee)))  ; we don't syntactic check here.
+             (where-spec (get-apply-where (nth (if no-subst 1 2) ee)))
+             (selectors (get-selectors (car (subseq ee (if no-subst 2 3))))))
+        (%apply* action rule-spec substtoks where-spec selectors)))))
 
 ;;; EOF

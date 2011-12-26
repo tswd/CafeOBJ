@@ -139,7 +139,7 @@ Woe betide those who do not heed this warning!
 
 while syntactical definitions are shown as
 
-\begin{bsyntax} title \Hline
+\begin{bsyntax} title
 \mbox{\texttt{I am a language construct.}}
 \end{bsyntax}
 \setcounter{bsyntax}{0}
@@ -2041,7 +2041,7 @@ the above module, you may get a session like
       some name conflicts between operators and variables.
   [1] _-_ : Int Int -> Int ------------------------((M:Int - M':Int) - s(0))
   [2] _-_ : Int Int -> Int ------------------------(M:Int - (M':Int - s(0)))
-  [Error] no successfull parse
+  [Error] no successful parse
     ("ambiguous term"):SyntaxErr
 \end{ccode}
 \end{vvtm}
@@ -2069,7 +2069,7 @@ you see a more visible tree structure of possible parses like
                       |     
                    0:Zero  
 
-  [Error] no successfull parse
+  [Error] no successful parse
     ("ambiguous term"):SyntaxErr
 
   CafeOBJ> 
@@ -2195,7 +2195,7 @@ Indeed, try parsing \verb|0| and you get a warning.
       some name conflicts between operators and variables.
   [1] 0 :  -> HexDigit --------------------------------0
   [2] 0 :  -> OctalDigit ----------------------------0
-  [Error] no successfull parse
+  [Error] no successful parse
     ("ambiguous term"):SyntaxErr
   CafeOBJ> 
 \end{ccode}
@@ -4556,7 +4556,7 @@ of recursion: evaluating conditions may lead to recursively
 evaluating conditions, and so on and on.
 Most of the output should be self-explanatory.
 The above trace shows two conditional rules were checked,
-first unsuccessfully and second successfully.
+first unsuccessfuly and second successfuly.
 
 \section{Stepper}\label{sec:p2-stepper}
 

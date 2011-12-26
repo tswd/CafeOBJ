@@ -95,8 +95,9 @@
     (let ((rhs-vars (term-variables (axiom-rhs rule)))
 	  (cond-vars (term-variables (axiom-condition rule))))
       (declare (type list rhs-vars cond-vars))
-      (cond ((or (not (subsetp rhs-vars lhsv))
-		 (not (subsetp cond-vars lhsv)))
+      ;; just for now
+      (cond ((and nil (or (not (subsetp rhs-vars lhsv))
+			  (not (subsetp cond-vars lhsv))))
 	     (when *chaos-verbose*
 	       (with-output-chaos-warning ()
 		 (princ "the variables in RHS of the axiom : ")

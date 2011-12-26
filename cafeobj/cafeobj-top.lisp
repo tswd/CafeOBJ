@@ -2,9 +2,9 @@
 ;;; $Id: cafeobj-top.lisp,v 1.3 2007-01-18 11:03:38 sawada Exp $
 (in-package :chaos)
 #|==============================================================================
-System: CHAOS
-Module: cafeobj
-File: top.lisp
+                             System: CHAOS
+                            Module: cafeobj
+                            File: top.lisp
 ==============================================================================|#
 #-:chaos-debug
 (declaim (optimize (speed 3) (safety 0) #-GCL (debug 0)))
@@ -12,7 +12,7 @@ File: top.lisp
 (declaim (optimize (speed 1) (safety 3) #-GCL (debug 3)))
 
 ;;;*****************************************************************************
-;;;			       CafeOBJ Top Level
+;;;                CafeOBJ Top Level
 ;;;*****************************************************************************
 
 ;;;=============================================================================
@@ -71,8 +71,7 @@ File: top.lisp
       (print-centering (concatenate
                            'string "built on " .lisp-implementation.))
       (fresh-line)
-      (print-centering .lisp-version.))
-    ))
+      (print-centering .lisp-version.))))
 
 ;;;=============================================================================
 ;;; The top level loop
@@ -84,8 +83,7 @@ File: top.lisp
   (cafeobj-init)
   (unless no-init
     (cafeobj-process-args)
-    nil
-    )
+    nil)
   ;; greeting message
   (cafeobj-greeting)
   ;;
@@ -118,11 +116,9 @@ File: top.lisp
           (loop (catch *top-level-tag*
                   (process-cafeobj-input)
                   (setq quit-flag t))
-            (when quit-flag (return)))
-          )
+            (when quit-flag (return))))
         (format t "[Leaving CafeOBJ]~%")))
-  (finish-output) 
-  )
+  (finish-output))
 
 #+microsoft
 (defun cafeobj (&optional no-init)
@@ -135,8 +131,7 @@ File: top.lisp
     (cafeobj-init)
     (unless no-init
       (cafeobj-process-args)
-      nil
-      )
+      nil)
     ;; greeting message
     (cafeobj-greeting)
     ;;
@@ -185,8 +180,7 @@ File: top.lisp
   (setf (sys:gsgc-switch :print) nil)
   ;;
   (!lex-read-init)
-  (chaos-initialize-fsys)
-  )
+  (chaos-initialize-fsys))
 
 ;;; initialization at startup time.
 ;;;-----------------------------------------------------------------------------
@@ -220,8 +214,7 @@ File: top.lisp
   ;; message DB
   (setup-message-db)
   ;; help DB
-  (setup-help-db)
-  )
+  (setup-help-db))
 
 ;;; **********************
 ;;; THE TOP LEVEL FUNCTION
@@ -251,7 +244,6 @@ File: top.lisp
 #+EXCL
 (eval-when (eval load)
   (top-level:alias "q" (&rest args)
-    (apply #'top-level:do-command "pop" args))  
-  )
+    (apply #'top-level:do-command "pop" args)))
 
 ;; EOF

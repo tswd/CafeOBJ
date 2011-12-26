@@ -30,6 +30,8 @@ lispq
       ;; 
       (let* ((equal-op-info (find-operator '("_" "==" "_") 2 *truth-module*))
 	     (equal-meth (lowest-method* (car (opinfo-methods equal-op-info))))
+	     (match-op-info (find-operator '("_" ":=" "_") 2 *truth-module*))
+	     (match-meth (lowest-method* (car (opinfo-methods match-op-info))))
 	     (beq-op-info (find-operator '("_" "=*=" "_") 2 *truth-module*))
 	     (beq-meth (lowest-method* (car (opinfo-methods beq-op-info))))
 	     (n-equal-op-info (find-operator '("_" "=/=" "_") 2 *truth-module*))
@@ -39,6 +41,7 @@ lispq
         ;; also these operators are needed to be accessed globaly
         ;; for TRAM(BRUTE) interface and PigNose
 	(setq *bool-equal* equal-meth)
+	(setq *bool-match* match-meth)
 	(setq *beh-equal* beq-meth)
 	(setq *bool-nonequal* n-equal-meth)
 	(setq *beh-eq-pred* beh-eq-meth)
@@ -68,6 +71,7 @@ sys:mod! TRUTH
     pred _=*=_ : HUniversal HUniversal { prec: 51 }
     pred _=b=_ : Cosmos Cosmos { prec: 51 }
     pred _=/=_ : Cosmos Cosmos { prec: 51 }
+    pred _:=_  : Cosmos Cosmos { prec: 51 }
   }
   axioms {
     var XU : Universal
@@ -82,6 +86,7 @@ sys:mod! TRUTH
     eq CXU == CYU = #!! (coerce-to-bool (term-equational-equal cxu cyu)) .
     eq CXU =b= CYU = #!! (coerce-to-bool (term-equational-equal cxu cyu)) .
     eq CXU =/= CYU = #!! (coerce-to-bool (not (term-equational-equal cxu cyu))) .
+    eq CXU := CYU = #!! (coerce-to-bool (match-m-pattern CXU CYU)) .
   }
 }  
 

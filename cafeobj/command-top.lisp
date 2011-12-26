@@ -1,9 +1,9 @@
 ;;;-*- Mode:LISP; Package:CHAOS; Base:10; Syntax:Common-lisp -*-
 ;;; $Id: command-top.lisp,v 1.15 2010-06-21 07:23:00 sawada Exp $
 #|==============================================================================
-System: CHAOS
-Module: cafeobj
-File: command-top.lisp
+                            System: CHAOS
+                           Module: cafeobj
+                         File: command-top.lisp
 ==============================================================================|#
 (in-package :chaos)
 #-:chaos-debug
@@ -155,8 +155,7 @@ File: command-top.lisp
                                        (warn "~
 An error occurred (~a) during the reading or evaluation of -e ~s" c form))))))
                             (t (push (nth i args) *cafeobj-initial-load-files*)
-                               (incf i)))
-                ))))
+                               (incf i)))))))
         ;; load prelude if need
         (let ((*chaos-quiet* t))
           (when (and *cafeobj-batch* (null *cafeobj-initial-load-files*))
@@ -224,8 +223,7 @@ An error occurred (~a) during the reading or evaluation of -e ~s" c form))))))
   (format t "~& +l DIR-LIST~16Tadds list of pathnames as mdoule search paths.")
   (format t "~&Files:")
   (format t "~& files are loaded at start up time in order.~%")
-  (force-output)
-  )
+  (force-output))
 
 ;;; CafeOBJ INTERPRETER TOPLEVEL HELP
 ;;;
@@ -290,26 +288,37 @@ An error occurred (~a) during the reading or evaluation of -e ~s" c form))))))
          (format t "~&  lisp -or-")
          (format t "~&  lispq <lisp>~20Tevaluate lisp expression <lisp>")
          (format t "~&  ! <command>~20Tfork shell <command> (Unix only)"))
-        (t (cafeobj-what-is com))
-        ))
+        (t (cafeobj-what-is com))))
 
 ;;; 
-(defun cafeobj-what-is (inp)
-  (let* ((id (if (cddr inp)
-                 (mapcar #'read-from-string (cdr inp))
-               (and (cadr inp)
-                    (read-from-string (cadr inp)))))
-         (desc (if (keywordp id)
-                   (get-msg-description id)
-                 (and id (get-command-description (car inp) id)))))
-    (unless id
-      (format t "~&Usage: what {<command/switch name or pattern> | <message ID>}")
-      (return-from cafeobj-what-is nil))
-    (if desc
-        (format t desc)
-      (format t "~&Unknown command/switch or message ID, or there's not yet prepared documents for ~s." id))))
+(defparameter .?-invalid-chars. '("." "#" "'" "`"))
 
-;;; DUMMY
+(defun cafeobj-what-is (inp)
+  (flet ((check-pat (pat)
+           (if (not (some #'(lambda (str)
+                              (member str .?-invalid-chars. : test #'string=))
+                          pat))
+               t
+             (progn (format *error-output*
+                            "Illegal command/switch pattern: ~{~a ~^~}" pat)
+                    nil))))
+    (let* ((id (if (cddr inp)
+                   (and (check-pat (cdr inp))
+                        (mapcar #'read-from-string (cdr inp)))
+                 (and (cadr inp)
+                      (check-pat (cdr inp))
+                      (read-from-string (cadr inp)))))
+           (desc (if (keywordp id)
+                     (get-msg-description id)
+                   (and id (get-command-description (car inp) id)))))
+      (unless id
+        (format t "~&Usage: {? | ??} {<command/switch name or pattern> | <message ID>}")
+        (return-from cafeobj-what-is nil))
+      (if desc
+          (format t desc)
+        (format t "~&Unknown command/switch or message ID: ~{~a ~^~}." (cdr inp))))))
+
+;;; 
 (defun get-command-description (level id)
   (if (string= level "??")
       (get-description id t)
@@ -346,7 +355,7 @@ An error occurred (~a) during the reading or evaluation of -e ~s" c form))))))
           (if (<= (file-write-date src) (file-write-date bin))
               bin
             src)
-	    bin))))
+        bin))))
 
 ;;; PROMPT
 ;;;_____________________________________________________________________________
@@ -387,36 +396,32 @@ An error occurred (~a) during the reading or evaluation of -e ~s" c form))))))
              (print-simple-princ-open *prompt*))
            (princ " ")))
         )
-  (flush-all)
-  )
+  (flush-all))
 
 ;;; SAVE INTERPRETER IMAGE
 ;;;_____________________________________________________________________________
 (defun set-cafeobj-libpath (topdir)
   (setq *system-prelude-dir*
-	(concatenate 'string topdir "/prelude"))
+    (concatenate 'string topdir "/prelude"))
   (setq *system-lib-dir*
-	(concatenate 'string topdir "/lib"))
+    (concatenate 'string topdir "/lib"))
   (setq *system-ex-dir*
     (concatenate 'string topdir "/exs"))
-  (setq *chaos-libpath* (list *system-lib-dir* *system-ex-dir*))
-  )
+  (setq *chaos-libpath* (list *system-lib-dir* *system-ex-dir*)))
 
 #-(or (and CCL (not :openmcl)) ALLEGRO)
 (defun set-cafeobj-standard-library-path (&optional topdir)
   (when (and (null *cafeobj-install-dir*)
              (null topdir))
     (break "CafeOBJ install directory is not set yet!."))
-  (set-cafeobj-libpath (or topdir *cafeobj-install-dir*))
-  )
+  (set-cafeobj-libpath (or topdir *cafeobj-install-dir*)))
 
 #+:openmcl
 (defun set-cafeobj-standard-library-path (&optional topdir)
   (when (and (null *cafeobj-install-dir*)
              (null topdir))
     (break "CafeOBJ install directory is not set yet!."))
-  (set-cafeobj-libpath (or topdir *cafeobj-install-dir*))
-  )
+  (set-cafeobj-libpath (or topdir *cafeobj-install-dir*)))
 
 ;;; ACL
 #+:allegro
@@ -441,8 +446,7 @@ An error occurred (~a) during the reading or evaluation of -e ~s" c form))))))
         (namestring (merge-pathnames *cafeobj-install-dir*
                                      "exs")))
       (setq *chaos-libpath*
-        (list *system-lib-dir* *system-ex-dir*))
-      )))
+        (list *system-lib-dir* *system-ex-dir*)))))
 
 ;;; patch by t-seino@jaist.ac.jp
 #+(and CCL (not :openmcl))
@@ -451,13 +455,12 @@ An error occurred (~a) during the reading or evaluation of -e ~s" c form))))))
   ;; (unless *cafeobj-install-dir*
   ;;    (break "CafeOBJ install directory is not set yet!."))
   (setq *system-prelude-dir*
-	(full-pathname (make-pathname :host "ccl" :directory "prelude")))
+    (full-pathname (make-pathname :host "ccl" :directory "prelude")))
   (setq *system-lib-dir*
-	(full-pathname (make-pathname :host "ccl" :directory "lib")))
+    (full-pathname (make-pathname :host "ccl" :directory "lib")))
   (setq *system-ex-dir*
-	(full-pathname (make-pathname :host "ccl" :directory "exs")))
-  (setq *chaos-libpath* (list *system-lib-dir* *system-ex-dir*))
-  )
+    (full-pathname (make-pathname :host "ccl" :directory "exs")))
+  (setq *chaos-libpath* (list *system-lib-dir* *system-ex-dir*)))
 
 ;;; MAIN ROUTINE
 ;;; PROCESSING INPUT FILE STREAM
@@ -478,8 +481,7 @@ An error occurred (~a) during the reading or evaluation of -e ~s" c form))))))
   #+CMU (ext:quit)
   #+EXCL (exit)
   #+CCL (quit)
-  #+CLISP (ext::exit)
-  )
+  #+CLISP (ext::exit))
 
 ;;; COMMAND-PROCESSORS
 ;;;
@@ -572,8 +574,7 @@ An error occurred (~a) during the reading or evaluation of -e ~s" c form))))))
       (("sigmatch") . pignose-eval-sigmatch-proc)
       (("lex") . pignose-eval-lex-proc)
       ;; 
-      ((".") . cafeobj-nop)
-      ))
+      ((".") . cafeobj-nop)))
 
 (defun cafeobj-nop (&rest ignore)
   ignore)
@@ -596,8 +597,7 @@ An error occurred (~a) during the reading or evaluation of -e ~s" c form))))))
           (with-output-simple-msg ()
             (format t "~&processing input : ~a~%" (namestring *chaos-input-source*)))
         (with-output-simple-msg ()
-          (format t "~&processing input .......................~%")))
-      )
+          (format t "~&processing input .......................~%"))))
     (let ((inp nil)
           (.in-in. nil))
       (declare (special .in-in.))
@@ -633,9 +633,7 @@ An error occurred (~a) during the reading or evaluation of -e ~s" c form))))))
               (setq *chaos-print-errors* t)))
           (when .in-in.
             (setq *chaos-print-errors* t)
-            (setq .in-in. nil))
-          )))
-    ))
+            (setq .in-in. nil)))))))
 
 (defun try-reduce-term (inp)
   (perform-reduction* inp *current-module* nil nil))

@@ -15,7 +15,8 @@
 			  :acldns :collate :euc :ffcompat :list2
 			  :fileutil :foreign :trace
 			  :hmac :locale :regexp2 #-:mswindows :sigio 
-			  #-:mswindows :ssl
+			  ;; #-:mswindows :ssl
+			  :ssl
 			  :streama)
 			:application-type :exe
 			:print-startup-message nil

@@ -114,6 +114,8 @@ File: eval-ast2.lisp
 
 (defun perform-reduction* (preterm &optional modexp mode (result-as-text nil))
   ;; (setq $$trials 1)
+  (setq *m-pattern-subst* nil)
+  ;;
   (let ((*consider-object* t)
         (*rewrite-exec-mode* (or (eq mode :exec)
                                  (eq mode :exec+)))

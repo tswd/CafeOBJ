@@ -43,7 +43,8 @@
   (flet ((regme (type msgs)
            (dolist (msg msgs)
              (register-message type msg))))
-    (with-open-file (strm path :if-does-not-exist :error)
+    (with-open-file (strm path :if-does-not-exist :error
+		     :external-format :utf-8)
       (loop for type = (read strm nil :eof)
           while (not (eq type :eof))
           do (case type
@@ -74,29 +75,43 @@
 (defvar *old-msg-lvl* *msg-lvl*)
 
 (defun set-verbose-lvl (lvl)
-  (if (<= lvl 2)
+  (if (<= lvl 3)
       (setf *msg-lvl* lvl)
     (error "Internal error, invalid verbose level ~d" lvl)))
 
 (defun set-verbose-on ()
-  (set-verbose-lvl 2))
+  (setf *old-msg-lvl* *msg-lvl*)
+  (set-verbose-lvl 0)
+  (setq *chaos-verbose* t))
 
 (defun set-verbose-off ()
-  (set-verbose-lvl 1))
+  (when (zerop *msg-lvl*)
+    (set-verbose-lvl *old-msg-lvl*))
+  (setq *chaos-verbose* nil))
+
+(defun set-expert-on ()
+  (setf *old-msg-lvl* *msg-lvl*)
+  (set-verbose-lvl 2))
+
+(defun set-export-off ()
+  (when (= *msg-lvl* 2)
+    (set-verbose-lvl *old-msg-lvl*)))
 
 (defun set-quiet-on ()
   (setf *old-msg-lvl* *msg-lvl*)
-  (set-verbose-lvl 0))
+  (set-verbose-lvl 3))
 
 (defun set-qiet-off ()
-  (set-verbose-lvl *old-msg-lvl*))
+  (when (= *msg-lvl* 3)
+    (set-verbose-lvl *old-msg-lvl*)))
 
-(defun output-msg (id prefix &rest args)
-  (when (<= (get-msg-level id) *msg-lvl*)
+(defun output-msg (id prefix args)
+  (when (>= (get-msg-level id) *msg-lvl*)
     (apply #'format t (concatenate 'string
                         prefix
-                        ":"
+                        "(:"
                         (string id)
+                        ") "
                         (get-msg-fmt id))
            args)))
 
@@ -104,7 +119,7 @@
   ` (progn
       (let ((*standard-output* *error-output*)
             (*print-indent* 4))
-        (output-msg ',msg-id "~&[Error]:" ,args)
+        (output-msg ',msg-id "~&[Error]" ,args)
         ,@body)
       ,(if (and tag-p (eq tag 'to-top))
            `(chaos-to-top)
@@ -115,14 +130,14 @@
   ` (unless *chaos-quiet*
       (let ((*standard-output* *error-output*)
             (*print-indent* 4)) 
-        (output-msg ',msg-id "~&[Warning]: " ,args)
+        (output-msg ',msg-id "~&[Warning]" ,args)
         ,@body)
       (flush-all)))
 
 (defmacro with-output-panic-message-n ((msg-id args) &body body)
   ` (progn
       (let ((*standard-output* *error-output*))
-        (output-msg ',msg-id "~&!! PANIC !!: " ,args)
+        (output-msg ',msg-id "~&!! PANIC !!" ,args)
         ,@body)
       (chaos-to-top)))
 

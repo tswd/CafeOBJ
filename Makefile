@@ -13,9 +13,9 @@ mkinstalldirs = $(top_srcdir)/mkinstalldirs
 
 PACKAGE = cafeobj
 VERSION = 1.4
-VMINOR = .8
+VMINOR = .9
 VMEMO = PigNose0.99
-PATCHLEVEL = 33
+PATCHLEVEL = a1
 
 # Where to install the executables.
 bindir = ${exec_prefix}/bin
@@ -45,9 +45,9 @@ GCL = no
 CMU = no
 ACL = no
 LISP = no
-BIN = .fasl
-EXEC_SRC = cafeobj.acl.in
-EXEC = cafeobj.acl
+BIN = .o
+EXEC_SRC = cafeobj.gcl.in
+EXEC = cafeobj.exe
 
 #### End of system configuration section. ####
 

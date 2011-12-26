@@ -941,8 +941,8 @@
 ;;;
 ;; A ring of rules is represented by a circular list with 2 pointers, one for
 ;; the next rule to be returned and one for the last rule which has been
-;; successfully apply. 
-;; Be carefull for printing! (and debugging)
+;; successfuly apply. 
+;; Be careful for printing! (and debugging)
 
 (defstruct (rule-ring (:copier nil))
   (ring nil :type list)			; the circular list of rules

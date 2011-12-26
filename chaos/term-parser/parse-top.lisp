@@ -97,7 +97,7 @@
 	  (setq *parse-raw-parse* result)
 	  (when (term-ill-defined result)
 	    (with-output-simple-msg ()
-	      (format t "~&[Error] no successfull parse")
+	      (format t "~&[Error] no successful parse")
 	      (print-next)
 	      ;; (print-term-tree result t)
 	      ;; (term-print result)

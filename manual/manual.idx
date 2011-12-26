@@ -1,39 +1,39 @@
 \indexentry{\texttt{select}|hyperpage}{2}
-\indexentry{current module|hyperpage}{3}
+\indexentry{current module|hyperpage}{2}
 \indexentry{\texttt{input}|hyperpage}{4}
 \indexentry{\texttt{in}|hyperpage}{4}
 \indexentry{\texttt{eof}|hyperpage}{4}
-\indexentry{\texttt{\~} (home directory)|hyperpage}{5}
-\indexentry{\texttt{.cafe} (suffix)|hyperpage}{5}
-\indexentry{\texttt{.mod} (suffix)|hyperpage}{5}
-\indexentry{\texttt{.bin} (suffix)|hyperpage}{5}
-\indexentry{\texttt{cd}|hyperpage}{5}
-\indexentry{\texttt{pwd}|hyperpage}{5}
+\indexentry{\texttt{\~} (home directory)|hyperpage}{4}
+\indexentry{\texttt{.cafe} (suffix)|hyperpage}{4}
+\indexentry{\texttt{.mod} (suffix)|hyperpage}{4}
+\indexentry{\texttt{.bin} (suffix)|hyperpage}{4}
+\indexentry{\texttt{cd}|hyperpage}{4}
+\indexentry{\texttt{pwd}|hyperpage}{4}
 \indexentry{\texttt{ls}|hyperpage}{5}
 \indexentry{\texttt{save}|hyperpage}{5}
 \indexentry{\texttt{restore}|hyperpage}{5}
-\indexentry{\texttt{save-system}|hyperpage}{6}
-\indexentry{autoloading|hyperpage}{6}
-\indexentry{prelude|hyperpage}{6}
-\indexentry{standard preludes|hyperpage}{6}
+\indexentry{\texttt{save-system}|hyperpage}{5}
+\indexentry{autoloading|hyperpage}{5}
+\indexentry{prelude|hyperpage}{5}
+\indexentry{standard preludes|hyperpage}{5}
 \indexentry{initialisation file|hyperpage}{6}
 \indexentry{\texttt{.cafeobj}|hyperpage}{6}
 \indexentry{option (for startup)|hyperpage}{6}
 \indexentry{standard prelude file|hyperpage}{6}
-\indexentry{standard library|hyperpage}{8}
+\indexentry{standard library|hyperpage}{7}
 \indexentry{emacs|hyperpage}{8}
 \indexentry{\texttt{require}|hyperpage}{8}
 \indexentry{\texttt{provide}|hyperpage}{8}
-\indexentry{\texttt{show}|hyperpage}{9}
+\indexentry{\texttt{show}|hyperpage}{8}
 \indexentry{\texttt{?} (help command)|hyperpage}{9}
 \indexentry{switch|hyperpage}{10}
 \indexentry{\texttt{on}|hyperpage}{10}
 \indexentry{\texttt{off}|hyperpage}{10}
 \indexentry{\texttt{set}|hyperpage}{10}
+\indexentry{\texttt{show}|hyperpage}{10}
+\indexentry{\texttt{set}|hyperpage}{10}
 \indexentry{\texttt{show}|hyperpage}{11}
-\indexentry{\texttt{set}|hyperpage}{11}
-\indexentry{\texttt{show}|hyperpage}{11}
-\indexentry{\texttt{describe}|hyperpage}{12}
+\indexentry{\texttt{describe}|hyperpage}{11}
 \indexentry{module|hyperpage}{13}
 \indexentry{\texttt{module}|hyperpage}{13}
 \indexentry{module name|hyperpage}{13}
@@ -93,7 +93,7 @@
 \indexentry{well-formed term|hyperpage}{27}
 \indexentry{least sort|hyperpage}{27}
 \indexentry{regular signature|hyperpage}{27}
-\indexentry{\texttt{regularize}|hyperpage}{28}
+\indexentry{\texttt{regularize}|hyperpage}{27}
 \indexentry{\texttt{set}|hyperpage}{28}
 \indexentry{\texttt{signature}|hyperpage}{28}
 \indexentry{\texttt{signature}|hyperpage}{28}
@@ -142,8 +142,8 @@
 \indexentry{\texttt{set}|hyperpage}{44}
 \indexentry{\texttt{include}|hyperpage}{44}
 \indexentry{\texttt{RWL}|hyperpage}{44}
-\indexentry{\texttt{=*=}|hyperpage}{46}
-\indexentry{\texttt{=b=}|hyperpage}{47}
+\indexentry{\texttt{=*=}|hyperpage}{45}
+\indexentry{\texttt{=b=}|hyperpage}{46}
 \indexentry{current module|hyperpage}{52}
 \indexentry{\texttt{set}|hyperpage}{53}
 \indexentry{\texttt{var}|hyperpage}{53}
@@ -284,9 +284,9 @@
 \indexentry{commutativity|hyperpage}{95}
 \indexentry{\texttt{commutative}|hyperpage}{95}
 \indexentry{\texttt{comm}|hyperpage}{95}
-\indexentry{idempotency|hyperpage}{96}
-\indexentry{\texttt{idempotent}|hyperpage}{96}
-\indexentry{\texttt{idem}|hyperpage}{96}
+\indexentry{idempotency|hyperpage}{95}
+\indexentry{\texttt{idempotent}|hyperpage}{95}
+\indexentry{\texttt{idem}|hyperpage}{95}
 \indexentry{identity|hyperpage}{96}
 \indexentry{\texttt{id:}|hyperpage}{96}
 \indexentry{\texttt{assoc}|hyperpage}{96}
@@ -295,24 +295,24 @@
 \indexentry{\texttt{id:}|hyperpage}{97}
 \indexentry{\texttt{idr:}|hyperpage}{98}
 \indexentry{\texttt{idem}|hyperpage}{98}
-\indexentry{precedence|hyperpage}{99}
-\indexentry{\texttt{prec:}|hyperpage}{99}
-\indexentry{\texttt{r-assoc}|hyperpage}{99}
-\indexentry{\texttt{l-assoc}|hyperpage}{99}
-\indexentry{left associativity|hyperpage}{99}
-\indexentry{right associativity|hyperpage}{99}
+\indexentry{precedence|hyperpage}{98}
+\indexentry{\texttt{prec:}|hyperpage}{98}
+\indexentry{\texttt{r-assoc}|hyperpage}{98}
+\indexentry{\texttt{l-assoc}|hyperpage}{98}
+\indexentry{left associativity|hyperpage}{98}
+\indexentry{right associativity|hyperpage}{98}
 \indexentry{\texttt{prec:}|hyperpage}{99}
 \indexentry{\texttt{l-assoc}|hyperpage}{100}
 \indexentry{\texttt{r-assoc}|hyperpage}{100}
 \indexentry{\texttt{assoc}|hyperpage}{100}
-\indexentry{\texttt{constr}|hyperpage}{101}
-\indexentry{constructor (attribute)|hyperpage}{101}
+\indexentry{\texttt{constr}|hyperpage}{100}
+\indexentry{constructor (attribute)|hyperpage}{100}
 \indexentry{E-strategy|hyperpage}{101}
 \indexentry{evaluation strategy|hyperpage}{101}
 \indexentry{\texttt{strat:}|hyperpage}{101}
 \indexentry{\texttt{memo}|hyperpage}{104}
 \indexentry{\texttt{clean memo}|hyperpage}{104}
-\indexentry{\texttt{memo}|hyperpage}{105}
+\indexentry{\texttt{memo}|hyperpage}{104}
 \indexentry{\texttt{idr:}|hyperpage}{113}
 \indexentry{context (module)|hyperpage}{115}
 \indexentry{current module|hyperpage}{115}
@@ -327,11 +327,11 @@
 \indexentry{\texttt{module}|hyperpage}{120}
 \indexentry{parameter|hyperpage}{120}
 \indexentry{homomorphism|hyperpage}{121}
-\indexentry{derived operator|hyperpage}{122}
+\indexentry{derived operator|hyperpage}{121}
 \indexentry{derived signature|hyperpage}{122}
-\indexentry{signature morphism|hyperpage}{123}
+\indexentry{signature morphism|hyperpage}{122}
 \indexentry{specification morphism|hyperpage}{123}
-\indexentry{view|hyperpage}{124}
+\indexentry{view|hyperpage}{123}
 \indexentry{\texttt{view}|hyperpage}{124}
 \indexentry{\texttt{from}|hyperpage}{124}
 \indexentry{\texttt{to}|hyperpage}{124}
@@ -341,12 +341,12 @@
 \indexentry{\texttt{bop}|hyperpage}{124}
 \indexentry{principal sort|hyperpage}{129}
 \indexentry{\texttt{principal-sort}|hyperpage}{129}
-\indexentry{\texttt{p-sort}|hyperpage}{130}
+\indexentry{\texttt{p-sort}|hyperpage}{129}
 \indexentry{importation (of views)|hyperpage}{130}
 \indexentry{instantiation|hyperpage}{130}
-\indexentry{\texttt{<=}|hyperpage}{131}
-\indexentry{\texttt{view}|hyperpage}{131}
-\indexentry{\texttt{to}|hyperpage}{131}
+\indexentry{\texttt{<=}|hyperpage}{130}
+\indexentry{\texttt{view}|hyperpage}{130}
+\indexentry{\texttt{to}|hyperpage}{130}
 \indexentry{module expression|hyperpage}{137}
 \indexentry{renaming|hyperpage}{137}
 \indexentry{\texttt{*} (for remaning)|hyperpage}{137}
@@ -359,7 +359,7 @@
 \indexentry{\texttt{+} (module sum)|hyperpage}{138}
 \indexentry{amalgamated sum|hyperpage}{138}
 \indexentry{shared sum|hyperpage}{138}
-\indexentry{\texttt{make}|hyperpage}{139}
+\indexentry{\texttt{make}|hyperpage}{138}
 \indexentry{\texttt{open}|hyperpage}{141}
 \indexentry{\texttt{close}|hyperpage}{141}
 \indexentry{structural induction|hyperpage}{142}
@@ -389,7 +389,7 @@
 \indexentry{\texttt{context}|hyperpage}{154}
 \indexentry{\texttt{reduce}|hyperpage}{155}
 \indexentry{\texttt{conditions}|hyperpage}{155}
-\indexentry{\texttt{match}|hyperpage}{157}
+\indexentry{\texttt{match}|hyperpage}{156}
 \indexentry{\texttt{top}|hyperpage}{157}
 \indexentry{\texttt{term}|hyperpage}{157}
 \indexentry{\texttt{it}|hyperpage}{157}

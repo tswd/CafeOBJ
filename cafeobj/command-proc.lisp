@@ -1,9 +1,9 @@
 ;;;-*- Mode:LISP; Package:CHAOS; Base:10; Syntax:Common-lisp -*-
 ;;; $Id: command-proc.lisp,v 1.11 2010-07-15 04:40:55 sawada Exp $
 #|==============================================================================
-				 System: CHAOS
-				Module: cafeobj
-			    File: command-proc.lisp
+                             System: CHAOS
+                            Module: cafeobj
+                         File: command-proc.lisp
 ==============================================================================|#
 (in-package :chaos)
 #-:chaos-debug
@@ -13,7 +13,7 @@
 
 ;;;=============================================================================
 ;;; DESCRIPTION:
-;;; 		 Specific CafeOBJ top level command processors.
+;;;          Specific CafeOBJ top level command processors.
 ;;;
 ;;;=============================================================================
 
@@ -24,12 +24,12 @@
 (defun make-command-key (key)
   (if (stringp key)
       (intern key)
-      key))
+    key))
 #+gcl
 (si::define-inline-function make-command-key (key)
   (if (stringp key)
       (intern key)
-      key))
+    key))
 
 (defun define-cafeobj-command (key-list proc)
   (when (atom key-list) (setq key-list (list key-list)))
@@ -47,10 +47,10 @@
 (eval-when (eval load compile)
   (defmacro with-no-chaos-counter-parts ((name) &body body)
     ` (block body
-	(when (and *dribble-ast* *dribble-stream*)
-	  (format *dribble-stream* "~&;; ** ~s has no chaos couterparts.~%" ,name))
-	(when *eval-ast*
-	  ,@body))))
+        (when (and *dribble-ast* *dribble-stream*)
+          (format *dribble-stream* "~&;; ** ~s has no chaos couterparts.~%" ,name))
+        (when *eval-ast*
+          ,@body))))
 
 ;;; *********
 ;;; CONTROL-D
@@ -61,8 +61,7 @@
   (declare (ignore ignore))
   (when *eval-ast*
     (princ eof-char)
-    (force-output)
-    ))
+    (force-output)))
 
 ;;; ******
 ;;; PROMPT
@@ -76,12 +75,12 @@
   (with-no-chaos-counter-parts (inp)
     (let ((prompt (cadr inp)))
       (unless (cdr prompt)
-	(setq prompt (car prompt)))
+        (setq prompt (car prompt)))
       (if prompt
-	  (case-equal prompt	
-		      (("reset" "sys" "system") (setq *prompt* 'system))
-		      (t (setq *prompt* prompt)))
-	  (setq *prompt* 'none)))))
+          (case-equal prompt    
+                      (("reset" "sys" "system") (setq *prompt* 'system))
+                      (t (setq *prompt* prompt)))
+        (setq *prompt* 'none)))))
 
 ;;; *********************
 ;;; START TCL/TK GUI proc .* OBSOLATE *
@@ -113,13 +112,11 @@
 (defun cafeobj-eval-module-element-proc (inp)
   (if *open-module*
       (with-in-module (*last-module*)
-	(let ((ast (parse-module-element inp)))
-	  (dolist (a ast)
-	    (eval-ast a))))
-      (with-output-chaos-warning ()
-	(princ "no module open.")
-	))
-  )
+        (let ((ast (parse-module-element inp)))
+          (dolist (a ast)
+            (eval-ast a))))
+    (with-output-chaos-warning ()
+      (princ "no module open."))))
 
 ;;; ****************
 ;;; VIEW DECLARATION.
@@ -207,11 +204,11 @@
 
 (defun cafeobj-eval-lisp-proc (inp)
   (let* ((ast (%lisp-eval* (cadr inp)))
-	 (res (eval-ast ast)))
+         (res (eval-ast ast)))
     (setq $ res)
     (unless *cafeobj-input-quiet*
       (let ((*print-case* :upcase))
-	(format t "~&~s -> ~s" (cadr inp) res)))))
+        (format t "~&~s -> ~s" (cadr inp) res)))))
 
 (defun cafeobj-eval-lisp-q-proc (inp)
   (let ((*cafeobj-input-quiet* t))
@@ -229,14 +226,13 @@
 ;;; ************************
 
 (defun cafeobj-eval-make-proc (inp)
-    (let ((name (nth 1 inp))
-	  (modexp (nth 3 inp)))
-      (eval-ast
-       (%module-decl* name
-		      :module
-		      :user
-		      (list (%import* :protecting (parse-modexp modexp)))))
-      ))
+  (let ((name (nth 1 inp))
+        (modexp (nth 3 inp)))
+    (eval-ast
+     (%module-decl* name
+                    :module
+                    :user
+                    (list (%import* :protecting (parse-modexp modexp)))))))
 
 ;;; *****
 ;;; INPUT
@@ -259,13 +255,12 @@
     (with-chaos-error ()
       (eval-ast
        (%input* file *chaos-libpath*
-		'process-cafeobj-input '(".bin" ".cafe" ".mod") nil))
+                'process-cafeobj-input '(".bin" ".cafe" ".mod") nil))
       ))
   ;; (cafeobj-input file)
   (when *eval-ast*
     (unless (or (at-top-level) *cafeobj-input-quiet*)
-      (format t "~&-- done reading in file: ~a~%" (namestring file))))
-  )
+      (format t "~&-- done reading in file: ~a~%" (namestring file)))))
 
 ;;; ****
 ;;; SAVE
@@ -323,9 +318,8 @@
 (defun cafeobj-eval-save-system (inp)
   (let ((file (cadr inp)))
     (if (equal file ".")
-	(save-cafeobj-no-top)
-	(save-cafeobj-no-top file)
-	)))
+        (save-cafeobj-no-top)
+      (save-cafeobj-no-top file))))
 
 ;;; **********
 ;;; CLEAR-MEMO
@@ -344,21 +338,19 @@
 
 (defun cafeobj-eval-prelude-proc (inp)
   (setq *cafeobj-standard-prelude-path*
-	(with-chaos-error ()
-	  (eval-ast (%load-prelude* (cadr inp) 'process-cafeobj-input))))
-  )
+    (with-chaos-error ()
+      (eval-ast (%load-prelude* (cadr inp) 'process-cafeobj-input)))))
 
 (defun cafeobj-eval-prelude-proc+ (inp)
   (let ((f (cafeobj-probe-file (cadr inp))))
     (unless f
       (with-output-chaos-error ()
-	(format t "no such file ~a" (cadr inp))))
+        (format t "no such file ~a" (cadr inp))))
     ;;
     (setq *cafeobj-standard-prelude-path* f)
     ;; now not uses AST
     ;; (eval-ast (%load-prelude* f 'process-cafeobj-input))
-    (load-prelude+ f 'process-cafeobj-input)
-    ))
+    (load-prelude+ f 'process-cafeobj-input)))
 
 ;;; *********
 ;;; CALL-THAT
@@ -396,8 +388,8 @@
 (defun cafeobj-eval-open-proc (inp)
   (let ((modexp (second inp)))
     (if modexp
-	(setf (%open-module-modexp _open-pat) (parse-modexp modexp))
-	(setf (%open-module-modexp _open-pat) nil))
+        (setf (%open-module-modexp _open-pat) (parse-modexp modexp))
+      (setf (%open-module-modexp _open-pat) nil))
     (eval-ast _open-pat)))
 
 ;;; *****
@@ -415,7 +407,7 @@
 
 (defun cafeobj-eval-start-proc (inp)
   (eval-ast (parse-start-command inp)))
-	     
+
 ;;; *****
 ;;; APPLY
 ;;; *****
@@ -521,7 +513,7 @@
 (defun cafeobj-eval-dirs-proc (inp)
   (declare (ignore inp))
   (eval-ast _dirs-pat))
-  
+
 ;;; *****************
 ;;; PROTECT/UNPROTECT
 ;;; *****************
@@ -561,18 +553,18 @@
 
 (defun cafeobj-process-show-commands (inp)
   (let ((tag (car inp))
-	;; (dat (cadr inp))
-	(args (cdr inp)))
+        ;; (dat (cadr inp))
+        (args (cdr inp)))
     (cond ((equal "select" tag)
-	   (setf (%select-modexp _select-pat) args)
-	   (eval-ast _select-pat))
-	  ((member tag '("show" "sh") :test #'equal)
-	   (setf (%show-args _show-pat) args)
-	   (eval-ast _show-pat))
-	  ((member tag '("describe" "desc") :test #'equal)
-	   (setf (%describe-args _desc-pat) args)
-	   (eval-ast _desc-pat))
-	  (t (error "Internal error, invalid command ~s" inp)))))
+           (setf (%select-modexp _select-pat) args)
+           (eval-ast _select-pat))
+          ((member tag '("show" "sh") :test #'equal)
+           (setf (%show-args _show-pat) args)
+           (eval-ast _show-pat))
+          ((member tag '("describe" "desc") :test #'equal)
+           (setf (%describe-args _desc-pat) args)
+           (eval-ast _desc-pat))
+          (t (error "Internal error, invalid command ~s" inp)))))
 
 ;;; ***
 ;;; SET
@@ -583,9 +575,9 @@
 (defun cafeobj-process-set-commands (inp)
   (let ((dat (cadr inp)))
     (let* ((parity (car (last dat)))
-	   (which (if (member parity '("on" "off" "yes" "no") :test #'equal)
-		      (butlast dat)
-		      dat)))
+           (which (if (member parity '("on" "off" "yes" "no") :test #'equal)
+                      (butlast dat)
+                    dat)))
       (setf (%set-switch _set-pat) which)
       (setf (%set-value _set-pat) parity)
       (eval-ast _set-pat))))
@@ -594,7 +586,7 @@
 (defun cafeobj-process-set-commands (inp)
   (let ((dat (cadr inp)))
     (let ((which (car dat))
-	  (value (cdr dat)))
+          (value (cdr dat)))
       (setf (%set-switch _set-pat) which)
       (setf (%set-value _set-pat) value)
       (eval-ast _set-pat))))
@@ -603,24 +595,24 @@
 #||
 (defun process-do-command (inp)
   (let ((tag (car inp))
-	(dat (cadr inp)))
+        (dat (cadr inp)))
     (cond ((equal '("gc") dat)
-	   #+KCL (gbc t)
-	   #+(or LUCID CMU) (ext:gc)
-	   )
-	  ;;
-	  ((equal '("clear" "memo") dat) (memo-clean))
-	  ((equal "save" (car dat)) (cafeobj-save-status (cdr dat)))
-	  ((equal "restore" (car dat)) (cafeobj-restore-status (cdr dat)))
-	  ((equal '("?") dat)
-	   (princ "  ") (princ tag) (princ " [gc|clear memo] .") (terpri)
-	   (princ "  ") (princ tag) (princ " [save|restore] <Name> .") (terpri)
-	   )
-	  (t (with-output-chaos-warning ()
-	       (princ "`do' option ")
-	       (princ dat)
-	       (princ " not recognized") (terpri)))
-	  )))
+           #+KCL (gbc t)
+           #+(or LUCID CMU) (ext:gc)
+           )
+          ;;
+          ((equal '("clear" "memo") dat) (memo-clean))
+          ((equal "save" (car dat)) (cafeobj-save-status (cdr dat)))
+          ((equal "restore" (car dat)) (cafeobj-restore-status (cdr dat)))
+          ((equal '("?") dat)
+           (princ "  ") (princ tag) (princ " [gc|clear memo] .") (terpri)
+           (princ "  ") (princ tag) (princ " [save|restore] <Name> .") (terpri)
+           )
+          (t (with-output-chaos-warning ()
+               (princ "`do' option ")
+               (princ dat)
+               (princ " not recognized") (terpri)))
+          )))
 
 ||#
 
@@ -667,30 +659,30 @@
     (let ((it (car dat)))
       (eval-ast
        (case-equal it
-  	 (("reg" "regular" "regularity")
-	  (%check* :regularity (cdr dat)))
-	 (("lazy" "laziness" "strict" "strictness")
-	  (%check* :strinctness (cdr dat)))
-	 (("compat" "compatibility")
-	  (%check* :compatibility (cdr dat)))
-	 (("coherency" "coherent" "coh" "coherence")
-	  (%check* :coherency (cdr dat)))
-	 #+:BigPink
-	 (("invariance" "inv")
-	  (%check* :invariance (cdr dat)))
-	 #+:BigPink
-	 (("safety")
-	  (%check* :safety (cdr dat)))
-	 #+:BigPink
-	 (("refinement" "refine")
-	  (%check* :refinement (cdr dat)))
-	 (("?" "help" ":?" ":help")
-	  (cafeobj-check-help)
-	  (return-from cafeobj-eval-check-proc t))
-	 (t
-	  (with-output-chaos-warning ()
-	    (format t "unknown options to \"check\" command: ~a" it)
-	    (chaos-to-top))))))))
+                   (("reg" "regular" "regularity")
+                    (%check* :regularity (cdr dat)))
+                   (("lazy" "laziness" "strict" "strictness")
+                    (%check* :strinctness (cdr dat)))
+                   (("compat" "compatibility")
+                    (%check* :compatibility (cdr dat)))
+                   (("coherency" "coherent" "coh" "coherence")
+                    (%check* :coherency (cdr dat)))
+                   #+:BigPink
+                   (("invariance" "inv")
+                    (%check* :invariance (cdr dat)))
+                   #+:BigPink
+                   (("safety")
+                    (%check* :safety (cdr dat)))
+                   #+:BigPink
+                   (("refinement" "refine")
+                    (%check* :refinement (cdr dat)))
+                   (("?" "help" ":?" ":help")
+                    (cafeobj-check-help)
+                    (return-from cafeobj-eval-check-proc t))
+                   (t
+                    (with-output-chaos-warning ()
+                      (format t "Unknown options to \"check\" command: ~a" it)
+                      (chaos-to-top))))))))
 
 ;;; **********
 ;;; CHECK HELP
@@ -705,8 +697,7 @@
   (format t "~&  check {lazy | laziness} [<Operator>]")
   (format t "~&~8Tcheck strictness of <Operator>")
   (format t "~& check {coh | coherency | coherence} <Operator>")
-  (format t "~&~8Tcheck if operator is behaviouraly coherent")
-  )
+  (format t "~&~8Tcheck if operator is behaviouraly coherent"))
 
 ;;; *******
 ;;; DRIBBLE
@@ -715,8 +706,8 @@
 (defun cafeobj-eval-dribble-proc (inp)
   (let ((file (cadr inp)))
     (if (equal file ".")
-	(eval-ast (%dribble* nil))
-	(eval-ast (%dribble* file)))))
+        (eval-ast (%dribble* nil))
+      (eval-ast (%dribble* file)))))
 
 ;;; ***********************
 ;;; TRAM COMPILER INTERFACE
@@ -740,28 +731,23 @@
 
 (defun cafeobj-eval-sos-proc (inp)
   (let ((ast (process-sos-command (cdr inp))))
-    (eval-ast ast))
-  )
+    (eval-ast ast)))
 
 (defun cafeobj-eval-db-proc (inp)
   (let ((ast (process-db-command (cdr inp))))
-    (eval-ast ast))
-  )
+    (eval-ast ast)))
 
 (defun cafeobj-eval-clause-proc (inp)
   (let ((ast (process-clause-command (cdr inp))))
-    (eval-ast ast))
-  )
+    (eval-ast ast)))
 
 (defun cafeobj-eval-list-proc (inp)
   (let ((ast (process-list-command (cdr inp))))
-    (eval-ast ast))
-  )
+    (eval-ast ast)))
 
 (defun cafeobj-eval-resolve-proc (inp)
   (let ((ast (process-resolve-command (cdr inp))))
-    (eval-ast ast))
-  )
+    (eval-ast ast)))
 ||#
 
 (defun cafeobj-eval-version-proc (&rest ignore)
@@ -773,8 +759,7 @@
 ;;; CHAOS TOP LEVEL
 ;;; ***************
 (defun cafeobj-eval-chaos-proc (args)
-  (eval-ast (%chaos* args))
-  )
+  (eval-ast (%chaos* args)))
 
 ;;; 
 ;;; continuie
@@ -784,15 +769,14 @@
     (with-output-chaos-error ('invalid-arg)
       (format t "invalid args ~a" args)))
   (let ((num-tok (cadr args))
-	(num 1))
+        (num 1))
     (when num-tok
       (setq num (read-from-string num-tok)))
     (unless (and (integerp num)
-		 (> num 0))
+                 (> num 0))
       (with-output-chaos-error ('invalid-arg)
-	(format t "continue count must be positive integer, but ~a is given."
-		num-tok)))
-    (eval-ast (%continue* num))
-    ))
+        (format t "continue count must be positive integer, but ~a is given."
+                num-tok)))
+    (eval-ast (%continue* num))))
 
 ;;; EOF

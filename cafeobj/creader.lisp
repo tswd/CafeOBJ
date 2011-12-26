@@ -246,7 +246,7 @@ File: creader.lisp
 ;;; EQUATION
 
   (defparameter EqDeclaration
-      '(eq :term =  :term |.|))
+      '(eq :term = :term |.|))
   (defparameter BEqDeclaration
       '((:+ beq bq) :term = :term |.|))
   (defparameter CEQDeclaration
