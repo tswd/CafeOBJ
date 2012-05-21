@@ -12,5 +12,9 @@ module! M-TEST1 {
       if enabled-f(Y) =/= true and enabled-f(X) := enabled-f(Y) .
   }
 
--- eof
+set trace whole on
+red in M-TEST1 : f(b) .
+set trace whole off
+-- 
+eof
 

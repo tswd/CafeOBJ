@@ -81,7 +81,7 @@
 		   (print-next)
 		   (format t "  there already is an constant operator with the same name.")
 		   (print-next)
-		   (princ "... ignoreing")
+		   (princ "... ignoring")
 		   (return-from declare-variable-in-module nil)
 		   ))
 	       )

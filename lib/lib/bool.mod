@@ -5,7 +5,7 @@
 ** file: bool.mod
 ** -------------------------------------------------------------
 
-require truth
+require base-bool
 --
 -- NOTE: You may need to modify `setup-BOOL' if you change
 --       the definition of module BOOL
@@ -40,56 +40,57 @@ lispq
       (setq *bool-iff* iff-meth))
     ))
 
-**
-** MODULE BOOL
-** 
-** we don't want to include BOOL of course
-set include BOOL off
+-- **
+-- ** MODULE BOOL
+-- ** 
+-- ** we don't want to include BOOL of course
+-- set include BOOL off
 
-sys:mod! BOOL
-      principal-sort Bool
-{
-  imports {
-    protecting (TRUTH)
-  }
-  signature {
-    op _and_ : Bool Bool -> Bool { assoc comm prec: 55 r-assoc }
-    op _and-also_ : Bool Bool -> Bool { strat: (1 0 2) prec: 55 r-assoc }
-    op _or_ : Bool Bool -> Bool { assoc comm prec: 59 r-assoc }
-    op _or-else_ : Bool Bool -> Bool { strat: (1 0 2) prec: 59 r-assoc }
-    op _xor_ : Bool Bool -> Bool { assoc comm prec: 57 r-assoc }
-    op not_ : Bool -> Bool { strat: (0 1) prec: 53 }
-    op _implies_ : Bool Bool -> Bool { strat: (0 1 2) prec: 61 r-assoc }
-    op _iff_ : Bool Bool -> Bool { strat: (0 1 2) prec: 63 r-assoc }
-  }
-  axioms {
-    var A : Bool
-    var B : Bool
-    var C : Bool
-    eq false and A = false .
-    eq true and A = A .
-    eq A and A = A .
-    eq A xor A = false .
-    eq false xor A = A .
-    eq A and (B xor C) = A and B xor A and C .
-    eq A or A = A .
-    eq false or A = A .
-    eq true or A = true .
-    eq A or B = A and B xor A xor B .
-    eq not A = A xor true .
-    eq A implies B = A and B xor A xor true .
-    eq A iff B = A xor B xor true .
-    eq A and-also false = false .
-    eq false and-also A = false .
-    eq A and-also true = A .
-    eq true and-also A = A .
-    eq A and-also A = A .
-    eq false or-else A = A .
-    eq A or-else false = A .
-    eq true or-else A = true .
-    eq A or-else true = true .
-  }
-}
+-- sys:mod! BOOL
+--       principal-sort Bool
+-- {
+--   imports {
+--     protecting (TRUTH)
+--     protecting (EQL)
+--   }
+--   signature {
+--     op _and_ : Bool Bool -> Bool { assoc comm prec: 55 r-assoc }
+--     op _and-also_ : Bool Bool -> Bool { strat: (1 0 2) prec: 55 r-assoc }
+--     op _or_ : Bool Bool -> Bool { assoc comm prec: 59 r-assoc }
+--     op _or-else_ : Bool Bool -> Bool { strat: (1 0 2) prec: 59 r-assoc }
+--     op _xor_ : Bool Bool -> Bool { assoc comm prec: 57 r-assoc }
+--     op not_ : Bool -> Bool { strat: (0 1) prec: 53 }
+--     op _implies_ : Bool Bool -> Bool { strat: (0 1 2) prec: 61 r-assoc }
+--     op _iff_ : Bool Bool -> Bool { strat: (0 1 2) prec: 63 r-assoc }
+--   }
+--   axioms {
+--     var A : Bool
+--     var B : Bool
+--     var C : Bool
+--     eq false and A = false .
+--     eq true and A = A .
+--     eq A and A = A .
+--     eq A xor A = false .
+--     eq false xor A = A .
+--     eq A and (B xor C) = A and B xor A and C .
+--     eq A or A = A .
+--     eq false or A = A .
+--     eq true or A = true .
+--     eq A or B = A and B xor A xor B .
+--     eq not A = A xor true .
+--     eq A implies B = A and B xor A xor true .
+--     eq A iff B = A xor B xor true .
+--     eq A and-also false = false .
+--     eq false and-also A = false .
+--     eq A and-also true = A .
+--     eq true and-also A = A .
+--     eq A and-also A = A .
+--     eq false or-else A = A .
+--     eq A or-else false = A .
+--     eq true or-else A = true .
+--     eq A or-else true = true .
+--   }
+-- }
 
 ** setting up
 lispq

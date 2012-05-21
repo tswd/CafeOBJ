@@ -745,7 +745,7 @@
 		(values (or null !method-info)))
        (unless opinfo-table
 	 (with-output-panic-message ()
-	   (format t "~%no opinfo-table")
+	   (format t "get-method-info: no opinfo-table")
 	   (chaos-error 'panic)))
        (gethash method opinfo-table))
 

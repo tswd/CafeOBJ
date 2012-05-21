@@ -297,6 +297,14 @@
 	  ;; (*m-pattern-subst* nil)
 	  )
      ;;
+     (when *m-pattern-subst*
+       (term-replace-dd-simple
+	term
+	(set-term-color
+	 (substitution-image-simplifying *m-pattern-subst*
+					 term
+					 (rule-need-copy rule)))))
+     ;;
      (multiple-value-bind (global-state subst no-match E-equal)
 	 (funcall (rule-first-match-method rule) (rule-lhs rule) term)
        (incf $$matches)
@@ -368,7 +376,7 @@
 	 (when (and *condition-trial-limit*
 		    (> $$trials *condition-trial-limit*))
 	   (with-output-chaos-warning ()
-	     (format t "~&Infinite loop? Evaluation of condition nests too deep,")
+	     (format t "~&Infinite loop? Evaluating rule condition, exceeds trial limit: ~d" $$trials)
 	     (format t "~%terminates rewriting: ")
 	     (term-print $$term))
 	   (chaos-error 'too-deep)
@@ -394,12 +402,15 @@
                         (normalize-term $$cond)
 			;; :=
 			(when *m-pattern-subst*
-			  (setq subst (nconc subst *m-pattern-subst*)))
+			  (setq subst (append *m-pattern-subst* subst)))
 			;;
                         $$cond)
                       ))
             ;; the condition is satisfied
             (progn
+	      (when *rewrite-debug*
+		(format *error-output* "~&SUBST:")
+		(print-substitution subst))
               (term-replace-dd-simple
                term
                (set-term-color
@@ -437,6 +448,13 @@
     (format t "~&..ERR_TERM: ")
     (term-print-with-sort term))
   ||#
+  (when *m-pattern-subst*
+    (term-replace-dd-simple
+     term
+     (set-term-color
+      (substitution-image-simplifying *m-pattern-subst*
+				      term
+				      (rule-need-copy rule)))))
   ;; ________
   ;; check stop pattern
   (check-stop-pattern term)
@@ -464,6 +482,10 @@
             
             ;; technical assignation related to substitution-image.
             (when E-equal (setq subst nil))
+
+	    ;;
+	    (when *m-pattern-subst*
+	      (setq subst (append *m-pattern-subst* subst)))
 
             ;; match success
             ;; then, the condition must be checked
@@ -548,7 +570,7 @@
               (when (and *condition-trial-limit*
                          (>= $$trials *condition-trial-limit*))
                 (with-output-chaos-warning ()
-                  (format t "~&Infinite loop? Evaluation of condition nests too deep,")
+                  (format t "~&Infinite loop? Evaluating rule condition, exceeds trial limit ~d" $$trials)
                   (format t "~%terminates rewriting: ")
                   (term-print $$term))
                 (chaos-error 'too-deep)
@@ -586,7 +608,7 @@
                               (normalize-term $$cond)
 			      ;; :=
 			      (when *m-pattern-subst*
-				(setq subst (nconc subst *m-pattern-subst*)))
+				(setq subst (append *m-pattern-subst* subst)))
 			      ;;
                               $$cond)
                             ))

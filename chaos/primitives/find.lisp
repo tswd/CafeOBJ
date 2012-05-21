@@ -205,7 +205,7 @@
 		       (with-output-chaos-warning ()
 			 (princ "in module ")
 			 (print-chaos-object module)
-			 (format t ",ambiguous sort reference ~a:"
+			 (format t ", sort name ~a is ambiguous:"
 				 (string sort-id))
 			 (setq am (reverse am))
 			 (dotimes (x (length am))
@@ -942,7 +942,7 @@
 		 (context (cdr name)))
 	     (unless (or (module-p context) (null context))
 	       (with-output-chaos-error ('no-context)
-		 (princ "context for parameter name must evaluated : " )
+		 (princ "context for parameter name must be evaluated : " )
 		 (print-chaos-object context)
 		 ))
 	     (find-parameterized-submodule real-name (if context

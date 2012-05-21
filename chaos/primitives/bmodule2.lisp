@@ -320,7 +320,7 @@
 	((modexp-is-parameter-theory mod)
 	 (car mod))
 	(t (with-output-panic-message ()
-	     (format t "getting arg, given invalid object: ~s" mod)))))
+	     (format t "expecting arg name, given invalid object: ~s" mod)))))
 
 (defun parameter-module-theory (mod)
   (cond ((module-p mod)
@@ -337,7 +337,7 @@
 	((modexp-is-parameter-theory mod)
 	 (third mod))
 	(t (with-output-panic-message ()
-	     (format t "getting theory, given invalid object: ~s" mod)))))
+	     (format t "expecting theory, given invalid object: ~s" mod)))))
 
 (defun parameter-module-context (mod)
   (cond ((module-p mod)
@@ -354,7 +354,7 @@
 	((modexp-is-parameter-theory mod)
 	 (fourth mod))
 	(t (with-output-panic-message ()
-	     (format t "getting parameter context, given invalid object: ~s" mod)))))
+	     (format t "expecting parameter context, given invalid object: ~s" mod)))))
 
 ;;; ** EXPORTING MODULES *******************************************************
 

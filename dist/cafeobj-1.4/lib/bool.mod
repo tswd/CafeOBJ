@@ -1,5 +1,5 @@
 ** -*- Mode:CafeOBJ -*-
-** $Id: bool.mod,v 1.4 2007-03-05 12:01:59 sawada Exp $
+** $Id: bool.mod,v 1.4 2007-03-05 11:02:08 sawada Exp $
 ** system: Chaos
 ** module: library
 ** file: bool.mod
@@ -51,6 +51,7 @@ sys:mod! BOOL
 {
   imports {
     protecting (TRUTH)
+    protecting (EQL)
   }
   signature {
     op _and_ : Bool Bool -> Bool { assoc comm prec: 55 r-assoc }

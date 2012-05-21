@@ -600,6 +600,9 @@
 		       ))))))
     ;; check the axiom
     (check-axiom-error-method *current-module* the-axiom t)
+    ;; additionaly if condition part contains match-op...
+    (when (term-contains-match-op (axiom-condition the-axiom))
+      (setf (axiom-contains-match-op the-axiom) t))
     ;; add to module: was add-axiom-to-module...
     (adjoin-axiom-to-module *current-module* the-axiom)
     ;; set module status

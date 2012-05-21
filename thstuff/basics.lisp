@@ -454,6 +454,12 @@ File: basics.lisp
 ;;; FOR :=
 ;;;
 (defun match-m-pattern (pat term)
+  #||
+  (format t "~&[m-pat]: pattern= ")
+  (term-print pat)
+  (format t "~&         term= ")
+  (term-print term)
+  ||#
   (multiple-value-bind (res subst)
       (@pat-match pat term)
     (when res
@@ -464,6 +470,25 @@ File: basics.lisp
       (return-from match-m-pattern t))
     (setq *m-pattern-subst* nil)
     nil))
+
+#||
+(defun match-m-pattern (pat term)
+  (format t "~&[m-pat]: pattern= ")
+  (term-print pat)
+  (format t "~&         term= ")
+  (term-print term)
+  (multiple-value-bind (gs subst no-match eeq)
+      (@matcher pat term :match)
+    (declare (ignore gs eeq))
+    (unless no-match
+      (if *m-pattern-subst*
+	  (setq *m-pattern-subst*
+	    (nconc *m-pattern-subst* subst))
+	(setq *m-pattern-subst* subst))
+      (return-from match-m-pattern t))
+    (setq *m-pattern-subst* nil)
+    nil))
+||#
 
 (defun @test-rule-extensions (rule term type)
   (let ((top (term-head (axiom-lhs rule))))

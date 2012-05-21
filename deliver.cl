@@ -10,14 +10,28 @@
 			"dist/cafeobj-1.4/lisp/"
 			#+:mswindows
 			"dist/cafeobj-1.4/"
-			'("pignose.fasl" :emacs :eli
-			  :sock :process
-			  :acldns :collate :euc :ffcompat :list2
-			  :fileutil :foreign :trace
-			  :hmac :locale :regexp2 #-:mswindows :sigio 
-			  ;; #-:mswindows :ssl
+			'("pignose.fasl"
+			  :emacs
+			  :eli
+			  :sock
+			  :process
+			  :acldns
+			  :collate
+			  :euc
+			  :ffcompat
+			  :list2
+			  :fileutil
+			  :foreign
+			  :trace
+			  :hmac
+			  :locale
+			  :regexp2
+			  #-:mswindows :sigio 
 			  :ssl
-			  :streama)
+			  :streama
+			  :streamm
+			  :streamc
+			  :streamp)
 			:application-type :exe
 			:print-startup-message nil
 			:allow-existing-directory t

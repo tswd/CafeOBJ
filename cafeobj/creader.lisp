@@ -83,7 +83,7 @@ File: creader.lisp
               (|id:| :chaos-item)
               (|identity:| :chaos-item)
               (|idr:| :chaos-item)
-		      (|identity-rules:| :chaos-item)
+              (|identity-rules:| :chaos-item)
               ((:pred general-read-numberp))
               ((:+ prec precedence |prec:| |pecedence:|) :int)
               (|(| (:seq-of :int) |)|)
@@ -107,7 +107,7 @@ File: creader.lisp
               (|id:| :chaos-item)
               (|identity:| :chaos-item)
               (|idr:| :chaos-item)
-		      (|identity-rules:| :chaos-item)
+              (|identity-rules:| :chaos-item)
               ((:pred general-read-numberp))
               ((:+ prec precedence |prec:| |pecedence:|) :int)
               (|(| (:seq-of :int) |)|)
@@ -137,7 +137,7 @@ File: creader.lisp
               (|id:| :chaos-item)
               (|identity:| :chaos-item)
               (|idr:| :chaos-item)
-		      (|identity-rules:| :chaos-item)
+              (|identity-rules:| :chaos-item)
               ;; ((:pred general-read-numberp))
               ((:+ prec precedence |prec:| |pecedence:|) :int)
               (|(| (:seq-of :int) |)|)
@@ -167,7 +167,7 @@ File: creader.lisp
               (|id:| :chaos-item)
               (|identity:| :chaos-item)
               (|idr:| :chaos-item)
-		      (|identity-rules:| :chaos-item)
+              (|identity-rules:| :chaos-item)
               ;; ((:pred general-read-numberp))
               ((:+ prec precedence |prec:| |pecedence:|) :int)
               (|(| (:seq-of :int) |)|)
@@ -246,7 +246,7 @@ File: creader.lisp
 ;;; EQUATION
 
   (defparameter EqDeclaration
-      '(eq :term = :term |.|))
+      '(eq (:optional |[| (:seq-of :symbol (:upto (|]| |:|)))) :term = :term |.|))
   (defparameter BEqDeclaration
       '((:+ beq bq) :term = :term |.|))
   (defparameter CEQDeclaration
@@ -290,31 +290,31 @@ File: creader.lisp
 
 (eval-when (eval load)
   (setq *cafeobj-schemas*
-	'(
-	  (Top-form
-	   (:one-of
-	    (;; MODULE : Its Constructs
+    '(
+      (Top-form
+       (:one-of
+        (;; MODULE : Its Constructs
          ;; --------------------------------------------------
-	     (:+ mod module module* module! mod* mod! 
+         (:+ mod module module* module! mod* mod! 
              |sys:mod| |sys:mod*| |sys:mod!|
              |sys:module| |sys:module*| |sys:module!|
              |hwd:module!| |hwd:module*| |hwd:module|
              ots |sys:ots| |hwd:ots|
              )
-	     :symbol                        ; (:optional (:! Params))
-	     (:if-present (:+ \( \[) (:! Param) :append (:seq-of |,| (:! Param))
+         :symbol                        ; (:optional (:! Params))
+         (:if-present (:+ \( \[) (:! Param) :append (:seq-of |,| (:! Param))
                       (:+ \) \]))
-	     (:if-present principal-sort :sort)
+         (:if-present principal-sort :sort)
          ;; (:if-present psort :sort)
-	     |{|
-	     (:many-of
+         |{|
+         (:many-of
 
           ;; MODULE IMPORTATIONS
           ;; *NOTE*  imports { ... } is not in MANUAL, and does not have
           ;;         translater to Chaos now.
-	      ((:+ imports import)
-	       |{|
-	       (:many-of
+          ((:+ imports import)
+           |{|
+           (:many-of
             #.ExDeclaration
             #.PrDeclaration
             #.UsDeclaration
@@ -322,14 +322,14 @@ File: creader.lisp
             ((:+ --> **>) :comment)
             ((:+ -- **) :comment)
             )
-	       |}|)
-	      #.ExDeclaration
-	      #.PrDeclaration
-	      #.UsDeclaration
-	      #.IncDeclaration
+           |}|)
+          #.ExDeclaration
+          #.PrDeclaration
+          #.UsDeclaration
+          #.IncDeclaration
 
           ;; SIGNATURE
-	      ((:+ sig signature) |{|
+          ((:+ sig signature) |{|
                               (:many-of
                                #.BSortDeclaration
                                #.BHSortDeclaration
@@ -347,7 +347,7 @@ File: creader.lisp
                               |}|)
 
           ;; AXIOMS
-	      ((:+ axiom axioms axs) |{|
+          ((:+ axiom axioms axs) |{|
                                  (:many-of
                                   #.LetDeclaration
                                   #.MacroDeclaration
@@ -369,139 +369,140 @@ File: creader.lisp
                                  |}|)
 
           ;; Module elements without signature/axioms.
-	      #.BSortDeclaration
-	      #.BHSortDeclaration
-	      #.SortDeclaration
-	      #.HSortDeclaration
-	      #.BHSortDeclaration
-	      #.R-C-Declaration
-	      #.OperatorDeclaration
-	      #.BOperatorDeclaration
-	      #.PredicateDeclaration
-	      #.BPredicateDeclaration
-	      #.OperatorAttribute
-	      #.LetDeclaration
-	      #.MacroDeclaration
-	      #.VarDeclaration
-	      #.VarsDeclaration
-	      #.EqDeclaration
-	      #.BEqDeclaration
-	      #.CeqDeclaration
-	      #.BCeqDeclaration
-	      #.RlDeclaration
-	      #.CRlDeclaration
-	      #.BRlDeclaration
-	      #.BCRLDeclaration
-	      #.FoplAXDeclaration
-	      #.FoplGoalDeclaration
-	      ((:+ --> **>) :comment)
-	      ((:+ -- **) :comment)
+          #.BSortDeclaration
+          #.BHSortDeclaration
+          #.SortDeclaration
+          #.HSortDeclaration
+          #.BHSortDeclaration
+          #.R-C-Declaration
+          #.OperatorDeclaration
+          #.BOperatorDeclaration
+          #.PredicateDeclaration
+          #.BPredicateDeclaration
+          #.OperatorAttribute
+          #.LetDeclaration
+          #.MacroDeclaration
+          #.VarDeclaration
+          #.VarsDeclaration
+          #.EqDeclaration
+          #.BEqDeclaration
+          #.CeqDeclaration
+          #.BCeqDeclaration
+          #.RlDeclaration
+          #.CRlDeclaration
+          #.BRlDeclaration
+          #.BCRLDeclaration
+          #.FoplAXDeclaration
+          #.FoplGoalDeclaration
+          ((:+ --> **>) :comment)
+          ((:+ -- **) :comment)
 
           ;; Misc elements.
-	      (parse :term |.|)
-	      ((:+ ev lisp evq lispq) (:call (read)))
+          (parse :term |.|)
+          ((:+ ev lisp evq lispq) (:call (read)))
           ;; allow sole ".", and do nothing
-	      (|.|)
-	      )
-	     |}|
-	     )                              ; end module
+          (|.|)
+          )
+         |}|
+         )                              ; end module
 
         ;; VIEW DECLARATION
         ;; --------------------------------------------------
-	    (view :symbol 
+        (view :symbol 
               :modexp
               |}|)
 
         ;; MAKE
         ;; --------------------------------------------------
-	    (make :symbol |(| :modexp |)|)
+        (make :symbol |(| :modexp |)|)
 
         ;; TOP LEVEL COMMANDS
         ;; --------------------------------------------------
-	    ((:+ reduce red execute exec exec! execute! breduce bred)
-	     (:if-present  in :modexp |:|) (:seq-of :term) |.|)
-	    (tram (:+ compile execute exec red reduce reset)
+        ((:+ reduce red execute exec exec! execute! breduce bred)
+         (:if-present  in :modexp |:|) (:seq-of :term) |.|)
+        (tram (:+ compile execute exec red reduce reset)
               (:if-present in :modexp |:|)
               (:seq-of :term) |.|)
-	    ((:+ cbred)
-	     (:if-present in :modexp |:|)
-	     (:seq-of :term) |.|)
-	    (version)
+        ((:+ cbred)
+         (:if-present in :modexp |:|)
+         (:seq-of :term) |.|)
+        (version)
         ;;
-	    (autoload :symbol :symbol)
+        (autoload :symbol :symbol)
         ;; (stop at :term |.|)
         ;; ((:+ rwt) limit :symbol)
-	    (test (:+ reduction red execution exec) (:if-present in :modexp |:|)
+        (test (:+ reduction red execution exec) (:if-present in :modexp |:|)
               (:seq-of :term)
               (:+ |:expect| |expect:| expect) (:seq-of :term) |.|)
         ;; ((:+ match unify) (:seq-of :term) (:+ to :to) (:seq-of :term) |.|)
-	    (match :term (:+ to with) :term |.|)
-	    (unify :term (:+ to with) :term |.|)
+        (match :term (:+ to with) :term |.|)
+        (unify :term (:+ to with) :term |.|)
         ;; (call-that :symbol)
         ;; ((:+ language lang) :symbol)
-	    ((:+ input in) :symbol)
-	    (check (:seq-of :top-opname))
-	    (regularize (:seq-of :top-opname))
-	    (save :symbol)
-	    (restore :symbol)
-	    (prelude :symbol)
-	    (save-system :symbol)
-	    (protect (:seq-of :top-opname))
-	    (unprotect (:seq-of :top-opname))
-	    (clean memo)
-	    (reset)
-	    (full-reset)
-	    (full reset)
-	    ((:+ --> **>) :comment)
-	    ((:+ -- **) :comment)
-	    (parse (:if-present  in :modexp |:|) (:seq-of :term) |.|)
-	    ((:+ lisp ev eval evq lispq)
-	     (:call (read)))
-	    (;; (:+ show sh set select describe desc) ; do 
-	     set
-	     (:seq-of :top-opname))
+        ((:+ input in) :symbol)
+        (check (:seq-of :top-opname))
+        (regularize (:seq-of :top-opname))
+        (save :symbol)
+        (restore :symbol)
+        (prelude :symbol)
+        (save-system :symbol)
+        (protect (:seq-of :top-opname))
+        (unprotect (:seq-of :top-opname))
+        (clean memo)
+        (reset)
+        (full-reset)
+        (full reset)
+        ((:+ --> **>) :comment)
+        ((:+ -- **) :comment)
+        (parse (:if-present  in :modexp |:|) (:seq-of :term) |.|)
+        ((:+ lisp ev eval evq lispq)
+         (:call (read)))
+        (;; (:+ show sh set select describe desc) ; do 
+         set
+         (:seq-of :top-opname))
         ;; (select :modexp :args)
-	    ((:+ show sh select describe desc) :args)
-	    (trans-chaos (:seq-of :top-opname))
+        ((:+ show sh select describe desc) :args)
+        (trans-chaos (:seq-of :top-opname))
 
         ;; module elements which can appear at top(iff a module is opened.)
 
-	    #.PrDeclaration
-	    #.ExDeclaration
-	    #.UsDeclaration
-	    #.IncDeclaration
-	    #.BSortDeclaration
-	    #.BHSortDeclaration
-	    #.HSortDeclaration
-	    #.SortDeclaration
-	    #.OperatorDeclaration
-	    #.BOperatorDeclaration
-	    #.PredicateDeclaration
-	    #.BPredicateDeclaration
-	    #.LetDeclaration
-	    #.MacroDeclaration
-	    #.VarDeclaration
-	    #.VarsDeclaration
-	    #.PVarDeclaration
-	    #.PVarsDeclaration
-	    #.EqDeclaration
-	    #.CEqDeclaration
-	    #.BEqDeclaration
-	    #.BCEqDeclaration
-	    #.RlDeclaration
-	    #.CRlDeclaration
-	    #.BRlDeclaration
-	    #.BCRLDeclaration
-	    #.FoplAXDeclaration
-	    #.FoplGoalDeclaration
+        #.PrDeclaration
+        #.ExDeclaration
+        #.UsDeclaration
+        #.IncDeclaration
+        #.BSortDeclaration
+        #.BHSortDeclaration
+        #.HSortDeclaration
+        #.SortDeclaration
+        #.OperatorDeclaration
+        #.BOperatorDeclaration
+        #.PredicateDeclaration
+        #.BPredicateDeclaration
+        #.LetDeclaration
+        #.MacroDeclaration
+        #.VarDeclaration
+        #.VarsDeclaration
+        #.PVarDeclaration
+        #.PVarsDeclaration
+        #.EqDeclaration
+        #.CEqDeclaration
+        #.BEqDeclaration
+        #.BCEqDeclaration
+        #.RlDeclaration
+        #.CRlDeclaration
+        #.BRlDeclaration
+        #.BCRLDeclaration
+        #.FoplAXDeclaration
+        #.FoplGoalDeclaration
         ;; theorem proving stuff.
-	    (open (:seq-of :top-opname))
-	    (close)
-	    (start :term |.|)
+        ;; (open (:seq-of :top-opname))
+        (open :modexp |.|)
+        (close)
+        (start :term |.|)
         ;; trace/untrace
-	    ((:+ trace untrace) :symbol)
+        ((:+ trace untrace) :symbol)
         ;; apply
-	    (apply (:one-of-default
+        (apply (:one-of-default
                 (:symbol (:upto
                           (within at)
                           (:optional with :symbol
@@ -519,7 +520,7 @@ File: creader.lisp
                            |.|)))
                 (?)))
         ;;
-	    (choose (:one-of
+        (choose (:one-of
                  ((:+ top term subterm))
                  ((:+ |(| |{| |[|)
                   :unread
@@ -527,116 +528,116 @@ File: creader.lisp
                   (:seq-of of ((:! Selector)))
                   |.|)))
 
-	    (find (:+ rule -rule +rule rules -rules +rules))
+        (find (:+ rule -rule +rule rules -rules +rules))
 
         ;; RWL related commands
-	    ((:+ cont continue) :args)
-	    
+        ((:+ cont continue) :args)
+        
         ;; PROVIDE/REQUIRE
-	    (provide :symbol)
-	    (require :top-term)
-	    (autoload :symbol :symbol)
+        (provide :symbol)
+        (require :top-term)
+        (autoload :symbol :symbol)
 
         ;; PigNose commands
-	    #+:bigpink (db reset)
-	    #+:bigpink ((:+ sos passive) (:+ = + -)
+        #+:bigpink (db reset)
+        #+:bigpink ((:+ sos passive) (:+ = + -)
                                      |{|
                                      (:upto (|,| |}|) :sorts)
                                      :append (:seq-of |,|
                                                       (:upto (|}| |,|) :sorts))
                                      |}|)
-	    #+:bigpink (list
+        #+:bigpink (list
                     (:+ axiom axioms
                         sos usable
                         flag param flags parameter parameters
                         option options passive
                         demod demodulator demodulators))
-	    #+:bigpink (clause :term |.|)
-	    #+:bigpink (option (:one-of (reset)
+        #+:bigpink (clause :term |.|)
+        #+:bigpink (option (:one-of (reset)
                                     (= :symbol)))
-	    #+:bigpink ((:+ save-option save-options) :symbol)
-	    #+:bigpink (flag |(| :symbol |,| (:+ on off set clear) |)|)
-	    #+:bigpink (param |(| :symbol |,| :int |)|)
-	    #+:bigpink (resolve :args)
-	    #+:bigpink (demod (:if-present  in :modexp |:|) (:seq-of :term) |.|)
-	    #+:bigpink (sigmatch |(| :modexp |)| (:+ to with) |(| :modexp |)|)
+        #+:bigpink ((:+ save-option save-options) :symbol)
+        #+:bigpink (flag |(| :symbol |,| (:+ on off set clear) |)|)
+        #+:bigpink (param |(| :symbol |,| :int |)|)
+        #+:bigpink (resolve :args)
+        #+:bigpink (demod (:if-present  in :modexp |:|) (:seq-of :term) |.|)
+        #+:bigpink (sigmatch |(| :modexp |)| (:+ to with) |(| :modexp |)|)
 
-	    #+:bigpink (lex |(|
+        #+:bigpink (lex |(|
                         (:upto (|,| |)|) :opname)
                         :append (:seq-of |,|
                                          (:upto (|,| |)|) :opname))
                         |)|)
         ;; misc toplevel commands
-	    (eof)
-	    #-CMU (#\^D)
-	    #+CMU (#\)
-	    (prompt (:seq-of :top-opname))
-	    ((:+ quit q |:q| |:quit|))
-	    (cd :args)
-	    (pushd :args)
-	    (popd :args)
-	    (dirs)
+        (eof)
+        #-CMU (#\^D)
+        #+CMU (#\)
+        (prompt (:seq-of :top-opname))
+        ((:+ quit q |:q| |:quit|))
+        (cd :args)
+        (pushd :args)
+        (popd :args)
+        (dirs)
         ;; #-(or GCL LUCID CMU) (ls :symbol)
         ;; #+(or GCL LUCID CMU) 
         ;; (ls :top-opname)
-	    (ls :args)
-	    (dribble :symbol)
-	    (pwd)
-	    (! :top-term)                   ; shell escape
-	    (? :args)                       ; help/messege description
+        (ls :args)
+        (dribble :symbol)
+        (pwd)
+        (! :top-term)                   ; shell escape
+        (? :args)                       ; help/messege description
         (?? :args)                      ; detailed help
-	    (|.|)
-	    (chaos :args)
-	    ))                              ; end Top-Form
+        (|.|)
+        (chaos :args)
+        ))                              ; end Top-Form
 
       ;; some separated definitions of non-terminals.
       ;; --------------------------------------------------
       ;; subterm specifier
       
-	  (Selector
-	   (:one-of
+      (Selector
+       (:one-of
         ;; (term) (top) (subterm)
-	    (|{| :int :append (:seq-of |,| :int) |}|)
-	    (|(| (:seq-of :int) |)|)
-	    (\[ :int (:optional |..| :int) \])))
+        (|{| :int :append (:seq-of |,| :int) |}|)
+        (|(| (:seq-of :int) |)|)
+        (\[ :int (:optional |..| :int) \])))
 
       ;; parameter part
       ;; (Params (\[ (:! Param) :append (:seq-of |,| (:! Param)) \]))
-	  (Param 
-	   (:one-of-default
-	    (:symbols |::| (:upto (|,| \] \)) :modexp))
-	    ((:+ ex extending us using pr protecting inc including)
-	     :symbols |::| (:upto (|,| \] \)) :modexp))))
+      (Param 
+       (:one-of-default
+        (:symbols |::| (:upto (|,| \] \)) :modexp))
+        ((:+ ex extending us using pr protecting inc including)
+         :symbols |::| (:upto (|,| \] \)) :modexp))))
 
       ;; importation modexp
-	  #||
-	  (ImportModexp
-	   (:symbol :modexp))
-	  (IM (:one-of-default
-	       (:modexp)
-	       (|::| :modexp)))
-	  ||#
+      #||
+      (ImportModexp
+       (:symbol :modexp))
+      (IM (:one-of-default
+           (:modexp)
+           (|::| :modexp)))
+      ||#
       ;; (sortConst
       ;;  (:one-of-default
       ;;   (:sorts)
       ;;  (:symbol = { :term |:| :sorts })))
 
       ;; super reference.
-	  (Supers (\[ (:! Super) :append (:seq-of |,| (:! Super)) \]))
-	  (Super ((:upto (|,| \]) :super)))
+      (Supers (\[ (:! Super) :append (:seq-of |,| (:! Super)) \]))
+      (Super ((:upto (|,| \]) :super)))
       ;; slot/value pairs
-	  (SV-Pairs
-	   ((:! Sv-pair) :append  (:seq-of (:! Sv-pair)) ;(:seq-of |,| (:! Sv-pair))
-	    ))
-	  (Sv-Pair
-	   (:one-of-default
-	    (:symbol (:upto (|}|))
+      (SV-Pairs
+       ((:! Sv-pair) :append  (:seq-of (:! Sv-pair)) ;(:seq-of |,| (:! Sv-pair))
+        ))
+      (Sv-Pair
+       (:one-of-default
+        (:symbol (:upto (|}|))
          (:one-of (|:| :sort)
-			      (= |(| :term |)| |:| :sort)))
-	    ((:+ -- **) :comment)
-	    ((:+ --> **>) :comment))
-	   )
-	  ))
+                  (= |(| :term |)| |:| :sort)))
+        ((:+ -- **) :comment)
+        ((:+ --> **>) :comment))
+       )
+      ))
   )
 
 

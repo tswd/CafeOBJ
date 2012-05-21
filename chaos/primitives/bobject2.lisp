@@ -137,7 +137,7 @@
   ` (let ((interf (top-object-interface ,_object)))
       (unless interf
 	(with-output-panic-message ()
-	  (princ "invalid interface of object ")
+	  (princ "exporting-objects: invalid interface of object ")
 	  (print-chaos-object ,_object)
 	  (chaos-error 'panic)))
       (setf (interface$exporting-objects interf) ,_value)))

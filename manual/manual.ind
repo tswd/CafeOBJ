@@ -10,10 +10,10 @@
 \item \idxmark{\texttt{-->}}, \hyperpage{17}
 \item \idxmark{\texttt{--}}, \hyperpage{17}
 \item \idxmark{\texttt{-rules}}, \hyperpage{157}
-\item \idxmark{\texttt{.bin} (suffix)}, \hyperpage{5}
+\item \idxmark{\texttt{.bin} (suffix)}, \hyperpage{4}
 \item \idxmark{\texttt{.cafeobj}}, \hyperpage{6}
-\item \idxmark{\texttt{.cafe} (suffix)}, \hyperpage{5}
-\item \idxmark{\texttt{.mod} (suffix)}, \hyperpage{5}
+\item \idxmark{\texttt{.cafe} (suffix)}, \hyperpage{4}
+\item \idxmark{\texttt{.mod} (suffix)}, \hyperpage{4}
 \item \idxmark{\texttt{.} (term stopper)}, \hyperpage{30}
 \item \idxmark{\texttt{:?}}, \hyperpage{76}
 \item \idxmark{\texttt{:abort}}, \hyperpage{77}
@@ -38,14 +38,14 @@
 \item \idxmark{\texttt{:stop}}, \hyperpage{77}
 \item \idxmark{\texttt{:subst}}, \hyperpage{77}
 \item \idxmark{\texttt{:s}}, \hyperpage{77}, \hyperpage{79}
-\item \idxmark{\texttt{<=}}, \hyperpage{131}
+\item \idxmark{\texttt{<=}}, \hyperpage{130}
 \item \idxmark{\texttt{<}}, \hyperpage{22}
-\item \idxmark{\texttt{=*=}}, \hyperpage{46}
+\item \idxmark{\texttt{=*=}}, \hyperpage{45}
 \item \idxmark{\texttt{=/=}}, \hyperpage{44}
 \item \idxmark{\texttt{==>}}, \hyperpage{44}
 \item \idxmark{\texttt{==}}, \hyperpage{43}
 \item \idxmark{\texttt{=>} (in transitions)}, \hyperpage{42}
-\item \idxmark{\texttt{=b=}}, \hyperpage{47}
+\item \idxmark{\texttt{=b=}}, \hyperpage{46}
 \item \idxmark{\texttt{=} (in equations)}, \hyperpage{39}
 \item \idxmark{\texttt{?}}, \hyperpage{77}
 \item \idxmark{\texttt{?} (help command)}, \hyperpage{9}
@@ -53,7 +53,7 @@
 \item \idxmark{\texttt{RWL}}, \hyperpage{44}
 \item \idxmark{\texttt{[},\texttt{]} (visible sort declarations)}, 
 		\hyperpage{21}
-\item \idxmark{\texttt{\~} (home directory)}, \hyperpage{5}
+\item \idxmark{\texttt{\~} (home directory)}, \hyperpage{4}
 \item \idxmark{\texttt{abort}}, \hyperpage{77}
 \item \idxmark{\texttt{all}}, \hyperpage{152}, \hyperpage{157}
 \item \idxmark{\texttt{apply}}, \hyperpage{146}
@@ -77,7 +77,7 @@
 \item \idxmark{\texttt{breduce}}, \hyperpage{65}
 \item \idxmark{\texttt{btrans}}, \hyperpage{42}
 \item \idxmark{\texttt{btrns}}, \hyperpage{42}
-\item \idxmark{\texttt{cd}}, \hyperpage{5}
+\item \idxmark{\texttt{cd}}, \hyperpage{4}
 \item \idxmark{\texttt{ceq}}, \hyperpage{41}
 \item \idxmark{\texttt{check}}, \hyperpage{161}
 \item \idxmark{\texttt{choose}}, \hyperpage{149}
@@ -88,7 +88,7 @@
 \item \idxmark{\texttt{compatibility}}, \hyperpage{161}
 \item \idxmark{\texttt{compile}}, \hyperpage{84}
 \item \idxmark{\texttt{conditions}}, \hyperpage{155}
-\item \idxmark{\texttt{constr}}, \hyperpage{101}
+\item \idxmark{\texttt{constr}}, \hyperpage{100}
 \item \idxmark{\texttt{context}}, \hyperpage{115, 116}, \hyperpage{151}, 
 		\hyperpage{154}
 \item \idxmark{\texttt{continue}}, \hyperpage{77}
@@ -97,7 +97,7 @@
 \item \idxmark{\texttt{ctrns}}, \hyperpage{42}
 \item \idxmark{\texttt{c}}, \hyperpage{77}
 \item \idxmark{\texttt{depth}}, \hyperpage{87}
-\item \idxmark{\texttt{describe}}, \hyperpage{12}
+\item \idxmark{\texttt{describe}}, \hyperpage{11}
 \item \idxmark{\texttt{eof}}, \hyperpage{4}
 \item \idxmark{\texttt{eq}}, \hyperpage{39}
 \item \idxmark{\texttt{execute}}, \hyperpage{65}, \hyperpage{83}
@@ -111,8 +111,8 @@
 \item \idxmark{\texttt{hsort}}, \hyperpage{124}, \hyperpage{137}
 \item \idxmark{\texttt{h}}, \hyperpage{77}
 \item \idxmark{\texttt{id:}}, \hyperpage{96, 97}
-\item \idxmark{\texttt{idempotent}}, \hyperpage{96}
-\item \idxmark{\texttt{idem}}, \hyperpage{96}, \hyperpage{98}
+\item \idxmark{\texttt{idempotent}}, \hyperpage{95}
+\item \idxmark{\texttt{idem}}, \hyperpage{95}, \hyperpage{98}
 \item \idxmark{\texttt{idr:}}, \hyperpage{98}, \hyperpage{113}
 \item \idxmark{\texttt{if}}, \hyperpage{41}
 \item \idxmark{\texttt{imports}}, \hyperpage{14}
@@ -122,16 +122,16 @@
 \item \idxmark{\texttt{input}}, \hyperpage{4}
 \item \idxmark{\texttt{in}}, \hyperpage{4}
 \item \idxmark{\texttt{it}}, \hyperpage{157}
-\item \idxmark{\texttt{l-assoc}}, \hyperpage{99, 100}
+\item \idxmark{\texttt{l-assoc}}, \hyperpage{98}, \hyperpage{100}
 \item \idxmark{\texttt{laziness}}, \hyperpage{161}
 \item \idxmark{\texttt{let}}, \hyperpage{85, 86}
 \item \idxmark{\texttt{limit}}, \hyperpage{77}, \hyperpage{82, 83}, 
 		\hyperpage{169}
 \item \idxmark{\texttt{ls}}, \hyperpage{5}
 \item \idxmark{\texttt{l}}, \hyperpage{77}
-\item \idxmark{\texttt{make}}, \hyperpage{139}
-\item \idxmark{\texttt{match}}, \hyperpage{157}
-\item \idxmark{\texttt{memo}}, \hyperpage{104, 105}
+\item \idxmark{\texttt{make}}, \hyperpage{138}
+\item \idxmark{\texttt{match}}, \hyperpage{156}
+\item \idxmark{\texttt{memo}}, \hyperpage{104}
 \item \idxmark{\texttt{module}}, \hyperpage{13}, \hyperpage{120}
 \item \idxmark{\texttt{next}}, \hyperpage{77}
 \item \idxmark{\texttt{n}}, \hyperpage{77}
@@ -142,11 +142,11 @@
 \item \idxmark{\texttt{ops}}, \hyperpage{25}
 \item \idxmark{\texttt{op}}, \hyperpage{24}, \hyperpage{95}, 
 		\hyperpage{124}, \hyperpage{137}
-\item \idxmark{\texttt{p-sort}}, \hyperpage{130}
+\item \idxmark{\texttt{p-sort}}, \hyperpage{129}
 \item \idxmark{\texttt{param}}, \hyperpage{137}
 \item \idxmark{\texttt{parse}}, \hyperpage{30}
 \item \idxmark{\texttt{pattern}}, \hyperpage{77}, \hyperpage{80}
-\item \idxmark{\texttt{prec:}}, \hyperpage{99}
+\item \idxmark{\texttt{prec:}}, \hyperpage{98, 99}
 \item \idxmark{\texttt{pred}}, \hyperpage{27}
 \item \idxmark{\texttt{principal-sort}}, \hyperpage{129}
 \item \idxmark{\texttt{print}}, \hyperpage{87}, \hyperpage{146}
@@ -154,16 +154,16 @@
 \item \idxmark{\texttt{protecting}}, \hyperpage{19}
 \item \idxmark{\texttt{protect}}, \hyperpage{14}
 \item \idxmark{\texttt{provide}}, \hyperpage{8}
-\item \idxmark{\texttt{pwd}}, \hyperpage{5}
+\item \idxmark{\texttt{pwd}}, \hyperpage{4}
 \item \idxmark{\texttt{p}}, \hyperpage{77}
 \item \idxmark{\texttt{q}}, \hyperpage{77}
-\item \idxmark{\texttt{r-assoc}}, \hyperpage{99, 100}
+\item \idxmark{\texttt{r-assoc}}, \hyperpage{98}, \hyperpage{100}
 \item \idxmark{\texttt{reconstruct}}, \hyperpage{117}
 \item \idxmark{\texttt{record}}, \hyperpage{34, 35}
 \item \idxmark{\texttt{reduce}}, \hyperpage{65}, \hyperpage{83}, 
 		\hyperpage{146}, \hyperpage{155}
 \item \idxmark{\texttt{regularity}}, \hyperpage{161}
-\item \idxmark{\texttt{regularize}}, \hyperpage{28}
+\item \idxmark{\texttt{regularize}}, \hyperpage{27}
 \item \idxmark{\texttt{require}}, \hyperpage{8}
 \item \idxmark{\texttt{restore}}, \hyperpage{5}
 \item \idxmark{\texttt{rewrite}}, \hyperpage{77}
@@ -173,14 +173,14 @@
 \item \idxmark{\texttt{rule}}, \hyperpage{77}, \hyperpage{153}
 \item \idxmark{\texttt{rwt}}, \hyperpage{82, 83}
 \item \idxmark{\texttt{r}}, \hyperpage{77}
-\item \idxmark{\texttt{save-system}}, \hyperpage{6}
+\item \idxmark{\texttt{save-system}}, \hyperpage{5}
 \item \idxmark{\texttt{save}}, \hyperpage{5}
 \item \idxmark{\texttt{select}}, \hyperpage{2}, \hyperpage{115}
-\item \idxmark{\texttt{set}}, \hyperpage{10, 11}, \hyperpage{19}, 
+\item \idxmark{\texttt{set}}, \hyperpage{10}, \hyperpage{19}, 
 		\hyperpage{28}, \hyperpage{44}, \hyperpage{53}, 
 		\hyperpage{66}, \hyperpage{68}, \hyperpage{76}, 
 		\hyperpage{80}, \hyperpage{83}, \hyperpage{115}
-\item \idxmark{\texttt{show}}, \hyperpage{9}, \hyperpage{11}, 
+\item \idxmark{\texttt{show}}, \hyperpage{8}, \hyperpage{10, 11}, 
 		\hyperpage{67}, \hyperpage{78}, \hyperpage{81}, 
 		\hyperpage{83}, \hyperpage{86}, \hyperpage{146}, 
 		\hyperpage{149}, \hyperpage{151}, \hyperpage{153}
@@ -201,7 +201,7 @@
 \item \idxmark{\texttt{term}}, \hyperpage{78}, \hyperpage{146, 147}, 
 		\hyperpage{157}
 \item \idxmark{\texttt{top}}, \hyperpage{147}, \hyperpage{157}
-\item \idxmark{\texttt{to}}, \hyperpage{124}, \hyperpage{131}
+\item \idxmark{\texttt{to}}, \hyperpage{124}, \hyperpage{130}
 \item \idxmark{\texttt{trace whole}}, \hyperpage{66}, \hyperpage{71}
 \item \idxmark{\texttt{trace}}, \hyperpage{66}, \hyperpage{71}, 
 		\hyperpage{167}
@@ -212,7 +212,7 @@
 \item \idxmark{\texttt{using}}, \hyperpage{19}
 \item \idxmark{\texttt{vars}}, \hyperpage{37}
 \item \idxmark{\texttt{var}}, \hyperpage{37}, \hyperpage{53}
-\item \idxmark{\texttt{view}}, \hyperpage{124}, \hyperpage{131}
+\item \idxmark{\texttt{view}}, \hyperpage{124}, \hyperpage{130}
 \item \idxmark{\texttt{whole}}, \hyperpage{66}
 \item \idxmark{\texttt{within}}, \hyperpage{147}
 
@@ -223,7 +223,7 @@
 \item \idxmark{associativity}, \hyperpage{95}
 \item \idxmark{attribute}, \hyperpage{26}
 \item \idxmark{attribute (of operators)}, \hyperpage{95}
-\item \idxmark{autoloading}, \hyperpage{6}
+\item \idxmark{autoloading}, \hyperpage{5}
 
   \indexspace
 \doidxbookmark{B}
@@ -248,17 +248,17 @@
 \item \idxmark{conditional rewrite rule}, \hyperpage{75}
 \item \idxmark{confluent}, \hyperpage{65}
 \item \idxmark{constant}, \hyperpage{24}
-\item \idxmark{constructor (attribute)}, \hyperpage{101}
+\item \idxmark{constructor (attribute)}, \hyperpage{100}
 \item \idxmark{context (behavioural)}, \hyperpage{60}
 \item \idxmark{context (module)}, \hyperpage{115}
 \item \idxmark{context indution}, \hyperpage{171}
 \item \idxmark{context variable}, \hyperpage{85}
-\item \idxmark{current module}, \hyperpage{3}, \hyperpage{30}, 
+\item \idxmark{current module}, \hyperpage{2}, \hyperpage{30}, 
 		\hyperpage{52}, \hyperpage{65}, \hyperpage{115}
 
   \indexspace
 \doidxbookmark{D}
-\item \idxmark{derived operator}, \hyperpage{122}
+\item \idxmark{derived operator}, \hyperpage{121}
 \item \idxmark{derived signature}, \hyperpage{122}
 
   \indexspace
@@ -282,7 +282,7 @@
 
   \indexspace
 \doidxbookmark{I}
-\item \idxmark{idempotency}, \hyperpage{96}
+\item \idxmark{idempotency}, \hyperpage{95}
 \item \idxmark{identity}, \hyperpage{96}
 \item \idxmark{import declaration}, \hyperpage{18}
 \item \idxmark{importation (of views)}, \hyperpage{130}
@@ -301,7 +301,7 @@
 \doidxbookmark{L}
 \item \idxmark{laziness}, \hyperpage{163}
 \item \idxmark{least sort}, \hyperpage{27}
-\item \idxmark{left associativity}, \hyperpage{99}
+\item \idxmark{left associativity}, \hyperpage{98}
 \item \idxmark{loose denotation}, \hyperpage{16}
 
   \indexspace
@@ -333,9 +333,9 @@
 \item \idxmark{parsing attribute}, \hyperpage{95}
 \item \idxmark{partial operator}, \hyperpage{90}
 \item \idxmark{partial order (over sorts)}, \hyperpage{22}
-\item \idxmark{precedence}, \hyperpage{99}
+\item \idxmark{precedence}, \hyperpage{98}
 \item \idxmark{predicate}, \hyperpage{26}
-\item \idxmark{prelude}, \hyperpage{6}
+\item \idxmark{prelude}, \hyperpage{5}
 \item \idxmark{principal sort}, \hyperpage{129}
 
   \indexspace
@@ -351,21 +351,21 @@
 \item \idxmark{regular}, \hyperpage{161}
 \item \idxmark{regular signature}, \hyperpage{27}
 \item \idxmark{renaming}, \hyperpage{137}
-\item \idxmark{right associativity}, \hyperpage{99}
+\item \idxmark{right associativity}, \hyperpage{98}
 
   \indexspace
 \doidxbookmark{S}
 \item \idxmark{shared sum}, \hyperpage{138}
 \item \idxmark{signature}, \hyperpage{14}, \hyperpage{21}
-\item \idxmark{signature morphism}, \hyperpage{123}
+\item \idxmark{signature morphism}, \hyperpage{122}
 \item \idxmark{slot}, \hyperpage{33}
 \item \idxmark{sort}, \hyperpage{21}
 \item \idxmark{specification morphism}, \hyperpage{123}
 \item \idxmark{stack}, \hyperpage{90}
-\item \idxmark{standard library}, \hyperpage{8}
+\item \idxmark{standard library}, \hyperpage{7}
 \item \idxmark{standard operator declaration}, \hyperpage{24}
 \item \idxmark{standard prelude file}, \hyperpage{6}
-\item \idxmark{standard preludes}, \hyperpage{6}
+\item \idxmark{standard preludes}, \hyperpage{5}
 \item \idxmark{step mode}, \hyperpage{76}
 \item \idxmark{strong typing}, \hyperpage{38}
 \item \idxmark{structural induction}, \hyperpage{142}, \hyperpage{165}
@@ -391,7 +391,7 @@
   \indexspace
 \doidxbookmark{V}
 \item \idxmark{variable}, \hyperpage{37}
-\item \idxmark{view}, \hyperpage{124}
+\item \idxmark{view}, \hyperpage{123}
 \item \idxmark{visible sort}, \hyperpage{21}
 
   \indexspace

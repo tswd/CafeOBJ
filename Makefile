@@ -15,7 +15,7 @@ PACKAGE = cafeobj
 VERSION = 1.4
 VMINOR = .9
 VMEMO = PigNose0.99
-PATCHLEVEL = a1
+PATCHLEVEL = a2
 
 # Where to install the executables.
 bindir = ${exec_prefix}/bin
@@ -44,10 +44,10 @@ INSTALL_PROGRAM = ${INSTALL}
 GCL = no
 CMU = no
 ACL = no
-LISP = no
-BIN = .o
-EXEC_SRC = cafeobj.gcl.in
-EXEC = cafeobj.exe
+LISP = /usr/local/acl/acl82/alisp
+BIN = .fasl
+EXEC_SRC = cafeobj.acl.in
+EXEC = cafeobj.acl
 
 #### End of system configuration section. ####
 

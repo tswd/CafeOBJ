@@ -123,7 +123,7 @@
 	  ;; the following tokens can terminate one module expr.
 	  (("]" "," ")" "{" "to" "->" "}") e1)
 	  (t (with-output-chaos-error ('invlaid-modexp)
-	       (princ "module expression error: ")
+	       (princ "error in module expression: ")
 	       (print-chaos-object e1)
 	       (format t " is followed by ~a.~%" (car *modexp-parse-input*))
 	       ))))))
@@ -234,7 +234,7 @@
 		(setq from (parse-sort-reference '("->")))
 		(when (not (equal "->" (car *modexp-parse-input*)))
 		  (with-output-chaos-error ('invalid-modexp)
-		    (format t "parsing sort mapping of ~a, didn't find \"->\"" 
+		    (format t "parsing sort mapping of ~a, missing \"->\"" 
 			    from)
 		    ))
 		(modexp-skip)	; skip "->"
@@ -248,7 +248,7 @@
 		(setq from (parse-sort-reference '("->")))
 		(when (not (equal "->" (car *modexp-parse-input*)))
 		  (with-output-chaos-error ('invalid-modexp)
-		    (format t "parsing hidden sort mapping of ~a, didn't find \"->\"" 
+		    (format t "parsing hidden sort mapping of ~a, missing \"->\"" 
 			    from)
 		    ))
 		(modexp-skip)	; skip "->"
@@ -261,7 +261,7 @@
 		(setq from (parse-operator-reference '("->")))
 		(when (not (equal "->" (car *modexp-parse-input*)))
 		  (with-output-chaos-error ('invalid-modexp)
-		    (format t "parsing operator mapping of ~a, didn't find \"->\""
+		    (format t "parsing operator mapping of ~a, missing \"->\""
 			    from)
 		    ))
 		(modexp-skip)		; skip "->"
@@ -273,7 +273,7 @@
 		(setq from (parse-operator-reference '("->")))
 		(when (not (equal "->" (car *modexp-parse-input*)))
 		  (with-output-chaos-error ('invalid-modexp)
-		    (format t "parsing behavioural operator mapping of ~a, didn't find \"->\""
+		    (format t "parsing behavioural operator mapping of ~a, missing \"->\""
 			    from)
 		    ))
 		(modexp-skip)		; skip "->"
@@ -286,7 +286,7 @@
 		(setq from (modexp-parse-param-specn '("->")))
 		(when (not (equal "->" (car *modexp-parse-input*)))
 		  (with-output-chaos-error ('invalid-modexp)
-		    (format t "parsing parameter mapping of ~a, didn't find \"->\""
+		    (format t "parsing parameter mapping of ~a, missing \"->\""
 			    from)
 		    ))
 		(modexp-skip)		; skip "->"
@@ -295,7 +295,7 @@
 	     ("}"			; emtpy map
 	      nil)
 	     (t (with-output-chaos-error ('invalid-modexp)
-		  (format t "parsing map, found ~a, when expected \"sort\",\"hsort\",\"op\" or \"bop\"."
+		  (format t "expecting \"sort\",\"hsort\",\"op\" or \"bop\", encounterd ~a."
 			  (car *modexp-parse-input*))
 		  )))
 	   )))
@@ -331,9 +331,8 @@
 		   ((token-is-not-instantiation (car *modexp-parse-input*))
 		    (prog1 (car *modexp-parse-input*) (modexp-skip)))
 		   (t (with-output-chaos-error ('invalid-modexp)
-			(princ "can't make sense of ")
 			(princ (car *modexp-parse-input*))
-			(princ " in module expression")
+			(print "doesn't make sense in module expression.")
 			)))))
     (let ((m (parse-basic)))
       (cond ((null *modexp-parse-input*) m) ; was just a simple name or parenced
@@ -348,7 +347,7 @@
 	       (when (not (member (car *modexp-parse-input*)
 				  '("]" ")") :test #'equal))
 		 (with-output-chaos-error ('invalid-modexp)
-		   (princ "\"[\" without \"]\" in instantiation.")
+		   (princ "\"[\" appears without matching \"]\" in instantiation.")
 		    ))
 	       (modexp-skip)		; skip "]" (")").
 	       (%instantiation* m args)))
@@ -375,7 +374,7 @@
 	(*arg-type* nil))
     (cond ((null *modexp-parse-input*)
 	   (with-output-chaos-error ('invalid-modexp)
-	     (princ "parsing instantiation,end of input in argument list.")
+	     (princ "parsing instantiation, premature end of input in argument list.")
 	      ))
 	  ((member (car *modexp-parse-input*) '("]" ")") :test #'equal)
 	   nil)				; empty arugment.
@@ -405,7 +404,7 @@
 (defun modexp-parse-arg ()
   (when (null *modexp-parse-input*)
     (with-output-chaos-error ('invalid-modexp)
-      (princ "premature end of input in argument to parameterized module.")
+      (princ "premature end of input in argument of parameterized module.")
       ))
   ;;
   (let ((arg-name (car *modexp-parse-input*)))
@@ -419,7 +418,7 @@
 	(progn
 	  (unless (or (eq *arg-type* ':key) (null *arg-type*))
 	    (with-output-chaos-error ('invalid-modexp)
-	      (princ "you can not use positional and keyword type argument in combined manner.")
+	      (princ "you can not use both positional and keyword type argument in a combined manner.")
 	       ))
 	  (modexp-skip)			; skip "<="
 	  (setq arg-name (parse-instantiate-arg-name arg-name))
@@ -427,7 +426,7 @@
 	(progn
 	  (unless (or (eq *arg-type* ':pos) (null *arg-type*))
 	    (with-output-chaos-error ('invalid-modexp)
-	      (princ "you cannot use positional and keyword type argument in a combined manner.")
+	      (princ "you cannot use both positional and keyword type argument in a combined manner.")
 	      ))
 	  (setq *arg-type* ':pos)
 	  (push arg-name *modexp-parse-input*) ; restore view 
@@ -491,7 +490,8 @@
 	   ;; we always require target module
 	   (when (not (equal "to" (car *modexp-parse-input*)))
 	     (with-output-chaos-error ('invalid-modexp)
-	       (princ "expecting \"to\" in view")
+	       (format t "expecting \"to\" in view, but encountered ~A"
+		       (car *modexp-parse-input*))
 	       ))
 	   (modexp-skip)		; skip "to"
 	   ;; parse target module expression
@@ -519,7 +519,7 @@
 	   (let ((res nil))
 	     (loop (when (null *modexp-parse-input*)
 		     (with-output-chaos-error ('invalid-modexp)
-		       (princ "end of input in operator pattern:")
+		       (princ "premature end of input in operator pattern:")
 		       (print-next)
 		       (format t "beginning of pattern: ~{~s~}" (nreverse res))
 		        ))
@@ -539,7 +539,7 @@
 		   (setq from (parse-sort-reference '("->")))
 		   (when (not (equal "->" (car *modexp-parse-input*)))
 		     (with-output-chaos-error ('invalid-modexp)
-		       (format t "parsing sort mapping of ~a, didn't find \"->\"" 
+		       (format t "parsing sort mapping of ~a, missing \"->\"" 
 			       from)
 		       ))
 		   (modexp-skip)	; skip "->"
@@ -553,7 +553,7 @@
 		   (setq from (parse-sort-reference '("->")))
 		   (when (not (equal "->" (car *modexp-parse-input*)))
 		     (with-output-chaos-error ('invalid-modexp)
-		       (format t "parsing hidden sort mapping of ~a, didn't find \"->\"" 
+		       (format t "parsing hidden sort mapping of ~a, missing \"->\"" 
 			       from)
 		       ))
 		   (modexp-skip)	; skip "->"
@@ -577,7 +577,7 @@
 		   (setq a (parse-op-name '("->")))
 		   (when (not (equal "->" (car *modexp-parse-input*)))
 		     (with-output-chaos-error ('invalid-modexp)
-		       (format t "in view body, for op ~a didn't find \"->\"" a)
+		       (format t "in view body, for op ~a,  missing \"->\"" a)
 		       ))
 		   (modexp-skip)
 		   (setq b (parse-op-name '("." "}" ",")))
@@ -588,7 +588,7 @@
 		   (setq a (parse-op-name '("->")))
 		   (when (not (equal "->" (car *modexp-parse-input*)))
 		     (with-output-chaos-error ('invalid-modexp)
-		       (format t "in view body, for bop, ~a didn't find \"->\"" a)
+		       (format t "in view body, for bop ~a, missing \"->\"" a)
 		       ))
 		   (modexp-skip)
 		   (setq b (parse-op-name '("." "}" ",")))
@@ -596,7 +596,7 @@
 		("}"			; empty body
 		 nil)
 		(t (with-output-chaos-error ('invalid-modexp)
-		     (format t "in view mapping, found ~a when expected \"sort\", \"hsort\", \"op\", \"bop\" or \"var\""
+		     (format t "in view mapping, expecting \"sort\", \"hsort\", \"op\", \"bop\" or \"var\", but encoutered ~A."
 			     (car *modexp-parse-input*))
 		     )))
 	     ))))
@@ -612,7 +612,7 @@
   (declare (type list cntxt))
   (unless *modexp-parse-input*
     (with-output-chaos-error ('invalid-modexp)
-      (princ "end of input at sort specification.")
+      (princ "premature end of input at sort specification.")
       ))
   (do-parse-sort-ref cntxt))
 
@@ -724,7 +724,7 @@
     (format t "~&[parse-operator-reference]:*modexp-parse-input*=~a" *modexp-parse-input*))
   (cond ((null *modexp-parse-input*)
 	 (with-output-chaos-error ('invalid-modexp)
-	   (princ "end of input at operation specification")
+	   (princ "premature end of input at operator specification")
 	   ))
 	((equal "(" (car *modexp-parse-input*))
 	 ;; parenthesized reference -------------------------------------------------
@@ -791,7 +791,7 @@
 		(if (null cntxt)
 		    (return)
 		  (with-output-chaos-error ('invalid-modexp)
-		    (princ "end of input in operator pattern.")
+		    (princ "premature end of input in operator pattern.")
 		    (print-next)
 		    (princ "beginning of pattern: ")
 		    (print-simple-princ-open (nreverse res))
@@ -820,7 +820,7 @@
 		(if (null cntxt)
 		    (return)
 		    (with-output-chaos-error ('invalid-modexp)
-		      (princ "end of input in parameter name.")
+		      (princ "premature end of input in parameter name.")
 		      (print-next)
 		      (princ "beginning of pattern: ")
 		      (print-simple-princ-open (nreverse res))

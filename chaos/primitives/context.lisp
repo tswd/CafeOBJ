@@ -127,7 +127,7 @@
       (if binding
 	  (progn
 	    (with-output-chaos-warning ()
-	      (format t "resetting binding of ~a to " let-sym)
+	      (format t "resetting bound value of ~a to " let-sym)
 	      (print-chaos-object value))
 	    (setf (cdr binding) value))
 	  (if special

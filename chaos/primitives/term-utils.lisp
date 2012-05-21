@@ -200,6 +200,16 @@
 	   (some #'term-contains-user-defined-error-method
 		 (term-subterms term)))))
 
+;;; test if a appl form contains math-operator(:=).
+
+(defun term-contains-match-op (term)
+  (declare (type term term)
+	   (values (or null t)))
+  (and (term-is-application-form? term)
+       (or (method= *bool-match* (term-head term))
+	   (some #'term-contains-match-op
+		 (term-subterms term)))))
+
 ;;; ****************
 ;;; RECOMPUTING SORT____________________________________________________________
 ;;; ****************
@@ -216,7 +226,7 @@
 					      (term-sort arg3)
 					      so)
 	(with-output-chaos-error ('incompatible-sorts)
-	  (princ "value of if_then_else_fi must be of same sort.")))
+	  (princ "value of if_then_else_fi must be of the same sort.")))
       (update-lowest-parse arg2)
       (update-lowest-parse arg3)
       (if (sort<= (term-sort arg2) (term-sort arg3))

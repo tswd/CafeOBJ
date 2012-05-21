@@ -235,6 +235,8 @@
 
 (defmacro axiom-is-for-cr (_a) `(object-info ,_a :cr))
 
+(defmacro axiom-contains-match-op (_a) `(object-info ,_a :match-op))
+
 (defun axiom-extensions (_x &optional (_ext-rule-table
 				       *current-ext-rule-table*))
   (declare (type axiom _x)

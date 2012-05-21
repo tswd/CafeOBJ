@@ -18,6 +18,8 @@
 ;;; atuoloader
 (setq *autoload-alist*
   '(("TRUTH" . "truth")
+    ("BASE-BOOL" . "base_bool")
+    ("SYS-BOOL" . "sys_bool")
     ("BOOL" . "bool")
     ("IDENTICAL" . "identical")
     ("RWL" . "rwl")
