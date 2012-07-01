@@ -17,7 +17,7 @@ mod! NATNUM {
   ax M = M .
 }
 
-open NATNUM
+open NATNUM .
 eof
 option reset
 flag(auto,on)

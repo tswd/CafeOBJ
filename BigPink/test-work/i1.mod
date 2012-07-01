@@ -34,7 +34,7 @@ flag(hyper-res,on)
 flag(for-sub,off)
 param(max-given,15)
 
-open I1
+open I1 .
 op a : -> E .
 let ax1 = P(a) .
 db reset

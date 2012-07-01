@@ -151,7 +151,7 @@ param(max-seconds,1)
 flag(input-sos-first,on)
 flag(put-goal-in-sos,on)
 
-open PROOF
+open PROOF .
 db reset
 
 sos = { SOS :SYSTEM-GOAL }

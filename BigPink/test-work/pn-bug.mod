@@ -232,7 +232,7 @@ goal P(Run1(Run1(Run2(shop(c1,c2))))) .
 -- ax P(Run2(Run2(Run2(shop(c1,c2))))) .
 }
 
-open PROOF
+open PROOF .
 
 db reset
 option reset

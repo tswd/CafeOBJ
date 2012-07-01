@@ -32,7 +32,7 @@ mod! LISTA {
 }
 
 --> proof of associativity of append (_+_)
-open LISTA
+open LISTA .
   ops l l' l'' :  -> List .
   ops m n p :  -> Nat .
 --> base case

@@ -16,6 +16,7 @@ File: creader.lisp
 ;;; Schema based generalized reader based on OBJ3 implementation.
 ;;;=============================================================================
 
+;;;
 ;;; TOP-LEVEL module parser invokes 'reader' with schemas for modules
 
 (defun cafeobj-parse ()
@@ -246,7 +247,9 @@ File: creader.lisp
 ;;; EQUATION
 
   (defparameter EqDeclaration
-      '(eq (:optional |[| (:seq-of :symbol (:upto (|]| |:|)))) :term = :term |.|))
+      '(eq :term = :term |.|))
+;;  (defparameter EqDeclaration
+;;      '(eq (:optional |[| (:seq-of :symbol (:upto (|]|))) |:|) :term = :term |.|))
   (defparameter BEqDeclaration
       '((:+ beq bq) :term = :term |.|))
   (defparameter CEQDeclaration
@@ -419,7 +422,7 @@ File: creader.lisp
         ;; TOP LEVEL COMMANDS
         ;; --------------------------------------------------
         ((:+ reduce red execute exec exec! execute! breduce bred)
-         (:if-present  in :modexp |:|) (:seq-of :term) |.|)
+         (:rdr #..term-delimiting-chars. (:if-present  in :modexp |:|)) (:seq-of :term) |.|)
         (tram (:+ compile execute exec red reduce reset)
               (:if-present in :modexp |:|)
               (:seq-of :term) |.|)
@@ -454,7 +457,8 @@ File: creader.lisp
         (full reset)
         ((:+ --> **>) :comment)
         ((:+ -- **) :comment)
-        (parse (:if-present  in :modexp |:|) (:seq-of :term) |.|)
+        (parse (:rdr #..term-delimiting-chars.
+		     (:if-present  in :modexp |:|) (:seq-of :term) |.|))
         ((:+ lisp ev eval evq lispq)
          (:call (read)))
         (;; (:+ show sh set select describe desc) ; do 

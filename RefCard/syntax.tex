@@ -62,11 +62,12 @@
 %** end of header
 
 \title{\cafeobj\ Syntax Quick Reference \\
-  {\small for Interpreter version 1.4.8}}
+  {\small for Interpreter version 1.4.8 or later}}
 \date{\today}
 %\author{}
-\author{Toshimi Sawada \\
-  Software Research Associates, Inc.}
+\author{Toshimi Sawada\thanks{\texttt{toshi.swd@gmail.com}} \\
+  Kosakusha Inc.
+  }
 \begin{document}
 \maketitle
 \tableofcontents
@@ -139,7 +140,7 @@ section ~\ref{sec:view-decl}) or \nonterm{eval} (\textit{reduce} or
   principal\_sort &::=& \sym{principal-sort}\; sort\_name \\
 %  module\_elt &::=& import \alt sort \alt record \alt operator \alt
   module\_elt &::=& import \alt sort  \alt operator \alt
-  variable \alt axiom \alt comment &\footnote{\nonterm{comment} is
+  variable \alt axiom \alt macro \alt comment &\footnote{\nonterm{comment} is
     descussed in section ~\ref{sec:comments}.}\\  
   import &::=& \seqof{\sym{protecting}\alt\sym{extending}\alt\sym{including}\alt\sym{using}}
   \sym{``(''}\;module\_expr\;\sym{``)''}\\
@@ -153,7 +154,7 @@ section ~\ref{sec:view-decl}) or \nonterm{eval} (\textit{reduce} or
     ~\ref{sec:lex}) between \nonterm{ident} and \nonterm{qualifier}.}
   \\ 
   \synindent sort\_symbol &::=& ident \\
-  \synindent qualifier &::=& \sym{``.''}module\_expr\optn{qualifier}\\
+  \synindent qualifier &::=& \sym{``.''}module\_name\\
   % record &::=& \sym{record}\; sort\_name\; \optn{super\;\cdots}\;
   % \sym{``\{''}\; \seqof{slot \alt comment}\cdots \; \sym{``\}''} \\
   % \synindent super &::=&
@@ -178,15 +179,15 @@ section ~\ref{sec:view-decl}) or \nonterm{eval} (\textit{reduce} or
   %&\footnote{The general syntax of \nonterm{term} is defined in section
   %  ~\ref{sec:term}.}
   \\
-  &\alt & \sym{strat: ``(''}\; natural \cdots\; \sym''{)''}
+  &\alt & \sym{strat: ``(''}\; natural \cdots\; \sym{``)''}
   \alt\sym{prec:}\; natural 
-  \alt \sym{l-assoc} \alt \sym{r-assoc} \alt \sym{coherent}
+  \alt \sym{l-assoc} \alt \sym{r-assoc} \alt \sym{coherent} \alt \sym{demod}
   &\footnote{\nonterm{natural} is a natural number written in ordinal
     arabic notation.} \\
   variable &::=& \sym{var}\; var\_name\; :\; sort\_name \alt
   \sym{vars} \; var\_name\cdots\; :\; sort\_name \\
   \synindent var\_name &::=& ident \\
-  axiom &::=& equation \alt cequation\alt transition \alt ctransition \\
+  axiom &::=& equation \alt cequation\alt transition \alt ctransition \alt fol\\
   \synindent equation &::=& \seqof{\sym{eq} \alt \sym{beq}}\;
   \optn{label}\; term \; \sym{=} \; term\; \sym{``.''}\\
   \synindent cequation &::=& \seqof{\sym{ceq} \alt \sym{bceq}}\;
@@ -196,7 +197,9 @@ section ~\ref{sec:view-decl}) or \nonterm{eval} (\textit{reduce} or
   \optn{label}\; term \; \verb|=>| \; term \;\sym{``.''}\\
   \synindent ctransition &::=& \seqof{\sym{ctrans} \alt \sym{bctrans}}\;
   \optn{label}\; term \; \verb|=>| \; term\; \sym{if}\; term\;\sym{``.''}\\
-  \synindent label &::=& \sym{``[''}\; ident\; \sym{``]:''}
+  \synindent fol & ::= & \sym{ax} \optn{label}\; term \; \sym{``.''}\\
+  \synindent label &::=& \sym{``[''}\; ident\cdots\; \sym{``]:''}\\
+  macro &::=& \sym{\#define}\; term\; \sym{::=}\; term\; \sym{``.''}
 \end{syntax}
 
 \subsection{Module Expression}

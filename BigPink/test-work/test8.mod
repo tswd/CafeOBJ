@@ -10,7 +10,7 @@ module TEST8
 }
 
 **> set sos by hand
-open TEST8
+open TEST8 .
 let goal = ~(\A[X:E,Y:E,Z:E] X <= Y & Y <= Z -> X <= Z ).
 -- goal \A[X:E,Y:E,Z:E] X <= Y & Y <= Z -> X <= Z .
 option reset
@@ -23,7 +23,7 @@ resolve .
 close
 
 **> automatic mode
-open TEST8
+open TEST8 .
 goal \A[X:E,Y:E,Z:E] X <= Y & Y <= Z -> X <= Z .
 option reset
 flag(auto,on)

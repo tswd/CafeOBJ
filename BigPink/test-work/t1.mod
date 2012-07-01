@@ -1,5 +1,5 @@
 -- test formula translation
-open NAT
+open NAT .
 protecting(FOPL-CLAUSE)
 ops p q r : -> Bool .
 pred P : Nat .

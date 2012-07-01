@@ -240,7 +240,7 @@ goal [ax-13]: P(Run2(Run1(Run1(Run1(Run2(shop(c1,c2))))))) . -- ok ok with sos (
 -- goal P(Run2(Run1(Run2(Run2(Run2(shop(c1,c2))))))) . -- ok ok with sos (+)
 }
 
-open PROOF
+open PROOF .
  
 db reset
 option reset

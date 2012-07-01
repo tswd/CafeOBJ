@@ -1,6 +1,7 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (TeX Live 2011) (format=xelatex 2011.8.8)  14 SEP 2011 15:58
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (TeX Live 2011) (format=xelatex 2012.4.20)  29 JUN 2012 15:07
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
 **interp-todo.tex
 (./interp-todo.tex
@@ -9,13 +10,13 @@ Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, ge
 rman-x-2011-07-01, ngerman-x-2011-07-01, afrikaans, ancientgreek, ibycus, arabi
 c, armenian, basque, bulgarian, catalan, pinyin, coptic, croatian, czech, danis
 h, dutch, ukenglish, usenglishmax, esperanto, estonian, ethiopic, farsi, finnis
-h, french, galician, german, ngerman, swissgerman, monogreek, greek, hungarian,
- icelandic, assamese, bengali, gujarati, hindi, kannada, malayalam, marathi, or
-iya, panjabi, tamil, telugu, indonesian, interlingua, irish, italian, kurmanji,
- lao, latin, latvian, lithuanian, mongolian, mongolianlmc, bokmal, nynorsk, pol
-ish, portuguese, romanian, russian, sanskrit, serbian, serbianc, slovak, sloven
-ian, spanish, swedish, turkish, turkmen, ukrainian, uppersorbian, welsh, loaded
-.
+h, french, friulan, galician, german, ngerman, swissgerman, monogreek, greek, h
+ungarian, icelandic, assamese, bengali, gujarati, hindi, kannada, malayalam, ma
+rathi, oriya, panjabi, tamil, telugu, indonesian, interlingua, irish, italian, 
+kurmanji, lao, latin, latvian, lithuanian, mongolian, mongolianlmc, bokmal, nyn
+orsk, polish, portuguese, romanian, romansh, russian, sanskrit, serbian, serbia
+nc, slovak, slovenian, spanish, swedish, turkish, turkmen, ukrainian, uppersorb
+ian, welsh, loaded.
 (/usr/local/texlive/2011/texmf-dist/tex/latex/memoir/memoir.cls
 Document Class: memoir 2011/03/06 v3.6j configurable book, report, article docu
 ment class
@@ -28,8 +29,10 @@ ment class
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
 Package ifpdf Info: pdfTeX in PDF mode is not detected.
 )
-Class memoir Info: An `ifetex' package is being emulated on input line 251.
+(/usr/local/texlive/2011/texmf-dist/tex/latex/ifetex/ifetex.sty
+Package: ifetex 2011/12/15 v1.2 ifetex
 
+(/usr/local/texlive/2011/texmf-dist/tex/plain/ifetex/ifetex.tex))
 (/usr/local/texlive/2011/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
@@ -323,7 +326,6 @@ Package delarray [2008/07/23] emulated by memoir.
 Package enumerate [2008/07/23] emulated by memoir.
 Package epigraph [2008/07/23] emulated by memoir.
 Package ifmtarg [2008/07/23] emulated by memoir.
-Package ifetex [2008/07/23] emulated by memoir.
 Package index [2008/07/23] emulated by memoir.
 Package makeidx [2008/07/23] emulated by memoir.
 Package moreverb [2008/07/23] emulated by memoir.
@@ -357,7 +359,7 @@ Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks22
 )
 (/usr/local/texlive/2011/texmf-dist/tex/generic/oberdiek/ifvtex.sty
-Package: ifvtex 2010/03/01 v1.5 Switches for detecting VTeX and its modes (HO)
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
 \Gm@cnth=\count139
@@ -373,13 +375,13 @@ Package ifvtex Info: VTeX not detected.
 \Gm@layoutvoffset=\dimen154
 \Gm@dimlist=\toks23
 )
-! Undefined control sequence.
+./interp-todo.tex:6: Undefined control sequence.
 <recently read> \geometory 
                            
 l.6 \geometory
               {landscape}
 ? 
-! Emergency stop.
+./interp-todo.tex:6: Emergency stop.
 <recently read> \geometory 
                            
 l.6 \geometory
@@ -388,10 +390,10 @@ End of file on the terminal!
 
  
 Here is how much of TeX's memory you used:
- 3990 strings out of 494146
- 53179 string characters out of 3152896
- 136437 words of memory out of 3000000
- 7312 multiletter control sequences out of 15000+200000
+ 4003 strings out of 494123
+ 53607 string characters out of 3151761
+ 136812 words of memory out of 3000000
+ 7324 multiletter control sequences out of 15000+200000
  4238 words of font info for 16 fonts, out of 3000000 for 9000
  1018 hyphenation exceptions out of 8191
  25i,1n,20p,176b,62s stack positions out of 5000i,500n,10000p,200000b,50000s

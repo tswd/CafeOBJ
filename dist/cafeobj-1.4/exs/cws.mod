@@ -124,7 +124,7 @@ module CWS-PROOF {
 --> ---------------------------------------------------------------
 --> sub put(m, add put(n, sub init)) R  put(n, sub put(m, add init))
 --> ---------------------------------------------------------------
-open CWS-PROOF
+open CWS-PROOF .
 ops m n : -> Nat .
 --> should be true
 red sub(put(m, add(put(n, sub(init))))) R put(n, sub(put(m, add(init)))) .
@@ -151,7 +151,7 @@ close
 
 --> prove that COUNTER-WITH-SWITCH refines COUNTER via \psi_2
 
-open CWS-PROOF
+open CWS-PROOF .
 op c : -> Cws .
 op n : -> Int .
 --> case 1: state(switch c) = on .
@@ -160,7 +160,7 @@ eq state(switch c) = on .
 red read(addc(n, c)) == n + read(c) .
 close
 
-open CWS-PROOF
+open CWS-PROOF .
 op c : -> Cws .
 op n : -> Int .
 --> case 2: state(switch c) = off .
@@ -171,7 +171,7 @@ close
 
 --> prove that COUNTER-WITH-SWITCH refines SWITCH via \psi_1
 
-open CWS-PROOF
+open CWS-PROOF .
 op c : -> Cws .
 op n : -> Int .
 
@@ -180,7 +180,7 @@ red state switch sub(c) == off .
 close
 
 --> prove the commutativity eqns corresponding to the methods
-open CWS-PROOF
+open CWS-PROOF .
 op c : -> Cws .
 op n : -> Int .
 --> case 1: 
@@ -189,7 +189,7 @@ red add(addc(n, c)) R addc(n, add(c)) .
 red sub(addc(n, c)) R addc(n, sub(c)) .
 close
 
-open CWS-PROOF
+open CWS-PROOF .
 op c : -> Cws .
 op n : -> Int .
 --> case 2: state(switch c) = off .
@@ -199,7 +199,7 @@ red sub(addc(n, c)) R addc(n, sub(c)) .
 close
 
 --> prove the commutativity eqns corresponding to the attributes
-open CWS-PROOF
+open CWS-PROOF .
 op c : -> Cws .
 op n : -> Int .
 red state(switch put(n, c)) == state(switch c) .

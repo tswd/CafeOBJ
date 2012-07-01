@@ -4,7 +4,7 @@ module TEST1-3
   pred Shaves : Elt Elt
   op Barber : -> Elt
 }
-open TEST1-3
+open TEST1-3 .
 protecting (FOPL-CLAUSE)
 ax Shaves(X:Elt, X) | Shaves(Barber, X) .
 ax ~(Shaves(Barber, Y:Elt) & Shaves(Y,Y)) .

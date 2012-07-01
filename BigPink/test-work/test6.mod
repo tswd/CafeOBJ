@@ -7,7 +7,7 @@ module TEST6
   pred R : Elt Elt
 }
 
-open TEST6
+open TEST6 .
 protecting (FOPL-CLAUSE)
 goal (\A[X:Elt] R(X,X)) ->  (\A[X:Elt]\E[Y:Elt] R(X,Y)) .
 

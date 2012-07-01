@@ -18,7 +18,7 @@ module X2 (E :: TRIV)
 }
 
 option reset
-open X2
+open X2 .
 goal \A[x,y] x * y = y * x .
 
 flag(auto,on)

@@ -15,7 +15,7 @@ mod NATNUM {
   ax M = M .
 }
 
-open NATNUM
+open NATNUM .
 db reset
 option reset
 flag(process-input,on)

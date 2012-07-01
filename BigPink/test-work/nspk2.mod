@@ -202,7 +202,7 @@ goal \E[B1:Agent]\E[T1:Txt] said(x,y,encrypt(pkey(y),respond(m,n)),trans(encrypt
 
 }
 
-open PROOF
+open PROOF .
 
 db reset
 option reset

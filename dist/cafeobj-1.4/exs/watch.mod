@@ -82,7 +82,7 @@ mod* WATCH {
 }
 
 -- some testing
-open WATCH
+open WATCH .
   op watch : -> Watch .
 --> TIME is 23 : 59 : 59
   eq val(sec(watch)) = 59 .
@@ -119,7 +119,7 @@ mod* CWATCH {
 }
 
 -- some testing
-open CWATCH
+open CWATCH .
 op watch : -> CWatch .
 --> TIME is 23 : 59 : 59
   eq val(sec(watch)) = 59 .

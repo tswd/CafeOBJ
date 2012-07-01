@@ -19,7 +19,7 @@ module! ROBBINS (E :: TRIV)
 
 option reset
 
-open ROBBINS
+open ROBBINS .
 protecting (FOPL-CLAUSE)
 
 ops A B C : -> Elt .

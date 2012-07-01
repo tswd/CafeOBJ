@@ -26,7 +26,7 @@ module Z11 (E :: TRIV)
   eq f(h,a) = b .
 }
 
-open Z11 
+open Z11  .
 protecting (FOPL-CLAUSE)
 option reset
 flag(auto,on)

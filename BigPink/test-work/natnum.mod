@@ -20,7 +20,7 @@ mod! NATNUM {
   ax M = M .
 }
 
-open NATNUM
+open NATNUM .
 option reset
 flag(auto,on)
 -- flag(universal-symmetry,on)

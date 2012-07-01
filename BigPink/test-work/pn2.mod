@@ -172,7 +172,7 @@ pred P : Shop .
 goal P(Run1(Run1(shop(c1,c2)))) .
 }
 
-open PROOF
+open PROOF .
 
 db reset
 option reset

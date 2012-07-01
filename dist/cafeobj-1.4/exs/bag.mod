@@ -105,7 +105,7 @@ mod* BAG+ { protecting (BAG)
 
 --> take(e', put(e, b)) =*= put(e, take(e', b))
 -- open .
-open BAG+
+open BAG+ .
   ops e e' e1 :  -> Elt .
   op b :  -> Bag .
 red get(take(e', put(e, b)), e1) == get(put(e, take(e', b)), e1) .

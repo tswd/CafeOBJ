@@ -91,8 +91,11 @@
     (when (and *reader-current-schema*
 	       (general-read-is-simple-schema *reader-current-schema*))
       (print-next)
-      (princ "processing schema: ")
-      (general-read-display-schema *reader-current-schema*))
+      (princ "expecting: ")
+      (let ((*print-indent-contin* t))
+	;; (break)
+	;; (general-read-print-schema *reader-current-schema*)
+	(general-read-display-schema *reader-current-schema*)))
     (when *reader-starting-position*
       (print-next)
       (princ "starting character position was: ")
@@ -323,8 +326,7 @@
     (general-read-eof-error))
   (cond ((general-read-string-matches *reader-input* (car s))
 	 (general-read s c))
-	(t *reader-void*))
-  )
+	(t *reader-void*)))
 
 ;;; READ-ONE-OF
 ;;;
@@ -485,8 +487,8 @@
     (terpri)
     (when (and *reader-current-schema*
 	       (general-read-is-simple-schema *reader-current-schema*))
-      (princ "  processing schema: ")
-      (general-read-display-schema *reader-current-schema*)
+      (princ "  expecting: ")
+      (general-read-print-schema-1 *reader-current-schema*)
       (terpri))
     (when (and *reader-starting-position*
 	       (not (equal *reader-starting-position*
@@ -525,10 +527,12 @@
   t)
 
 ;;; modify print to certain depth and length transliterating notations
+;;;
+
 (defun general-read-display-schema (sch)
   (declare (type list sch)
 	   (values t))
-  (if (> (length sch) 3)
+  (if (> (length sch) 1)
       (dolist (i (firstn sch 3))
 	(print-check)
 	(princ #\space)
@@ -538,6 +542,15 @@
       (princ #\space)
       (prin1 i))
     ))
+
+(defun general-read-print-schema-1 (s)
+  (declare (type t s)
+	   (values t))
+  (if (atom s)
+      (princ s)
+    (let ((flag nil))
+      (declare (ignore flag))
+      (general-read-print-schema (car s)))))
 
 (defun general-read-print-schema (s)
   (declare (type t s)
@@ -555,7 +568,7 @@
 	      (if flag (princ " ") (setq flag t)))
 	  (if (atom i)
 	      (unless (eql control-d i)
-		(princ i))
+		(prin1 i))
 	      (if (eq ':+ (car i))
 		  (dolist (e (cdr i))
 		    (if (< *print-line-limit* (filecol *standard-output*))
@@ -565,8 +578,8 @@
 			    (princ "    ")
 			    (setq flag t)))
 			(if flag (princ " ") (setq flag t)))
-		    (princ e))
-		  (princ i)
+		    (prin1 e))
+		  (prin1 i)
 		  ))
 	  ))))
 
@@ -618,10 +631,17 @@
 ;;; (declaim (function read-term-from-string (string) list))
 (declaim (inline read-term-from-string))
 
+(eval-when (eval compile load)
+  (defparameter .term-delimiting-chars.
+      '("[" "]" "{" "}" ";" "@" "+" "%" "~" )))
+
+(defun !set-term-delim-chars ()
+  (!set-single-reader .term-delimiting-chars.))
+
 (defun read-term-from-string (string)
   (declare (type simple-string string))
   (with-input-from-string (*standard-input* string)
-    (let ((cur (!set-single-reader '("[" "]" "{" "}"))))
+    (let ((cur (!set-term-delim-chars)))
       (let ((res nil)
 	    (inp nil)
 	    (inv nil))
@@ -644,7 +664,7 @@
   (declare (type simple-string string)
 	   (values list))
   (with-input-from-string (*standard-input* string)
-    (let ((cur (!set-single-reader '("[" "]" "{" "}") )))
+    (let ((cur (!set-term-delim-chars)))
       (let ((res nil))
 	(block exit
 	  ;; read in one token.
@@ -689,7 +709,7 @@
 (defun read-term (context)
   (declare (type list context)
 	   (values list))
-  (let ((cur (!set-single-reader '("[" "]" "{" "}"))))
+  (let ((cur (!set-term-delim-chars)))
     (let ((res nil)
 	  inp
 	  inv)
@@ -714,7 +734,7 @@
 (defun read-seq-of-term (context)
   (declare (type list context)
 	   (values list))
-  (let ((cur (!set-single-reader '("[" "]" "{" "}") )))
+  (let ((cur (!set-term-delim-chars)))
     (let ((res nil))
       ;; read in one token.
       (if (eq *reader-input* *reader-void*)
@@ -764,10 +784,13 @@
 
 ;;; READ-SEQ-OF-OPNAME
 ;;;
+(defparameter .op-name-delimiting-chars.
+    '("[" "]" "{" "}" "_" ";" "@" "+" "%" "~"))
+
 (defun read-seq-of-opname (context)
   (declare (type list context)
 	   (values list))
-  (let ((cur (!set-single-reader '("[" "]" "{" "}" "_" ))))
+  (let ((cur (!set-single-reader .op-name-delimiting-chars.)))
     (let ((res nil))
       (if (eq *reader-input* *reader-void*)
 	  (setq *reader-input* (lex-read))
@@ -797,7 +820,7 @@
 (defun read-opname (context)
   (declare (type list context)
 	   (values list))
-  (let ((cur (!set-single-reader '("[" "]" "{" "}" "_" ) )))
+  (let ((cur (!set-single-reader .op-name-delimiting-chars.)))
     (let ((res nil)
 	  inp
 	  inv)
@@ -832,7 +855,7 @@
 (defun read-opname-from-string (string)
   (declare (type simple-string string))
   (with-input-from-string (*standard-input* string)
-    (let ((cur (!set-single-reader '("[" "]" "{" "}" "_"))))
+    (let ((cur (!set-single-reader .op-name-delimiting-chars.)))
       (let ((res nil)
 	    (inp nil)
 	    (inv nil))
@@ -854,7 +877,7 @@
   (declare (type simple-string string)
 	   (values list))
   (with-input-from-string (*standard-input* string)
-    (let ((cur (!set-single-reader '("[" "]" "{" "}" "_") )))
+    (let ((cur (!set-single-reader .op-name-delimiting-chars.)))
       (let ((res nil))
 	(block exit
 	  ;; read in one token.

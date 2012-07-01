@@ -138,7 +138,7 @@ mod* NAT-TIMES {
   protecting(MON-POW-NAT(M <= plus) * { op _^_ -> _*_ })
 }
 
-open NAT-TIMES
+open NAT-TIMES .
 -- LEMMA:
  eq M:Nat * s(N:Nat) = (M * N) + M .
 
@@ -155,7 +155,7 @@ mod* NAT-POW {
   protecting(MON-POW-NAT(M <= nat-times))
 }
 
-open NAT-POW
+open NAT-POW .
 -- LEMMA:
   eq M:Nat * s(N:Nat) = (M * N) + M . -- (1)
 -- LEMMA:
@@ -191,7 +191,7 @@ module* SRNG
 	      )
 }
 
-open SRNG
+open SRNG .
   ops m n m' n'  : -> Srng .
 -- the following should be true
 red (m + n) * (m' + n') == (n * n') + (n * m') + (m * n') + (m * m') .

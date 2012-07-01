@@ -167,7 +167,7 @@ param(pick-given-ratio,4)
 param(max-given,46)
 -- param(max-seconds,2)
 
-open PROOF
+open PROOF .
 db reset
 
 -- sos = { SOS :SYSTEM-GOAL }

@@ -73,7 +73,7 @@ module! STEAM
 
 }
 
-open STEAM
+open STEAM .
 "there is an animal that eats an animal that eats all grains".
 goal \E[x,y] ~($Ans(eats(x,y))) &
              animal(x) &

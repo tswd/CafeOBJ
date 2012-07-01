@@ -549,7 +549,7 @@ mod* ATM-SYSTEM-TOPLEVEL {
 -- -------------------------------------------------------------
 -- test for ATM-SYSTEM-TOPLEVEL
 -- -------------------------------------------------------------
-open ATM-SYSTEM-TOPLEVEL
+open ATM-SYSTEM-TOPLEVEL .
 
   op tl : -> TopLevel .
   ops u1 u2 : -> UId .

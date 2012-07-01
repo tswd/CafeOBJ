@@ -89,10 +89,15 @@ red A ==> ('a 1 'b) ('c 1 'b) .
 -- -------------------------------
 let B = ('a 4 'b) ('b 2 'c) ('d -4 'c) ('d 5 'b) ('a -1 'e)
         ('b 4 'e) ('b 3 'a) ('e 3 'd) .
+set always memo on
 -- tram exec B .
 exec B .
---> caution! this needs much of time....be patient
-red B =( 3 )=> 'c 2 'd .
+--> this needs much time to perform ... please be patient
+clean memo
+eof
+red B ==> 'c 2 'd .
+**
+eof
 
 -- -------------------------------
 --> the problem is NOT confluent: both of the following are normal forms

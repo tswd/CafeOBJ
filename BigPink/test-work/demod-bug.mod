@@ -164,7 +164,7 @@ mod* SHOP {
   eq Ticket1(Run1(Init)) = s(0) .
 }
 
-open SHOP
+open SHOP .
 
 protecting(FOPL-CLAUSE)
 

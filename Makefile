@@ -15,7 +15,7 @@ PACKAGE = cafeobj
 VERSION = 1.4
 VMINOR = .9
 VMEMO = PigNose0.99
-PATCHLEVEL = a2
+PATCHLEVEL = 
 
 # Where to install the executables.
 bindir = ${exec_prefix}/bin

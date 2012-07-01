@@ -21,7 +21,7 @@ module CN19 (E :: TRIV)
   ax P(i(x,i(n(x),y))) .
 }
 
-open CN19
+open CN19 .
 -- db reset
 option reset
 flag(auto,on)

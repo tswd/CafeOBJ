@@ -60,6 +60,7 @@
   (labels nil :type list)
   (trace-flag nil :type (or null t))
   (need-copy nil :type (or null t))
+  (non-exec nil :type (or null t))
   )
 
 (eval-when (eval load)
@@ -94,6 +95,7 @@
 (defmacro rule-is-behavioural (_rule) `(rewrite-rule-behavioural ,_rule))
 (defmacro rule-trace-flag (_rule) `(rewrite-rule-trace-flag ,_rule))
 (defmacro rule-need-copy (_rule) `(rewrite-rule-need-copy ,_rule))
+(defmacro rule-non-exec (_rule) `(rewrite-rule-non-exec ,_rule))
 
 ;;; Extended rewrite rule
 ;;;

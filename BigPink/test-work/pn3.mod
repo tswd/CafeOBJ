@@ -165,7 +165,7 @@ ax P(Run2(Run1(Run1(shop(c1,c2))))) .
 goal P(Run1(Run1(Run2(shop(c1,c2))))) .
 }
 
-open PROOF
+open PROOF .
 option reset
 -- flag(propositional-first,off)
 flag(auto3, on)

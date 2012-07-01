@@ -46,7 +46,7 @@ mod* BUF {
   cq get put(E, B) = get B if not empty?(B) .
 }
 
-open BUF
+open BUF .
   ops e1 e2 : -> Elt .
 red get put(e1, put(e2, init)) .
 red get take put(e1, init) .
@@ -82,7 +82,7 @@ mod* UBUF {
   eq get?(B, E') = (E' == get B) .
 }
 
-open UBUF
+open UBUF .
   ops e1 e2 : -> Elt .
   op b : -> Buf .
 red           put?(e1, put?(e2, init)) .

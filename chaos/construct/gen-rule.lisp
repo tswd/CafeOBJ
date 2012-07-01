@@ -60,6 +60,12 @@
 	       (return-from variable-occurs-in t))))
       ))
 
+(defparameter non-exec-labels '(|:non-exec| |:nex| |:no-ex| |:noex|))
+
+(defun axiom-is-non-exec? (ax)
+  ;; (format t "~&labels=~s" (axiom-labels ax))
+  (intersection (axiom-labels ax) non-exec-labels))
+
 (defun gen-rule-internal (ax module &aux (rule ax))
   (declare (type axiom ax)
 	   (type module module)
@@ -70,6 +76,10 @@
   ;;
   (setq rule (or (cdr (assq ax (module-axioms-to-be-fixed module)))
 		 ax))
+  ;;
+  (when (axiom-is-non-exec? ax)
+    (setf (axiom-non-exec ax) t)
+    (setf (rule-non-exec rule) t))
   ;;
   (let ((lhsv (term-variables (axiom-lhs rule))))
     (declare (type list lhsv))
@@ -128,6 +138,9 @@
 		 (progn
 		   (setf (axiom-kind rule) ':bad-rule)
 		   (setf (axiom-kind ax) ':bad-rule)))
+	     )
+	    ((axiom-non-exec ax)
+	     ;; do nothing
 	     )
 	    (t 
 	     (add-rule-to-module module rule)

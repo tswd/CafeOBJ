@@ -117,7 +117,7 @@ module* SHOP
 
 }
 
-open SHOP
+open SHOP .
 
 protecting (FOPL-CLAUSE)
 

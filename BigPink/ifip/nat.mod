@@ -98,7 +98,7 @@ flag(input-sos-first,on)
 flag(print-stats,on)
 param(max-proofs,1)
 
-open PROOF
+open PROOF .
 
 db reset
 

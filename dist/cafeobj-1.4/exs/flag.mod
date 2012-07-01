@@ -26,7 +26,7 @@ mod* FLAG {
 }
 
 -- proof of (rev rev f) =b= f  
-open FLAG
+open FLAG .
   var B : Bool
   eq not not B = B .
 

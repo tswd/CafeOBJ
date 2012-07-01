@@ -153,14 +153,67 @@
 	       (cdr x))))
 	l))
 
-
-;;; SIMPLE READER_______________________________________________________________
+;;; !READ-IN
+;;; read a token iff the last input is not processed yet,
+;;; i.e. *reader-input* == *reader-void*.
+;;; the token is set to *reader-input*.
 ;;;
+;;; *reader-input* : token buffer.
+;;;
+(defvar *reader-input* nil)
+
+;;; *reder-void* is the marker that indicates the buffered token is
+;;; consumed, thus we should read a token.
+;;;
+(defparameter *reader-void* '(void))
+(defvar *token-buf* nil)
+(defvar *last-token* *reader-void*)
 
 ;;; The eof value.
 (eval-when (eval compile load)
   (defparameter *lex-eof* (cons nil nil))
   )
+
+;;;
+(defmacro !read-in ()
+  ` (when (eq *reader-input* *reader-void*)
+      (setq *reader-input* (read-sym))))
+
+(defmacro reader-is-at-eof ()
+  `(eq *lex-eof* *reader-input*))
+
+(defmacro at-eof-or-control-d ()
+  `(or (reader-is-at-eof)
+       (equal *reader-input* control-d-string)))
+
+;;; !READ-DISCARD
+;;; discard the last input token.
+;;;
+(defmacro !read-discard ()
+  `(progn ;; (clear-input)
+	  ;; (setq *token-buf* nil)
+	  (setq *reader-input* *reader-void*)))
+
+;;; !READ-SYM
+;;; read a token.
+;;;
+(defun !read-sym ()
+  (cond ((eq *reader-input* *reader-void*) (read-sym))
+	(t (prog1 *reader-input*
+	     (!read-discard)))))
+
+;;;
+(defun test-lex (file)
+  (!lex-read-init)
+  (with-open-file (str file :direction :input)
+    (let ((tok nil)
+	  (*standard-input* str))
+      (while-not (eq tok *lex-eof*)
+         (setf tok (!read-sym))
+	 (print tok)))))
+
+;;; SIMPLE READER_______________________________________________________________
+;;;
 
 ;;; READ-LINES (stream)
 ;;;
@@ -275,8 +328,11 @@
 (defvar .reader-escape. nil)		; flags indicating we are now in `escaped'
 					; status.
 
-(defvar .read-buffer. nil)
-(defvar .read-pos. 0)
+;; (defvar .read-buffer. nil)
+;; (defvar .read-pos. 0)
+(defvar .newline-count. 0)
+(defvar *last-newline* nil)
+
 (defparameter eof-char control-d)
 
 (defun reader-get-char (stream)
@@ -293,8 +349,41 @@
 	     (setf .reader-ch. 'space)
 	     (reader-get-char stream)))
 	  ||#
-	  (t (let ((val (reader-get-syntax inch)))
+	  (t (unless *chaos-input-source*
+	       ;; interactive session
+	       (if (and (char= inch #\newline)
+			*last-newline*)
+		   (incf .newline-count.)
+		 (if (char= inch #\newline)
+		     (setq *last-newline* t)
+		   (setf .newline-count. 0
+			 *last-newline* nil)))
+	       (when (> .newline-count. 2)
+		 (!read-discard)
+		 (clear-input)
+		 (setq *last-newline* nil)
+		 (setq .newline-count. 0)
+		 (throw :aborting-read :aborting-read)))
+	     ;;
+	     (let ((val (reader-get-syntax inch)))
 	       (setf .reader-ch. (if val val inch)))))))
+
+; (defun reader-get-char (stream)
+;   (declare (type stream stream)
+; 	   (values t))
+;   (let ((inch (read-char stream nil *lex-eof*)))
+;     (cond ((eq inch *lex-eof*)
+; 	   (setf .reader-ch. *lex-eof*))
+; 	  #||
+; 	  (.reader-escape.
+; 	   (setf .reader-ch. inch))
+; 	  ((char= .escape-char. inch)
+; 	   (let ((.reader-escape. t))
+; 	     (setf .reader-ch. 'space)
+; 	     (reader-get-char stream)))
+; 	  ||#
+; 	  (t (let ((val (reader-get-syntax inch)))
+; 	       (setf .reader-ch. (if val val inch)))))))
 
 ;;; READ-LEXICON : STREAM -> TOKEN
 ;;; read a lexicon.
@@ -379,17 +468,6 @@
 ;;;  "..."   : read as string constant.
 ;;;  'c      : read as character constant.
 ;;;
-;;; *reader-input* : token buffer.
-;;;
-(defvar *reader-input* nil)
-
-;;; *reder-void* is the marker that indicates the buffered token is
-;;; consumed, thus we should read a token.
-;;;
-(defparameter *reader-void* '(void))
-(defvar *token-buf* nil)
-(defvar *last-token* *reader-void*)
-
 (defun unread-token (&rest ignore)
   (declare (ignore ignore)
 	   (values t))
@@ -411,10 +489,13 @@
 	 (at-eof)
 	 ;; (format t "~&we are at eof")
 	 (setf .reader-ch. 'space)
-	 (setq *last-token* *reader-void*)
+	 (!read-discard)
 	 *lex-eof*)
 	((see-input-escape)
 	 ;; user forces aborting reading process.
+	 (setq .reader-ch. 'space)
+	 (!read-discard)
+	 (clear-input)
 	 (throw :aborting-read :aborting-read))
 	(t
 	 (case .reader-ch.
@@ -644,45 +725,5 @@
   (setq *reader-input* *reader-void*
 	*last-token* *reader-void*
 	*token-buf* nil))
-
-;;; !READ-IN
-;;; read a token iff the last input is not processed yet,
-;;; i.e. *reader-input* == *reader-void*.
-;;; the token is set to *reader-input*.
-;;;
-(defmacro !read-in ()
-  ` (when (eq *reader-input* *reader-void*)
-      (setq *reader-input* (read-sym))))
-
-(defmacro reader-is-at-eof ()
-  `(eq *lex-eof* *reader-input*))
-
-(defmacro at-eof-or-control-d ()
-  `(or (reader-is-at-eof)
-       (equal *reader-input* control-d-string)))
-
-;;; !READ-DISCARD
-;;; discard the last input token.
-;;;
-(defmacro !read-discard ()
-  `(setq *reader-input* *reader-void*))
-
-;;; !READ-SYM
-;;; read a token.
-;;;
-(defun !read-sym ()
-  (cond ((eq *reader-input* *reader-void*) (read-sym))
-	(t (prog1 *reader-input*
-	     (!read-discard)))))
-
-;;;
-(defun test-lex (file)
-  (!lex-read-init)
-  (with-open-file (str file :direction :input)
-    (let ((tok nil)
-	  (*standard-input* str))
-      (while-not (eq tok *lex-eof*)
-         (setf tok (!read-sym))
-	 (print tok)))))
 
 ;;; EOF

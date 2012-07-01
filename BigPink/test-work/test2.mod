@@ -14,7 +14,7 @@ module TEST2
   eq x * x = 1 .
 }
 
-open TEST2
+open TEST2 .
 protecting (FOPL-CLAUSE)
 option reset
 flag(auto,on)

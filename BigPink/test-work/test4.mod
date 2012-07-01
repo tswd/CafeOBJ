@@ -17,7 +17,7 @@ module TEST4
   eq f(X,f(X,X)) = e .
 }
 
-open TEST4
+open TEST4 .
 protecting (FOPL-CLAUSE)
 goal h(h(a,b),b) = e .
 option reset

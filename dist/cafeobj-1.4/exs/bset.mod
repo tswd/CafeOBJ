@@ -23,7 +23,7 @@ mod* BASICSETS (X :: TRIV) {
 }
 
 ** proof score for  behavioural coherence of add(_)
-open BASICSETS
+open BASICSETS .
   ops e e' :  -> Elt .
   ops s s' :  -> Set .
 ** hypothesis
@@ -53,11 +53,11 @@ mod* SETS {
 }
 
 ** proof score for beh coherence of _U_, _&_, and not(_)
-open SETS
+open SETS .
   ops s1 s2 s1' s2' : -> Set .
   op e : -> Elt .
 ** by theorem of constants
-  ceq S1 =*= S2 = true if (e in S1) == (e in S2) .
+  ceq S1:Set =*= S2:Set = true if (e in S1) == (e in S2) .
 ** hypothesis
   beq s1 = s1' .
   beq s2 = s2' .
@@ -78,7 +78,7 @@ mod* SETS+ { protecting (SETS)
 ** *************************** ***
 **> Some behavioral properties ***
 ** *************************** ***
-open SETS+
+open SETS+ .
   op e : -> Elt .
   ops s1 s2 s3 : -> Set .
 ** by theorem of constants
@@ -159,7 +159,7 @@ red 1 in cdr(cons(1,cons(2,cons(3,cons(4,nil))))) .
 red 1 in cdr(cons(1,cons(2,cons(3,cons(4,cons(1,nil)))))) .
 
 -- proof that LIST refines BASICSETS
-open LIST' 
+open LIST' .
   ops e e1 e2 : -> Elt .
   op l : -> List .
 -- basic cases 

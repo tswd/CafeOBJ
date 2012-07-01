@@ -36,7 +36,7 @@ module! MV
   ax P(i(i(n(x),n(y)),i(y,x))).
 }
 
-open MV
+open MV .
 ops a b c : -> Elt .
 option reset
 flag(auto,on)

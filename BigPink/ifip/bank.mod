@@ -65,7 +65,7 @@ flag(universal-symmetry,on)
 flag(print-stats,on)
 flag(print-proofs,on)
 
-open PROOF
+open PROOF .
 sos = { :SYSTEM-GOAL }
 check safety P from new-account
 

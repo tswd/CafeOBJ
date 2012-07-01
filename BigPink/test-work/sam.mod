@@ -34,7 +34,7 @@ module SAM (E :: TRIV)
 
 }
 
-open SAM
+open SAM .
 ops a b c d e a2 b2 c2 r1 r2 : -> Elt .
 goal meet(a2,b2,r1).
 ax meet(a,b,c).

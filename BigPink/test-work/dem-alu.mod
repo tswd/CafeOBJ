@@ -25,7 +25,7 @@ module DEM-ALU
 }
 
 option reset
-open DEM-ALU 
+open DEM-ALU  .
 protecting (FOPL-CLAUSE)
 let sos =
   p((a2 # b2 # 1 # a2 * b2) # (a3 # b3) # 1 # (a0 # b0 # 1 # a0 * b0) * 

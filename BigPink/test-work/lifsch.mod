@@ -13,7 +13,7 @@ module LIFSCH (E :: TRIV)
 
 option reset
 
-open LIFSCH
+open LIFSCH .
 protecting (FOPL-CLAUSE)
 
 flag(auto,on)

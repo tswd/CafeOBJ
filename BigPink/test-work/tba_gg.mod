@@ -15,7 +15,7 @@ module TBA (E :: TRIV)
 
 option reset
 
-open TBA
+open TBA .
 protecting (FOPL-CLAUSE)
 op a : -> Elt .
 

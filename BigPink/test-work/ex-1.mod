@@ -39,7 +39,7 @@ flag(sos-queue,on)
 -- flag(debug-hyper-res,on)
 -- param(pick-given-ratio,1)
 
-open EX1
+open EX1 .
 protecting (FOPL-CLAUSE)
 let a1 = X:E + (Y:E * Z:E) = (X + Y) * (X + Z) .
 let a2 = ~(a * (b + c) = (a * b) + (a * c)) .
@@ -69,7 +69,7 @@ flag(print-back-sub,on)
 param(pick-given-ratio,10)
 param(max-proofs,2)
 
-open EX1
+open EX1 .
 protecting (FOPL-CLAUSE)
 ops a b c : -> E .
 ops d e f : -> E .

@@ -728,10 +728,12 @@
 	      ))
 	  --------------------------------------------------- ||#
 	  ))
+      #|| NULL argument is acceptable...2012/6/28
       (when (and behavioural (not hidden?))
 	(with-output-chaos-error ('invalid-op-decl)
 	  (format t "behavioural operator must have exactly one hidden sort in its arity")
 	  ))
+      ||#
       (when (and behavioural coherent)
 	(with-output-chaos-error ('invalid-op-decl)
 	  (format t "coherency is meaningless for behavioural operator.")

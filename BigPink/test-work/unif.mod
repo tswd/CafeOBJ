@@ -10,7 +10,7 @@ module! UTEST
   op a : -> Elt
 }
 
-open UTEST
+open UTEST .
 
 -- test data
 

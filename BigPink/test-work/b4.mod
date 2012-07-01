@@ -216,7 +216,7 @@ param(max-proofs,1)
 param(max-seconds,13)
 param(max-given,122)
 
-open PROOF
+open PROOF .
 db reset
 
 sos = { SOS }

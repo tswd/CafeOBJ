@@ -81,7 +81,7 @@ module! SALT
   ax sd | md | mb .
 }
 
-open SALT
+open SALT .
 option reset
 flag (auto,on)
 resolve .

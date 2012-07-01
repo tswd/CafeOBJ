@@ -62,7 +62,7 @@ flag(print-stats,on)
 flag(universal-symmetry,on)
 param(max-proofs,1)
 param(stats-level,4)
-open PROOF
+open PROOF .
 db reset
 
 -- sos = { GOAL }

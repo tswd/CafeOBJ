@@ -94,7 +94,7 @@ mod BEQ-ACCOUNT {
 -- proof that =*= is hidden congruence
 -- -------------------------------------------------------------
 -- case 1: i + amount(a1) >= 0
-open BEQ-ACCOUNT
+open BEQ-ACCOUNT .
 -- hypothesis
 ops a1 a2 : -> Account .
 op i : -> Int .
@@ -105,7 +105,7 @@ red add(i, a1) =*= add(i, a2) .
 close
 
 -- case 2: i + amount(a1) < 0
-open BEQ-ACCOUNT
+open BEQ-ACCOUNT .
 -- hypothesis
 ops a1 a2 : -> Account .
 op i : -> Int .
@@ -129,7 +129,7 @@ mod BEQ-ACCOUNT-SYS {
 }
 
 -- proof that withdraw(u, n, ba) =b= ba if the user u does not have any account
-open BEQ-ACCOUNT-SYS
+open BEQ-ACCOUNT-SYS .
   op ba : -> AccountSys .
   ops u u' : -> UId .
   op n : -> Nat .
@@ -195,9 +195,10 @@ mod PROOF {
   eq RESULT = TERM2(u) and TERM2(u1) and TERM2(u2) .
 }
 
-set tram path brute .
+-- set tram path brute .
 -- tram red RESULT .
-tram reduce in PROOF : RESULT .
+-- tram reduce in PROOF : RESULT .
+reduce in PROOF : RESULT .
 eof
 --
 $Id: bank-account.mod,v 1.1.1.1 2003-06-19 08:30:10 sawada Exp $

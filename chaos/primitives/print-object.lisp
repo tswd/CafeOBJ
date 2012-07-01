@@ -238,7 +238,7 @@
 	(cond (%axiom-decl-cond ast)))
     (format stream "~&axiom declaration(~a): " type)
     (if labels
-	(format stream " labels =~{ ~a~}" labels))
+	(format stream " labels =~{~a ~}" labels))
     (format stream "~& lhs = ~a" lhs)
     (format stream "~& rhs = ~a" rhs)
     (if cond
@@ -1526,8 +1526,8 @@
 
 (defun print-rule-labels (rul)
   (princ "[")
-  (format t "~{~a~^, ~a~}" (mapcar #'string (axiom-labels rul)))
-  (princ "] :")
+  (format t "~{~a~^ ~}" (mapcar #'string (axiom-labels rul)))
+  (princ "]:")
   )
 
 (defun print-axiom-brief (rul &optional (stream *standard-output*)

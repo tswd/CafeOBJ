@@ -15,7 +15,7 @@ mod NATNUM {
   ax [a4]: M = M .
 }
 
-open NATNUM
+open NATNUM .
 db reset
 option reset
 flag(process-input,on)

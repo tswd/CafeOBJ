@@ -9,7 +9,7 @@ module TEST1-1
   op Socrates : -> Elt
 }
 
-open TEST1-1
+open TEST1-1 .
 protecting (FOPL-CLAUSE)
 ax \A[X:Elt] human(X) -> mortal(X) .
 ax human(Socrates) .

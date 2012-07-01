@@ -39,7 +39,7 @@ module! WANG
   ax[g3]: ~(k = m).
 }
 
-open WANG
+open WANG .
 option reset
 flag (auto,on)
 -- flag (print-kept,on)

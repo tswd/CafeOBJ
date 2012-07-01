@@ -43,7 +43,7 @@ module! RING
   eq f(x,x) = x .        --  Hypothesis
 }
 
-open RING
+open RING .
 protecting (FOPL-CLAUSE)
 ops a b : -> E .
 option reset

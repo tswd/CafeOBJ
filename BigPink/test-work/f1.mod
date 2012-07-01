@@ -8,7 +8,7 @@ module T1
 }
 
 option reset
-open T1
+open T1 .
 ax P(X:E) | P(Y:E) .
 ax ~(P(X:E)) | ~(P(Y:E)) .
 flag(auto,on)
@@ -18,7 +18,7 @@ close
 
 ** manual version
 option reset
-open T1
+open T1 .
 let a1 = P(X:E) | P(Y:E) .
 ax ~(P(X:E)) | ~(P(Y:E)) .
 ** we need db reset

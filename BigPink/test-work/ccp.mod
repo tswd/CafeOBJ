@@ -120,7 +120,7 @@ save-option ccp-set
 option = ccp-quiet-set
 
 
-open PROOF
+open PROOF .
 
 -- **> show P(init)
 -- goal P(init) .
@@ -128,7 +128,7 @@ open PROOF
 -- close
 -- **
 
--- open PROOF
+-- open PROOF .
 -- **> show P(X) is invariant w.r.t. read operation.
 -- goal \A[S:Protocol]\A[I:Index] P(S) -> P(read(I,S)) .
 -- ** it's safe to reset options because some parameters may
@@ -140,7 +140,7 @@ open PROOF
 -- resolve .
 -- close
 
--- open PROOF
+-- open PROOF .
 -- **> show P(X) is invariant w.r.t. write operation.
 -- goal \A[S:Protocol]\A[I:Index, M:Data] P(S) -> P(write(I,M,S)) .
 -- option = ccp-set
@@ -149,7 +149,7 @@ open PROOF
 
 -- **> the same job can be done in full automatic by `check' command.
 -- --> it's cool!
-open PROOF
+open PROOF .
 option = ccp-quiet-set
 check safety P from init
 close

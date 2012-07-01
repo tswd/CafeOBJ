@@ -179,7 +179,7 @@ mod* SHOP {
 --  eq Stat2(Run1(S)) = Stat2(S) .
 }
 
-open SHOP
+open SHOP .
 
 protecting(FOPL-CLAUSE)
 

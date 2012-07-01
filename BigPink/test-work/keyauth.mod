@@ -242,7 +242,7 @@ ax ~(x = y) .
 
 }
 
-open PROOF
+open PROOF .
 
 db reset
 option reset

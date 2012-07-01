@@ -59,7 +59,7 @@ module PIGEON
 
 }
 
-open PIGEON
+open PIGEON .
 option reset
 flag(auto,on)
 resolve .
