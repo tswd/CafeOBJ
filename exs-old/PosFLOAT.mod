@@ -75,7 +75,7 @@ module! FLOAT2 {
     eq (X =[ Z ] Y) = #! (< (abs (- X Y)) Z) .
   }
   op angle_ : Float -> Angle
-  eq angle(X:Float) = if X <= 0 then angle(X + 2 * pi)
+  eq angle(X) = if X <= 0 then angle(X + 2 * pi)
      else if X > 2 * pi then angle(X - 2 * pi)
      else X
      fi

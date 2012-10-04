@@ -26,7 +26,7 @@ module* R {
 }
 
 **> show it is a bhavioral congruence:
-open R
+open R .
 ops f f' : -> Flag .
 eq up? f = up? f' .
 red up f R up f' .
@@ -35,7 +35,7 @@ red rev f R rev f' .
 close
 
 **> now prove the equation:
-open R
+open R .
 op f : -> Flag .
 red rev rev f R f .
 close

@@ -150,6 +150,16 @@
 ;;; a module is prepared for parsing.
 (defvar *prepare-for-parse-hook* nil)
 
+(defun module-indirect-submodules (module)
+  (let ((dmods (module-direct-submodules module))
+	(res (cons nil nil)))
+    (dolist (dmod dmods)
+      (unless (or (eq (cdr dmod) :modmorph)
+		  (member dmod (car res) :test #'equal)
+		  (module-is-parameter-theory (car dmod)))
+	(gather-submodules (car dmod) res)))
+    (car res)))
+
 (defun prepare-for-parsing (module &optional force no-error-sort)
   (declare (type module module)
 	   (type (or null t) force no-error-sort)
@@ -162,6 +172,14 @@
       (when (or (need-parsing-preparation module) force)
 	(print-in-progress "_")
 	(check-submodules module)
+	;;
+	(let ((als (module-alias module)))
+	  (dolist (sub (module-all-submodules module))
+	    (unless (or (assoc sub als)
+			(not (modexp-is-simple-name (module-name (car sub)))))
+	      (symbol-table-add (module-symbol-table module)
+				(module-name (car sub))
+				(car sub)))))
 	;;
 	(regularize-signature-internal module)
 	(when (and *check-regularity*
@@ -191,8 +209,9 @@
 	(declare-error-variables-in module)
 	;; for simple-parser.
 	;; (check-polimorphic-overloading-in module)
-	(update-parse-information module)
 	(propagate-attributes module)
+	(set-operator-syntactic-properties module)
+	(update-parse-information module)
 	;;
 	(dolist (hook-fun *prepare-for-parse-hook*)
 	  (funcall hook-fun module))
@@ -295,7 +314,6 @@
     (fix-error-method-terms module)
     ;; add rwl axioms if need
     (add-rwl-axioms module)
-    ;; 
     ;; genrate rewrite rules
     (generate-rewrite-rules module)
     (mapc #'(lambda (opinfo)
@@ -308,6 +326,17 @@
     (normalize-rules-in module)
     (module-error-check module)
     (check-operator-congruency module)
+    ;;
+    (let* ((*module-all-rules-every* t)
+	   (axs (get-module-axioms module)))
+      ;; (format t "~%# axioms=~d" (length axs))
+      (dolist (ax axs)
+	(let ((labels (axiom-labels ax)))
+	   (dolist (lab labels)
+	     ;; (format t " ~a" lab)
+	     (symbol-table-add (module-symbol-table module)
+			       lab
+			       ax)))))
     ;; set status.
     (mark-module-ready-for-rewriting module)
     ;; 

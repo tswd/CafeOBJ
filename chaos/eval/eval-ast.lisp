@@ -51,24 +51,34 @@
 (defun resolve-or-define-sort (module sort-name &optional hidden)
   (let ((sort (resolve-sort-ref module sort-name)))
     (if sort
-	(if (or (and hidden (sort-is-hidden sort))
-		(and (not hidden) (not (sort-is-hidden sort))))
-	    sort
-	  (with-output-chaos-warning ()
-	    (princ "declaring ")
-	    (format t "a ~a sort ~s, there already be a sort" 
-		    (if hidden
-			"hidden"
-		      "visible")
-		    (if (%is-sort-ref sort-name)
-			(%sort-ref-name sort-name)
-		      sort-name))
-	    (print-next)
-	    (princ "with the same name but of different type (visible/hidden).")
-	    (print-next)
-	    (princ "...ignored.")
-	    (return-from resolve-or-define-sort nil))
-	  )
+	(cond ((or (eq sort *universal-sort*)
+		   (eq sort *huniversal-sort*)
+		   (eq sort *cosmos*))
+	       (let ((*chaos-quiet* t))
+ 		 (declare (special *chaos-quiet*))
+		 (with-output-chaos-error ('invalid-sort-decl)
+		   (format t "You can not declare built in sort ~A"
+			   (string (sort-name sort))))))
+	      (t (if (or (and hidden (sort-is-hidden sort))
+			 (and (not hidden) (not (sort-is-hidden sort))))
+		     sort
+		   (let ((*chaos-quiet* t))
+		     (declare (special *chaos-quiet*))
+		     (with-output-chaos-warning ()
+		       (princ "declaring ")
+		       (format t "a ~a sort ~s, there already be a sort" 
+			       (if hidden
+				   "hidden"
+				 "visible")
+			       (if (%is-sort-ref sort-name)
+				   (%sort-ref-name sort-name)
+				 sort-name))
+		       (print-next)
+		       (princ "with the same name but of different type (visible/hidden).")
+		       (print-next)
+		       (princ "...ignored.")
+		       (return-from resolve-or-define-sort nil))
+		     ))))
       (cond ((%is-sort-ref sort-name)
 	       (if (%sort-ref-qualifier sort-name)
 		   ;; should not happen this case.
@@ -338,7 +348,7 @@
 	    (set-needs-parse)
 	    (set-needs-rule)
 	    meth)
-	  nil))))
+	nil))))
 
 ;;; DECLARE-OPERATOR-ATTRIBUTES : decl -> operator
 ;;; returns operator if success, otherwise nil.
@@ -727,9 +737,9 @@
 	  (unless (modexp-is-parameter-theory name)
 	    ;; (with-output-msg ()
 	      (format t "~&-- defining ~(~a~) ~a" (case kind
-					       (:object "module!")
-					       (:theory "module*")
-					       (otherwise "module"))
+						    (:object "module!")
+						    (:theory "module*")
+						    (otherwise "module"))
 		      name)
 	      (force-output)
 	      ;; )
@@ -870,11 +880,12 @@
   (let ((mode (%import-mode decl))
 	(modexp (%import-module decl))
 	(parameter (%import-parameter decl))
+	(alias (%import-alias decl))
 	(new-mod nil))
     (when (and (%is-modexp modexp)
 	       (equal (%modexp-value modexp) "THE-LAST-MODULE"))
       (setf (%modexp-value modexp) *last-module*))
-    (setf new-mod (import-module *current-module* mode modexp parameter))
+    (setf new-mod (import-module *current-module* mode modexp parameter alias))
     new-mod))
 
 ;;; !ADD-US

@@ -213,8 +213,8 @@ object alloc_svec_fixnum (size)
     (symbol (typecase y
 	      (symbol (if (eq x y)
 			  :eq
-			  (if (string< (string (the symbol x))
-				       (string (the symbol y)))
+			  (if (string-lessp (string (the symbol x))
+					    (string (the symbol y)))
 			      :lt
 			      :gt)))
 	      (integer :gt)
@@ -245,9 +245,9 @@ object alloc_svec_fixnum (size)
 		 ((or number cons symbol) :gt)
 		 (otherwise :lt)))
     (string (typecase y
-	      (string (if (string< (the string x) (the string y))
+	      (string (if (string-lessp (the string x) (the string y))
 			  :lt
-			  (if (string< (the string y) (the string x))
+			  (if (string-lessp (the string y) (the string x))
 			      :gt
 			      :eq)))
 	      ((or character number cons symbol) :gt)

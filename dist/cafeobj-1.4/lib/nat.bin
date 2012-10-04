@@ -1,6 +1,6 @@
 ;CHAOS_BINS_____
 ;;;-*- Mode:LISP: Package: CHAOS; Base:10: Syntax:Common-lisp -*-
-;;; $Id: nat.bin,v 1.6 2007-01-24 23:27:26 sawada Exp $
+;;; $Id: nat.bin,v 1.2 2007-01-24 10:03:39 sawada Exp $
 ;;; 
 (in-package :chaos)
 

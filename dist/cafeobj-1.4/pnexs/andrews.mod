@@ -18,7 +18,7 @@ module ANDREWS
   pred q : E
 }
 
-open ANDREWS
+open ANDREWS .
 protecting (FOPL-CLAUSE)
 
 goal [GOAL]: (( (\E[x:E] \A[y:E] (p (x) <-> p(y)))

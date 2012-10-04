@@ -151,7 +151,10 @@ NOTE: this switch is obsolete now. please use `print mode' switch instead."
       ("parse" ("normalize") parity *parse-normalize*
        "if set on, terms with associative operators are always parsed as right assocative."
        nil nil t)
-
+      ;; USER DEFINED BOOL
+      ("BOOL" ("=") general *user-bool*
+       "set path of user defined \"BOOL\" module."
+       chaos-set-bool-path)
       ;; debug flags : invisible from user, internal use only
       ("sys" ("universal-sort") parity *allow-universal-sort* "" nil nil t)
       ("debug" ("rewrite") parity *rewrite-debug* "" nil nil t)
@@ -395,6 +398,14 @@ NOTE: this switch is obsolete now. please use `print mode' switch instead."
     (format t "please use `set print mode tree' for printing parse tree.")
     (print-next)
     (format t "other settings of `print mode' switch are :fancy and :normal.")))
+
+;;;
+(defun chaos-set-bool-path (path)
+  (let ((path (car path)))
+    (when (consp path)
+      (setq path (car path)))
+    (setq *user-bool* path)
+    ))
 
 ;;; EOF
 

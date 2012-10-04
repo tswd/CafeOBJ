@@ -65,7 +65,7 @@ module PIGEON
 option reset
 flag(auto,on)
 
-open PIGEON
+open PIGEON .
 resolve .
 close
 eof

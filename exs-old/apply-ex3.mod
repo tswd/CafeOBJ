@@ -17,8 +17,8 @@ module GROUPA {
   eq [linv] : A -1 * A = e .
 }
 
-**> open GROUPA.
-open GROUPA 
+**> open GROUPA
+open GROUPA .
 --> show .
 show .
 --> op a : -> Elt .
@@ -43,8 +43,8 @@ apply .linv at subterm
 apply reduction at top
 --> should be : e
 **> add the proven equation:
---> eq [rinv] : A:Elt * A -1 = e .
-eq [rinv] : A:Elt * A -1 = e .
+--> eq [rinv] : XX:Elt * XX -1 = e .
+eq [rinv] : XX:Elt * XX -1 = e .
 --> show .
 show .
 **> second prove the right identity law:
@@ -64,8 +64,8 @@ apply .rinv at subterm
 apply red at top
 --> should be : a
 **> add the proven equation:
---> eq [rid]: A:Elt * e = A .
-eq [rid]: A:Elt * e = A .
+--> eq [rid]: XX:Elt * e = XX .
+eq [rid]: XX:Elt * e = XX .
 **> close
 close
 

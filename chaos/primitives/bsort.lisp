@@ -165,6 +165,7 @@
 	   (type (or null t) hidden))
   (let ((sort (sort* id hidden)))
     (setf (sort-module sort) module)
+    (set-context-module sort module)
     sort))
 
 ;;; *SORT-TABLE*
@@ -351,6 +352,7 @@
     (setf (crsort-maker s) (if (eq p-type 'class-sort)
 			       (list nil nil nil nil)
 			       (list nil nil)))
+    (set-context-module s module)
     s))
   
 (defun new-record-sort (id module &optional hidden)
@@ -465,6 +467,7 @@
   (let ((bs (bsort* id hidden)))
     (setf (sort-module bs) module
 	  (bsort-info bs) info)
+    (set-context-module bs module)
     bs))
 
 ;;; Predicate ------------------------------------------------------------------
@@ -578,6 +581,7 @@
   (let ((as (and-sort* id hidden)))
     (setf (sort-module as) module
 	  (and-sort-components as) and-components)
+    (set-context-module as module)
     as))
 
 ;;; Predicates -----------------------------------------------------------------
@@ -645,6 +649,7 @@
   (let ((os (or-sort* id hidden)))
     (setf (sort-module os) module
 	  (or-sort-components os) or-components)
+    (set-context-module os module)
     os))
 
 ;;; Predicate ------------------------------------------------------------------
@@ -709,6 +714,7 @@
     (setf (sort-module es) module
 	  (err-sort-components es) components
 	  (err-sort-subsorts es) lowers)
+    (set-context-module es module)
     es))
 
 ;;; Predicates ----------------------------------------------------------------

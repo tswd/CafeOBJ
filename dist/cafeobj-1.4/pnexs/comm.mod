@@ -19,7 +19,7 @@ module COMM (E :: TRIV)
   eq f(x,f(x,x)) = e .
 }
 
-open COMM
+open COMM .
 protecting (FOPL-CLAUSE)
 ops a b : -> Elt .
 goal h(h(a,b),b) = e .

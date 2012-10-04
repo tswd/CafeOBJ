@@ -104,21 +104,29 @@
       ;; 
       (let ((old (assoc var-name (module-variables mod)))
 	    var)
+	#||
 	(when (and old (sort= sort (variable-sort (cdr old))))
 	  (return-from declare-variable-in-module (cdr old)))
+	||#
 	(when old
 	  (with-output-chaos-warning ()
 	    (princ "variable ")
 	    (princ (string var-name))
-	    (princ " once declared as sort ")
+	    (princ " is already declared as sort ")
 	    (princ (string (sort-id (variable-sort (cdr old)))))
-	    (princ ", but re-declared as sort ")
+	    #||
+	    (princ ", but redefined as sort ")
 	    (princ (string (sort-id sort)))
+	    ||#
 	    (princ ", ignored.")
 	    (return-from declare-variable-in-module nil)
 	    ))
 	(setf var (make-variable-term sort var-name))
 	(push (cons var-name var) (module-variables mod))
+	;;
+	(symbol-table-add (module-symbol-table mod)
+			  var-name
+			  var)
 	;;
 	var))))
  
@@ -182,6 +190,10 @@
 	    ))
 	(setf var (make-pvariable-term sort var-name))
 	(push (cons var-name var) (module-variables mod))
+	;;
+	(symbol-table-add (module-symbol-table mod)
+			  var-name
+			  var)
 	;;
 	var))))
 

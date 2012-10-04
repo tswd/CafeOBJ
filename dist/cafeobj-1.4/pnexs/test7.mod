@@ -11,7 +11,7 @@ module TEST7
   pred S : Elt
 }
 
-open TEST7
+open TEST7 .
 protecting (FOPL-CLAUSE)
 
 goal (\E[X:Elt]P(X)) & (\E[X:Elt]Q(X)) 

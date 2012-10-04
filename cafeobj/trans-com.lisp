@@ -157,5 +157,27 @@
 	  (princ toks)))
       (%cbred* modexp lhs rhs)
       )))
-      
+
+;;;
+;;; LOOK UP
+;;;
+(defun parse-in-context-modexp-with-name (e)
+  (let (modexp
+	name)
+    (setq e (cddr e))
+    (if (cdr e)
+	(progn
+	  (setq modexp (parse-modexp (second (first e))))
+	  (setq name (second e)))
+	(progn
+	  (setq modexp nil)
+	  (setq name (first e))))
+    (values modexp name)))
+
+(defun process-look-up-command (e &rest ignore)
+  (declare (ignore ignore))
+  (multiple-value-bind (modexp name)
+      (parse-in-context-modexp-with-name e)
+    (%look-up* name modexp)))
+
 ;;; EOF

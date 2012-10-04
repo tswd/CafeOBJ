@@ -64,108 +64,108 @@ sys:mod! RWL
     op * : -> NzNat* { constr }
     -- op + : -> Nat* { constr }
     -- op ! : -> Nat* { constr }
-    pred _==>_ : Cosmos Cosmos { strat: (0) prec: 51 }
+    pred _==>_ : *Cosmos* *Cosmos* { strat: (0) prec: 51 }
 
     ** NOTE: these two predicates are almost obsolate.
     -- kept for backward compatibility.
     -- _=(N:NzNat*)=>_ is equivalent to _=(1,N)=>*_
-    pred _=(_)=>_ : Cosmos NzNat* Cosmos { strat: (0) prec: 51 }
-    pred _=(_)=>_ suchThat _ : Cosmos NzNat* Cosmos Bool { strat: (0) prec: 51 }
+    pred _=(_)=>_ : *Cosmos* NzNat* *Cosmos* { strat: (0) prec: 51 }
+    pred _=(_)=>_ suchThat _ : *Cosmos* NzNat* *Cosmos* Bool { strat: (0) prec: 51 }
 
     ** new search operators
-    pred _=(_,_)=>*_ : Cosmos NzNat* NzNat* Cosmos { strat: (0) prec: 51 }
-    pred _=(_,_)=>+_ : Cosmos NzNat* NzNat* Cosmos { strat: (0) prec: 51 }
-    pred _=(_,_)=>!_ : Cosmos NzNat* NzNat* Cosmos { strat: (0) prec: 51 }
-    pred _=(_,_)=>*_ suchThat _: Cosmos NzNat* NzNat* Cosmos Bool
+    pred _=(_,_)=>*_ : *Cosmos* NzNat* NzNat* *Cosmos* { strat: (0) prec: 51 }
+    pred _=(_,_)=>+_ : *Cosmos* NzNat* NzNat* *Cosmos* { strat: (0) prec: 51 }
+    pred _=(_,_)=>!_ : *Cosmos* NzNat* NzNat* *Cosmos* { strat: (0) prec: 51 }
+    pred _=(_,_)=>*_ suchThat _: *Cosmos* NzNat* NzNat* *Cosmos* Bool
       { strat: (0) prec: 51 }
-    pred _=(_,_)=>+_suchThat_: Cosmos NzNat* NzNat* Cosmos Bool
+    pred _=(_,_)=>+_suchThat_: *Cosmos* NzNat* NzNat* *Cosmos* Bool
       { strat: (0) prec: 51 }
-    pred _=(_,_)=>!_suchThat_: Cosmos NzNat* NzNat* Cosmos Bool
+    pred _=(_,_)=>!_suchThat_: *Cosmos* NzNat* NzNat* *Cosmos* Bool
       { strat: (0) prec: 51 }
     -- suchThat 'state equality predicate'
-    pred _=(_,_)=>*_withStateEq_ : Cosmos NzNat* NzNat* Cosmos Cosmos
+    pred _=(_,_)=>*_withStateEq_ : *Cosmos* NzNat* NzNat* *Cosmos* *Cosmos*
       { strat: (0) prec: 51 }
-    pred _=(_,_)=>+_withStateEq_ : Cosmos NzNat* NzNat* Cosmos Cosmos
+    pred _=(_,_)=>+_withStateEq_ : *Cosmos* NzNat* NzNat* *Cosmos* *Cosmos*
       { strat: (0) prec: 51 }
-    pred _=(_,_)=>!_withStateEq_ : Cosmos NzNat* NzNat* Cosmos Cosmos
+    pred _=(_,_)=>!_withStateEq_ : *Cosmos* NzNat* NzNat* *Cosmos* *Cosmos*
       { strat: (0) prec: 51 }
-    pred _=(_,_)=>*_suchThat_withStateEq_ : Cosmos NzNat* NzNat* Cosmos Bool Cosmos
+    pred _=(_,_)=>*_suchThat_withStateEq_ : *Cosmos* NzNat* NzNat* *Cosmos* Bool *Cosmos*
       { strat: (0) prec: 51 }
-    pred _=(_,_)=>+_suchThat_withStateEq_ : Cosmos NzNat* NzNat* Cosmos Bool Cosmos
+    pred _=(_,_)=>+_suchThat_withStateEq_ : *Cosmos* NzNat* NzNat* *Cosmos* Bool *Cosmos*
       { strat: (0) prec: 51 }
-   pred _=(_,_)=>!_suchThat_withStateEq_ : Cosmos NzNat* NzNat* Cosmos Bool Cosmos
+   pred _=(_,_)=>!_suchThat_withStateEq_ : *Cosmos* NzNat* NzNat* *Cosmos* Bool *Cosmos*
      { strat: (0) prec: 51 }
 
     ** the followings are handy version of =(,)=>* etc.
     -- 
-    pred _==>*_ : Cosmos Cosmos { strat: (0) prec: 51 }
-    pred _==>+_ : Cosmos Cosmos { strat: (0) prec: 51 }
-    pred _==>!_ : Cosmos Cosmos { strat: (0) prec: 51 }
-    pred _==>1_ : Cosmos Cosmos { strat: (0) prec: 51 }
-    pred _==>*_withStateEq_ : Cosmos Cosmos Cosmos { strat: (0) prec: 51 }
-    pred _==>+_withStateEq_ : Cosmos Cosmos Cosmos { strat: (0) prec: 51 }
-    pred _==>!_withStateEq_ : Cosmos Cosmos Cosmos { strat: (0) prec: 51 }
-    pred _==>1_withStateEq_ : Cosmos Cosmos Cosmos { strat: (0) prec: 51 }
+    pred _==>*_ : *Cosmos* *Cosmos* { strat: (0) prec: 51 }
+    pred _==>+_ : *Cosmos* *Cosmos* { strat: (0) prec: 51 }
+    pred _==>!_ : *Cosmos* *Cosmos* { strat: (0) prec: 51 }
+    pred _==>1_ : *Cosmos* *Cosmos* { strat: (0) prec: 51 }
+    pred _==>*_withStateEq_ : *Cosmos* *Cosmos* *Cosmos* { strat: (0) prec: 51 }
+    pred _==>+_withStateEq_ : *Cosmos* *Cosmos* *Cosmos* { strat: (0) prec: 51 }
+    pred _==>!_withStateEq_ : *Cosmos* *Cosmos* *Cosmos* { strat: (0) prec: 51 }
+    pred _==>1_withStateEq_ : *Cosmos* *Cosmos* *Cosmos* { strat: (0) prec: 51 }
 
-    pred _==>1_suchThat_ : Cosmos Cosmos Bool { strat: (0) prec: 51 }
-    pred _==>*_suchThat_ : Cosmos Cosmos Bool { strat: (0) prec: 51 }
-    pred _==>+_suchThat_ : Cosmos Cosmos Bool { strat: (0) prec: 51 }
-    pred _==>!_suchThat_ : Cosmos Cosmos Bool { strat: (0) prec: 51 }
-    pred _==>1_suchThat_ withStateEq_ : Cosmos Cosmos Bool Cosmos
+    pred _==>1_suchThat_ : *Cosmos* *Cosmos* Bool { strat: (0) prec: 51 }
+    pred _==>*_suchThat_ : *Cosmos* *Cosmos* Bool { strat: (0) prec: 51 }
+    pred _==>+_suchThat_ : *Cosmos* *Cosmos* Bool { strat: (0) prec: 51 }
+    pred _==>!_suchThat_ : *Cosmos* *Cosmos* Bool { strat: (0) prec: 51 }
+    pred _==>1_suchThat_ withStateEq_ : *Cosmos* *Cosmos* Bool *Cosmos*
       { strat: (0) prec: 51 }
-    pred _==>*_suchThat_withStateEq_ : Cosmos Cosmos Bool Cosmos
+    pred _==>*_suchThat_withStateEq_ : *Cosmos* *Cosmos* Bool *Cosmos*
       { strat: (0) prec: 51 }
-    pred _==>+_suchThat_withStateEq_ : Cosmos Cosmos Bool Cosmos
+    pred _==>+_suchThat_withStateEq_ : *Cosmos* *Cosmos* Bool *Cosmos*
       { strat: (0) prec: 51 }
-    pred _==>!_suchThat_withStateEq_ : Cosmos Cosmos Bool Cosmos
-      { strat: (0) prec: 51 }
-
-    pred _=(_)=>*_ : Cosmos NzNat* Cosmos { strat: (0) prec: 51 }
-    pred _=(_)=>+_ : Cosmos NzNat* Cosmos { strat: (0) prec: 51 }
-    pred _=(_)=>!_ : Cosmos NzNat* Cosmos { strat: (0) prec: 51 }
-    pred _=(_)=>*_ withStateEq(_) : Cosmos NzNat* Cosmos Cosmos
-      { strat: (0) prec: 51 }
-    pred _=(_)=>+_withStateEq(_) : Cosmos NzNat* Cosmos Cosmos
-      { strat: (0) prec: 51 }
-    pred _=(_)=>!_withStateEq(_) : Cosmos NzNat* Cosmos Cosmos
-      { strat: (0) prec: 51 }
-    pred _=(_)=>*_suchThat_ : Cosmos NzNat* Cosmos Bool { strat: (0) prec: 51 }
-    pred _=(_)=>+_suchThat_ : Cosmos NzNat* Cosmos Bool { strat: (0) prec: 51 }
-    pred _=(_)=>!_suchThat_ : Cosmos NzNat* Cosmos Bool { strat: (0) prec: 51 }
-    pred _=(_)=>*_suchThat_withStateEq_ : Cosmos NzNat* Cosmos Bool Cosmos
-      { strat: (0) prec: 51 }
-    pred _=(_)=>+_suchThat_withStateEq_ : Cosmos NzNat* Cosmos Bool Cosmos
-      { strat: (0) prec: 51 }
-    pred _=(_)=>!_suchThat_withStateEq_ : Cosmos NzNat* Cosmos Bool Cosmos
+    pred _==>!_suchThat_withStateEq_ : *Cosmos* *Cosmos* Bool *Cosmos*
       { strat: (0) prec: 51 }
 
-    pred _=(,_)=>*_ : Cosmos NzNat* Cosmos { strat: (0) prec: 51 }
-    pred _=(,_)=>+_ : Cosmos NzNat* Cosmos { strat: (0) prec: 51 }
-    pred _=(,_)=>!_ : Cosmos NzNat* Cosmos { strat: (0) prec: 51 }
-    pred _=(,_)=>*_withStateEq_ : Cosmos NzNat* Cosmos Cosmos
+    pred _=(_)=>*_ : *Cosmos* NzNat* *Cosmos* { strat: (0) prec: 51 }
+    pred _=(_)=>+_ : *Cosmos* NzNat* *Cosmos* { strat: (0) prec: 51 }
+    pred _=(_)=>!_ : *Cosmos* NzNat* *Cosmos* { strat: (0) prec: 51 }
+    pred _=(_)=>*_ withStateEq(_) : *Cosmos* NzNat* *Cosmos* *Cosmos*
       { strat: (0) prec: 51 }
-    pred _=(,_)=>+_withStateEq_ : Cosmos NzNat* Cosmos Cosmos
+    pred _=(_)=>+_withStateEq(_) : *Cosmos* NzNat* *Cosmos* *Cosmos*
       { strat: (0) prec: 51 }
-    pred _=(,_)=>!_withStateEq_ : Cosmos NzNat* Cosmos Cosmos
+    pred _=(_)=>!_withStateEq(_) : *Cosmos* NzNat* *Cosmos* *Cosmos*
       { strat: (0) prec: 51 }
-    pred _=(,_)=>*_suchThat_ : Cosmos NzNat* Cosmos Bool { strat: (0) prec: 51 }
-    pred _=(,_)=>+_suchThat_: Cosmos NzNat* Cosmos Bool { strat: (0) prec: 51 }
-    pred _=(,_)=>!_suchThat_: Cosmos NzNat* Cosmos Bool { strat: (0) prec: 51 }
-    pred _=(,_)=>*_suchThat_withStateEq_ : Cosmos NzNat* Cosmos Bool Cosmos
+    pred _=(_)=>*_suchThat_ : *Cosmos* NzNat* *Cosmos* Bool { strat: (0) prec: 51 }
+    pred _=(_)=>+_suchThat_ : *Cosmos* NzNat* *Cosmos* Bool { strat: (0) prec: 51 }
+    pred _=(_)=>!_suchThat_ : *Cosmos* NzNat* *Cosmos* Bool { strat: (0) prec: 51 }
+    pred _=(_)=>*_suchThat_withStateEq_ : *Cosmos* NzNat* *Cosmos* Bool *Cosmos*
       { strat: (0) prec: 51 }
-    pred _=(,_)=>+_suchThat_withStateEq_ : Cosmos NzNat* Cosmos Bool Cosmos
+    pred _=(_)=>+_suchThat_withStateEq_ : *Cosmos* NzNat* *Cosmos* Bool *Cosmos*
       { strat: (0) prec: 51 }
-    pred _=(,_)=>!_suchThat_withStateEq_ : Cosmos NzNat* Cosmos Bool Cosmos
+    pred _=(_)=>!_suchThat_withStateEq_ : *Cosmos* NzNat* *Cosmos* Bool *Cosmos*
+      { strat: (0) prec: 51 }
+
+    pred _=(,_)=>*_ : *Cosmos* NzNat* *Cosmos* { strat: (0) prec: 51 }
+    pred _=(,_)=>+_ : *Cosmos* NzNat* *Cosmos* { strat: (0) prec: 51 }
+    pred _=(,_)=>!_ : *Cosmos* NzNat* *Cosmos* { strat: (0) prec: 51 }
+    pred _=(,_)=>*_withStateEq_ : *Cosmos* NzNat* *Cosmos* *Cosmos*
+      { strat: (0) prec: 51 }
+    pred _=(,_)=>+_withStateEq_ : *Cosmos* NzNat* *Cosmos* *Cosmos*
+      { strat: (0) prec: 51 }
+    pred _=(,_)=>!_withStateEq_ : *Cosmos* NzNat* *Cosmos* *Cosmos*
+      { strat: (0) prec: 51 }
+    pred _=(,_)=>*_suchThat_ : *Cosmos* NzNat* *Cosmos* Bool { strat: (0) prec: 51 }
+    pred _=(,_)=>+_suchThat_: *Cosmos* NzNat* *Cosmos* Bool { strat: (0) prec: 51 }
+    pred _=(,_)=>!_suchThat_: *Cosmos* NzNat* *Cosmos* Bool { strat: (0) prec: 51 }
+    pred _=(,_)=>*_suchThat_withStateEq_ : *Cosmos* NzNat* *Cosmos* Bool *Cosmos*
+      { strat: (0) prec: 51 }
+    pred _=(,_)=>+_suchThat_withStateEq_ : *Cosmos* NzNat* *Cosmos* Bool *Cosmos*
+      { strat: (0) prec: 51 }
+    pred _=(,_)=>!_suchThat_withStateEq_ : *Cosmos* NzNat* *Cosmos* Bool *Cosmos*
       { strat: (0) prec: 51 }
 
   }
   axioms {
-    var CXU : Cosmos
-    var CYU : Cosmos
+    var CXU : *Cosmos*
+    var CYU : *Cosmos*
     var COND : Bool
     var MAX-R : NzNat*
     var MAX-D : NzNat*
-    var PRED : Cosmos
+    var PRED : *Cosmos*
     ** 
     eq (CXU ==> CXU) = true .
     ** ceq (CXU ==> CYU) = true if CXU =(*,*)=>* CYU .

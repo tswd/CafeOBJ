@@ -2,8 +2,9 @@
 ** MODULE BOOL
 ** 
 ** we don't want to include BOOL of course
-
-set include BOOL off
+evq (setq *include-bool-save* *include-bool*)
+evq (setq *include-bool* nil)
+-- set include BOOL off
 
 sys:mod! BOOL
       principal-sort Bool
@@ -39,3 +40,8 @@ sys:mod! BOOL
     eq A or-else true = true .
   }
 }
+
+evq (setq *include-bool* *include-bool-save*)
+provide sys_bool
+--
+eof

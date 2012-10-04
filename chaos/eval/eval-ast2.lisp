@@ -836,6 +836,7 @@ File: eval-ast2.lisp
     (setq *current-sort-order* nil)
     (setq *current-opinfo-table* nil)
     (setq *old-context* nil)
+    (setq *bootstrapping-bool* nil)
     ;;
     (when msg?
       (with-output-simple-msg ()
@@ -1590,6 +1591,73 @@ File: eval-ast2.lisp
             )))
       (context-pop-and-recover)
       )))
+
+;;; INSEPCT
+(defun eval-inspect (ast)
+  (let ((modexp (%inspect-modexp ast))
+        mod)
+    (setf mod (if (null modexp)
+                  *last-module*
+                (eval-modexp modexp)))
+    (when (modexp-is-error mod)
+      (with-output-chaos-error ('no-such-module)
+        (princ "incorrect module expression or uknown module: ")
+        (print-modexp modexp)
+        ))
+    ;;
+    (unless mod
+      (with-output-chaos-error ('no-context)
+        (princ "no module to be inspeted!")
+        ))
+    ;;
+    (!inspect-module mod) ))
+
+;;;
+;;; WHAT-IS
+;;;
+(defun eval-what-is (ast)
+  (let ((name (%what-is-name ast))
+        (modexp (%what-is-module ast))
+	(mod nil))
+    (setf mod (if (null modexp)
+		  *last-module*
+		(eval-modexp modexp)))
+    (when (modexp-is-error mod)
+      (with-output-chaos-error ('no-such-module))
+      (princ "incorrect module expression or unknown module: ")
+      (print-modexp modexp))
+    ;;
+    ;; (!what-is name mod)
+    ))
+
+;;; EVAL-LOOK-UP
+;;;
+(defun eval-look-up (ast)
+  (let ((name (%look-up-name ast))
+        (modexp (%look-up-module ast))
+	(mod nil))
+    (setf mod (if (null modexp)
+		  *last-module*
+		(eval-modexp modexp)))
+    (when (modexp-is-error mod)
+      (with-output-chaos-error ('no-such-module))
+      (princ "incorrect module expression or unknown module: ")
+      (print-modexp modexp))
+    ;;
+    (!look-up name mod)))
+
+;;; 
+;;; DELIMITER
+;;;
+(defun eval-delimiter (ast)
+  (let ((op (%delimiter-operation ast))
+	(chars (%delimiter-char-list ast)))
+    (case op
+      ((:set :add) (!force-single-reader chars))
+      ((:delete) (!unset-single-reader chars))
+      (otherwise (with-output-chaos-error ('internal)
+		   (format t "Internal error, invalid delimiter operation ~s" op)
+		   )))))
 
 ;;; *******************
 ;;; Chaos Top

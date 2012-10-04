@@ -101,7 +101,7 @@
   (setf *old-msg-lvl* *msg-lvl*)
   (set-verbose-lvl 3))
 
-(defun set-qiet-off ()
+(defun set-quiet-off ()
   (when (= *msg-lvl* 3)
     (set-verbose-lvl *old-msg-lvl*)))
 

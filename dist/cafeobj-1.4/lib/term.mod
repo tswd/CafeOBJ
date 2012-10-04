@@ -1,5 +1,5 @@
 **
-** $Id: term.mod,v 1.3 2007-03-05 12:01:59 sawada Exp $
+** $Id: term.mod,v 1.2 2007-01-27 00:41:09 sawada Exp $
 **
 
 mod! CHAOS:TERM

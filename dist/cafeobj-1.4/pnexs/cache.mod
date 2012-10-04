@@ -107,7 +107,7 @@ flag(print-stats,on)
 flag(print-proofs,on)
 param(max-proofs,1)
 
-open PROOF
+open PROOF .
 sos = { :SYSTEM-GOAL }
 check safety P of p from init .
 close

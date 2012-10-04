@@ -531,7 +531,13 @@
 			(format t "-- ~a " (string-downcase (string (cdr sb))))
 			(format t "~a " (string-downcase (string (cdr sb)))))
 		    ||#
+		    ;; importation-mode
 		    (format t "~a " (string-downcase (string (cdr sb))))
+		    ;; alias
+		    (let ((a-name (cdr (assoc (car sb) (module-alias mod)))))
+		      (when a-name
+			(format t "as ~a " a-name)))
+		    ;; modexpr
 		    (let ((*print-indent* (+ 4 *print-indent* (length (string (cdr sb))))))
 		      (princ "(") (print-mod-name (car sb)
 						  *standard-output*

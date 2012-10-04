@@ -89,7 +89,7 @@ sys:module* ABS-FOPL+EQ-1 (TVAL :: T&F)
 {
   protecting (ABS-FOPL(TVAL))
   ** equality
-  op eq : Cosmos Cosmos -> Sentence
+  op eq : *Cosmos* *Cosmos* -> Sentence
 }
 
 ** this is similar to the above, but have two different types of
@@ -253,14 +253,14 @@ sys:module! FOPL-BASIC
   -- all variables in ordinal terms are treated as universally
   -- quantified logical variables in corresponding clauses.
   ** wanted to be more neat and clean,..
-  op _,_ : Cosmos Cosmos -> VarDeclList { r-assoc }
+  op _,_ : *Cosmos* *Cosmos* -> VarDeclList { r-assoc }
 
   ** quantifiers : note precedence is defined as very low.
   -- forall
-  op \A[_]_ : Cosmos FoplSentence -> FoplSentence
+  op \A[_]_ : *Cosmos* FoplSentence -> FoplSentence
     {prec: 125 strategy:(0)}
   -- exists
-  op \E[_]_ : Cosmos FoplSentence -> FoplSentence
+  op \E[_]_ : *Cosmos* FoplSentence -> FoplSentence
     {prec: 125 strategy:(0)}
 
   ** connectives
@@ -286,7 +286,7 @@ sys:module! FOPL-BASIC
 sys:module! FOPL-BASIC+EQ-1
 {
   protecting (FOPL-BASIC)
-  op _=_ : Cosmos Cosmos -> FoplSentence
+  op _=_ : *Cosmos* *Cosmos* -> FoplSentence
     {prec: 51 strategy: (0)}
 }
 
@@ -305,7 +305,7 @@ sys:module! FOPL-BASIC+EQ-1
 make FOPLE-SENTENCE
 (MFOPL+EQ-1(bool-as-truth-value,
             FOPL-BASIC+EQ-1 { sort Sentence -> FoplSentence,
-			      sort Var -> Cosmos,
+			      sort Var -> *Cosmos*,
 			      op and -> _&_,
 			      op or -> _|_,
 			      op imply -> (_->_),
@@ -346,15 +346,15 @@ sys:module! FOPL-CLAUSE
  {
    protecting (FOPLE-SENTENCE)
   -- built-in equality demodulators.
-   pred EQ : Cosmos Cosmos {demod}
-   pred NE : Cosmos Cosmos {demod}
+   pred EQ : *Cosmos* *Cosmos* {demod}
+   pred NE : *Cosmos* *Cosmos* {demod}
   -- for answer literal.
-   pred $Ans : Cosmos 
+   pred $Ans : *Cosmos* 
 
-   eq[:BDEMOD]: EQ(X:Cosmos, Y:Cosmos)
+   eq[:BDEMOD]: EQ(X:*Cosmos*, Y:*Cosmos*)
    = #!! (coerce-to-bool
 	    (term-equational-equal x y)) .
-   eq[:BDEMOD]: NE(X:Cosmos, Y:Cosmos)
+   eq[:BDEMOD]: NE(X:*Cosmos*, Y:*Cosmos*)
    = #!! (coerce-to-bool
 	    (not (term-equational-equal x y))) .
 

@@ -277,13 +277,13 @@ File: creader.lisp
 ;;;-----------------------------------------------------------------------------
 
   (defparameter ExDeclaration
-      '((:+ ex extending) |(| :modexp |)|))
+      '((:+ ex extending) (:if-present as :symbol) |(| :modexp |)|))
   (defparameter PrDeclaration
-      '((:+ pr protecting) |(| :modexp |)|))
+      '((:+ pr protecting) (:if-present as :symbol) |(| :modexp |)|))
   (defparameter UsDeclaration
-      '((:+ us using) |(| :modexp |)|))
+      '((:+ us using) (:if-present as :symbol) |(| :modexp |)|))
   (defparameter IncDeclaration
-      '((:+ inc including) |(| :modexp |)|))
+      '((:+ inc including) (:if-present as :symbol) |(| :modexp |)|))
 
   )
 
@@ -401,7 +401,7 @@ File: creader.lisp
           ((:+ -- **) :comment)
 
           ;; Misc elements.
-          (parse :term |.|)
+          ;; (parse :term |.|)
           ((:+ ev lisp evq lispq) (:call (read)))
           ;; allow sole ".", and do nothing
           (|.|)
@@ -541,7 +541,14 @@ File: creader.lisp
         (provide :symbol)
         (require :top-term)
         (autoload :symbol :symbol)
-
+	;; for testing delimiters
+	(delimiter (:+ = + -)
+		   |{|
+		   (:upto (|}|) :chars)
+		   :append (:seq-of (:upto (|}|) :chars))
+		   |}|)
+	;;
+	(delim)
         ;; PigNose commands
         #+:bigpink (db reset)
         #+:bigpink ((:+ sos passive) (:+ = + -)
@@ -588,10 +595,15 @@ File: creader.lisp
         (dribble :symbol)
         (pwd)
         (! :top-term)                   ; shell escape
+        (|.|)
+        ;; (chaos :args)
+	;; new commands as of 2011/Q1
         (? :args)                       ; help/messege description
         (?? :args)                      ; detailed help
-        (|.|)
-        (chaos :args)
+	;; new commands as of 2012/Q1
+	;; (inspect :modexp |.|)
+	((:+ names name) :modexp |.|)
+	(look up (:if-present in :modexp |:|) (:seq-of :top-opname))
         ))                              ; end Top-Form
 
       ;; some separated definitions of non-terminals.

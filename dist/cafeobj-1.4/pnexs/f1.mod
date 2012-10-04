@@ -8,7 +8,7 @@ module T1
 }
 
 option reset
-open T1
+open T1 .
 ax P(X:E) | P(Y:E) .
 ax ~(P(X:E)) | ~(P(Y:E)) .
 flag(auto,on)
@@ -19,7 +19,7 @@ close
 **> we will set(override) flag(factor,off), compare with the above.
 
 option reset
-open T1
+open T1 .
 let a1 = P(X:E) | P(Y:E) .
 ax ~(P(X:E)) | ~(P(Y:E)) .
 ** we need db reset because we are in manual mode.

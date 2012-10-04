@@ -84,10 +84,17 @@
 #+GCL (declaim (type vector *reader-read-table*))
 (defvar *reader-read-table*)
 (eval-when (eval load)
-  (setf *reader-read-table* (make-array (list .reader-char-code-limit.))))
+  (setf *reader-read-table* (make-array (list .reader-char-code-limit.)
+					:initial-element nil)))
 
 (defmacro !set-syntax (ch val)
   `(setf (aref *reader-read-table* (the fixnum (char-code ,ch))) ,val))
+
+(defun lex-show-delimiters (stream)
+  (dotimes (x .reader-char-code-limit.)
+    (let ((syntax (aref *reader-read-table* x)))
+      (when syntax
+	(format stream "~&~S : ~S" (code-char x) syntax)))))
 
 ;;; !INIT-READ-TABLE : List[Char] List[Char] List[Char] -> Void
 ;;; initialize Chaos read table.
@@ -98,10 +105,12 @@
 (defun !init-read-table (space return single)
   (declare (type list space return single)
 	   (values t))
+  #||
   (do ((i 0 (1+ i)))
       ((= i .reader-char-code-limit.))
     (declare (type (integer 0 256) i))
     (setf (aref *reader-read-table* i) nil))
+  ||#
   (dolist (char space)
     (!set-syntax char 'space))
   (dolist (char return)
@@ -110,7 +119,9 @@
     (!set-syntax (car c-c) (cdr c-c))))
 
 (defmacro reader-get-syntax (ch)
-  `(aref *reader-read-table* (the fixnum (char-code ,ch))))
+  `(if (< (char-code ,ch) .reader-char-code-limit.)
+       (aref *reader-read-table* (the fixnum (char-code ,ch)))
+     nil))
 
 (defmacro reader-valid-char-code (n)
   (once-only (n)
@@ -127,11 +138,16 @@
 	   (values t))
   (mapcar #'(lambda (x)
 	      (declare (type (or simple-string character) x))
-	      (let ((chr (if (stringp x)
+	      (let ((chr (if (and (stringp x)
+				  (= (length x) 1))
 			     (char (the string x) 0)
-			     x)))
+			   (if (characterp x)
+			       x
+			     (with-output-chaos-error ('invalid-str)
+			       (format t "delimiter must be a single character, but ~a is given" x))))))
 		(prog1
 		    (cons chr (reader-get-syntax chr))
+		  ;; (print chr)
 		  (!set-syntax chr (intern (string x))))))
 	  l))
 
@@ -715,6 +731,41 @@
     (,control-d . ,control-d)
     ))
 
+(defun !force-single-reader (l)
+  (declare (type list l)
+	   (values t))
+  (dolist (x l)
+    (let* ((chr (if (and (stringp x)
+			(= (length x) 1))
+		   (char (the string x) 0)
+		 (if (characterp x)
+		     x
+		   (with-output-chaos-error ('invalid-str)
+		     (format t "delimiter must be a single character, but ~a is given" x)))))
+	   (sym (intern (string x))))
+      (format t "~&setting delimiters ~S : ~S" chr sym)
+      (!set-syntax chr sym))))
+
+(defun !unset-single-reader (l)
+  (declare (type list l)
+	   (values t))
+  (dolist (x l)
+    (let ((chr (if (and (stringp x)
+			(= (length x) 1))
+		   (char (the string x) 0)
+		 (if (characterp x)
+			       x
+		   (with-output-chaos-error ('invalid-str)
+		     (format t "Delimiter must be a single character, but ~a is given" x))))))
+      (if (assoc chr .default-single-chars.)
+	  (warn "Character '~A' is a hardwired self delimiting charcter, ignored."
+		    chr)
+	(progn
+	  (format t "~&unsetting delimiters ~S" chr)
+	  (!set-syntax chr nil))))))
+;;;
+;;;
+;;;
 (defun !lex-read-init (&key (space .default-space-chars.)
 			    (return .default-return-chars.)
 			    (single .default-single-chars.)

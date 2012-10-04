@@ -38,14 +38,14 @@
 
 (defvar *import-sort-map* nil)
 
-(defun import-module (im mode sub &optional parameter)
+(defun import-module (im mode sub &optional parameter alias)
   (let ((*auto-context-change* nil))
     (setq *import-sort-map* nil)
     (prog1
-	(import-module-internal im mode sub parameter)
+	(import-module-internal im mode sub parameter nil alias)
       (setq *import-sort-map* nil))))
 
-(defun import-module-internal (im mode sub &optional parameter theory-mod)
+(defun import-module-internal (im mode sub &optional parameter theory-mod alias)
   (when *on-import-debug*
     (format t "~&[import-module]: ")
     (print-next)
@@ -114,6 +114,12 @@
 
       ;; compile submodule if need
       (compile-module submodule)
+      ;;
+      (symbol-table-add (module-symbol-table module)
+			(if alias
+			    alias
+			  (module-name submodule))
+			submodule)
       ;;
       #||
       (when (and *include-bool*

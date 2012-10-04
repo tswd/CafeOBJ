@@ -31,8 +31,9 @@
 
 (defun add-sort-to-module (sort mod)
   ;; register sort in module
-  (if (eq mod (sort-module sort))
-      (pushnew sort (module-own-sorts mod) :test #'eq))
+  (when (eq mod (sort-module sort))
+    (pushnew sort (module-own-sorts mod) :test #'eq))
+  (symbol-table-add (module-symbol-table mod) (sort-id sort) sort)
   (when *on-sort-debug*
     (with-output-msg ()
       (format t "adding sort ~s(~s)" (sort-id sort) sort)
@@ -513,6 +514,13 @@
 	(print-mod-name module)
 	))
     ;;
+    (when (or (eq sort-name $name-cosmos)
+	      (eq sort-name $name-universal)
+	      (eq sort-name $name-huniversal))
+      (with-output-chaos-error ('reserved-sort)
+	(format t "Sort name ~A is reserfed for the system, sorry."
+		sort-name)))
+    ;;
     (set-needs-parse module)
     (include-BOOL module)
     ;;
@@ -626,6 +634,14 @@
 	  (progn (push work tmp)
 		 (setq work nil))
 	  (let ((sort (find-sort-in module sid)))
+	    (when (or (eq sort *cosmos*)
+		      (eq sort *universal-sort*)
+		      (eq sort *huniversal-sort*))
+	      (let ((*chaos-quiet* t))
+		(with-output-chaos-error ('invalid-sort-relation)
+		  (format t "You can not specify the order with built in sort ~A."
+			  (string (sort-name sort))))))
+	    ;; 
 	    (if sort
 		(progn
 		  (when hidden

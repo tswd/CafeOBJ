@@ -19,7 +19,7 @@ module TEST4
 
 option reset
 
-open TEST4
+open TEST4 .
 protecting (FOPL-CLAUSE)
 goal h(h(a,b),b) = e .
 flag(auto,on)

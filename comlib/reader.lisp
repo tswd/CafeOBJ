@@ -219,6 +219,8 @@
 					       rest context))
 			 (:sorts (read-continue (read-sorts restcontext)
 						rest context))
+			 (:chars (read-continue (read-chars restcontext)
+						rest context))
 			 (:optattr (read-continue (read-opattr restcontext)
 						  rest context))
 			 (:comment (read-continue (read-comment-line) rest context))
@@ -631,9 +633,11 @@
 ;;; (declaim (function read-term-from-string (string) list))
 (declaim (inline read-term-from-string))
 
+; (eval-when (eval compile load)
+;   (defparameter .term-delimiting-chars.
+;       '("[" "]" "{" "}" ";" "@" "%" "~" )))
 (eval-when (eval compile load)
-  (defparameter .term-delimiting-chars.
-      '("[" "]" "{" "}" ";" "@" "+" "%" "~" )))
+  (defparameter .term-delimiting-chars. '("[" "]" "{" "}")))
 
 (defun !set-term-delim-chars ()
   (!set-single-reader .term-delimiting-chars.))
@@ -784,8 +788,9 @@
 
 ;;; READ-SEQ-OF-OPNAME
 ;;;
-(defparameter .op-name-delimiting-chars.
-    '("[" "]" "{" "}" "_" ";" "@" "+" "%" "~"))
+; (defparameter .op-name-delimiting-chars.
+;     '("[" "]" "{" "}" "_" ";" "@" "%" "~"))
+(defparameter .op-name-delimiting-chars. '("[" "]" "{" "}" "_"))
 
 (defun read-seq-of-opname (context)
   (declare (type list context)
@@ -933,12 +938,27 @@
     (unwind-protect
 	 (progn (!set-syntax #\! nil)
 		(loop (!read-in)
-		      (when (at-eof-or-control-d)
-			(return-from read-sorts *lex-eof*))
-		      (when (lex-string-match *reader-input* (car context))
-			(return (nreverse res)))
-		      (push (read-sort context) res)))
+		  (when (at-eof-or-control-d)
+		    (return-from read-sorts *lex-eof*))
+		  (when (lex-string-match *reader-input* (car context))
+		    (return (nreverse res)))
+		  (push (read-sort context) res)))
       (!set-syntax #\! old-syntax))))
+
+;;; READ-CHARS 
+;;;
+(defun read-chars (context)
+  (let ((res nil))
+    (loop (!read-in)
+      (when (at-eof-or-control-d)
+	(return-from read-chars *lex-eof*))
+      (when (lex-string-match *reader-input* (car context))
+	(return-from read-chars (nreverse res)))
+      (let ((c (!read-sym)))
+	;;(format t "~%- read-chars: sym=~s, res=~s" c res)
+	(if (consp c)
+	    (push (car c) res)
+	  (push c res))))))
 
 ;;; SPECIAL READERS NOT Spported by Chaos General Reader
 ;;; 

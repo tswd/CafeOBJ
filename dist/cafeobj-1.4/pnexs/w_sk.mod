@@ -14,16 +14,17 @@ module WSK
   eq K x y = x .
 }
 
-open WSK
-protecting (FOPL-CLAUSE)
-option reset
-flag (auto3,on)
-flag(print-new-demod,on)
-flag (universal-symmetry,on)
+open WSK .
+protecting (FOPL-CLAUSE) .
+option reset .
+flag (auto3,on) .
+flag(print-new-demod,on) .
+flag (universal-symmetry,on) .
 goal \E[W:E]\A[x,y] W x y = x y y .
 resolve .
 --
-close
+close .
 --
-eof
+eof .
+
 

@@ -248,7 +248,7 @@ open MONOID(star) .
   ops x y z :  -> Int .
   vars X Y Z : Int .
   op _;_ : Int Int -> Int . 
-  eq X:Int ; Y:Int = X + Y - X * Y .
+  eq X ; Y = X + Y - X * Y .
 -- lemmas:
   op _+_ : Int Int -> Int {assoc comm idr: 0}
   op _*_ : Int Int -> Int {assoc comm idr: 1}

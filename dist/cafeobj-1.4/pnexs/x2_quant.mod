@@ -18,13 +18,14 @@ module X2 (E :: TRIV)
 	       (\A[x] x * x = e) .
 }
 
-option reset
-flag(auto,on)
-flag(universal-symmetry,on)
-flag(print-new-demod,on)
-open X2
+option reset .
+flag(auto,on) .
+flag(universal-symmetry,on) .
+flag(print-new-demod,on) .
+open X2 .
 goal \A[x,y] x * y = y * x .
 resolve .
-close
+close .
 --
-eof
+eof .
+

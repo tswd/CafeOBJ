@@ -25,7 +25,7 @@ flag(auto,on)
 flag(universal-symmetry, on)
 -- flag(back-sub,off)
 
-open ROBBINS
+open ROBBINS .
 protecting (FOPL-CLAUSE)
 
 ops A B C : -> Elt .

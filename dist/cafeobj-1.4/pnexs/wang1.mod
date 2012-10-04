@@ -48,8 +48,8 @@ flag (auto,on)
 param (stats-level,4)
 -- flag (very-verbose,on)
 
-open WANG
+open WANG .
 resolve .
-close
+close .
 --
-eof
+eof .

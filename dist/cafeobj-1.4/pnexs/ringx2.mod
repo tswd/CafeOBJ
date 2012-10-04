@@ -28,7 +28,7 @@ option reset
 flag(auto,on)
 flag(universal-symmetry,on)
 
-open RING
+open RING .
 protecting (FOPL-CLAUSE)
 ops a b : -> Elt .
 goal f(a,b) = f(b,a). 

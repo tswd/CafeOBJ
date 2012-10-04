@@ -45,10 +45,14 @@
 		   (:copier nil)
 		   (:include %chaos-object (-type 'object))
 		   (:print-function chaos-pr-object))
-  (misc-info nil :type list))
+  (misc-info nil :type list)
+  (context-mod nil))
 
 (defmacro object-info (_obj _info)
   ` (getf (object-misc-info ,_obj) ,_info))
+
+(defun set-context-module (obj &optional (mod *current-module*))
+  (setf (object-context-mod obj) mod))
 
 (eval-when (eval load)
   (setf (symbol-function 'is-object)(symbol-function 'object-p))
@@ -70,6 +74,106 @@
 					; mode ::= :protecting | :exporting | :using
 					;        | :modmorph | :view
   )
+
+;;; ************
+;;; SYMBOL-TABLE
+;;; ************
+(defstruct (symbol-table)
+  (names nil :type list)
+  (map (make-hash-table :test #'equal)))
+
+(defstruct (stable)
+  (sorts nil :type list)
+  (operators nil :type list)
+  (parameters nil :type list)
+  (submodules nil :type list)
+  (variables nil :type list)
+  (axioms nil :type list)
+  (unknowns nil :type list))
+
+(defun canonicalize-object-name (nm)
+  (cond ((stringp nm)
+	 (intern nm))
+	((consp nm)
+	 (if (cdr nm)
+	     (mapcar #'canonicalize-object-name nm)
+	   (canonicalize-object-name (car nm))))
+	((symbolp nm) nm)
+	((module-p nm) (canonicalize-object-name (module-name nm)))
+	(t
+	 ;; do nothing
+	 ;; (error "internal error, illegal name object ~s" nm)
+	 )))
+
+(defun symbol-table-add (table nm obj)
+  (when (and (module-p obj)
+	     (module-is-parameter-theory obj))
+    (setq nm (car (module-name obj))))
+  (let ((name (canonicalize-object-name nm)))
+    (pushnew name (symbol-table-names table) :test #'equal)
+    (let* ((map (symbol-table-map table))
+	   (tbl (gethash name map)))
+      (unless tbl
+	(setf tbl (setf (gethash name map) (make-stable))))
+      (cond ((sort-p obj)
+	     (pushnew obj (stable-sorts tbl)))
+	    ((operator-p obj)
+	     (pushnew obj (stable-operators tbl)))
+	    ((module-p obj)
+	     (if (module-is-parameter-theory obj)
+		 (pushnew obj (stable-parameters tbl))
+	       (pushnew obj (stable-submodules tbl))))
+	    ((axiom-p obj)
+	     (pushnew obj (stable-axioms tbl)))
+	    ((and (termp obj)
+		  (term-is-variable? obj))
+	     (pushnew obj (stable-variables tbl)))
+	    (t (pushnew obj (stable-unknowns tbl))))
+      tbl)))
+
+(defun symbol-table-get (name &optional (module *current-module*))
+  (let ((gname (canonicalize-object-name name)))
+    (gethash gname (symbol-table-map
+		    (module-symbol-table module)))))
+
+#||
+(defun pr-symbol-table (st stream &rest ignore)
+  (let ((names (copy-list (symbol-table-names st))))
+    (setq names (sort  names #'ob<))
+    (dolist (name names)
+      (pr-name name (gethash name (symbol-table-map st)) stream))))
+
+(defun get-object-type (obj)
+  (cond ((module-p obj)  :module)
+	((sort-p obj) :sort)
+	((operator-p obj) :operator)
+	((axiom-p obj) :axiom)
+	((term-is-variable? obj) :variable)
+	(t :unknown)))
+
+(defun get-obj-info (obj)
+  (let ((type (get-object-type obj)))
+    (cond ((or (eq type :variable)
+	       (eq (object-context-mod obj) *current-module*))
+	   (list obj type "of the current module"))
+	  ((eq type :unknown)
+	   (list obj type "unknown type of object"))
+	  ((object-context-mod obj)
+	   (list obj
+		 type
+		 (concatenate 'string "of module "
+			      (with-output-to-string (str)
+				(print-mod-name (object-context-mod obj)
+						str
+						t)))))
+	   (t (list obj type "")))))
+
+(defun pr-name (name objs stream)
+  (format stream "~&~A~8T" name)
+  (dolist (obj objs)
+    (let ((info (get-obj-info obj)))
+      (format stream ": ~A ~A~%" (second info) (third info)))))
+||#
 
 ;;;=============================================================================
 ;;; TOP-OBJECT _________________________________________________________________
@@ -94,7 +198,8 @@
   (name nil)
   (interface (make-ex-interface) :type (or null ex-interface))
   (status -1 :type fixnum)
-  (decl-form nil :type list))
+  (decl-form nil :type list)
+  (symbol-table (make-symbol-table) :type symbol-table))
 
 (eval-when (eval load)
   (setf (symbol-function 'is-top-object)(symbol-function 'top-object-p))
@@ -451,6 +556,7 @@
   (context nil
 	   :type (or null module-context))
 					; run time context
+  (alias nil :type list)
   )
 
 (eval-when (eval load)

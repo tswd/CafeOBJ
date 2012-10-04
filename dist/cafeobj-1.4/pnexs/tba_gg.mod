@@ -20,7 +20,7 @@ option reset
 flag(auto,on)
 flag(universal-symmetry,on)
 
-open TBA
+open TBA .
 protecting (FOPL-CLAUSE)
 op a : -> Elt .
 

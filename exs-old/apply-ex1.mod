@@ -9,8 +9,8 @@ module X {
   [ Id < A ]
   op f : A -> A
   var X : A
-  cq f(X) = f(f(X)) if (f(X) == 'a) .
-  eq f('b) = 'a .
+  cq [:nonexc]: f(X) = f(f(X)) if (f(X) == 'a) .
+  eq [:nonexec]: f('b) = 'a .
 }
 
 **> first, set X as current

@@ -77,7 +77,7 @@ module! STEAM
 option reset
 flag (auto,on)
 
-open STEAM
+open STEAM .
 "there is an animal that eats an animal that eats all grains".
 goal \E[x,y] animal(x) &
              animal(y) &

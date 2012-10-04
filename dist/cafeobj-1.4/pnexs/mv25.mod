@@ -28,7 +28,7 @@ flag(auto,on)
 flag(control-memory,off)
 param(max-weight,16)
 
-open MV
+open MV .
 ops a b c : -> Elt .
 goal P(i(i(a,b),i(i(c,a),i(c,b)))).
 resolve .

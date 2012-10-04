@@ -57,7 +57,7 @@ open SETS .
   ops s1 s2 s1' s2' : -> Set .
   op e : -> Elt .
 ** by theorem of constants
-  ceq S1:Set =*= S2:Set = true if (e in S1) == (e in S2) .
+  ceq S1 =*= S2 = true if (e in S1) == (e in S2) .
 ** hypothesis
   beq s1 = s1' .
   beq s2 = s2' .

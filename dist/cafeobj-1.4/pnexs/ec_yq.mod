@@ -16,7 +16,7 @@ module EC-YQ (E :: TRIV)
 
 option reset
 flag(auto,on)
-open EC-YQ
+open EC-YQ .
 ops a b c : -> Elt .
 goal P(e(e(a,b),e(e(c,b),e(a,c)))) .
 resolve .

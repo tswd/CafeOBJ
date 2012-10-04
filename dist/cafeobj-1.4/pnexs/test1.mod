@@ -15,7 +15,7 @@ module TEST1
   ax human(Socrates) .
 }
 
-open TEST1
+open TEST1 .
 **> auto mode
 goal mortal(Socrates) .
 option reset
@@ -27,7 +27,7 @@ close
 
 **> manual mode
 option reset
-open TEST1
+open TEST1 .
 let g = ~(mortal(Socrates)) .
 db reset
 

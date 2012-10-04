@@ -119,8 +119,7 @@
 					       theory
 					       (operator-theory operator)
 					       module)))
-    (setf (operator-theory operator) theory)
-    ))
+    (setf (operator-theory operator) theory) ))
 
 (defun compute-theory-from-attr-decl (num-args theory-decl old-theory
 					       &optional (module *current-module*))
@@ -188,8 +187,7 @@
 
     ;; final result.
     (theory-make (theory-code-to-info code)
-		 (if id (cons id is-iden-r))
-		 )))
+		 (if id (cons id is-iden-r)) )))
 
 ;;; ASSOCIATIVITY_______________________________________________________________
 
@@ -280,8 +278,7 @@
   (let ((new-th (check-method-theory-consistency method theory info inherit)))
     (setf (method-theory method info) new-th)
     (compute-method-theory-info-for-matching method info)
-    new-th
-    ))
+    new-th))
 
 (defun check-method-theory-consistency (method theory info
 					       &optional inherit
@@ -315,8 +312,7 @@
       (unless (and (sort<= coarity (car arity))
                    (sort<= coarity (cadr arity))
 		   ;; too restrictive?
-		   (sort= (car arity) (cadr arity))
-		   )
+		   (sort= (car arity) (cadr arity)))
 	;; should always check
 	(unless inherit
 	  (with-output-chaos-warning ()
@@ -369,8 +365,7 @@
 		  (print-next)
 		  (princ "ignoreing id:(idr:) attribute of operator ")
 		  (print-chaos-object method))
-		(setf new-code (unset-theory new-code .Z.))))
-	    ))))
+		(setf new-code (unset-theory new-code .Z.)))) ))))
     ;;
     (unless (= new-code (theory-code theory))
       (setf theory (theory-make (theory-code-to-info new-code)
@@ -385,8 +380,7 @@
     (setf (method-theory method info) theory)
     (compute-method-theory-info-for-matching method info)
     ;; returns the final result
-    theory
-    ))
+    theory ))
          
 (defun merge-operator-theory-in (mod method th1 th2)    
   (declare (ignore mod)
@@ -787,6 +781,7 @@
       (setq opinfo (make-opinfo :operator op))
       (push opinfo (module-operators mod))
       (push opinfo (module-all-operators mod))
+      (symbol-table-add (module-symbol-table mod) op-name op)
       (when *on-operator-debug*
 	(format t "~&opdecl: created new operator ~a" (operator-name op)))
 		
@@ -1090,6 +1085,8 @@
 	(format t "the operator of the same rank has already been declared: ")
 	(print-next)
 	(print-chaos-object meth)
+	(print-next)
+	(format t "~%... ignored.")
 	;; (print-next)
 	;; (format t "ignoring this one.")
 	)
@@ -1981,14 +1978,28 @@
 	    ;;       (make-method-table (opinfo-methods  opinfo)
 	    ;;                           *current-sort-order*))
 	    ;;
-
+	    #||
 	    ;; compute syntactic properties for each methods.
 	    (compute-method-syntactic-properties opinfo method-info-table)
 	    ;; set syntactic properties for error methods.
 	    (compute-error-method-syntactic-properties opinfo
 						       method-info-table)
+	    ||#
 	    ))
 	))))
+
+(defun set-operator-syntactic-properties (module)
+  (with-in-module (module)
+    (let ((method-info-table (module-opinfo-table module)))
+      (dolist (opinfo (module-all-operators module))
+	(let ((op (opinfo-operator opinfo))
+	      (methods (opinfo-methods opinfo)))
+	  ;; compute syntactic properties for each methods.
+	  (compute-method-syntactic-properties opinfo method-info-table)
+	  ;; set syntactic properties for error methods.
+	  (compute-error-method-syntactic-properties opinfo
+						     method-info-table)
+	  )))))
 
 (defun make-standard-token-seq (op-name-token number-of-args)
   (declare (type fixnum number-of-args)
@@ -2030,14 +2041,15 @@
     (dolist (method methods)
       (let* ((prec (or (method-precedence method) op-prec))
 	     (lower-prec (if (zerop prec)
-			     prec
+			     0
 			     (1- prec)))
 	     (assoc-decl (or (method-associativity method)
 			     (setf (method-associativity method)
 				   ;; assoc theory is interpreted as right-associative
 				   (if (and (method-is-associative method
 								   method-info-table)
-					    (null op-assoc))
+					    (null op-assoc)
+					    )
 				       ':right
 				       op-assoc)))))
 	(declare (type fixnum prec lower-prec)
@@ -2079,6 +2091,11 @@
 			     gathering (cdr gathering)))
 		      (t (push (cons 'token cur-item) res)))
 		(setq token-seq (cdr token-seq)))
+	  ;;
+	  ; (terpri)
+	  ; (print-chaos-object method)
+	  ; (format t " :form= ~S" form)
+	  ;;
 	  (setf (method-form method) form))))))
 
 (defun compute-error-method-syntactic-properties (opinfo method-info-table)
@@ -2122,6 +2139,11 @@
 	   (type list token-seq)
 	   (type symbol assoc-decl)
 	   (values list))
+  ;;
+  ; (terpri)
+  ; (print-chaos-object method)
+  ; (format t " : assoc=~S" (method-is-associative method))
+  ;;
   (if assoc-decl
       (if (eq assoc-decl ':left)
 	  '(:left :right)

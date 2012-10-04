@@ -14,8 +14,8 @@ module! MEL
 {
   protecting (CHAOS:IDENTIFIER)
   [ Identifier < SortName ]
-  pred (_::_) : Universal SortName
-  eq (X:Universal :: S:SortName) = #!!(coerce-to-Bool
+  pred (_::_) : *Universal* SortName
+  eq (X:*Universal* :: S:SortName) = #!!(coerce-to-Bool
 					 (sort-match X S)) .
 }
 

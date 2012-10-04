@@ -1,6 +1,6 @@
 ** $Id: t1.mod,v 1.1.1.1 2003-06-19 08:30:07 sawada Exp $
 -- test formula translation
-open NAT
+open NAT .
 protecting(FOPL-CLAUSE)
 ops p q r : -> Bool .
 pred P : Nat .

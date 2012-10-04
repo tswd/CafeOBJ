@@ -92,14 +92,16 @@ File:builtins.lisp
     ;; Sorts for syntax errors
     (let ((syntax-err (define-builtin-sort '|SyntaxErr| *parser-module*))
           (type-err (define-builtin-sort '|TypeErr| *parser-module*))
-          (inv-op (define-builtin-sort '|UnknownOp| *parser-module*))
-          (sort-id (define-builtin-sort '|SortId| *parser-module*))
+          ;; (inv-op (define-builtin-sort '|UnknownOp| *parser-module*))
+	  (sort-id (define-builtin-sort '|SortId| *parser-module*))
           )
       (setf *syntax-err-sort* syntax-err)
       (setf *type-err-sort* type-err)
-      (setf *op-err-sort* inv-op)
+      ;; (setf *op-err-sort* inv-op)
       (setf *sort-id-sort* sort-id)
-      (declare-subsort-in-module `((,*type-err-sort* ,*op-err-sort* :< ,*syntax-err-sort*))
+      ;; (declare-subsort-in-module `((,*type-err-sort* ,*op-err-sort* :< ,*syntax-err-sort*))
+      ;;                           *parser-module*))
+      (declare-subsort-in-module `((,*type-err-sort* :< ,*syntax-err-sort*))
                                  *parser-module*))
     ;; operators for syntax errors
     (let ((partial-op (declare-operator-in-module '("parsed:[" "_" "],"
@@ -108,6 +110,7 @@ File:builtins.lisp
                                                         *universal-sort*)
                                                   *syntax-err-sort*
                                                   *parser-module*))
+	  #||
           (type-err-op (declare-operator-in-module '("error:[" "_" "]")
                                                    (list *universal-sort*)
                                                    *type-err-sort*
@@ -124,26 +127,33 @@ File:builtins.lisp
           (void-bottom (declare-operator-in-module '("void-bottom")
                                                    nil
                                                    *bottom-sort*
-                                                   *parser-module*)))
-      (setf *void-op* void-bottom)
+                                                   *parser-module*))
+	  ||#
+	  )
+      ;; (setf *void-op* void-bottom)
       (setf *partial-op* partial-op)
-      (setf *type-err-op* type-err-op)
-      (setf *op-err-op* unknown-op)
-      (setf *builtin-op* biop))
-    ;; 
+      ;; (setf *type-err-op* type-err-op)
+      ;; (setf *op-err-op* unknown-op)
+      ;; (setf *builtin-op* biop)
+      )
+
     )
   (let* ((opinfos (module-all-operators *parser-module*))
-         (bi-meth (car (operator-methods *builtin-op* opinfos)))
+         ;; (bi-meth (car (operator-methods *builtin-op* opinfos)))
          (partial-meth (car (operator-methods *partial-op* opinfos)))
-         (type-err-meth (car (operator-methods *type-err-op* opinfos)))
-         (op-err-meth (car (operator-methods *op-err-op* opinfos)))
-         (void-meth (car (operator-methods *void-op* opinfos))))
+         ;; (type-err-meth (car (operator-methods *type-err-op* opinfos)))
+         ;; (op-err-meth (car (operator-methods *op-err-op* opinfos)))
+         ;; (void-meth (car (operator-methods *void-op* opinfos)))
+	 )
+    #||
     (if bi-meth
         (setf *builtin-method* bi-meth)
       (break "!! Panic! : cannot find builtin method"))
+    ||#
     (if partial-meth
         (setf *partial-method* partial-meth)
       (break "!! Panic! : cannot find partial method"))
+    #||
     (if type-err-meth
         (setf *type-err-method* type-err-meth)
       (with-output-panic-message ()
@@ -156,6 +166,7 @@ File:builtins.lisp
         (setf *void-method* void-meth)
       (with-output-panic-message ()
         (break "cannot find op void method")))
+    ||#
     )
   (compile-module *parser-module*)
   )
@@ -1693,8 +1704,11 @@ File:builtins.lisp
     ))
 
 (defun chaos-misc-init ()
+  #||
   (unless *print-ignore-mods*
     (setq *print-ignore-mods* *kernel-hard-wired-builtin-modules*))
+  ||#
+  (setq *print-ignore-mods* *kernel-hard-wired-builtin-modules*)
   ;;
   #||
   (unless *apply-ignore-modules*

@@ -18,7 +18,7 @@ module GRP (E :: TRIV)
 }
 
 option reset
-open GRP
+open GRP .
 protecting (FOPL-CLAUSE)
 flag(auto, on)
 flag(universal-symmetry,on)

@@ -52,18 +52,20 @@
 
 ;;; SUBSORT DECLARATION
 (defun print-subsort-decl (ast &optional (stream *standard-output*))
-  #||
+  ;; #||
   (fresh-line)
-  (let ((s-seq (mapcar #'(lambda (x)
-			  (if (atom x)
-			      x
-			    (%sort-ref-name x)))
-		      (%subsort-decl-sort-relation ast))))
+  (let ((s-seq (remove nil (mapcar #'(lambda (x)
+				       (if (atom x)
+					   x
+					 (%sort-ref-name x)))
+				   (%subsort-decl-sort-relation ast)))))
     (format stream "~&Subsort declaration : ~{~a~^ ~a ~}" s-seq))
-  ||#
+  ;; ||#
+  #||
   (format stream
 	  "(%subsort-decl ~{~s~^ ~s ~})"
 	  (%subsort-decl-sort-relation ast))
+  ||#
   )
 
 ;;; BSORT DECLARATION
@@ -248,9 +250,12 @@
 ;;;-----------------------------------------------------------------------------
 (defun print-import-decl (ast &optional (stream *standard-output*))
   (let ((mode (%import-mode ast))
-	(mod (%import-module ast)))
+	(mod (%import-module ast))
+	(as (%import-alias ast)))
     (format stream "import declaration : ")
     (format stream "mode = ~a, " mode)
+    (when as
+      (format stream "as ~a, " as))
     (format stream "module = ")
     (print-modexp mod)))
 
@@ -264,11 +269,48 @@
 
 ;;; top level modexp printer ---------------------------------------------------
 
+#||
+(defun get-context-name (obj)
+  (let ((context-mod (object-context-mod obj)))
+    (if context-mod
+	(with-output-to-string (str)
+	  (print-mod-name context-mod str t))
+      nil)))
+||#
+
+(defun get-context-name (obj)
+  (let ((context-mod (object-context-mod obj)))
+    (if context-mod
+	(get-module-print-name context-mod)
+      nil)))
+
+(defun get-context-name-extended (obj &optional (context *current-module*))
+  (let ((cmod (object-context-mod obj)))
+    (unless cmod (return-from get-context-name-extended nil))
+    ;;
+    (when context
+      (let ((als (assoc cmod (module-alias context))))
+	(when als
+	  (return-from get-context-name-extended (cdr als)))))
+    ;;
+    (let ((name (get-module-print-name cmod)))
+      (unless (module-is-parameter-theory cmod)
+	(cond ((modexp-is-simple-name name) 
+	       (return-from get-context-name-extended name))
+	      (t (return-from get-context-name-extended
+		   (with-output-to-string (str)
+		     (print-modexp-simple name str))))))
+      ;; parameter
+      (format nil "parameter ~A of module ~A"
+	      (car name)
+	      (get-module-print-name (fourth name))))))
+
 (defun print-modexp (me &optional
 			(stream *standard-output*)
 			(simple t)
 			(no-param nil))
-  (let ((.file-col. .file-col.))
+  (let ((.file-col. .file-col.)
+	(*standard-output* stream))
     (if me
 	(cond
 	 ;;
@@ -526,10 +568,10 @@
     ||#
     ;; (print-modexp (int-rename-module obj) stream simple no-param)
     (print-modexp (int-rename-module obj) stream t t)
-    (princ " *{ ")
+    (princ " *{ " stream)
     (incf .file-col. 2)
     (if simple
-	(princ " ... ")
+	(princ " ... " stream)
 	(let ((*print-indent* (+ *print-indent* 4))
 	      (sort-maps (int-rename-sort-maps obj))
 	      (op-maps (int-rename-op-maps obj)))
@@ -1222,7 +1264,9 @@
 ;;; PRINT-OP-BRIEF operator
 ;;;
 (defun print-op-brief (op &optional (module *current-module*)
-				    (all t))
+				    (all t)
+				    (every nil)
+				    (show-context nil))
   (let* ((ind *print-indent*)
 	 (opinfo (get-operator-info op (module-all-operators module)))
 	 (methods (if all
@@ -1233,7 +1277,8 @@
 				   (opinfo-methods opinfo))))
 	 )
     (dolist (meth (reverse methods))
-      (unless (and (null (method-arity meth))
+      (unless (and (not every)
+		   (null (method-arity meth))
 		   (sort= *sort-id-sort* (method-coarity meth)))
 	(when (or (not (method-is-error-method meth))
 		  (method-is-user-defined-error-method meth))
@@ -1260,8 +1305,12 @@
 	      (princ "-> ")
 	      (print-sort-name (method-coarity meth) module))
 	    (print-check .file-col. 0)
-	    (print-method-attrs meth))
-	  )))))
+	    (print-method-attrs meth)
+	    (when show-context
+	      (let ((context-name (get-context-name-extended meth)))
+		(print-next)
+		(format t "-- declared in module ~a" context-name)))
+	    ))))))
 
 ;;; PRINT-OP-METH
 ;;;
@@ -1278,7 +1327,8 @@
       (let ((ind *print-indent*))
 	  (dolist (meth methods)
 	    (let ((is-predicate (method-is-predicate meth)))
-	      (unless (and (null (method-arity meth))
+	      (unless (and (not all)
+			   (null (method-arity meth))
 			   (sort= *sort-id-sort*
 				  (method-coarity meth)))
 		(print-next)
@@ -1421,22 +1471,22 @@
 	(constr (method-constructor method))
 	(coherent (method-coherent method))
 	(thy (method-theory method))
-	(prec (method-precedence method))
+	(prec (or (method-precedence method)
+		  (get-method-precedence method)))
 	(memo (method-has-memo method))
 	(meta-demod (method-is-meta-demod method))
 	(assoc (method-associativity method)))
     (when (and (eql 0 (car (last strat)))
 	       (member 0 (butlast strat)))
       (setq strat (butlast strat)))
-    (when (and thy (or constr coherent
-		       strat prec memo meta-demod
-		       (not (eq (theory-info thy) the-e-property))))
+    (when (or constr coherent
+	      strat prec memo meta-demod assoc thy)
       (let ((flag nil))
 	(when header (print-next) (princ header))
 	(print-check 0 3)
 	(princ " { ")
 	(setq .file-col. (1- (file-column *standard-output*)))
-	(when (not (eq (theory-info thy) the-e-property))
+	(when (and thy (not (eq (theory-info thy) the-e-property)))
 	  (setq flag t)
 	  (print-theory-brief thy)
 	  (print-check .file-col. 7))
@@ -1465,6 +1515,7 @@
 	  (princ "prec: ") (print-simple prec)
 	  (print-check .file-col. 7))
 	(when assoc
+	  ;; (format t "!!~s" assoc)
 	  (if flag (princ " ") (setq flag t))
 	  (if (eq :left assoc)
 	      (princ "l-assoc")

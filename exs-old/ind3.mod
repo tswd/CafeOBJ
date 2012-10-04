@@ -50,12 +50,12 @@ red base .
 
 **> *************** STEP *****************
 
-set sys universal-sort on
+-- set sys universal-sort on
 
 module! HYP {
   using (SETUP[NAT'{ op a -> x }])
-  op eq : Universal Universal -> Bool 
-  eq eq(X:Universal, Y:Universal) = X == Y .
+  op eq : *Universal* *Universal* -> Bool 
+  eq eq(X:*Universal*, Y:*Universal*) = X == Y .
   eq t1 = t2 .
 }
 
@@ -102,7 +102,7 @@ show .
 red step .
 
 --
-set sys universal-sort off
+-- set sys universal-sort off
 --
 eof
 **

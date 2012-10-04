@@ -1,5 +1,5 @@
 ** -*- Mode:CafeOBJ -*-
-** $Id: eql.mod,v 1.8 2010-06-17 08:23:18 sawada Exp $
+** $Id: eql.mod,v 1.7 2010-05-30 04:34:43 sawada Exp $
 ** system: Chaos
 ** module: library
 ** file: eql.mod
@@ -22,8 +22,9 @@ lispq
 
 sys:mod! EQL {
   protecting (TRUTH)
-  pred _=_ : Cosmos Cosmos { comm prec: 51 }
-  eq (CUX:Cosmos = CUX) = true .
+  pred _=_ : *Cosmos* *Cosmos* { comm prec: 51 }
+  eq (CUX:*Cosmos* = CUX) = true .
+  ceq CUX:*Cosmos* = CUY:*Cosmos* if (CUX = CUY) .
 }
 
 set sys universal-sort off

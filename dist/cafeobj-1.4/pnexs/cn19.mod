@@ -20,7 +20,7 @@ module CN19 (E :: TRIV)
   ax [CN3]: P(i(x,i(n(x),y))) .
 }
 
-open CN19
+open CN19 .
 option reset
 flag(auto,on)
 flag(back-unit-deletion,off)

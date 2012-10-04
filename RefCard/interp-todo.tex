@@ -3,7 +3,15 @@
 %!TEX encoding = UTF-8 Unicode
 \documentclass[a4paper,oneside,twocolumn]{memoir}
 \usepackage[hscale=0.8,vscale=0.8]{geometry}
-\geometory{landscape}
+\geometry{landscape}
+\usepackage{multicol}
+
+% \<...> - surrounds a variable name in a code example
+\def\<#1>{\textit{#1\/}}
+% kbd - argument is characters typed literally.  Like the Texinfo command.
+\def\kbd#1{\texttt{#1}\null}        %\null so not an abbrev even if period follows
+\def\cafeobj{{CafeOBJ}\null}
+
 \begin{document}
 \midsloppy
 %%%%%%
@@ -27,14 +35,14 @@ meta-variable) or is an expression of some language. For example,
 should know what these are); others should easily be understood by
 their \<name>s and/or from the context. 
 %%%%% starting cafeobj
-\section{Starting \hcafeobj\ interpreter}
+\section{Starting \cafeobj\ interpreter}
 
 To enter \cafeobj, just type its name: \kbd{cafeobj}
 
 `\kbd{cafeobj -help}' will show you a summary of command options. 
 
 %%%%% leaving cafeobj
-\section{Leaving \hcafeobj}
+\section{Leaving \cafeobj}
 
 \kbd{q(uit)} exits \cafeobj.
 
@@ -53,8 +61,7 @@ preceding input is not yet syntactically complete. If you encounter this situati
 and you don't know what the interpreter expects, 
 simply type in \kbd{esc}(escape key) and \kbd{return}, then it will
 immediately be back to you discarding preceding input
-and makes a fresh start.
-
+and makes a fresh start. Alternatively, you can type in several \kbd{return} keys. This acts exactly the same as typing \kbd{esc} and \kbd{return}. 
 
 %%%%% rescue
 \section{Rescue}
@@ -77,15 +84,16 @@ This might be useful when you feel the interpreter get confused.
 Switches are for controlling the interpreter's behaviour in several manner.
 The general form of setting top-level switch is:
 
-\ \ \kbd{set} {\it switch value\/} 
+\ \ \kbd{set} {\textit{switch value\/} }
 
 In the following, the default value of a switch is shown
 underlined.
 
-\paralign to \hsize{#\tabskip=8pt plus 1 fil&#\tabskip=0pt&#\cr
-\threecol{{\bf switch}}{{\bf value}}{{\bf what?}}
+%% \paralign to \hsize{#\tabskip=8pt plus 1 fil&#\tabskip=0pt&#\cr
+\begin{multicols}{3}
+\textbf{switch}}{\textbf{ value}}{\textbf{ what?}}
 ***
-\threecol{}{}{-- switches for rewriting}
+{-- switches for rewriting}
 \threecol{trace whole}{on|\ul{off}}{trace top-level rewrite step}
 \threecol{trace}{on|\ul{off}}{trace every rewrite step}
 \threecol{step}{on|\ul{off}}{stepwise rewriting process}
@@ -163,18 +171,18 @@ empty, i.e., no term will match to the pattern.
 %%%% getting values of switches
 \section{Examining Values of Switches}
 
-\paralign to \hsize{#\tabskip=10pt plus 1 fil&#\cr
+%% \paralign to \hsize{#\tabskip=10pt plus 1 fil&#\cr
 \twocol{show switch}{{\rm print list of available switches}}
 \twocol{}{{\rm with their values}}
-\twocol{show switch {\it switch}}{{\rm print out the value of the}}
-\twocol{}{{\rm specified} {\it switch}}
+\twocol{show switch \textit{switch}}{{\rm print out the value of the}}
+\twocol{}{{\rm specified} \textit{switch}}
 }
 %%% setting context
 \section{Setting Context}
 
 \kbd{select} {\<modexp>}
 
-This sets the context of the interpreter ({\bf current module})
+This sets the context of the interpreter (\textbf{ current module})
 to the module specified by \<modexp>.
 It must be written in single line. 
 When you type in \<modexp>, the `\kbd{;}$<$newline$>$' treated as a
@@ -191,7 +199,7 @@ either \kbd{sh(ow)} or \kbd{desc(ribe)}. Most of the cases,
 giving \kbd{desc(ribe)} for \<show> gives you more detailed
 information. 
 
-\paralign to \hsize{#\tabskip=10pt plus 1 fil&#\cr
+%% \paralign to \hsize{#\tabskip=10pt plus 1 fil&#\cr
 \twocol{\<show> \<modexp>}{prints a module \<modexp>. giving `\kbd{.}''}
 \twocol{}{as \<modexp> shows the current module}
 \twocol{\<show> sorts [\<modexp>]}{prints sorts of \<modexp>}
@@ -204,7 +212,7 @@ information.
 
 \<modexp> must be given in an one line. 
 The same convention for long module expressions is used as that of
-\kbd{select} command (see {\bf Setting Context} above.)
+\kbd{select} command (see \textbf{ Setting Context} above.)
 If the optional [\<modexp>] is omitted, it defaults to the current
 module. 
 Optionally supplying \kbd{all} before \kbd{sorts}, \kbd{ops},  
@@ -214,7 +222,7 @@ otherwise it only prints own constructs of the \<modexp>.
 
 The following \<show> commands assume the current
 module is set to some module.
-\paralign to \hsize{#\tabskip=10pt plus 1 fil&#\cr
+%%% \paralign to \hsize{#\tabskip=10pt plus 1 fil&#\cr
 \twocol{\<show> sort \<sort>}{prints information on sort \<sort>}
 \twocol{\<show> op \<operator>}{prints information on operator
   \<operaotr>}
@@ -222,7 +230,7 @@ module is set to some module.
 
 For inspecting submodules or parameters, the following \<show>
 commands are useful:
-\paralign to \hsize{#\tabskip=10pt plus 1 fil&#\cr
+%%% \paralign to \hsize{#\tabskip=10pt plus 1 fil&#\cr
 \twocol{\<show> param \<argname>}{prints information on the parameter}
 \twocol{\<show> sub \<n>}{prints information on the \<n>th direct}
 \twocol{}{submodule}
@@ -231,7 +239,7 @@ commands are useful:
 
 You can see the hierarchy of a module or a sort by the follwing
 \kbd{sh(ow)} commands:
-\paralign to \hsize{#\tabskip=10pt plus 1 fil&#\cr
+%%% \paralign to \hsize{#\tabskip=10pt plus 1 fil&#\cr
 \twocol{sh(ow) module tree \<modexp>}{prints pictorial hierarchy of
   module.}
 \twocol{}{specifying \kbd{.} as \<modexp> shows the}
@@ -249,7 +257,7 @@ You can see the hierarchy of a module or a sort by the follwing
 \kbd{reduce} reduces a given term \<term> in the term rewriting system
 derived from \<modexp>.
 \kbd{execute} is similar to \kbd{reduce}, but it also considers axioms 
-given by {\bf transition} declarations.
+given by \textbf{ transition} declarations.
 In both cases, omitted `\kbd{in} \<modexp> \kbd{:}' defaults to the current module.
 
 The result term of \kbd{reduce} and \kbd{execute} is bould to 
@@ -270,7 +278,7 @@ You can see the list of let bidings by:
 \kbd{sh(ow) let}
 
 There are two built-in special variables in the system:
-\paralign to \hsize{#\tabskip=10pt plus 1 fil&#\cr
+%%% \paralign to \hsize{#\tabskip=10pt plus 1 fil&#\cr
 \twocol{\$\$term}{bound to the result term of \kbd{reduce}, \kbd{execute},}
 \twocol{}{\kbd{parse}, or \kbd{start} commands.}
 \twocol{\$\$subterm}{bound to the result of \kbd{choose} command}
@@ -302,7 +310,7 @@ structure.
 %%% open/closing module
 \section{Opening/Closing Module}
 
-\paralign to \hsize{#\tabskip=10pt plus 1 fil&#\cr
+%%% \paralign to \hsize{#\tabskip=10pt plus 1 fil&#\cr
 \twocol{open \<modexp>}{opens module \<modexp>}
 \twocol{close}{close the currently opening module}
 }
@@ -334,7 +342,7 @@ means exactly at the \<selection>.
 
 \paragraph{Action}
 \<action> can be the followings:
-\paralign to \hsize{#\tabskip=10pt plus 1 fil&#\cr
+%%% \paralign to \hsize{#\tabskip=10pt plus 1 fil&#\cr
 \twocol{red(uction)}{reduce the selected term}
 \twocol{exec}{execute the selected term}
 \twocol{print}{print the selected term}
@@ -353,7 +361,7 @@ left to right(if \kbd{+} or omitted) or right to left (if \kbd{-}).
 A rule itself is specified by `[\<modexp>].\<rule-name>]'. This means
 the rule with name \<rule-name> of the module \<modexp> (if omitted, the
 current module). \<rule-name> is either a label of a rule or a number 
-which shown by \kbd{sh(ow) rules} command (see {\bf Showing Available
+which shown by \kbd{sh(ow) rules} command (see \textbf{ Showing Available
   Rules below}.) 
 
 \<substitution> binds variables that apper in the selected rule before 
@@ -375,8 +383,8 @@ being numbered.  The number can be used for \<rule-name> (see above).
 \kbd{of} specifying (sub)term of \kbd{\$\$term}:
 
 \<selector> $\{$ \kbd{of} \<selector> $\}$ $\cdots$ 
-\paralign to \hsize{#\tabskip=4pt plus 1 fil&#\cr
-\twocol{{\bf selector}}{{\bf description}}
+%%% \paralign to \hsize{#\tabskip=4pt plus 1 fil&#\cr
+\twocol{\textbf{ selector}}{\textbf{ description}}
 \twocol{term}{the entire term (\kbd{\$\$term})}
 \twocol{top}{ditto}
 \twocol{subterm}{selects \kbd{\$\$subterm}}
@@ -398,8 +406,8 @@ the \kbd{\$\$subterm} to the selected one.
 \kbd{match} \<term\_spec> \kbd{to} \<pattern>
 
 \<term\_spec> specifies the term to be matched with \<pattern>:
-\paralign to \hsize{#\tabskip=4pt plus 1 fil&#\cr
-\twocol{{\bf term\_spec}}{{\bf description}}
+%%% \paralign to \hsize{#\tabskip=4pt plus 1 fil&#\cr
+\twocol{\textbf{ term\_spec}}{\textbf{ description}}
 \twocol{\kbd{term}}{\kbd{\$\$term}}
 \twocol{\kbd{top}}{ditto}
 \twocol{\kbd{subterm}}{\kbd{\$\$term}}
@@ -407,8 +415,8 @@ the \kbd{\$\$subterm} to the selected one.
 \twocol{\<term>}{ordinal term}
 }
 
-\paralign to \hsize{#\tabskip=4pt plus 1 fil&#\cr
-\twocol{{\bf pattern}}{{\bf description}}
+%%% \paralign to \hsize{#\tabskip=4pt plus 1 fil&#\cr
+\twocol{\textbf{ pattern}}{\textbf{ description}}
 \twocol{\kbd{[ all ][+ | -] rules}}{match with available rewrite
   rules}
 \twocol{\<term>}{match with specified term}
@@ -420,7 +428,7 @@ If the switch \kbd{step} is set to \kbd{on}, invoking \kbd{reduce} or
 The stepper has its own command interpreter loop, where the following
 stepper commands are avilable:
 
-\paralign to \hsize{#\tabskip=10pt plus 1 fil&#\cr
+%%% \paralign to \hsize{#\tabskip=10pt plus 1 fil&#\cr
 \twocol{?}{print out available commands.}
 \twocol{n(ext)}{go one step}
 \twocol{g(o) \<number>}{go \<number> step}
@@ -439,7 +447,7 @@ and \kbd{set} commands in stepper.
 
 \section{Reading In Files}
 
-\paralign to \hsize{#\tabskip=10pt plus 1 fil&#\cr
+%%% \paralign to \hsize{#\tabskip=10pt plus 1 fil&#\cr
 \twocol{input \<file>}{read in \cafeobj\ program from \<file>}
 \twocol{provide \<feature>}{provide the \<feature>}
 \twocol{require \<feature> [\<file>]}{require \<feature>}
@@ -447,7 +455,7 @@ and \kbd{set} commands in stepper.
 %%% save and restore
 \section{Save and Restore}
 
-\paralign to \hsize{#\tabskip=10pt plus 1 fil&#\cr
+%%% \paralign to \hsize{#\tabskip=10pt plus 1 fil&#\cr
 \twocol{save \<file>}{save definitions of modules and views to \<file>}
 \twocol{restore \<file>}{restore definitions of modules and views}
 \twocol{reset}{recover definitions of built-in modules}
@@ -457,7 +465,7 @@ and \kbd{set} commands in stepper.
 
 %%% protecting your modules
 \section{Protecting Your Modules}
-\paralign to \hsize{#\tabskip=10pt plus 1 fil&#\cr
+%%% \paralign to \hsize{#\tabskip=10pt plus 1 fil&#\cr
 \twocol{protect \<modexp>}{prevent the module from redefinition}
 \twocol{unprotect \<modexp>}{allow moudle to be redefined}
 }
@@ -465,7 +473,7 @@ and \kbd{set} commands in stepper.
 %%% little semantic tools
 \newcolumn
 \section{Little Semantic Tools}
-\paralign to \hsize{#\tabskip=10pt plus 1 fil&#\cr
+%%% \paralign to \hsize{#\tabskip=10pt plus 1 fil&#\cr
 \twocol{check reg(ularity) [\<modexp>]}{reports the result of
   regularity}
 \twocol{}{check of module}
@@ -501,7 +509,7 @@ this compiles it implicitly, then perform the evaluation.
 
 
 \section{Miscellany}
-\paralign to \hsize{#\tabskip=10pt plus 1 fil&#\cr
+%%% \paralign to \hsize{#\tabskip=10pt plus 1 fil&#\cr
 \twocol{ls \<pathname>}{list contents of directories}
 \twocol{cd \<pathname>}{change working directory of the interpreter}
 \twocol{pwd}{prints working directory}

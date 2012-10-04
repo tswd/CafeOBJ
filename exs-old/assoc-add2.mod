@@ -5,7 +5,7 @@
 
 require tiny-nat ./tiny-nat
 
-open TINY-NAT
+open TINY-NAT .
 ops l m n : -> Nat .
 
 ** base case, n=0: l+(m+0)=(l+m)+0

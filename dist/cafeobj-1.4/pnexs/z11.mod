@@ -32,7 +32,7 @@ option reset
 flag(auto,on)
 flag(universal-symmetry,on)
 
-open Z11 
+open Z11 .
 protecting (FOPL-CLAUSE)
 resolve .
 close

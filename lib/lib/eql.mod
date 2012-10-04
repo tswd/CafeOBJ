@@ -22,9 +22,9 @@ lispq
 
 sys:mod! EQL {
   protecting (TRUTH)
-  pred _=_ : Cosmos Cosmos { comm prec: 51 }
-  eq (CUX:Cosmos = CUX) = true .
-  ceq CUX:Cosmos = CUY:Cosmos if (CUX = CUY) .
+  pred _=_ : *Cosmos* *Cosmos* { comm prec: 51 }
+  eq (CUX:*Cosmos* = CUX) = true .
+  ceq CUX:*Cosmos* = CUY:*Cosmos* if (CUX = CUY) .
 }
 
 set sys universal-sort off

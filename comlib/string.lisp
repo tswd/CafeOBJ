@@ -73,6 +73,19 @@
           (t
            (list line)))))
 
+(defun parse-with-delimiter2 (line &optional (delim #\newline))
+  (declare (type simple-string line)
+	   (values list))
+  ;; what about #\return instead of #\newline?
+  (let ((pos (position delim line)))
+    (declare (type (or null fixnum) pos))
+    (cond (pos
+           (cons (subseq line 0 pos)
+		 (cons (string delim)
+		       (parse-with-delimiter2 (subseq line (1+ pos)) delim))))
+          (t
+           (list line)))))
+
 ;;; parse-with-delimiters
 ;;;   Breaks LINE into a list of strings, using DELIMITERS as a breaking point.
 

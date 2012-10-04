@@ -250,7 +250,7 @@
 		  )
 		 (t
 		  ;; check sort qualified variable reference
-		  ;; = dynamic variable declaration. 
+		  ;; = on-the-fly (dynamic) variable declaration. 
 		  ;;
 		  (let ((q-pos (position #\: (the simple-string token)
 					 :from-end t)))
@@ -292,25 +292,38 @@
 				   (princ ".")
 				   (terpri)
 				   )))
-			     
+			     ;;
+			     (let ((gv (dictionary-get-token-info
+					(dictionary-table dictionary)
+					var-name)))
+			       (when gv
+				 (dolist (op-v gv)
+				   (when (eq (object-syntactic-type op-v)
+					     'variable)
+				     (with-output-chaos-error ('already-used-name)
+				       (format t "~&on the fly variable name ~A is already used for static variable declaration..." var-name))))))
 			     ;; OK
 			     (setq var-name (intern var-name))
 			     ;; success parsing it as a variable declaration.
 			     ;; checks if there alredy a variable with the same
 			     ;; name. 
+			     (when *on-parse-debug*
+			       (format t "~&on-the-fly var decl: ~A" var-name)
+			       (format t "... ~A" *parse-variables*))
 			     (let ((old-var (assoc var-name *parse-variables*)))
 			       (if old-var
 				   (unless (sort= (variable-sort (cdr old-var))
 						  sort) 
-				     (with-output-chaos-warning ()
-				       (format t "variable ~a once declared as sort ~a, but now redefined as sort ~a.~%"
-					       var-name
+				     (with-output-chaos-error ()
+				       (format t "on the fly variable ~A has been declared as sort ~A, but now being redefined as sort ~A.~%"
+					       (string var-name)
 					       (string (sort-id
 							(variable-sort (cdr
 									old-var))))
 					       (string (sort-id sort))))
-				     (setf (cdr old-var)
-					   (make-variable-term sort var-name)))
+				     ;;(setf (cdr old-var)
+				     ;; (make-variable-term sort var-name))
+				     )
 				   (progn
 				     ;; check name, if it start with `, we make
 				     ;; pseudo variable
@@ -319,8 +332,8 @@
 							0))
 					 (setf var (make-pvariable-term sort
 									var-name))
-					 (setf var (make-variable-term sort
-								       var-name)))
+				       (setf var (make-variable-term sort
+								     var-name)))
 				     (push (cons var-name var) *parse-variables*)))
 			       (if old-var
 				   (progn
@@ -1825,6 +1838,7 @@
 	  ;; normal term
 	  (setq result (make-form sort method arg-list)))
 	;; special treatment of if_then_else_fi
+	;; special treatment of generic operators
 	(when (eq (term-head result) *bool-if*)
 	  (set-if-then-else-sort result))
 	result
@@ -1911,31 +1925,44 @@
 	   (type module module))
   (if (null sort-list)
       t
-      (if (check-universally-defined-builtins method sort-list module)
-	  (let* ((reference-sort-list (method-arity method))
-		 (sort-order (module-sort-order module))
-		 (result t)
-		 (sort-list-prime sort-list)
-		 (sort nil))
-	    (dolist (reference-sort reference-sort-list result)
-	      (setq sort (car sort-list-prime)
-		    sort-list-prime (cdr sort-list-prime)) ;for next iteration
-	      (if (or (sort= reference-sort *universal-sort*)
-		      (sort= reference-sort *huniversal-sort*)
-		      (err-sort-p reference-sort)
-		      (sort<= sort reference-sort sort-order))
-		  ;;then do nothing; go to next iteration:
-		  nil
-		  ;; else abort looping; return false:
-		  (progn
-		    (when *on-parse-debug*
-		      (format t "~&incorrenct argument sort ~a" (sort-id sort)))
-		    (return nil)))))
-	  nil)))
+    (if (check-universally-defined-builtins method sort-list module)
+	(let* ((reference-sort-list (method-arity method))
+	       (sort-order (module-sort-order module))
+	       (result t)
+	       (sort-list-prime sort-list)
+	       (sort nil))
+	  (dolist (reference-sort reference-sort-list result)
+	    (setq sort (car sort-list-prime)
+		  sort-list-prime (cdr sort-list-prime)) ;for next iteration
+	    (if (or (sort= reference-sort *universal-sort*)
+		    (sort= reference-sort *huniversal-sort*)
+		    (err-sort-p reference-sort)
+		    (sort<= sort reference-sort sort-order))
+		;;then do nothing; go to next iteration:
+		nil
+	      ;; else abort looping; return false:
+	      (progn
+		(when *on-parse-debug*
+		  (format t "~&incorrenct argument sort ~a" (sort-id sort)))
+		(return nil)))))
+      nil)))
+
+(defun arity-contains-universal-sort (method)
+  (if (cdr (method-arity method))
+      (and (or (eq method *bool-if*)
+	       (dolist (s (method-arity method) t)
+		 (unless (or (eq s *cosmos*)
+			     (eq s *universal-sort*)
+			     (eq s *huniversal-sort*))
+		   (return-from arity-contains-universal-sort nil))))
+	   ;;(every #'(lambda (x y) (eq x y)) (method-arity method))
+	   )
+    nil))
 
 (defun check-universally-defined-builtins (method sort-list module)
   (let ((so (module-sort-order module)))
-    (if (memq method *bi-universal-operators*)
+    (if ;; (memq method *bi-universal-operators*)
+	(arity-contains-universal-sort method)
 	(cond ((eq method *bool-if*)
 	       ;; if_then_else_fi
 	       (parser-in-same-connected-component (second sort-list)

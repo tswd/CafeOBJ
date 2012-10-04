@@ -1,5 +1,5 @@
 ** -*- Mode:CafeOBJ -*-
-** $Id: chaos-form.mod,v 1.3 2007-03-05 12:01:59 sawada Exp $
+** $Id: chaos-form.mod,v 1.1 2007-01-26 10:39:12 sawada Exp $
 ** system: Chaos
 ** module: library
 ** file: chaos-form.mod

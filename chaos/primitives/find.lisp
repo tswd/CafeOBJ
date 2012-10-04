@@ -144,6 +144,8 @@
 (defun find-qual-sort (sort-name &optional (module *current-module*))
   (find-sort-in module sort-name))
 
+(defparameter *universal-sort-names* '(|*Universal*| |*HUniversal*|))
+
 (defun find-sort-in (module sort-name &optional search-in-mod)
   (declare (type module module)
 	   (type (or sort* symbol string list) sort-name)
@@ -176,13 +178,13 @@
 	     (when (stringp sort-id)
 	       (setf sort-id (intern sort-id)))
 	     (when (and (not mod-qual)
-			*allow-universal-sort*)
+			t)		;  *allow-universal-sort*
 	       (case sort-id
-		 (#.user-universal-sort-name
+		 ($name-universal
 		  (return-from find-sort-in *universal-sort*))
-		 (#.user-huniversal-sort-name
+		 ($name-huniversal
 		  (return-from find-sort-in *huniversal-sort*))
-		 (#.user-cosmos-sort-name
+		 ($name-cosmos
 		  (return-from find-sort-in *cosmos*))
 		 (otherwise		; do nothing
 		  nil)))

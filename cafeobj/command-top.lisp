@@ -543,7 +543,7 @@ An error occurred (~a) during the reading or evaluation of -e ~s" c form))))))
       (("require") . cafeobj-require-proc)
       (("do") . cafeobj-eval-do-proc)
       (("??" "?") . cafeobj-eval-help-proc)
-      (("what") . cafeobj-eval-what-proc)
+      ;; (("what") . cafeobj-eval-what-proc)
       (("dribble") . cafeobj-eval-dribble-proc)
       (("pwd") . cafeobj-eval-pwd-proc)
       (("cd") . cafeobj-eval-cd-proc)
@@ -558,6 +558,14 @@ An error occurred (~a) during the reading or evaluation of -e ~s" c form))))))
       (("trans-chaos") . cafeobj-2-chaos-proc)
       (("chaos") . cafeobj-eval-chaos-proc)
       (("cont" "continue") . cafeobj-eval-continue)
+      ;;
+      (("look") . cafeobj-eval-look-up)
+      ;; (("inspect") . cafeobj-eval-inspect)
+      (("names" "name") . cafeobj-eval-inspect)
+      ;;
+      (("delimiter") . eval-delimiter-proc)
+      (("delim") . eval-show-delimiter)
+      ;; ================================================================
       ;; PigNose specific commands
       ;; (("fax" "bfax" "frm" "bfrm" "ax" "bax") . pignose-eval-fax-proc)
       ;; (("goal" "bgoal") . pignose-eval-goal-proc)
@@ -573,6 +581,7 @@ An error occurred (~a) during the reading or evaluation of -e ~s" c form))))))
       (("save-option") . pignose-eval-save-option-proc)
       (("sigmatch") . pignose-eval-sigmatch-proc)
       (("lex") . pignose-eval-lex-proc)
+      ;;
       ;; 
       ((".") . cafeobj-nop)))
 
@@ -612,7 +621,6 @@ An error occurred (~a) during the reading or evaluation of -e ~s" c form))))))
               ;; QUIT -----------------------------------------------------------
               (when (member (car inp) '("eof" "q" ":q" ":quit" "quit" eof) :test #'equal)
                 ;; we should recover context here? NOOP! ...
-
                 (return-from top-loop nil))
 
               (block process-input

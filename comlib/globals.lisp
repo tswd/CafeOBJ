@@ -265,9 +265,9 @@
 (defconstant $name-gen-sort '|_ GeneralSort _|)
 (defconstant $name-bi-sort '|_ BuiltinSort _|)
 (defconstant $name-identifier '|Identifier|)
-(defconstant $name-cosmos '|_ Cosmos _|)
-(defconstant $name-universal '|_ Universal _|)
-(defconstant $name-huniversal '|_ HUniversal _|)
+(defconstant $name-cosmos '|*Cosmos*|)
+(defconstant $name-universal '|*Universal*|)
+(defconstant $name-huniversal '|*HUniversal*|)
 (defconstant $name-bottom '|_ Bottom _|)
 (defconstant $name-hbottom '|_ HBottom _|)
 (defconstant $name-record '|_ Record _|)
@@ -389,7 +389,7 @@
 (defvar *TRUTH-module* 'void)
 (defvar *BOOL-module* 'void)
 (defvar *IDENTICAL-module* nil)
-
+(defvar *bootstrapping-bool* nil)
 ;;; basic operations in TRUTH & BOOL
 ;;;-----------------------------------------------------------------------------
 (defvar *bool-true* 'void)
@@ -524,6 +524,9 @@
 (declaim (special *beh-proof-in-progress*))
 (defvar *beh-proof-in-progress* nil)
 
+;;; USER DEFINED BOOL
+(defvar *user-bool* nil)
+
 ;;; TRAM
 (defvar *tram-path* "tram")
 (defvar *tram-options* "")
@@ -551,9 +554,6 @@
 ;;; i.e., Universal, HUniversal, and Cosmos
 ;;;
 (defvar *allow-universal-sort* nil)
-(defconstant user-universal-sort-name '|Universal|)
-(defconstant user-huniversal-sort-name '|HUniversal|)
-(defconstant user-cosmos-sort-name '|Cosmos|)
 
 ;;; AUTOLOAD
 (defvar *autoload-alist* nil)

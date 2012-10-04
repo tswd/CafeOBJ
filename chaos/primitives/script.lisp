@@ -378,4 +378,33 @@
   :eval rwl-cont
   )
 
+;;; *******
+;;; WHAT IS
+;;; *******
+(defterm what-is (%script)
+  :visible (name &optional (module *current-module*))
+  :eval eval-what-is)
+
+;;; *******
+;;; INSPECT
+;;; *******
+(defterm inspect (%script)
+  :visible (&optional (modexp *current-module*))
+  :eval eval-inspect)
+
+;;; *******
+;;; LOOK-UP
+;;; *******
+(defterm look-up (%script)
+  :visible (name &optional (module *current-module*))
+  :eval eval-look-up)
+
+;;; *********
+;;; DELIMITER
+;;; *********
+(defterm delimiter (%script)
+  :visible (operation
+	    char-list)
+  :eval eval-delimiter)
+	    
 ;;; EOF

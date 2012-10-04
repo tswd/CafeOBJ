@@ -88,7 +88,7 @@ module! SALT
 option reset
 flag (auto,on)
 
-open SALT
+open SALT .
 resolve .
 close
 --

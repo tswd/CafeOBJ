@@ -356,6 +356,7 @@
     (setf (axiom-first-match-method r) first-match-method)
     (setf (axiom-next-match-method r) next-match-method)
     (setf (axiom-labels r) labels)
+    (set-context-module r)
     r))
 
 (defmacro rule-is-builtin (_rule_)

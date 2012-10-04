@@ -64,20 +64,20 @@ sys:mod! TRUTH
   -- two constants true and false.
   protecting (TRUTH-VALUE)
   signature {
-    pred _:is_ : Cosmos SortId  { prec: 125 }
-    op if_then_else_fi : Universal Cosmos Cosmos -> Cosmos
+    pred _:is_ : *Cosmos* SortId  { prec: 125 }
+    op if_then_else_fi : Bool *Cosmos* *Cosmos* -> *Cosmos*
       { strat: (1 0) prec: 0 }
-    pred _==_ : Cosmos Cosmos  { prec: 51 }
-    pred _=*=_ : HUniversal HUniversal { prec: 51 }
-    pred _=b=_ : Cosmos Cosmos { prec: 51 }
-    pred _=/=_ : Cosmos Cosmos { prec: 51 }
-    pred _:=_  : Cosmos Cosmos { prec: 51 }
+    pred _==_ : *Cosmos* *Cosmos*  { prec: 51 }
+    pred _=*=_ : *HUniversal* *HUniversal* { prec: 51 }
+    pred _=b=_ : *Cosmos* *Cosmos* { prec: 51 }
+    pred _=/=_ : *Cosmos* *Cosmos* { prec: 51 }
+    pred _:=_  : *Cosmos* *Cosmos* { prec: 51 }
   }
   axioms {
-    var XU : Universal
-    var YU : Universal
-    var CXU : Cosmos
-    var CYU : Cosmos
+    var XU : *Universal*
+    var YU : *Universal*
+    var CXU : *Cosmos*
+    var CYU : *Cosmos*
     eq CXU :is Id:SortId = #!! (coerce-to-bool (test-term-sort-membership cxu id)) .
     eq if true then CXU else CYU fi
      = CXU .

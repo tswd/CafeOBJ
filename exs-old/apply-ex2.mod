@@ -21,7 +21,7 @@ module GROUPL {
 }
 
 **> opening GROUPL
-open GROUPL
+open GROUPL .
 --> op a : -> Elt .
 op a : -> Elt .
 **> first, prove the right inverse law:
@@ -54,8 +54,8 @@ apply lid within top
 apply lnv at top
 --> should be : e
 **> we can now add the proven equation.
---> eq [rnv]: (A:Elt * (A -1)) = e .
-eq [rnv]: (A:Elt * (A -1)) = e .
+--> eq [rnv]: (XX:Elt * (XX -1)) = e .
+eq [rnv]: (XX:Elt * (XX -1)) = e .
 --> show .
 show .
 **> next, we prove the right identity law:
@@ -74,8 +74,8 @@ apply rnv within top
 apply lid at top
 --> should be : a
 **> we can add the proven equation
---> eq [rid]: A:Elt * e = A .
-eq [rid]: A:Elt * e = A .
+--> eq [rid]: XX:Elt * e = XX .
+eq [rid]: XX:Elt * e = XX .
 --> show .
 show .
 **> close

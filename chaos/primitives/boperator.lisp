@@ -496,7 +496,9 @@
 ;;; *NOTE*: assumes that the name is already canonicalized.
 ;;;
 (defmacro create-operator-method (_name _arity _coarity)
-  `(method* ,_name ,_arity ,_coarity))
+  `(let ((meth (method* ,_name ,_arity ,_coarity)))
+     (set-context-module meth)
+     meth))
 
 ;;; Primitive type predicate ---------------------------------------------------
 
@@ -1900,6 +1902,7 @@
       (setf (operator-associativity op) nil)
       (setf (operator-computed-precedence op) nil)
       (setf (operator-theory op) *the-empty-theory*)
+      (set-context-module op module)
       op)))
 
 ;;; EOF

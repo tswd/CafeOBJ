@@ -720,9 +720,12 @@
 	      ;;
 	      ((term$is-variable? t1-body)
 	       (setq *used==* t)
+	       #||
 	       (and (term$is-variable? t2-body)
 		    (eq (variable$name t1-body) (variable$name t2-body))
 		    (eq (term$sort t1-body) (term$sort t2-body)))
+	       ||#
+	       (eq t1-body t2-body)
 	       )
 	      ((term$is-variable? t2-body)
 	       (setq *used==* t)

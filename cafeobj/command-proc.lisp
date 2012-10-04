@@ -724,6 +724,29 @@
   (let ((ast (process-autoload-command (cdr inp))))
     (eval-ast ast)))
 
+;;; DELIMITER
+(defun eval-delimiter-proc (pre-args)
+  (declare (type list pre-args)
+	   (values t))
+  (let ((args nil)
+	(op nil)
+	(ast nil))
+    (case-equal (the simple-string (second pre-args))
+		("=" (setq op :set))
+		("+" (setq op :add))
+		("-" (setq op :delete))
+		(t (with-output-chaos-error ('internal)
+		     (format t "delimiter op given ivalid op ~a" (second pre-args)))))
+    (setq pre-args (fourth pre-args))
+    (dolist (a pre-args)
+      (push a args))
+    (setq ast (%delimiter* op (nreverse args)))
+    (eval-ast ast)))
+
+(defun eval-show-delimiter (&rest ignore)
+  (declare (ignore ignore))
+  (lex-show-delimiters *standard-output*))
+
 #|| moved to 
 ;;; **************************
 ;;; PigNose Top Level Commands
@@ -778,5 +801,22 @@
         (format t "continue count must be positive integer, but ~a is given."
                 num-tok)))
     (eval-ast (%continue* num))))
+
+;;;
+;;; cafeobj-eval-look-up
+;;;
+(defun cafeobj-eval-look-up (inp)
+  (let ((ast (process-look-up-command inp)))
+    (eval-ast ast)))
+
+;;;
+;;; cafeobj-eval-inspect
+;;;
+(defun cafeobj-eval-inspect (inp)
+  (let ((modexp (second inp))
+	(ast (%inspect* nil)))
+    (when modexp
+      (setf (%inspect-modexp ast) (parse-modexp modexp)))
+    (eval-ast ast)))
 
 ;;; EOF

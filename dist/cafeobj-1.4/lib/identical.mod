@@ -44,12 +44,12 @@ sys:mod! IDENTICAL
     protecting (BOOL)
   }
   signature {
-    pred _===_ : Universal Universal { strat: (0) prec: 51 }
-    pred _=/==_ : Universal Universal { strat: (0) prec: 51 }
+    pred _===_ : *Universal* *Universal* { strat: (0) prec: 51 }
+    pred _=/==_ : *Universal* *Universal* { strat: (0) prec: 51 }
   }
   axioms {
-    var XU : Universal
-    var YU : Universal
+    var XU : *Universal*
+    var YU : *Universal*
     eq XU === YU = #!! (coerce-to-bool (term-is-similar? xu yu)) .
     eq XU =/== YU = #!! (coerce-to-bool (not (term-is-similar? xu yu))) .
   }

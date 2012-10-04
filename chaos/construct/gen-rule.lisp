@@ -60,7 +60,7 @@
 	       (return-from variable-occurs-in t))))
       ))
 
-(defparameter non-exec-labels '(|:non-exec| |:nex| |:no-ex| |:noex|))
+(defparameter non-exec-labels '(|:nonexec| |:non-exec| |:no-ex| |:noex|))
 
 (defun axiom-is-non-exec? (ax)
   ;; (format t "~&labels=~s" (axiom-labels ax))
@@ -139,9 +139,11 @@
 		   (setf (axiom-kind rule) ':bad-rule)
 		   (setf (axiom-kind ax) ':bad-rule)))
 	     )
+	    ;; #||
 	    ((axiom-non-exec ax)
 	     ;; do nothing
 	     )
+	    ;; ||#
 	    (t 
 	     (add-rule-to-module module rule)
 	     (unless (term-is-variable? (axiom-lhs rule))

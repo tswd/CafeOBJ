@@ -17,7 +17,7 @@ module LIFSCH (E :: TRIV)
 option reset
 flag (auto,on)
 
-open LIFSCH
+open LIFSCH .
 protecting (FOPL-CLAUSE)
 
 goal \E[x:Elt, x1:Elt](\A[y:Elt](\E[z:Elt, z1:Elt]

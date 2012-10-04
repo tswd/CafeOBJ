@@ -10,7 +10,7 @@ module R
   ax Shaves(Barber,x) -> ~(Shaves(x,x)) .
 }
 
-open R
+open R .
 option reset
 flag(auto,on)
 param(max-proofs,1)

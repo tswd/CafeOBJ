@@ -701,12 +701,20 @@
 ||#
 
 (defun add-axiom-to-module (module ax)
-  (adjoin-axiom-to-module module ax))
+  (adjoin-axiom-to-module module ax)
+  )
 
 (defun adjoin-axiom-to-module (module ax)
   (declare (type module module)
 	   (type axiom ax)
 	   (values t))
+  ;; (when (eq (object-context-mod ax) module)
+  ;; (let ((labels (axiom-labels ax)))
+  ;;   (dolist (lab labels)
+  ;; 	(symbol-table-add (module-symbol-table module)
+  ;; 			  lab
+  ;; 			  ax)))
+  ;; )
   (if (memq (axiom-type ax) '(:equation :pignose-axiom :pignose-goal))
       (setf (module-equations module)
 	    (adjoin-rule ax (module-equations module)))

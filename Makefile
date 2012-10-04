@@ -13,7 +13,7 @@ mkinstalldirs = $(top_srcdir)/mkinstalldirs
 
 PACKAGE = cafeobj
 VERSION = 1.4
-VMINOR = .9
+VMINOR = .9rc4
 VMEMO = PigNose0.99
 PATCHLEVEL = 
 
@@ -44,7 +44,7 @@ INSTALL_PROGRAM = ${INSTALL}
 GCL = no
 CMU = no
 ACL = no
-LISP = /usr/local/acl/acl82/alisp
+LISP = no
 BIN = .fasl
 EXEC_SRC = cafeobj.acl.in
 EXEC = cafeobj.acl

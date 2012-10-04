@@ -35,6 +35,44 @@
 ;;; now defined in `glob.lisp'
 ;;; (defvar $$raw-clause nil)
 
+;;;
+;;;
+;;;
+(defun pn-term-equational-equal (t1 t2)
+  (declare (type term t1 t2)
+	   (values (or null t)))
+  (or (term-eq t1 t2)
+      (let ((t1-body (term-body t1))
+	    (t2-body (term-body t2)))
+	(cond ((term$is-applform? t1-body)
+	       (let ((f1 (term$head t1-body)))
+		 ;; (break)
+		 (if (theory-info-empty-for-matching
+		      (method-theory-info-for-matching f1))
+		     (match-with-empty-theory t1 t2)
+		     (E-equal-in-theory (method-theory f1) t1 t2)))
+	       )
+	      ((term$is-builtin-constant? t1-body)
+	       (term$builtin-equal t1-body t2-body))
+	      ((term$is-builtin-constant? t2-body) nil)
+	      ;;
+	      ((term$is-variable? t1-body)
+	       (setq *used==* t)
+	       (or (eq t1-body t2-body)
+		   (and (term$is-variable? t2-body)
+			(eq (variable$name t1-body) (variable$name t2-body))
+			(eq (term$sort t1-body) (term$sort t2-body)))
+		   ))
+	      ((term$is-variable? t2-body)
+	       (setq *used==* t)
+	       nil)
+	      ((term$is-lisp-form? t1-body)
+	       (and (term$is-lisp-form? t2-body)
+		    (equal (term$lisp-code-original-form t1-body)
+			   (term$lisp-code-original-form t2-body))))
+	      (t (break "pn-term-equational-equal: not-implemented ~s" t1))
+	      ))))
+
 ;;; ========================================
 ;;; FOPL FORMULA --> CLAUSE FORM TRANSLATION
 ;;; ========================================
@@ -987,13 +1025,13 @@
 		      (find-if #'(lambda (x)
 				   (and (not (eq s x))
 					(cond (sign ; s is negation
-					       (term-equational-equal
+					       (pn-term-equational-equal
 						(term-arg-1 s)
 						x))
 					      (t ; s is not negation
 					       (and (eq (fopl-sentence-type x)
 							:not)
-						    (term-equational-equal
+						    (pn-term-equational-equal
 						     s
 						     (term-arg-1 x)))))))
 			       subs))

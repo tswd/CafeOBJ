@@ -38,14 +38,14 @@
 
 (defvar *import-sort-map* nil)
 
-(defun import-module (im mode sub &optional parameter)
+(defun import-module (im mode sub &optional parameter alias)
   (let ((*auto-context-change* nil))
     (setq *import-sort-map* nil)
     (prog1
-	(import-module-internal im mode sub parameter)
+	(import-module-internal im mode sub parameter nil alias)
       (setq *import-sort-map* nil))))
 
-(defun import-module-internal (im mode sub &optional parameter theory-mod)
+(defun import-module-internal (im mode sub &optional parameter theory-mod alias)
   (when *on-import-debug*
     (format t "~&[import-module]: ")
     (print-next)
@@ -114,6 +114,16 @@
 
       ;; compile submodule if need
       (compile-module submodule)
+      ;; alias
+      (when alias
+	(symbol-table-add (module-symbol-table module)
+			  alias
+			  submodule))
+      ;; 
+      (dolist (al (module-alias submodule))
+	(let ((mod (car al))
+	      (nm (cdr al)))
+	  (add-module-alias module mod nm)))
       ;;
       #||
       (when (and *include-bool*
@@ -210,7 +220,7 @@
 		  ;; imported modules are stored at `module-submodules' in a form
 		  ;; (<module> <mode>), <mode> is one of :protecting, :extending,
 		  ;; :using, and :including.
-		  (add-imported-module module mode submodule)
+		  (add-imported-module module mode submodule alias)
 		  ;;
 		  module)
 	      
@@ -737,8 +747,9 @@
 		     (make-opinfo :operator new-op))
 	       (push new-opinfo (module-all-operators module))
 	       (push new-opinfo opinfos)))
+	;; add to symbol table : 2012/07/15
+	(symbol-table-add (module-symbol-table module) (first (operator-name new-op)) new-op)
 	;;
-	
 	(dolist (method (reverse (opinfo-methods opinfo)))
 	  ;;
 	  (when (or (method-is-user-defined-error-method method)

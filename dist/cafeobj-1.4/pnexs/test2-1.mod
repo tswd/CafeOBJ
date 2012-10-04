@@ -21,7 +21,7 @@ module TEST2
 
 option reset
 
-open TEST2
+open TEST2 .
 protecting (FOPL-CLAUSE)
 flag(auto,on)
 param(stats-level,4)

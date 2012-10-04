@@ -1,10 +1,10 @@
 \begin{theindex}
 \doidxbookmark{Symbols}
-\item \idxmark{\texttt{**>}}, \hyperpage{17}
-\item \idxmark{\texttt{**}}, \hyperpage{17}
-\item \idxmark{\texttt{*[},\texttt{]*} (hidden sort declarations)}, 
-		\hyperpage{22}
-\item \idxmark{\texttt{*} (for remaning)}, \hyperpage{137}
+%\item \idxmark{\verb{**>}}, \hyperpage{17}
+% \item \idxmark{\texttt{**}}, \hyperpage{17}
+% \item \idxmark{\texttt{*[},\texttt{]*} (hidden sort declarations)}, 
+% 		\hyperpage{22}
+% \item \idxmark{\texttt{*} (for remaning)}, \hyperpage{137}
 \item \idxmark{\texttt{+rules}}, \hyperpage{157}
 \item \idxmark{\texttt{+} (module sum)}, \hyperpage{138}
 \item \idxmark{\texttt{-->}}, \hyperpage{17}

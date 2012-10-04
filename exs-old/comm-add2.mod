@@ -2,7 +2,7 @@
 
 require tiny-nat ./tiny-nat
 
-open TINY-NAT
+open TINY-NAT .
 ops m n : -> Nat .
 
 ** show lemma0: 0 + n = n, by induction on n

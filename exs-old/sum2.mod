@@ -2,7 +2,7 @@
 
 require nat-ex ./nat-ex
 
-open NAT-EX
+open NAT-EX .
 ops m n : -> Nat .
 
 ** first show two lemmas, 0*n=0 and (sm)*n=(m*n)+n

@@ -2,7 +2,7 @@
 ** MODULE BASE-BOOL
 **
 **
-ev (setq *include-bool-save* *include-bool*)
+evq (setq *include-bool-save* *include-bool*)
 require truth
 
 set include BOOL off
@@ -26,7 +26,7 @@ sys:mod! BASE-BOOL
   }
 }
 
-ev (setq *include-bool* *include-bool-save*)
-provide base-bool
+evq (setq *include-bool* *include-bool-save*)
+provide base_bool
 --
 eof

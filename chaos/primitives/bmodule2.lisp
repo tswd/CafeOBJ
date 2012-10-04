@@ -55,6 +55,7 @@
   (context nil
 	   :type (or null module-context))
 					; run time context
+  (alias nil :type list)
   )
 
 (eval-when (eval load)
@@ -814,16 +815,26 @@
 ;;;       (setf (object-misc-info-all-submodules-list (object-misc-info mod))
 ;;;	    (mapcar #'car (module-all-submodules mod)))))
 
-;;; ADD-IMPORTED-MODULE : module mode submodule -> void
+;;; ADD-IMPORTED-MODULE : module mode submodule [alias] -> void
 ;;; (for downward comatibility.)
 ;;; the real work is setting dependency relations between top level objects,
 ;;; should use `add-depend-relation' directly...
 ;;; 
-(defun add-imported-module (module mode submodule)
+(defun add-module-alias (module submod alias)
+  (when (rassoc alias (module-alias module) :test #'equal)
+    (with-output-chaos-error ('invalid-alias)
+      (format t "Alias name ~A is already used for module "
+	      alias
+	      (get-module-print-name submod))))
+  (push (cons submod alias) (module-alias module)))
+
+(defun add-imported-module (module mode submodule &optional alias)
   (declare (type module module submodule)
 	   (type symbol mode)
 	   (values t))
   ;; (setf (module-ex-info-all-submodules-list (object-misc-info module)) nil)
+  (when alias
+    (add-module-alias module submodule alias))
   (add-depend-relation module mode submodule))
 
 ;;; MODULE-INCUDES-RWL
@@ -1281,7 +1292,7 @@
 	  (tmod nil))
       (dolist (qname (reverse quals))
 	(let ((subs (module-all-submodules c)))
-	  (setq tmod (or (find-module-in-sublist qname subs)
+	  (setq tmod (or (find-module-in-sublist qname subs c)
 			 ;; Wed Feb 17 13:27:44 JST 1999
 			 ;; (find-module-in-env qname c)
 			 nil))
@@ -1304,8 +1315,12 @@
 	  (setq c (car tmod))))
       (car tmod))))
 
-(defun find-module-in-sublist (name subs)
+(defun find-module-in-sublist (name subs &optional (context *current-module*))
   (let ((res nil))
+    (when context
+      (let ((als (rassoc name (module-alias context) :test #'equal)))
+	(when als
+	  (push (car als) res))))
     (dolist (sub subs)
       (let* ((smod (car sub))
 	     (sname (module-name smod)))
@@ -1377,6 +1392,9 @@
   (if (the (or null module-context) (module-context mod))
       (initialize-module-context (module-context mod))
       (setf (module-context mod) (make-module-context)))
+  ;; symbol table
+  (setf (module-alias mod) nil)
+  (setf (module-symbol-table mod) (make-symbol-table))
   ;;
   (clear-tmp-sort-cache)
   (clear-method-info-hash))

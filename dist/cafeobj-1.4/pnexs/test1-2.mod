@@ -10,7 +10,7 @@ module TEST1-2
   pred R : Elt
   op f : Elt -> Elt
 }
-open TEST1-2
+open TEST1-2 .
 protecting (FOPL-CLAUSE)
 op a : -> Elt .
 let ax1 = \A[X:Elt] P(X, a) | Q(X) .

@@ -417,7 +417,7 @@
 ;;;  parameter : local name acting as formal parameter name, type = string.
 ;;;
 (defterm import (%ast)
-  :visible (mode module &optional parameter)
+  :visible (mode module &optional parameter alias)
   :eval eval-import-modexp
   :print print-import-decl)
 

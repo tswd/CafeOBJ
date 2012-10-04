@@ -10,7 +10,7 @@ module* INJ {
   ceq [inj]: B = B' if g B == g B' .
 }
 
-open INJ
+open INJ .
 op b : -> B .
 
 start f g b .

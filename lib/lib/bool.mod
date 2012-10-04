@@ -5,40 +5,58 @@
 ** file: bool.mod
 ** -------------------------------------------------------------
 
-require base-bool
+lispq
+(setq *include-bool-save* *include-bool*)
+set include BOOL off
+
+require base_bool
+
+lispq
+(setq *include-bool-save* *include-bool*)
+set include BOOL off
+
 --
 -- NOTE: You may need to modify `setup-BOOL' if you change
 --       the definition of module BOOL
 --
 lispq
 (defun setup-bool ()
-  (setq *BOOL-module* (eval-modexp "BOOL"))
-  (with-in-module (*bool-module*)
-    (let* ((and-op-info (find-operator '("_" "and" "_") 2 *bool-module*))
-	   (and-meth (lowest-method* (car (opinfo-methods and-op-info)))))
-      (setq *bool-and* and-meth))
-    (let* ((or-op-info (find-operator '("_" "or" "_") 2 *bool-module*))
-	   (or-meth (lowest-method* (car (opinfo-methods or-op-info)))))
-      (setq *bool-or* or-meth))
-    (let* ((not-op-info (find-operator '("not" "_") 1 *bool-module*))
-	   (not-meth (lowest-method* (car (opinfo-methods not-op-info)))))
-      (setq *bool-not* not-meth))
-    (let* ((xor-op-info (find-operator '("_" "xor" "_") 2 *bool-module*))
-	   (xor-meth (lowest-method* (car (opinfo-methods xor-op-info)))))
-      (setq *bool-xor* xor-meth))
-    (let* ((imp-op-info (find-operator '("_" "implies" "_") 2 *bool-module*))
-	   (imp-meth (lowest-method* (car (opinfo-methods imp-op-info)))))
-      (setq *bool-imply* imp-meth))
-    (let* ((and-also (find-operator '("_" "and-also" "_") 2 *bool-module*))
-	   (and-also-meth (lowest-method* (car (opinfo-methods and-also)))))
-      (setq *bool-and-also* and-also-meth))
-    (let* ((or-else (find-operator '("_" "or-else" "_") 2 *bool-module*))
-	   (or-else-meth (lowest-method* (car (opinfo-methods or-else)))))
-      (setq *bool-or-else* or-else-meth))
-    (let* ((iff (find-operator '("_" "iff" "_") 2 *bool-module*))
-	   (iff-meth (lowest-method* (car (opinfo-methods iff)))))
-      (setq *bool-iff* iff-meth))
-    ))
+  (unless *bootstrapping-bool*
+    (setf *bootstrapping-bool* t)
+    (unless (modexp-is-error (eval-modexp "BOOL"))
+      (with-outout-chaos-error ('more-than-one-bool)
+	(format t "You cann not define BOOL module more than once in a session.")))
+    (if (and *user-bool* (not (equal "" *user-bool*)))
+	(cafeobj-input *user-bool*)
+      (cafeobj-input "sys_bool"))
+    ;;
+    (setq *BOOL-module* (eval-modexp "BOOL"))
+    (with-in-module (*bool-module*)
+      (let* ((and-op-info (find-operator '("_" "and" "_") 2 *bool-module*))
+	     (and-meth (lowest-method* (car (opinfo-methods and-op-info)))))
+	(setq *bool-and* and-meth))
+      (let* ((or-op-info (find-operator '("_" "or" "_") 2 *bool-module*))
+	     (or-meth (lowest-method* (car (opinfo-methods or-op-info)))))
+	(setq *bool-or* or-meth))
+      (let* ((not-op-info (find-operator '("not" "_") 1 *bool-module*))
+	     (not-meth (lowest-method* (car (opinfo-methods not-op-info)))))
+	(setq *bool-not* not-meth))
+      (let* ((xor-op-info (find-operator '("_" "xor" "_") 2 *bool-module*))
+	     (xor-meth (lowest-method* (car (opinfo-methods xor-op-info)))))
+	(setq *bool-xor* xor-meth))
+      (let* ((imp-op-info (find-operator '("_" "implies" "_") 2 *bool-module*))
+	     (imp-meth (lowest-method* (car (opinfo-methods imp-op-info)))))
+	(setq *bool-imply* imp-meth))
+      (let* ((and-also (find-operator '("_" "and-also" "_") 2 *bool-module*))
+	     (and-also-meth (lowest-method* (car (opinfo-methods and-also)))))
+	(setq *bool-and-also* and-also-meth))
+      (let* ((or-else (find-operator '("_" "or-else" "_") 2 *bool-module*))
+	     (or-else-meth (lowest-method* (car (opinfo-methods or-else)))))
+	(setq *bool-or-else* or-else-meth))
+      (let* ((iff (find-operator '("_" "iff" "_") 2 *bool-module*))
+	     (iff-meth (lowest-method* (car (opinfo-methods iff)))))
+	(setq *bool-iff* iff-meth))
+      )))
 
 -- **
 -- ** MODULE BOOL
@@ -96,9 +114,12 @@ lispq
 lispq
 (setup-bool)
 lispq
-(setup-tram-bool-modules)
-lispq
-(init-builtin-universal)
+(unless *bootstrapping-bool*
+  (setup-tram-bool-modules)
+  (init-builtin-universal)
+)
+**
+** evq (setq *include-bool* *include-bool-save*)
 **
 set include BOOL on
 **

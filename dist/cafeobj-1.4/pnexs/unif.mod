@@ -11,11 +11,13 @@ module! UTEST
   op a : -> Elt
 }
 
-open UTEST
+open UTEST .
 
 -- test data
 
 unify f(X:Elt, Y:Elt) to f(Z:Elt, g(Z)) .
-close
+close .
 
-eof
+eof .
+**
+

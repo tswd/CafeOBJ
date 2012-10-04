@@ -64,10 +64,17 @@ genapp.fasl            GENERATE-APPLICATION
 generate.fasl          GENERATE-RSA-KEYS
 genexe.fasl            GENERATE-EXECUTABLE
 inspect.fasl           INSPECT
+lldb.fasl              EXCL::ADD-LDB-LANGUAGE
 lldb.fasl              EXCL::INSTALL-BREAKPOINTS
+lldb.fasl              EXCL::DUMP-LISP-SOURCE
+lldb.fasl              EXCL::ADD-LDB-BACKEND
+lldb.fasl              EXCL::SET-STEP-STATE
 lldb.fasl              EXCL::BREAKPOINT-1
+lldb.fasl              EXCL::SLIDE-1
+lldb.fasl              EXCL::LDB-LISP-SOURCE
 lldb.fasl              DELETE-BREAKPOINT
 lldb.fasl              ADD-BREAKPOINT
+lldb.fasl              EXCL::UPDATE-SLD-INFO
 locale.fasl            EXCL::LOCALE-TIME-UT-TO-FORMAT-CONTROL-ARGS
 rc4.fasl               RC4-SET-KEY
 rc4.fasl               RC4

@@ -43,7 +43,7 @@ module! STEAM2
 option reset
 flag (auto,on)
 
-open STEAM2
+open STEAM2 .
 "there is an animal that eats an animal that eats all grains".
 goal \E[A1,A2] eats(A1,A2) & eats(A2,Grain) .
 

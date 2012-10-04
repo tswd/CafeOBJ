@@ -10,25 +10,25 @@ module TEST8 (E :: TRIV)
 }
 
 **> set sos by hand
-open TEST8
-let goal = ~(\A[X:Elt,Y:Elt,Z:Elt] X <= Y & Y <= Z -> X <= Z ).
+open TEST8 .
+let goal = ~ ( \A[X:Elt,Y:Elt,Z:Elt] (X <= Y & Y <= Z) -> X <= Z ) .
 -- goal \A[X:Elt,Y:Elt,Z:Elt] X <= Y & Y <= Z -> X <= Z .
-option reset
-flag(hyper-res,on)
-param(max-proofs,1)
-db reset
-sos = { goal }
+option reset .
+flag(hyper-res,on) .
+param(max-proofs,1) .
+db reset .
+sos = { goal } .
 --> list sos
-list sos
+list sos .
 resolve .
-close
+close .
 
 **> automatic mode
-open TEST8
+open TEST8 .
 goal \A[X:Elt,Y:Elt,Z:Elt] X <= Y & Y <= Z -> X <= Z .
-option reset
-flag(auto,on)
+option reset .
+flag(auto,on) .
 resolve .
-close
+close .
 **
 eof

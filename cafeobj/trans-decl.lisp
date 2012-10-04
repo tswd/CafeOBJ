@@ -76,14 +76,24 @@
                      (setf ,__exp (cdr ,__exp)))
                    (flatten-list (nreverse *__modexp)))))
     (let ((mode (case-equal (car imp-expr)
-                            (("pr" "protecting") :protecting)
-                            (("ex" "extending") :extending)
-                            (("us" "using") :using)
-                            (("inc" "including") :including)))
-          (expr (if (equal (cadr imp-expr) "(")
-                    (scan-parenthesized-unit (cdr imp-expr))
-                  (cdr imp-expr)))
-          (res nil))
+			    (("pr" "protecting") :protecting)
+			    (("ex" "extending") :extending)
+			    (("us" "using") :using)
+			    (("inc" "including") :including)))
+	  (alias nil)
+	  (expr nil)
+	  (res nil))
+      ;;
+      (cond ((equal (second imp-expr) "(")
+	     (setq expr (scan-parenthesized-unit (cdr imp-expr))))
+	    ((and (consp (second imp-expr))
+		  (equal "as" (car (second imp-expr))))
+	     (setq alias (second (second imp-expr)))
+	     (setq expr (if (equal (third imp-expr) "(")
+			    (scan-parenthesized-unit (cddr imp-expr))
+			  (cddr imp-expr))))
+	    (t (setq expr (cdr imp-expr))))
+      ;;
       (loop (unless expr (return))
         (if (equal (second expr) "::")
             ;; parameterized importation
@@ -97,11 +107,13 @@
               (setf expr (cddr expr))
               (push (%make-import :mode mode
                                   :parameter param
-                                  :module (parse-modexp (scan-modexp expr)))
+                                  :module (parse-modexp (scan-modexp expr))
+				  :alias alias)
                     res))
           ;; non parameterized importation
           (push (%make-import :mode mode
-                              :module (parse-modexp (scan-modexp expr)))
+                              :module (parse-modexp (scan-modexp expr))
+			      :alias alias)
                 res))
         (setf expr (cdr expr)))
       ;;
@@ -666,6 +678,8 @@
     ;;
     (setq body (nth (1+ b-pos) decl))
     (when (atom body) (setq body nil))  ; empty
+    ;;
+    ;; (format t "~&param=~s" param)
     ;;
     (when param
       (setq param (parse-interface-decl param)))

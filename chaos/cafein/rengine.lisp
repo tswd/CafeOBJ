@@ -283,6 +283,10 @@
 	    (type term term)
 	    (values (or null t))
 	    )
+   #||
+   (when (rule-non-exec rule)
+     (return-from apply-one-rule-simple nil))
+   ||#
    ;; ________
    #||
    (when (and *rewrite-debug* (err-sort-p (term-sort term)))
