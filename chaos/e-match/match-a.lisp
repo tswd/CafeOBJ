@@ -180,8 +180,13 @@
 	    (do ((i (1- last) (1- i)))
 		((< i first) res)
 	      (declare (type fixnum i))
+	      #||
 	      (setq res (make-applform (method-coarity method)
-				       method (list (svref vect i) res))))
+				       method (list (svref vect i) res)))
+	      ||#
+	      (setq res (make-term-with-sort-check method
+						   (list (svref vect i) res)))
+	      )
 	  (do ((i (1- last) (1- i)))
 	      ((< i first) res)
 	    (declare (type fixnum i))

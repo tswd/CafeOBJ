@@ -148,11 +148,14 @@
 		   (declare (type sort* s1 s2))
 		   (if (sort<= s2 s1 *current-sort-order*)
 		       (add-binding var x bindings)
+		     #||
 		     (if x-is-var
-			 (if (sort<= s1 s2 *current-sort-order*)
+			 (if (sort<= s1 s2 *current-sort-order*) 
 			     (add-binding x var bindings)
 			   :fail)
-		       :fail)))))
+		       :fail)
+		     ||#
+		     :fail ))))
 	     )
       ;;
       (cond ((term-eq t1 t2)

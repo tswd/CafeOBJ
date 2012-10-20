@@ -389,6 +389,7 @@
 (defvar *TRUTH-module* 'void)
 (defvar *BOOL-module* 'void)
 (defvar *IDENTICAL-module* nil)
+(defvar *EQL-module* nil)
 (defvar *bootstrapping-bool* nil)
 ;;; basic operations in TRUTH & BOOL
 ;;;-----------------------------------------------------------------------------
@@ -411,6 +412,7 @@
 (defvar *bool-and-also* 'void)
 (defvar *bool-or-else* 'void)
 (defvar *bool-iff* 'void)
+(defvar *eql-op* 'void)
 
 ;;; RWL
 ;;;-----------------------------------------------------------------------------

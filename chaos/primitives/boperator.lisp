@@ -1324,7 +1324,7 @@
   (declare (type method meth1 meth2)
 	   (values (or null t)))
   (or (method= meth1 meth2)
-      (eq (method-name meth1) (method-name meth2))))
+      (equal (method-name meth1) (method-name meth2))))
 
 #+GCL 
 (si:define-inline-function  method-is-associative-restriction-of (meth1
@@ -1627,6 +1627,7 @@
 
 
 ;;; LOWEST-METHOD
+(defvar *op-debug* nil)
 
 (defun lowest-method (method lower-bound &optional (module *current-module*))
   (declare (type method method)
@@ -1639,7 +1640,13 @@
     (let ((over-methods (method-overloaded-methods method
 						   (module-opinfo-table module))))
       (declare (type list over-methods))
-      (when *on-debug*
+      (when *op-debug*
+	(format t "~&* lowest-method : given arity =")
+	(dolist (s (method-arity method))
+	  (princ " ")
+	  (print-sort-name s))
+	(princ ", coarity = ")
+	(print-sort-name (method-coarity method))
 	(format t "~&* lowest-method : lower-bound =")
 	(dolist (s lower-bound)
 	  (terpri)
@@ -1654,12 +1661,12 @@
 	(dolist (meth over-methods)
 	  (declare (type method meth))
 	  (when (sort-list<= lower-bound (method-arity meth))
-	    (when *on-debug*
+	    (when *op-debug*
 	      (format t "~%lowest-method res=")
 	      (print-chaos-object meth)
 	      )
 	    (return-from lowest-method meth))))
-      (when *on-debug*
+      (when *op-debug*
 	(format t "~%lowest-method res=")
 	(print-chaos-object method)
 	)

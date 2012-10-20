@@ -169,9 +169,13 @@ Based on the implementation of OBJ3 system.
 	 (when (occurs-in t1 t2)
 	   (return-from !match-decompose-unify t))
 	 ;;
-	 (if (is-in-same-connected-component (term-sort t1)
+	 (if
+	     #||
+	     (is-in-same-connected-component (term-sort t1)
 					     (term-sort t2)
 					     *current-sort-order*)
+	   ||#
+	   (sort<= (term-sort t2) (term-sort t1) *current-sort-order*)
 	     (let ((cval (variable-image (cdr res) t1)))
 	       (if cval 
 		   (progn

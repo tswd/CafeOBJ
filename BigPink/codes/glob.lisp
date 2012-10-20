@@ -389,14 +389,14 @@
 ;;; CONTROLS FLAGS for INFERENCE
 ;;; ============================
 (declaim (type fixnum *pn-max-flags*))
-(defparameter *pn-max-flags* 90)
+(defparameter *pn-max-flags* 100)
 
 (defstruct (pignose-flag (:type list))
   (value nil :type boolean)
   (name "" :type simple-string)
   (hook #'identity :type function))
 
-(declaim (type (simple-array * (90)) *pn-control-flags*))
+(declaim (type (simple-array * (100)) *pn-control-flags*))
 (defvar *pn-control-flags* nil)
 (eval-when (eval load)
   (setq *pn-control-flags*
@@ -529,7 +529,8 @@
 (defconstant check-init-always 85)
 ;; 
 (defconstant ur-res 86)
-
+;;
+(defconstant kb3 87)
 ;;;
 (eval-when (eval load)
   (dotimes (x *pn-max-flags*)
@@ -633,6 +634,7 @@
   (setf (pn-flag-name debug-sos) "debug-sos")
   (setf (pn-flag-name put-goal-in-sos) "put-goal-in-sos")
   (setf (pn-flag-name check-init-always) "check-init-always")
+  (setf (pn-flag-name kb3) "kb3")
   )
 
 ;;; OPTION SET DB

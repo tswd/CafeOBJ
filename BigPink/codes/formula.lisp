@@ -161,7 +161,7 @@
 
 ;;; CAFEOBJ-TERM->FORMULA : Term -> Term
 ;;;
-;;; NOTE: brand new term will be returned.
+;;; NOTE: brand new term of FOPL form will be returned.
 ;;;
 (defun cafeobj-term->formula (f)
   (declare (type term f)
@@ -180,11 +180,13 @@
 	     (setq f (make-applform-simple (term-sort f)
 					   head
 					   args))
-	     (cond ((memq head (list *bool-equal* *beh-equal*))
+	     (cond ((memq head (list *bool-equal* *beh-equal* *eql-op*))
+		    #||
 		    (when (eq head *beh-eq-pred*)
 		      (with-output-chaos-warning ()
 			(format t "=*= cannot be used: ")
 			(term-print f)))
+		    ||#
 		    (setq res 
 		      (make-term-with-sort-check *fopl-eq*
 						 (list (term-arg-1 f)
@@ -252,6 +254,14 @@
 			 (list (allocate-new-term-cell (term-arg-1 f))
 			       (allocate-new-term-cell (term-arg-2 f))))))
 		      ))
+		   ;;;
+		   #||
+		   ((eq head *bool-if*)
+		    (when (and (sort= (term-sort (term-arg-1 f)) *bool-sort*)
+			       (sort= (term-sort (term-arg-2 f)) *bool-sort*))
+		      ))
+		   ||#
+		   ;;;
 		   ((memq head (list *bool-if*
 				     *beh-eq-pred*
 				     ;; *bool-and-also*

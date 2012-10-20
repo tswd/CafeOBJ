@@ -326,6 +326,16 @@
 	    (return-from update-lowest-parse term)
 	    )
 	  ;; 
+	  (when *term-debug*
+	    (format t "~&*ULP: given term =====================~%  ")
+	    (term-print-with-sort term)
+	    (format t "~&*ULP: current = ~S" (method-name head))
+	    (format t "~% arity =")
+	    (dolist (s (method-arity head))
+	      (princ " ")
+	      (print-sort-name s))
+	    (princ ", coarity = ")
+	    (print-sort-name (method-coarity head)))
 	  (setq new-head
 	    (lowest-method head
 			   (mapcar #'(lambda (x)
@@ -333,6 +343,14 @@
 				       (term-sort x))
 				   (term$subterms body))
 			   mod))
+	  (when *term-debug*
+	    (format t "~&*ULP: new = ~S" (method-name new-head))
+	    (format t "~% arity =")
+	    (dolist (s (method-arity new-head))
+	      (princ " ")
+	      (print-sort-name s))
+	    (princ ", coarity = ")
+	    (print-sort-name (method-coarity new-head)))
 	  (when (not (eq head new-head))
 	    (change-head-operator term new-head)
 	    (setf (term-sort term) (method-coarity new-head))
@@ -372,6 +390,8 @@
 			 (sort< (term-sort t2)
 				(term-sort (term$arg-1 son))
 				sort-order))
+		(when *term-debug*
+		  (format t "~&*ULP: treating ASSOCIATIVITY"))
 		;; we are in the following configuration
 		;;              fs'   ->    fs'
 		;;          fs'    s     s'     fs
@@ -392,6 +412,8 @@
 			 (sort= (term-sort (setq t1 (term$arg-1 body)))
 				(term-sort (setq t2 (term$arg-1 son))))
 			 (sort< (term-sort t1) (term-sort (term$arg-2 son)) sort-order))
+		(when *term-debug*
+		  (format t "~&*ULP: ASSOCIATIVITY 2"))
 		;; we are in the following configuration
 		;;              fs'       ->       fs'
 		;;            s     fs'         fs     s'

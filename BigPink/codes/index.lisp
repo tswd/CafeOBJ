@@ -528,7 +528,8 @@
     ;; (register-clause cl *current-psys*)
     (let ((c2 nil))
       (when (and (eq (clause-container cl) :passive)
-		 (unit-clause? cl))
+		 (unit-clause? cl)
+		 )
 	(let ((lit (ith-literal cl 1)))
 	  (when (eq-literal? lit)
 	    (setq c2 (copy-clause cl))
@@ -570,7 +571,11 @@
     (when (and (eq (clause-container cl) :passive)
 	       (unit-clause? cl))
       (let ((lit (ith-literal cl 1)))
-	(when (eq-literal? lit)
+	(when (and (eq-literal? lit)
+		   ;;
+		   (pn-flag eq-literals-both-ways)
+		   ;;
+		   )
 	  (setq c2 (copy-clause cl))
 	  (setf (clause-parents c2)
 	    (list (list :copy-rule (clause-id cl)

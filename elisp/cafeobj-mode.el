@@ -506,7 +506,7 @@ This is in addition to cafeobj-continued-statement-offset."
 
 (defconst cafeobj-top-decl-pat
     (concat "^[ \t]*\\("
-	    "module\\*\\|mod\\*\\|module\\|mod\\|module!\\|mod!\\|view\\|hwd:mod!\\|sys:mod!"
+	    "module\\|module\\*\\|mod\\*\\|module\\|mod\\|module!\\|mod!\\|view\\|hwd:mod!\\|sys:mod!"
 	    "\\)\\>"))
 
 (defun looking-at-cafeobj-top-decl ()

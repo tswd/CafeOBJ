@@ -282,6 +282,8 @@ File:butils.lisp
   ;; (setf (pn-flag randomize-sos) t)
   (setf (pn-flag randomize-sos) nil)
   ;;
+  (setf (pn-flag unify-heavy) t)
+  ;;
   ;; reset parameters
   ;;
   (dotimes (x *pn-max-parameters*)
@@ -534,6 +536,22 @@ File:butils.lisp
        (auto-change-flag para-into-right nil)
        (auto-change-flag para-from-vars nil)
        (auto-change-flag eq-units-both-ways t)
+       (unless (pn-flag no-demod)
+         (auto-change-flag dynamic-demod-all t))
+       (unless (pn-flag no-back-demod)
+         (auto-change-flag back-demod t))
+       (auto-change-flag process-input t)
+       (auto-change-flag lrpo t)
+       )
+      (#.kb3
+       (auto-change-flag para-from t)
+       (auto-change-flag para-into t)
+       (auto-change-flag para-from-left t)
+       (auto-change-flag para-from-right nil) 
+       (auto-change-flag para-into-left t)
+       (auto-change-flag para-into-right nil)
+       (auto-change-flag para-from-vars nil)
+       (auto-change-flag eq-units-both-ways nil)
        (unless (pn-flag no-demod)
          (auto-change-flag dynamic-demod-all t))
        (unless (pn-flag no-back-demod)
@@ -1351,7 +1369,7 @@ File:butils.lisp
                (print-next)
                (princ "strategy will be knuth-bendix with positive clauses in sos.")))
            ||#
-           (auto-change-flag kb2 t)
+           (auto-change-flag kb3 t)
            (when (every #'positive-clause? *usable*)
              (when (pn-flag print-message)
                (with-output-msg ()
@@ -1402,7 +1420,7 @@ File:butils.lisp
                (print-next)
                (princ "clauses in usable")))
            ||#
-           (auto-change-flag kb2 t)
+           (auto-change-flag kb3 t)
            (auto-change-flag hyper-res t)
            (auto-change-flag unit-deletion t)
            (auto-change-flag factor t)
@@ -1435,7 +1453,7 @@ File:butils.lisp
                (print-next)
                (princ "sos and non-positive clauses in usable.")))
            ||#
-           (auto-change-flag kb2 t)
+           (auto-change-flag kb3 t)
            (auto-change-flag hyper-res t)
            (auto-change-flag order-hyper nil)
            (when symmetry?

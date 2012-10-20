@@ -24,8 +24,21 @@ sys:mod! EQL {
   protecting (TRUTH)
   pred _=_ : *Cosmos* *Cosmos* { comm prec: 51 }
   eq (CUX:*Cosmos* = CUX) = true .
-  ceq CUX:*Cosmos* = CUY:*Cosmos* if (CUX = CUY) .
+  ceq [:nonexec]: CUX:*Cosmos* = CUY:*Cosmos* if (CUX = CUY) .
+  eq (true = false) = false .
 }
+
+lispq
+(defun setup-eql ()
+  (setq *eql-module* (eval-modexp "EQL"))
+  (prepare-for-parsing *eql-module*)
+  (with-in-module (*eql-module*)
+    (let* ((eq-op (find-operator '("_" "=" "_") 2 *eql-module*))
+	   (eq-meth (lowest-method (car (opinfo-methods eq-op)))))
+      (setq *eql-op* eq-meth))))
+
+lispq
+(setup-eql)
 
 set sys universal-sort off
 lispq

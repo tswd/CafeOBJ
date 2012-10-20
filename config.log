@@ -30,8 +30,8 @@ Kernel configured for up to 4 processors.
 Processor type: i486 (Intel 80486)
 Processors active: 0 1 2 3
 Primary memory available: 4.00 gigabytes
-Default processor set: 151 tasks, 809 threads, 4 processors
-Load average: 2.07, Mach factor: 1.92
+Default processor set: 133 tasks, 648 threads, 4 processors
+Load average: 1.29, Mach factor: 2.70
 /bin/machine           = unknown
 /usr/bin/oslevel       = unknown
 /bin/universe          = unknown
@@ -165,7 +165,7 @@ SET_MAKE=''
 SHELL='/bin/sh'
 VERSION='1.4'
 VMEMO='PigNose0.99'
-VMINOR='.9rc4'
+VMINOR='.9rc5'
 acl6_path='/Applications/AllegroCL32.app/Contents/Resources/alisp'
 acl7_path='/Applications/AllegroCL32.app/Contents/Resources/alisp'
 acl8_path='/Applications/AllegroCL32.app/Contents/Resources/alisp'

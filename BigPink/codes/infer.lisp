@@ -988,7 +988,8 @@
 	(princ "`para-from', `para-into' rules are off, but `para-ones-rule' is set.")))
     ;;
     (when (and (or (pn-flag kb)
-		   (pn-flag kb2))
+		   (pn-flag kb2)
+		   (pn-flag kb3))
 	       (not (pn-flag lrpo)))
       (with-output-chaos-warning ()
 	(princ "`knuth-bendix' is set and `lrpo' is off.")))
